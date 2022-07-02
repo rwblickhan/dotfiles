@@ -20,3 +20,7 @@ echo "Installing starship theme..."
 curl -sS https://starship.rs/install.sh >> starship_install.sh
 chmod +x starship_install.sh
 ./starship_install.sh -y
+
+echo "Installing git-delta..."
+tar -xzvf delta-0.13.0-x86_64-unknown-linux-musl.tar.gz
+cp delta-0.13.0-x86_64-unknown-linux-musl.tar.gz ~/.local/bin/delta
