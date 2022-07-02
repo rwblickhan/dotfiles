@@ -4,8 +4,8 @@ create_symlinks() {
     # Get the directory in which this script lives.
     script_dir=$(dirname "$(readlink -f "$0")")
 
-    echo "Symlinking .zshrc..."
-    ln -s $script_dir/.zshrc.minimal ~/.zshrc
+    echo "Copying .zshrc..."
+    cp $script_dir/.zshrc.minimal ~/.zshrc
 
     echo "Copying starship config..."
     cp $script_dir/.config/starship.toml ~/.config/starship.toml
