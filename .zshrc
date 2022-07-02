@@ -1,4 +1,4 @@
-export ZSH="/Users/rwblickhan/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Don't set an oh-my-zsh theme
 ZSH_THEME=""

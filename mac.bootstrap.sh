@@ -11,12 +11,26 @@ fi
 
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
+
+# Favorite command-line tools
 brew install neovim
-brew install colima
+brew install ripgrep
+brew install exa
+brew install bat
+brew install git-delta
+brew install fd
+brew install dust
+brew install fzf
+brew install procs
+brew install zoxide
+brew install starship
 
 if [ ! -d "/Applications/Raycast.app" ]; then
     brew install --cask raycast
 fi
+
+# docker support without docker desktop!
+brew install colima
 
 if ! [ -x "$(command -v docker-compose)" ]; then
     if [[ $(uname -m) == "arm64" ]]; then
