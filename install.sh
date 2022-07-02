@@ -1,20 +1,7 @@
 #!/bin/bash
 
-create_symlinks() {
-    # Get the directory in which this script lives.
-    script_dir=$(dirname "$(readlink -f "$0")")
-
-    echo "Copying .zshrc..."
-    cp $script_dir/.zshrc.minimal ~/.zshrc
-
-    echo "Copying .gitconfig..."
-    cp $script_dir/.gitconfig ~/.gitconfig
-
-    echo "Copying starship config..."
-    cp $script_dir/.config/starship.toml ~/.config/starship.toml
-}
-
-create_symlinks
+echo "Running dotbot..."
+./dotbot_minimal.sh
 
 echo "Installing command-line tools..."
 sudo apt-get update
