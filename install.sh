@@ -23,4 +23,5 @@ chmod +x starship_install.sh
 
 echo "Installing git-delta..."
 tar -xzvf delta-0.13.0-x86_64-unknown-linux-musl.tar.gz
-cp delta-0.13.0-x86_64-unknown-linux-musl.tar.gz ~/.local/bin/delta
+cp delta-0.13.0-x86_64-unknown-linux-musl.tar.gz/delta ~/.local/bin/delta
+chmod +x ~/.loca/bin/delta
