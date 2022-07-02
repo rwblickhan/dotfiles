@@ -1,3 +1,6 @@
+[user]
+ 	name = Russell Blickhan
+ 	email = rwblickhan@gmail.com
 [pager]
     diff = delta
     log = delta
