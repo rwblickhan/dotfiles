@@ -46,7 +46,6 @@ alias find='fd'
 alias diff='delta'
 alias cd='z'
 alias cdi='zi'
-alias ps='procs'
 # Show a fancy `fzf`-powered selector with a preview window
 alias rgf='f() { rg $1 --files-with-matches | fzf --preview-window=wrap --preview "rg --color=always $1 {}" }; f'
 

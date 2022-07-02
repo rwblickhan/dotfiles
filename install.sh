@@ -16,6 +16,7 @@ create_symlinks() {
     done
 
     # Copy .config folder into appropriate place
+    echo "Copying .config folder"
     cp -r .config ~/.config
 }
 
@@ -36,7 +37,9 @@ echo "Installing Powerline fonts..."
 sudo apt-get install powerline fonts-powerline -y
 
 echo "Installing starship theme..."
-cargo install starship
+curl -sS https://starship.rs/install.sh >> starship_install.sh
+chmod +x starship_install.sh
+./starship_install.sh -y
 
 echo "Installing git-delta..."
 cargo install git-delta
