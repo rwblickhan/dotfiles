@@ -22,22 +22,21 @@ create_symlinks() {
 create_symlinks
 
 echo "Installing command-line tools..."
+sudo apt-get update
 sudo apt-get install neovim -y
 sudo apt-get install ripgrep -y
 sudo apt-get install exa -y
 sudo apt-get install bat -y
-sudo apt-get install git-delta -y
-sudo apt-get install fd -y
-sudo apt-get install dust -y
+sudo apt-get install fd-find -y
 sudo apt-get install fzf -y
-sudo apt-get install procs -y
 sudo apt-get install zoxide -y
-
-echo "Installing cargo..."
-curl https://sh.rustup.rs -sSf | sh
+sudo apt-get install cargo -y
 
 echo "Installing Powerline fonts..."
 sudo apt-get install powerline fonts-powerline -y
 
-echo "Instaling starship theme..."
-cargo install starship --locked
+echo "Installing starship theme..."
+cargo install starship
+
+echo "Installing git-delta..."
+cargo install git-delta
