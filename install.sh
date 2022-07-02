@@ -7,6 +7,9 @@ create_symlinks() {
     echo "Copying .zshrc..."
     cp $script_dir/.zshrc.minimal ~/.zshrc
 
+    echo "Copying .gitconfig..."
+    cp $script_dir/.gitconfig ~/.gitconfig
+
     echo "Copying starship config..."
     cp $script_dir/.config/starship.toml ~/.config/starship.toml
 }
