@@ -37,7 +37,6 @@ export VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 export VI_MODE_SET_CURSOR=true
 
 # Aliases
-alias dev='cd ~/Developer'
 alias vim='nvim'
 alias cat='bat'
 alias ls='exa --icons'
