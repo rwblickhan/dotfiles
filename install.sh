@@ -10,6 +10,7 @@ sudo apt-get install ripgrep -y
 sudo apt-get install fd-find -y
 sudo apt-get install fzf -y
 sudo apt-get install exa -y
+sudo apt-get install zoxide -y
 
 echo "Symlinking fd..."
 ln -s $(which fdfind) ~/.local/bin/fd
