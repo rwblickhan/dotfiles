@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Running dotbot..."
-./dotbot_minimal.sh
+./dotbot.sh
 
 echo "Installing command-line tools..."
 sudo apt-get update
@@ -9,9 +9,16 @@ sudo apt-get install neovim -y
 sudo apt-get install ripgrep -y
 sudo apt-get install fd-find -y
 sudo apt-get install fzf -y
+sudo apt-get install exa -y
 
 echo "Symlinking fd..."
 ln -s $(which fdfind) ~/.local/bin/fd
+
+echo "Symlinking bat..."
+ln -s $(which batcat) ~/.local/bin/bat
+
+echo "Symlinking zoxide..."
+ln -s $(which zoxide) ~/.local/bin/z
 
 echo "Installing Powerline fonts..."
 sudo apt-get install powerline fonts-powerline -y
