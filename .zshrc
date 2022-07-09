@@ -9,6 +9,9 @@ HYPHEN_INSENSITIVE="true"
 # Update oh-my-zsh automatically
 DISABLE_UPDATE_PROMPT="true"
 
+# Don't enable ls colors because we want to use exa instead
+DISABLE_LS_COLORS="true"
+
 plugins=(
   brew
   docker  
