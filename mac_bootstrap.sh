@@ -24,18 +24,49 @@ echo "Installing Terraform..."
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 
-echo "Installing command-line tools..."
+echo "Installing neovim..."
 brew install neovim
+
+echo "Installing ripgrep..."
 brew install ripgrep
+
+echo "Installing exa..."
 brew install exa
+
+echo "Installing bat..."
 brew install bat
+
+echo "Installing delta..."
 brew install git-delta
+
+echo "Installing fd..."
 brew install fd
+
+echo "Installing dust..."
 brew install dust
+
+echo "Installing fzf..."
 brew install fzf
+
+echo "Installing procs..."
 brew install procs
+
+echo "Installing zoxide..."
 brew install zoxide
+
+echo "Installing pgcli..."
+brew tap dbcli/tap
+brew install pgcli
+
+echo "Installing HTTPie..."
+brew install httpie
+
+echo "Installing tealdeer..."
+brew install tealdeer
+
+echo "Installing starship prompt..."
 brew install starship
+
 
 if [ ! -d "/Applications/Raycast.app" ]
 then
@@ -66,3 +97,4 @@ echo "Starting Colima..."
 colima start
 
 echo "Remember to restart your terminal to source the new dotfiles!"
+
