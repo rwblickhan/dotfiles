@@ -64,6 +64,9 @@ brew install httpie
 echo "Installing tealdeer..."
 brew install tealdeer
 
+echo "Installing Github CLI..."
+brew install gh
+
 echo "Installing starship prompt..."
 brew install starship
 
