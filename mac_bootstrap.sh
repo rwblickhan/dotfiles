@@ -67,6 +67,9 @@ brew install tealdeer
 echo "Installing Github CLI..."
 brew install gh
 
+echo "Installing Stork CLI..."
+brew install stork-search/stork-tap/stork
+
 echo "Installing starship prompt..."
 brew install starship
 
@@ -98,6 +101,9 @@ fi
 
 echo "Starting Colima..."
 colima start
+
+echo "Authenticating with Github..."
+gh auth login
 
 echo "Remember to restart your terminal to source the new dotfiles!"
 
