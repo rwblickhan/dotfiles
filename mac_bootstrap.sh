@@ -71,6 +71,9 @@ brew install gh
 echogreen "Installing just..."
 brew install just
 
+echogreen "Installing tmux..."
+brew install tmux
+
 echogreen "Installing Stork CLI..."
 brew install stork-search/stork-tap/stork
 
