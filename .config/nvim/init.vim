@@ -17,6 +17,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 " Terraform support
 Plug 'hashivim/vim-terraform'
+" Syntax highlighting for just
+Plug 'NoahTheDuke/vim-just'
 call plug#end()
 
 " Navigate up and down visual lines instead of logical ones

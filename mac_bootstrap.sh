@@ -67,6 +67,9 @@ brew install tealdeer
 echo "Installing Github CLI..."
 brew install gh
 
+echo "Installing just..."
+brew install just
+
 echo "Installing Stork CLI..."
 brew install stork-search/stork-tap/stork
 
