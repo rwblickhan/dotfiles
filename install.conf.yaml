@@ -18,6 +18,9 @@
     ~/.zshrc:
       force: true
       path: .zshrc
+    ~/.rainbow.sh:
+      force: true
+      path: rainbow.sh
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

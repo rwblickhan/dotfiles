@@ -53,5 +53,7 @@ alias rgf='f() { rg $1 --files-with-matches | fzf --preview-window=wrap --previe
 
 source $ZSH/oh-my-zsh.sh
 
+source $HOME/.rainbow.sh
+
 # starship theme setup
 eval "$(starship init zsh)"

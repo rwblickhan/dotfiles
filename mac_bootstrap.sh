@@ -1,112 +1,120 @@
-#!/bin/bash
-set euxo -pipefail
+#!/bin/zsh
 
-echo "Running dotbot..."
+source rainbow.sh
+
+echogreen "Running dotbot..."
 ./dotbot.sh
 
 if [ ! -d "$HOME/.oh-my-zsh" ]
 then
-    echo "Installing oh-my-zsh..."
+    echogreen "Installing oh-my-zsh..."
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
-    echo "oh-my-zsh installation not necessary"
+    echogreen "oh-my-zsh installation not necessary"
 fi
 
 if ! [ -x "$(command -v brew)" ]
 then
-    echo "Installing Homebrew..."
+    echogreen "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-    echo "Homebrew installation not necessary"
+    echogreen "Homebrew installation not necessary"
 fi
 
-echo "Installing Terraform..."
+echogreen "Installing Terraform..."
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 
-echo "Installing neovim..."
+echogreen "Installing neovim..."
 brew install neovim
 
-echo "Installing ripgrep..."
+echogreen "Installing ripgrep..."
 brew install ripgrep
 
-echo "Installing exa..."
+echogreen "Installing exa..."
 brew install exa
 
-echo "Installing bat..."
+echogreen "Installing bat..."
 brew install bat
 
-echo "Installing delta..."
+echogreen "Installing delta..."
 brew install git-delta
 
-echo "Installing fd..."
+echogreen "Installing fd..."
 brew install fd
 
-echo "Installing dust..."
+echogreen "Installing dust..."
 brew install dust
 
-echo "Installing fzf..."
+echogreen "Installing fzf..."
 brew install fzf
 
-echo "Installing procs..."
+echogreen "Installing procs..."
 brew install procs
 
-echo "Installing zoxide..."
+echogreen "Installing zoxide..."
 brew install zoxide
 
-echo "Installing pgcli..."
+echogreen "Installing pgcli..."
 brew tap dbcli/tap
 brew install pgcli
 
-echo "Installing HTTPie..."
+echogreen "Installing HTTPie..."
 brew install httpie
 
-echo "Installing tealdeer..."
+echogreen "Installing tealdeer..."
 brew install tealdeer
 
-echo "Installing Github CLI..."
+echogreen "Installing Github CLI..."
 brew install gh
 
-echo "Installing just..."
+echogreen "Installing just..."
 brew install just
 
-echo "Installing Stork CLI..."
+echogreen "Installing Stork CLI..."
 brew install stork-search/stork-tap/stork
 
-echo "Installing starship prompt..."
+echogreen "Installing starship prompt..."
 brew install starship
 
 
 if [ ! -d "/Applications/Raycast.app" ]
 then
-    echo "Installing Raycast..."
+    echogreen "Installing Raycast..."
     brew install --cask raycast
 else
-    echo "Raycast installation not necessary"
+    echogreen "Raycast installation not necessary"
 fi
 
 # docker support without docker desktop!
-echo "Installing Colima..."
+echogreen "Installing Colima..."
 brew install colima
 
 if ! [ -x "$(command -v docker-compose)" ]; then
     if [[ $(uname -m) == "arm64" ]]; then
-        echo "Installing docker-compose for M1..."
+        echogreen "Installing docker-compose for M1..."
         sudo curl -L https://github.com/docker/compose/releases/download/v2.5.1/docker-compose-darwin-aarch64 -o /usr/local/bin/docker-compose
     else
-        echo "Installing docker-compose for Intel..."
+        echogreen "Installing docker-compose for Intel..."
         sudo curl -L https://github.com/docker/compose/releases/download/v2.5.1/docker-compose-darwin-x86_64 -o /usr/local/bin/docker-compose
     fi
     sudo chmod +x /usr/local/bin/docker-compose
 else
-    echo "docker-compose installation not necessary"
+    echogreen "docker-compose installation not necessary"
 fi
 
-echo "Starting Colima..."
+echogreen "Starting Colima..."
 colima start
 
-echo "Authenticating with Github..."
-gh auth login
+echogreen "Log in to Github? (y/n)"
+read answer
 
-echo "Remember to restart your terminal to source the new dotfiles!"
+if [ answer = "y" ]; then
+    echogreen "Authenticating with Github..."
+    gh auth login
+else
+    echogreen "Skipping authentication!"
+fi
+
+echogreen "Remember to restart your terminal to source the new dotfiles!"
 
