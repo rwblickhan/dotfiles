@@ -5,25 +5,19 @@ source rainbow.sh
 echogreen "Running dotbot..."
 ./dotbot.sh
 
-if [ ! -d "$HOME/.oh-my-zsh" ]
-then
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echogreen "Installing oh-my-zsh..."
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
     echogreen "oh-my-zsh installation not necessary"
 fi
 
-if ! [ -x "$(command -v brew)" ]
-then
+if ! [ -x "$(command -v brew)" ]; then
     echogreen "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     echogreen "Homebrew installation not necessary"
 fi
-
-echogreen "Installing Terraform..."
-brew tap hashicorp/tap
-brew install hashicorp/tap/terraform
 
 echogreen "Installing neovim..."
 brew install neovim
