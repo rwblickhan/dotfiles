@@ -9,7 +9,7 @@ HYPHEN_INSENSITIVE="true"
 # Update oh-my-zsh automatically
 DISABLE_UPDATE_PROMPT="true"
 
-# Don't enable ls colors because we want to use exa instead
+# Disable ls colors because we want to use exa instead
 DISABLE_LS_COLORS="true"
 
 plugins=(
@@ -51,9 +51,11 @@ alias cdi='zi'
 # Show a fancy `fzf`-powered selector with a preview window
 alias rgf='f() { rg $1 --files-with-matches | fzf --preview-window=wrap --preview "rg --color=always $1 {}" }; f'
 
+# Set up oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# Set up colored echos
 source $HOME/.rainbow.sh
 
-# starship theme setup
+# Set up starship theme
 eval "$(starship init zsh)"
