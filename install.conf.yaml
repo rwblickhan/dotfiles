@@ -21,6 +21,9 @@
     ~/.rainbow.sh:
       force: true
       path: rainbow.sh
+    ~/.tmux.conf:
+      force: true
+      path: .tmux.conf
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
