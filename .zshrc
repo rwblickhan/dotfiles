@@ -76,6 +76,7 @@ alias rgf='f() { rg $1 --files-with-matches | fzf --preview-window=wrap --previe
 # Set up oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# Set up zoxide
 if exists zoxide; then
     eval "$(zoxide init zsh --cmd cd)"
 fi
