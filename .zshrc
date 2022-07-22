@@ -85,3 +85,8 @@ fi
 if exists starship; then
     eval "$(starship init zsh)"
 fi
+
+# Set up Homebrew on M1 Macs
+if [[ $(uname -m) == "arm64" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
