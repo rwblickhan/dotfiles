@@ -34,13 +34,11 @@ plugins=(
   brew
   docker  
   docker-compose
+  fzf
   gitfast
   swiftpm
   tmux
-  vi-mode
   zoxide
-  # Order matters! vi-mode tries to overwrite Ctrl+T
-  fzf
 )
 
 # Use Neovim as default editor
@@ -51,11 +49,6 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Show a fancy preview window when using Ctrl+T
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
-
-# Redraw vi-mode prompt when changing mode
-export VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-# Change cursor style when changing mode with vi-mode
-export VI_MODE_SET_CURSOR=true
 
 # Automatically start tmux when zsh starts
 if exists tmux; then
