@@ -1,5 +1,23 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+# Set up colored echos
+source $HOME/.rainbow.sh
+
+# Check if a command exists
+export exists() {
+    type $1 &> /dev/null
+}
+
+# Alias only if target exists
+safealias() {
+    local name=$1; shift
+    local target=$1
+
+    if exists $target; then
+        alias $name="$*"
+    fi
+}
+
 # Don't set an oh-my-zsh theme
 ZSH_THEME=""
 
@@ -18,7 +36,7 @@ plugins=(
   docker-compose
   gitfast
   swiftpm
-  terraform
+  tmux
   vi-mode
   zoxide
   # Order matters! vi-mode tries to overwrite Ctrl+T
@@ -39,23 +57,30 @@ export VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 # Change cursor style when changing mode with vi-mode
 export VI_MODE_SET_CURSOR=true
 
+# Automatically start tmux when zsh starts
+if exists tmux; then
+    export ZSH_TMUX_AUTOSTART=true
+fi
+
 # Aliases
-alias vim='nvim'
-alias cat='bat'
-alias ls='exa --icons'
-alias du='dust'
-alias find='fd'
-alias diff='delta'
-alias cd='z'
-alias cdi='zi'
+safealias 'vim' 'nvim'
+safealias 'cat' 'bat'
+safealias 'ls' 'exa' '--icons'
+safealias 'du' 'dust'
+safealias 'find' 'fd'
+safealias 'diff' 'delta'
+
 # Show a fancy `fzf`-powered selector with a preview window
 alias rgf='f() { rg $1 --files-with-matches | fzf --preview-window=wrap --preview "rg --color=always $1 {}" }; f'
 
 # Set up oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# Set up colored echos
-source $HOME/.rainbow.sh
+if exists zoxide; then
+    eval "$(zoxide init zsh --cmd cd)"
+fi
 
 # Set up starship theme
-eval "$(starship init zsh)"
+if exists starship; then
+    eval "$(starship init zsh)"
+fi
