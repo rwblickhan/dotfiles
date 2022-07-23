@@ -1,8 +1,8 @@
 " Set up vim-plug plugins
 " :PlugInstall to install
 call plug#begin()
-" Palenight theme
-Plug 'drewtempelmeyer/palenight.vim'
+" Ayu theme
+Plug 'ayu-theme/ayu-vim'
 " Basic LSP configurations
 Plug 'neovim/nvim-lspconfig'
 " Dependencies for Trouble
@@ -15,8 +15,6 @@ Plug 'folke/trouble.nvim'
 Plug 'nvim-lua/plenary.nvim'
 " Hook non-LSP sources into neovim's LSP implementation
 Plug 'jose-elias-alvarez/null-ls.nvim'
-" Terraform support
-Plug 'hashivim/vim-terraform'
 " Syntax highlighting for just
 Plug 'NoahTheDuke/vim-just'
 call plug#end()
@@ -40,11 +38,10 @@ set number
 " Don't force me to save files before opening a new one
 set hidden
 
-" Set up palenight color scheme
-set background=dark
-colorscheme palenight
+" Set up ayu color scheme
 set termguicolors
-let g:palenight_terminal_italics=1
+let ayucolor="dark"
+colorscheme ayu
 
 lua << EOF
   -- Set :Format as an alias for LSP formatting
