@@ -25,6 +25,9 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jiangmiao/auto-pairs'
 " Syntax highlighting for just
 Plug 'NoahTheDuke/vim-just'
+" fzf vim integration
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Navigate up and down visual lines instead of logical ones
@@ -50,6 +53,13 @@ set hidden
 set termguicolors
 let ayucolor="dark"
 colorscheme ayu
+
+" <leader>o to open fzf
+noremap <silent> <Leader>o :FZF<CR>
+" <leader>f to open fzf rg mode
+noremap <silent> <Leader>f :Rg<CR>
+" Don't match titles in fzf rg mode
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " Go-to-definition code navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -83,8 +93,6 @@ let g:rustfmt_autosave = 1
 lua << EOF
   -- Set :Format as an alias for LSP formatting
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]]
-  -- Set <leader>f as an alias for :Format
-  vim.api.nvim_set_keymap("n", "<leader>f", ":Format<cr>", { noremap = true })
 
   require("null-ls").setup({
     sources = {
