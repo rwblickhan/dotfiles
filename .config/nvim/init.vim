@@ -1,10 +1,16 @@
-" Set up vim-plug plugins
+ " Set up vim-plug plugins
 " :PlugInstall to install
 call plug#begin()
 " Ayu theme
 Plug 'ayu-theme/ayu-vim'
 " Basic LSP configurations
 Plug 'neovim/nvim-lspconfig'
+" Set up Rust language support
+Plug 'rust-lang/rust.vim'
+" CoC autocompletion
+" Remember to :CocInstall the appropriate languages!
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 " Dependencies for Trouble
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/lsp-colors.nvim'
@@ -15,6 +21,8 @@ Plug 'folke/trouble.nvim'
 Plug 'nvim-lua/plenary.nvim'
 " Hook non-LSP sources into neovim's LSP implementation
 Plug 'jose-elias-alvarez/null-ls.nvim'
+" Bracket auto-pairing
+Plug 'jiangmiao/auto-pairs'
 " Syntax highlighting for just
 Plug 'NoahTheDuke/vim-just'
 call plug#end()
@@ -43,13 +51,41 @@ set termguicolors
 let ayucolor="dark"
 colorscheme ayu
 
+" Go-to-definition code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Select autocomplete on tab
+inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : "\<TAB>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing extra messages when using completion
+set shortmess+=c
+
+" Automatically run rustfmt on save
+let g:rustfmt_autosave = 1
+
 lua << EOF
   -- Set :Format as an alias for LSP formatting
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]]
   -- Set <leader>f as an alias for :Format
   vim.api.nvim_set_keymap("n", "<leader>f", ":Format<cr>", { noremap = true })
 
-  require("trouble").setup {}
   require("null-ls").setup({
     sources = {
         require("null-ls").builtins.diagnostics.flake8,
@@ -60,4 +96,5 @@ lua << EOF
         require("null-ls").builtins.diagnostics.yamllint
     },
   })
+  require("trouble").setup {}
 EOF
