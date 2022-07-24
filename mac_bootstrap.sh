@@ -63,6 +63,9 @@ brew install git-delta
 echogreen "Installing hadolint (Dockerfile linter)..."
 brew install hadolint
 
+echogreen "Installing hledger (plain-text accounting)..."
+brew install hledger
+
 echogreen "Installing HTTPie (better curl)..."
 brew install httpie
 

@@ -7,9 +7,11 @@
 
 - link:
     ~/.config/starship.toml:
+      create: true
       force: true
       path: .config/starship.toml
     ~/.config/nvim:
+      create: true
       force: true
       path: .config/nvim/
     ~/.gitconfig:
@@ -24,6 +26,10 @@
     ~/.tmux.conf:
       force: true
       path: .tmux.conf
+    ~/.tmux/plugins/tpm:
+      create: true
+      force: true
+      path: tpm
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

@@ -13,13 +13,13 @@ sudo apt-get install exa -y
 sudo apt-get install zoxide -y
 
 echo "Symlinking fd..."
-ln -s $(which fdfind) ~/.local/bin/fd
+ln -s "$(which fdfind)" ~/.local/bin/fd
 
 echo "Symlinking bat..."
-ln -s $(which batcat) ~/.local/bin/bat
+ln -s "$(which batcat)" ~/.local/bin/bat
 
 echo "Symlinking zoxide..."
-ln -s $(which zoxide) ~/.local/bin/z
+ln -s "$(which zoxide)" ~/.local/bin/z
 
 echo "Installing Powerline fonts..."
 sudo apt-get install powerline fonts-powerline -y

@@ -1,4 +1,4 @@
- " Set up vim-plug plugins
+" Set up vim-plug plugins
 " :PlugInstall to install
 call plug#begin()
 " Ayu theme
@@ -7,6 +7,7 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'neovim/nvim-lspconfig'
 " Set up Rust language support
 Plug 'rust-lang/rust.vim'
+Plug 'simrat39/rust-tools.nvim'
 " CoC autocompletion
 " Remember to :CocInstall the appropriate languages!
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -28,6 +29,8 @@ Plug 'NoahTheDuke/vim-just'
 " fzf vim integration
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" tmux integration
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " Navigate up and down visual lines instead of logical ones
@@ -104,5 +107,6 @@ lua << EOF
         require("null-ls").builtins.diagnostics.yamllint
     },
   })
+  require("rust-tools").setup({})
   require("trouble").setup {}
 EOF
