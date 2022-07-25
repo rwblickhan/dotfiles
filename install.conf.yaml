@@ -23,6 +23,9 @@
     ~/.rainbow.sh:
       force: true
       path: rainbow.sh
+    ~/.inputrc:
+      force: true
+      path: .inputrc
     ~/.tmux.conf:
       force: true
       path: .tmux.conf
