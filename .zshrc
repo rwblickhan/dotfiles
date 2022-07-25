@@ -38,6 +38,7 @@ plugins=(
   gitfast
   swiftpm
   tmux
+  tmuxinator
   zoxide
 )
 
