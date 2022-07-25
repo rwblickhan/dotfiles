@@ -13,6 +13,8 @@ echogreen "Installing fd..."
 sudo apt-get install fd-find -y
 echogreen "Installing fzf..."
 sudo apt-get install fzf -y
+echogreen "Installing hledger..."
+sudo apt-get install hledger -y
 echogreen "Installing neovim..."
 sudo apt-get install neovim -y
 echogreen "Installing npm..."
