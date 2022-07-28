@@ -14,6 +14,10 @@
       create: true
       force: true
       path: .config/nvim/
+    ~/.config/yamllint/config:
+      create: true
+      force: true
+      path: .config/yamllint/config
     ~/.gitconfig:
       force: true
       path: .gitconfig
