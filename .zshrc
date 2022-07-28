@@ -32,6 +32,7 @@ DISABLE_LS_COLORS="true"
 
 plugins=(
   brew
+  deno
   docker  
   docker-compose
   fzf
