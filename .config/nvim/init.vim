@@ -12,6 +12,7 @@ Plug 'simrat39/rust-tools.nvim'
 " Remember to :CocInstall the appropriate languages!
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
 " Dependencies for Trouble
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/lsp-colors.nvim'
@@ -93,10 +94,15 @@ set shortmess+=c
 " Automatically run rustfmt on save
 let g:rustfmt_autosave = 1
 
+" Automatically format typescript on save
+autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync()
+
 lua << EOF
   -- Set :Format as an alias for LSP formatting
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]]
 
+  -- Set up null-ls
   require("null-ls").setup({
     sources = {
         require("null-ls").builtins.diagnostics.flake8,
@@ -107,6 +113,12 @@ lua << EOF
         require("null-ls").builtins.diagnostics.yamllint
     },
   })
-  require("rust-tools").setup({})
-  require("trouble").setup {}
+  -- Set up rust-tools
+  require("rust-tools").setup{}
+  -- Set up Trouble
+  require("trouble").setup{}
+  -- Set up Deno LSP
+  local nvim_lsp = require("lspconfig")
+  nvim_lsp.denols.setup{}
+  nvim_lsp.dockerls.setup{}
 EOF
