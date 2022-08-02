@@ -9,7 +9,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 " CoC autocompletion
-" Remember to :CocInstall the appropriate languages!
+" Remember to :CocInstall the appropriate languages and coc-snippets!
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
@@ -82,8 +82,19 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Select autocomplete on tab
-inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : "\<TAB>"
+" Select autocomplete on tab like VS Code
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
