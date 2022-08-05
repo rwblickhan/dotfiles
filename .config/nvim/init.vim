@@ -11,6 +11,7 @@ Plug 'simrat39/rust-tools.nvim'
 " CoC autocompletion
 " Remember to :CocInstall the appropriate languages and coc-snippets!
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
 " Dependencies for Trouble
@@ -32,6 +33,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " tmux integration
 Plug 'christoomey/vim-tmux-navigator'
+" hledger integration
+Plug 'ledger/vim-ledger'
 call plug#end()
 
 " Navigate up and down visual lines instead of logical ones
