@@ -117,7 +117,6 @@ lua << EOF
         require("null-ls").builtins.diagnostics.hadolint,
         require("null-ls").builtins.diagnostics.markdownlint,
         require("null-ls").builtins.diagnostics.shellcheck,
-        require("null-ls").builtins.diagnostics.vale,
         require("null-ls").builtins.diagnostics.yamllint
     },
   })
