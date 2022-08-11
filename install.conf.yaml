@@ -37,6 +37,10 @@
       create: true
       force: true
       path: tpm
+    ~/.markdownlintrc:
+      create: true
+      force: true
+      path: .markdownlintrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

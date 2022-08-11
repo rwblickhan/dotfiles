@@ -40,6 +40,9 @@ brew install exa
 echogreen "Installing fd (better find)..."
 brew install fd
 
+echogreen "Installing fish (shell)..."
+brew install fish
+
 echogreen "Installing flake8 (Python linter)..."
 brew install flake8
 
