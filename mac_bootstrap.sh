@@ -40,9 +40,6 @@ brew install exa
 echogreen "Installing fd (better find)..."
 brew install fd
 
-echogreen "Installing fish (shell)..."
-brew install fish
-
 echogreen "Installing flake8 (Python linter)..."
 brew install flake8
 
@@ -50,9 +47,6 @@ echogreen "Installing Fira Code and Fira Mono Nerd Fonts..."
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code-nerd-font
 brew install --cask font-fira-mono-nerd-font
-
-echogreen "Installing flyctl (fly.io CLI)..."
-brew install flyctl
 
 echogreen "Installing fzf (fuzzy finder)..."
 brew install fzf
@@ -95,9 +89,6 @@ echogreen "Installing Pulumi (Infrastructure-as-Code tool)..."
 brew tap pulumi/tap
 brew install pulumi/tap/pulumi
 
-echogreen "Installing procs (better ps)..."
-brew install procs
-
 echogreen "Installing ripgrep (better grep)..."
 brew install ripgrep
 
@@ -119,12 +110,6 @@ brew install tig
 
 echogreen "Installing tmux (teminal multiplexer)..."
 brew install tmux
-
-echogreen "Installing Vapor Toolbox..."
-brew install vapor
-
-echogreen "Installing Warp terminal..."
-brew install --cask warp
 
 echogreen "Installing yamllint (YAML linter)..."
 brew install yamllint
