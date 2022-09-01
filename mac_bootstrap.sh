@@ -95,6 +95,9 @@ brew install ripgrep
 echogreen "Installing shellcheck (shell script linter)..."
 brew install shellcheck
 
+echogreen "Installing sd (better sed)..."
+brew install sd
+
 echogreen "Installing starship command prompt..."
 brew install starship
 
