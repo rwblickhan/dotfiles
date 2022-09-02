@@ -37,6 +37,7 @@ plugins=(
   docker-compose
   fzf
   gitfast
+  gh
   httpie
   swiftpm
   tmux
