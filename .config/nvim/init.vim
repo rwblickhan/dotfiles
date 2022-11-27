@@ -5,25 +5,14 @@ call plug#begin()
 Plug 'ayu-theme/ayu-vim'
 " Basic LSP configurations
 Plug 'neovim/nvim-lspconfig'
-" Set up Rust language support
-Plug 'rust-lang/rust.vim'
-Plug 'simrat39/rust-tools.nvim'
 " CoC autocompletion
 " Remember to :CocInstall the appropriate languages and coc-snippets!
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
-" Dependencies for Trouble
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'folke/lsp-colors.nvim'
-" A pretty LSP diagnostics menu
-" :Trouble to pull it up
-Plug 'folke/trouble.nvim'
 " Dependency for null-ls
 Plug 'nvim-lua/plenary.nvim'
-" Hook non-LSP sources into neovim's LSP implementation
-Plug 'jose-elias-alvarez/null-ls.nvim'
 " Bracket auto-pairing
 Plug 'jiangmiao/auto-pairs'
 " Syntax highlighting for just
@@ -98,23 +87,3 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
-
-lua << EOF
-  -- Set :Format as an alias for LSP formatting
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]]
-
-  -- Set up null-ls
-  require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.diagnostics.flake8,
-        require("null-ls").builtins.diagnostics.hadolint,
-        require("null-ls").builtins.diagnostics.markdownlint,
-        require("null-ls").builtins.diagnostics.shellcheck,
-        require("null-ls").builtins.diagnostics.yamllint
-    },
-  })
-  -- Set up rust-tools
-  require("rust-tools").setup{}
-  -- Set up Trouble
-  require("trouble").setup{}
-EOF
