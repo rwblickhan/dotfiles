@@ -99,13 +99,6 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-" Automatically run rustfmt on save
-let g:rustfmt_autosave = 1
-
-" Automatically format typescript on save
-autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync()
-autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync()
-
 lua << EOF
   -- Set :Format as an alias for LSP formatting
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]]
@@ -124,8 +117,4 @@ lua << EOF
   require("rust-tools").setup{}
   -- Set up Trouble
   require("trouble").setup{}
-  -- Set up Deno LSP
-  local nvim_lsp = require("lspconfig")
-  nvim_lsp.denols.setup{}
-  nvim_lsp.dockerls.setup{}
 EOF
