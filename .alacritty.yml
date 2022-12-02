@@ -110,16 +110,16 @@
 # Font configuration
 font:
   normal:
-    family: FiraMono Nerd Font Mono
+    family: FuraMono Nerd Font Mono
     style: Regular
   bold:
-    family: FiraMono Nerd Font Mono
+    family: FuraMono Nerd Font Mono
     style: Bold
   italic:
-    family: FiraMono Nerd Font Mono
+    family: FuraMono Nerd Font Mono
     style: Italic
   bold_italic:
-    family: FiraMono Nerd Font Mono
+    family: FuraMono Nerd Font Mono
     style: Bold Italic
   size: 12.0
 
