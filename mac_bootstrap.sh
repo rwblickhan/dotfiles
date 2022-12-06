@@ -114,6 +114,9 @@ brew install tig
 echogreen "Installing tmux (teminal multiplexer)..."
 brew install tmux
 
+echogreen "Installing watchexec (rerun command on file change)..."
+brew install watchexec
+
 echogreen "Installing yamllint (YAML linter)..."
 brew install yamllint
 
