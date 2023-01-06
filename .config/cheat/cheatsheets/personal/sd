@@ -2,5 +2,8 @@
 syntax: bash
 ---
 
+// Find-and-replace with capture groups
+echo 'cargo +nightly watch' | sd '(\w+)\s+\+(\w+)\s+(\w+)' 'cmd: $1, channel: $2, subcmd: $3'
+
 // Find-and-replace all files in directory
 sd 'from "react"' 'from "preact"' $(fd --type file)
