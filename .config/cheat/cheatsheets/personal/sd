@@ -1,0 +1,6 @@
+---
+syntax: bash
+---
+
+// Find-and-replace all files in directory
+sd 'from "react"' 'from "preact"' $(fd --type file)

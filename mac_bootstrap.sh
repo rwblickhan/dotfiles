@@ -22,6 +22,9 @@ fi
 echogreen "Installing bat (better cat)..."
 brew install bat
 
+echogreen "Installing cheat (terminal cheatsheets)..."
+brew install cheat
+
 echogreen "Installing Colima (Docker without Docker Desktop)..."
 brew install colima
 
