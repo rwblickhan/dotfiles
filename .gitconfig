@@ -20,6 +20,7 @@
     d = "!f() { git branch -d $(git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color:bold)%(HEAD)%(color:reset) %(color:blue)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(contents:subject)' | fzf --ansi --preview=\"echo {} | cut -c 3- | cut -d ' ' -f1 | xargs git log --color=always\" | cut -c 3- | cut -d ' ' -f 1); }; f"
     l="log --oneline --decorate"
     m = "!f() { git merge $(git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color:bold)%(HEAD)%(color:reset) %(color:blue)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(contents:subject)' | fzf --ansi --preview=\"echo {} | cut -c 3- | cut -d ' ' -f1 | xargs git log --color=always\" | cut -c 3- | cut -d ' ' -f 1); }; f"
+    p = "push"
     oops = "commit -a --no-edit --amend"
 [push]
 	autoSetupRemote = true
