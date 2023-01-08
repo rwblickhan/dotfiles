@@ -87,3 +87,22 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+" https://blog.landofcrispy.com/index.php/2021/01/06/clipboard-integration-between-tmux-nvim-zsh-x11-across-ssh-sessions/
+function! YankSyncGetRegLines(regname)
+	return getreg(a:regname, 1, 1) + (getregtype(a:regname) ==# 'v' ? [] : [''])
+endfunction
+
+" Look for script pushclip.sh in same directory as vim script
+let s:sdir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+let s:ysshpush = s:sdir . '/pushclip.sh'
+function! YankSyncPush(regname)
+	if empty(a:regname)
+		let contents = YankSyncGetRegLines(a:regname)
+		call system(s:ysshpush, contents)
+	endif
+endfunction
+augroup clipmgmt
+	autocmd!
+	autocmd TextYankPost * call YankSyncPush(v:event['regname'])
+augroup END
