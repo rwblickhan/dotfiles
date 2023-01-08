@@ -7,6 +7,6 @@ fi
 # Save stdin to file
 cat > "$TEMPFILE"
 # Load tmux buffer
-tmux load-buffer "$TEMPFILE"
+tmux load-buffer -w "$TEMPFILE"
 # Remove file
 rm -f "$TEMPFILE"
