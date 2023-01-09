@@ -25,6 +25,9 @@ brew install bat
 echogreen "Installing cheat (terminal cheatsheets)..."
 brew install cheat
 
+echogreen "Installing choose (better awk/cut)..."
+brew install choose-rust
+
 echogreen "Installing Colima (Docker without Docker Desktop)..."
 brew install colima
 

@@ -32,7 +32,6 @@ DISABLE_LS_COLORS="true"
 
 plugins=(
   brew
-  deno
   fzf
   gitfast
   gh
@@ -67,6 +66,9 @@ safealias 'j' 'just'
 
 # Show a fancy `fzf`-powered selector with a preview window
 alias rgf='f() { rg $1 --files-with-matches | fzf --preview-window=wrap --preview "rg --color=always $1 {}" }; f'
+
+# Use `rgn` to show only file names with `rg`
+safealias 'rgn' 'rg' '--files-with-matches'
 
 # Set up oh-my-zsh
 source $ZSH/oh-my-zsh.sh
