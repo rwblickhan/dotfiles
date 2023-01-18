@@ -1,0 +1,6 @@
+---
+syntax: bash
+---
+
+// Blame particular lines
+git blame /path/to/file.md -L 100,110
