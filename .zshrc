@@ -87,3 +87,5 @@ fi
 if [[ $(uname -m) == "arm64" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+export LEDGER_FILE=~/Developer/finance/2023.journal
