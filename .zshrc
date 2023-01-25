@@ -50,11 +50,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Show a fancy preview window when using Ctrl+T
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
-# Automatically start tmux when zsh starts
-if exists tmux; then
-    export ZSH_TMUX_AUTOSTART=true
-fi
-
 # Aliases
 safealias 'vim' 'nvim'
 safealias 'cat' 'bat'
