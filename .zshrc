@@ -70,6 +70,11 @@ alias rgf='f() { rg $1 --files-with-matches | fzf --preview-window=wrap --previe
 # Use `rgn` to show only file names with `rg`
 safealias 'rgn' 'rg' '--files-with-matches'
 
+# Add Homebrew-installed completions 
+# https://github.com/casey/just#shell-completion-scripts
+eval "$(brew shellenv)"
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+
 # Set up oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
