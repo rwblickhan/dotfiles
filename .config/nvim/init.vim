@@ -28,9 +28,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Show syntax highlighting by default
-syntax on
-
 " Show line numbers by default
 set number
 
