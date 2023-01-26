@@ -7,21 +7,34 @@
 
 ## .zshrc
 
-* Enable [`oh-my-zsh`](https://ohmyz.sh) with quite a few plugins and aliases, mostly for [new command line tools](https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/) - see [my article](https://rwblickhan.org/technical/2022-command-line-tools/) for more details on some of these!
+* Enable [`oh-my-zsh`](https://ohmyz.sh) with a few plugins and aliases, mostly for [new command line tools](https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/).
+  * See [my article](https://rwblickhan.org/technical/2022-command-line-tools/) for more details on some of these!
+* Add an `exists` function to check if a command exists and `safealias` to only alias if `exists` is true; that lets me avoid e.g. setting `cd` as an alias for zoxide if zoxide failed to install for whatever reason.
 * Turn on `HYPHEN_INSENSITIVE` because I prefer `_` aesthetically but I prefer typing `-`.
 * Turn on `DISABLE_UPDATE_PROMPT` to avoid the annoying update prompt on terminal launch.
-* Enable a few customizations for [`fzf`](https://github.com/junegunn/fzf), as well as a fancy version of [`rg`](https://github.com/BurntSushi/ripgrep) that uses `fzf` to show a preview window.
+* Set the default [Ledger](https://hledger.org/1.28/hledger.html) file.
+* Set the default editor to [Neovim](https://neovim.io).
+* Use [`fd`](https://github.com/sharkdp/fd) as the default for file search in `fzf` to hide `.gitignore`'d files.
+* Enable a fancy preview window for `fzf`'s Ctrl-T finder.
+* Add two `rg` aliases:
+  * `rgn` for "`rg` with **n**ames", appending the `--files-with-matches` flag.
+  * `rgf` for an `rg`/`fzf`-powered file search.
+* Help zsh find Homebrew-installed shell completions.
 * Use the [starship](https://starship.rs) theme, with some customizations (see below).
-
-`.zshrc_minimal` removes a number of the aliases that are less useful for Github Codespaces.
 
 ## .gitconfig
 
 * Use [`delta`](https://github.com/dandavison/delta) for `git diff`.
-* Use `git b` as an alias for a fancy branch switcher using [`fzf`](https://github.com/junegunn/fzf) (h/t to my Asana colleague Theo Spears!).
-* Use `git c` and `git cn` as an alias for diffing, using `fzf` to search branches, with `--name-only` in the latter.
-* Use `git l` as an alias for a simpler one-line `git log` output.
-* Use `git oops` as an alias to squash current changes with the last commit - useful when you commit and immediately notice a typo!
+* `git l` as an alias for a simpler one-line `git log` output.
+* `git cam` as an alias for `git commit -a -m`.
+* `git p` as an alias for `git push`.
+* `git oops` as an alias to squash current changes with the last commit - useful when you commit and immediately notice a typo!
+* A bunch of branch-management utilities using [`fzf`](https://github.com/junegunn/fzf) (h/t to my Asana colleague Theo Spears!):
+  * `git b` as an alias for switch **b**ranch.
+  * `git m` as an alias for **m**erge from another branch.
+  * `git c` as an alias for **c**hanges compared to another branch, as well as `git cn` to append `--name-only`.
+  * `git d` as an alias for **d**elete branch.
+  * `git lf` as an alias for **l**og **f**ind - fuzzy-find `git log` and select the commit message!
 
 ## .config/starship.toml
 
