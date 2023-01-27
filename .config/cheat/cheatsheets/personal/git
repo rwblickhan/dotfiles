@@ -3,4 +3,7 @@ syntax: bash
 ---
 
 // Blame particular lines
-git blame /path/to/file.md -L 100,110
+git blame path/to/file.md -L 100,110
+
+// Show changes to particular file in last 3 months
+git log --oneline -p --since "3 months ago" path/to/file
