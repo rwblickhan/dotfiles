@@ -37,10 +37,9 @@ plugins=(
   gh
   httpie
   tmux
-  tmuxinator
-  zoxide
 )
 
+# Set default location of Ledger file
 export LEDGER_FILE=~/Developer/finance/2023.journal
 
 # Use Neovim as default editor
@@ -61,7 +60,7 @@ safealias 'find' 'fd'
 safealias 'diff' 'delta'
 safealias 'j' 'just'
 
-# Show a fancy `fzf`-powered selector with a preview window
+# Use `rgf` to show a fancy `fzf`-powered selector with a preview window
 alias rgf='f() { rg $1 --files-with-matches | fzf --preview-window=wrap --preview "rg --color=always $1 {}" }; f'
 
 # Use `rgn` to show only file names with `rg`
