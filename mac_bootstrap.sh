@@ -34,9 +34,6 @@ brew install colima
 echogreen "Installing Docker..."
 brew install docker
 
-echogreen "Installing docker-slim (Docker linter)..."
-brew install docker-slim
-
 echogreen "Installing dust (better du)..."
 brew install dust
 
@@ -45,9 +42,6 @@ brew install exa
 
 echogreen "Installing fd (better find)..."
 brew install fd
-
-echogreen "Installing flake8 (Python linter)..."
-brew install flake8
 
 echogreen "Installing Fira Code and Fira Mono Nerd Fonts..."
 brew tap homebrew/cask-fonts
@@ -62,9 +56,6 @@ brew install gh
 
 echogreen "Installing delta (git diff viewer)..."
 brew install git-delta
-
-echogreen "Installing hadolint (Dockerfile linter)..."
-brew install hadolint
 
 echogreen "Installing hledger (plain-text accounting)..."
 brew install hledger
@@ -90,10 +81,6 @@ brew install just
 echogreen "Installing pgcli (better Postgres CLI)..."
 brew tap dbcli/tap
 brew install pgcli
-
-echogreen "Installing Pulumi (Infrastructure-as-Code tool)..."
-brew tap pulumi/tap
-brew install pulumi/tap/pulumi
 
 echogreen "Installing ripgrep (better grep)..."
 brew install ripgrep
@@ -122,9 +109,6 @@ brew install tmux
 
 echogreen "Installing watchexec (rerun command on file change)..."
 brew install watchexec
-
-echogreen "Installing yamllint (YAML linter)..."
-brew install yamllint
 
 echogreen "Installing zoxide (better cd)..."
 brew install zoxide
