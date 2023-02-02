@@ -59,6 +59,7 @@ safealias 'du' 'dust'
 safealias 'find' 'fd'
 safealias 'diff' 'delta'
 safealias 'j' 'just'
+safealias 't' 'tmux'
 
 # Use `rgf` to show a fancy `fzf`-powered selector with a preview window
 alias rgf='f() { rg $1 --files-with-matches | fzf --preview-window=wrap --preview "rg --color=always $1 {}" }; f'
