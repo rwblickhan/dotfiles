@@ -6,6 +6,10 @@
 - clean: ['~']
 
 - link:
+    ~/Library/Application Support/Code/User/settings.json:
+      create: true
+      force: true
+      path: settings.json
     ~/.config/starship.toml:
       create: true
       force: true

@@ -1,0 +1,51 @@
+{
+  // Auto-save on focus change
+  "files.autoSave": "onFocusChange",
+  // Use Neovim for editor
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/opt/homebrew/bin/nvim",
+  // Use zsh for terminal
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  // Use Ayu Dark
+  "workbench.colorTheme": "Ayu Dark Bordered",
+  // Use Fira Mono
+  "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
+  // Auto-format on save
+  "editor.formatOnSave": true,
+  // Default to Prettier for JS/TS/JSON formatting
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // Don't bother me with confirmations all the time
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  // Don't bother me with the minimap
+  "editor.minimap.enabled": false,
+  // https://practicaltypography.com/ligatures-in-programming-fonts-hell-no.html
+  "editor.fontLigatures": false,
+  // Auto-update imports when moving things around
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  // Never show me node_modules
+  "files.exclude": {
+    "node_modules": true
+  },
+  // `git fetch` on open
+  "git.autofetch": true,
+  // Force Emmet suggestions to show up at the bottom
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.snippetSuggestions": "bottom",
+  // Only use SwiftFormat if we have a config
+  "swiftformat.onlyEnableWithConfig": true
+}
