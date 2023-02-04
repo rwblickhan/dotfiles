@@ -1,17 +1,17 @@
 {
   // Auto-save on focus change
   "files.autoSave": "onFocusChange",
+  // Auto-format on save
+  "editor.formatOnSave": true,
+  // Use Fira Mono
+  "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
+  // Use Ayu Dark
+  "workbench.colorTheme": "Ayu Dark Bordered",
   // Use Neovim for editor
   "vim.enableNeovim": true,
   "vim.neovimPath": "/opt/homebrew/bin/nvim",
   // Use zsh for terminal
   "terminal.integrated.defaultProfile.linux": "zsh",
-  // Use Ayu Dark
-  "workbench.colorTheme": "Ayu Dark Bordered",
-  // Use Fira Mono
-  "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
-  // Auto-format on save
-  "editor.formatOnSave": true,
   // Default to Prettier for JS/TS/JSON formatting
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -35,7 +35,7 @@
   "editor.minimap.enabled": false,
   // https://practicaltypography.com/ligatures-in-programming-fonts-hell-no.html
   "editor.fontLigatures": false,
-  // Auto-update imports when moving things around
+  // Auto-update TypeScript imports when moving things around
   "typescript.updateImportsOnFileMove.enabled": "always",
   // Never show me node_modules
   "files.exclude": {
