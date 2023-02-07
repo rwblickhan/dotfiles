@@ -53,10 +53,6 @@
       create: true
       force: true
       path: .markdownlintrc
-    ~/.alacritty.yml:
-      create: true
-      force: true
-      path: .alacritty.yml
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
