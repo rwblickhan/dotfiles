@@ -1,5 +1,8 @@
 add_newline = false
 
+[[battery.display]]
+threshold = 40
+
 [status]
 disabled = false
 map_symbol = true
