@@ -36,6 +36,7 @@ plugins=(
   gitfast
   gh
   httpie
+  rust
   tmux
 )
 
