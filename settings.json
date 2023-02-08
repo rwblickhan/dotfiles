@@ -47,5 +47,10 @@
   "emmet.showSuggestionsAsSnippets": true,
   "editor.snippetSuggestions": "bottom",
   // Only use SwiftFormat if we have a config
-  "swiftformat.onlyEnableWithConfig": true
+  "swiftformat.onlyEnableWithConfig": true,
+  // Turn off a couple annoying Markdownlint warnings
+  "markdownlint.config": {
+    "line-length": false,
+    "single-trailing-newline": false
+  }
 }
