@@ -1,5 +1,10 @@
 add_newline = false
 
+[status]
+disabled = false
+map_symbol = true
+format = '[$symbol $status]($style) '
+
 [cmd_duration]
 disabled = true
 
