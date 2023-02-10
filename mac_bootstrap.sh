@@ -82,6 +82,9 @@ echogreen "Installing pgcli (better Postgres CLI)..."
 brew tap dbcli/tap
 brew install pgcli
 
+echogreen "Installing pre-commit (git pre-commit hook manager)..."
+brew install pre-commit
+
 echogreen "Installing ripgrep (better grep)..."
 brew install ripgrep
 
