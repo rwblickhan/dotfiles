@@ -43,8 +43,8 @@ plugins=(
 # Set default location of Ledger file
 export LEDGER_FILE=~/Developer/finance/2023.journal
 
-# Use Neovim as default editor
-export EDITOR='nvim'
+# Use VS Code as default editor
+export EDITOR='code'
 
 # Use `fd` by default in `fzf` to hide `.gitignore`'d files
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
