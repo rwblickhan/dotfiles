@@ -7,11 +7,12 @@
   "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   // Use Ayu Dark
   "workbench.colorTheme": "Ayu Dark Bordered",
-  // Use Neovim for editor
-  "vim.enableNeovim": true,
-  "vim.neovimPath": "/opt/homebrew/bin/nvim",
   // Use zsh for terminal
   "terminal.integrated.defaultProfile.linux": "zsh",
+  // Highlight text after yanking
+  "vim.highlightedyank.enable": true,
+  // Use system clipboard for the unnamed (default) register
+  "vim.useSystemClipboard": true,
   // Default to Prettier for JS/TS/JSON formatting
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
