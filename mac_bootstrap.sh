@@ -51,6 +51,9 @@ brew install --cask font-fira-mono-nerd-font
 echogreen "Installing fzf (fuzzy finder)..."
 brew install fzf
 
+echogreen "Installing gawk (better awk) to support tmux-copycat..."
+brew install gawk
+
 echogreen "Installing Github CLI..."
 brew install gh
 
