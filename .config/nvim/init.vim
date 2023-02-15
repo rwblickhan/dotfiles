@@ -8,6 +8,8 @@ Plug 'neovim/nvim-lspconfig'
 " CoC autocompletion
 " Remember to :CocInstall the appropriate languages and coc-snippets!
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" surround.vim
+Plug 'tpope/vim-surround'
 " Bracket auto-pairing
 Plug 'jiangmiao/auto-pairs'
 " Syntax highlighting for just
