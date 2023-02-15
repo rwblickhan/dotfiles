@@ -3,13 +3,17 @@
     link:
       relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/Library/Application Support/Code/User/settings.json:
       create: true
       force: true
       path: settings.json
+    ~/Library/Application Support/Code/User/keybindings.json:
+      create: true
+      force: true
+      path: keybindings.json
     ~/.config/starship.toml:
       create: true
       force: true
