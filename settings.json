@@ -33,6 +33,10 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  // Show suggestions even in strings (e.g. for Tailwind)
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   // Don't bother me with confirmations all the time
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
