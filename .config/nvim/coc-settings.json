@@ -1,5 +1,6 @@
 {
     "coc.preferences.formatOnSaveFiletypes": [
         "*"
-    ]
+    ],
+    "snippets.ultisnips.pythonPrompt": false
 }
