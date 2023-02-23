@@ -1,5 +1,26 @@
 // Place your key bindings in this file to overwrite the defaults
 [
+  // Obsidian keybindings
+  // Cmd-o to open file
+  // Cmd-p to open commands
+  {
+    "key": "cmd+o",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+p",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "cmd+p",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "shift+cmd+p",
+    "command": "-workbench.action.showCommands"
+  },
+  // vim-tmux-navigator commands
+  // <C-k>/<C-j>/<C-h>/<C-l> to navigate
   {
     "key": "ctrl+k",
     "command": "workbench.action.navigateUp",
@@ -19,5 +40,20 @@
     "key": "ctrl+l",
     "command": "workbench.action.navigateRight",
     "when": "!terminalFocus"
+  },
+  // tmux-like commands
+  // <leader>| to split vertically
+  // <leader>- to split horizontally
+  {
+    "key": "cmd+k shift+\\",
+    "command": "workbench.action.splitEditor"
+  },
+  {
+    "key": "cmd+k -",
+    "command": "workbench.action.splitEditorOrthogonal"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorOrthogonal"
   }
 ]
