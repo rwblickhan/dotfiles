@@ -14,14 +14,14 @@
 [init]
 	defaultBranch = main
 [alias]
-    b = "!f() { git checkout $(git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color:bold)%(HEAD)%(color:reset) %(color:blue)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(contents:subject)' | fzf --ansi --preview=\"echo {} | cut -c 3- | cut -d ' ' -f1 | xargs git log --color=always\" | cut -c 3- | cut -d ' ' -f 1); }; f"
-    cam = "commit -a -m"
-    c = "!f() { git diff $(git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color:bold)%(HEAD)%(color:reset) %(color:blue)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(contents:subject)' | fzf --ansi --preview=\"echo {} | cut -c 3- | cut -d ' ' -f1 | xargs git log --color=always\" | cut -c 3- | cut -d ' ' -f 1) HEAD; }; f"
-    cn = "!f() { git diff $(git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color:bold)%(HEAD)%(color:reset) %(color:blue)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(contents:subject)' | fzf --ansi --preview=\"echo {} | cut -c 3- | cut -d ' ' -f1 | xargs git log --color=always\" | cut -c 3- | cut -d ' ' -f 1) HEAD --name-only; }; f"
-    d = "!f() { git branch -d $(git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color:bold)%(HEAD)%(color:reset) %(color:blue)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(contents:subject)' | fzf --ansi --preview=\"echo {} | cut -c 3- | cut -d ' ' -f1 | xargs git log --color=always\" | cut -c 3- | cut -d ' ' -f 1); }; f"
-    l="log --oneline --decorate"
-    lf="!f() { git l | fzf --reverse | choose 0; }; f"
-    m = "!f() { git merge $(git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color:bold)%(HEAD)%(color:reset) %(color:blue)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(contents:subject)' | fzf --ansi --preview=\"echo {} | cut -c 3- | cut -d ' ' -f1 | xargs git log --color=always\" | cut -c 3- | cut -d ' ' -f 1); }; f"
+    b = "!fish -c 'git_fzf_checkout'"
+    cam = "!fish -c 'git_commit_all_message $1'"
+    c = "!fish -c 'git_fzf_diff'"
+    cn = "!fish -c 'git_fzf_diff_name_only'"
+    d = "!fish -c 'git_fzf_branch_delete'"
+    l = "log --oneline --decorate"
+    lf = "!fish -c 'git_fzf_commit_select'"
+    m = "!fish -c 'git_fzf_merge'"
     p = "push"
     s = "status"
     oops = "commit -a --no-edit --amend"
