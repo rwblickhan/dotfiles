@@ -7,8 +7,8 @@
   "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   // Use Ayu Dark
   "workbench.colorTheme": "Ayu Dark Bordered",
-  // Use zsh for terminal
-  "terminal.integrated.defaultProfile.linux": "zsh",
+  // Use fish shell
+  "terminal.integrated.defaultProfile.osx": "fish",
   // Highlight text after yanking
   "vim.highlightedyank.enable": true,
   // Use system clipboard for the unnamed (default) register
