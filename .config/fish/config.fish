@@ -14,7 +14,7 @@ if status is-interactive
     set -U FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 end
 
-set -U LEDGER_FILE ~/Developer/finance/2023.journal
+set -U LEDGER_FILE /Users/rwblickhan/Developer/finance/2023.journal
 set -U EDITOR nvim
 
 alias cat bat
