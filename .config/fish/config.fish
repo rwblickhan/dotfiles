@@ -1,3 +1,7 @@
+fish_add_path /opt/homebrew/bin
+fish_add_path /opt/homebrew/sbin
+fish_add_path /Users/rwblickhan/.cargo/bin
+
 if status is-interactive
     # Set a longer delay for Escape for key combinations
     # Notably, allows using Esc-E to edit the line
