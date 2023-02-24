@@ -19,7 +19,7 @@
     "key": "shift+cmd+p",
     "command": "-workbench.action.showCommands"
   },
-  // vim-tmux-navigator commands
+  // vim-tmux-navigator keybindings
   // <C-k>/<C-j>/<C-h>/<C-l> to navigate
   {
     "key": "ctrl+k",
@@ -41,7 +41,7 @@
     "command": "workbench.action.navigateRight",
     "when": "!terminalFocus"
   },
-  // tmux-like commands
+  // tmux-like keybindings
   // <leader>| to split vertically
   // <leader>- to split horizontally
   {
@@ -55,5 +55,16 @@
   {
     "key": "cmd+k cmd+\\",
     "command": "-workbench.action.splitEditorOrthogonal"
+  },
+  // bookmarks extension keybindings
+  // <leader>m to mark
+  // <leader>o to open bookmarks list
+  {
+    "key": "cmd+k m",
+    "command": "bookmarks.toggleLabeled"
+  },
+  {
+    "key": "cmd+k o",
+    "command": "bookmarks.listFromAllFiles"
   }
 ]
