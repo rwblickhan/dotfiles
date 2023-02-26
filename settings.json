@@ -61,5 +61,9 @@
   "markdownlint.config": {
     "line-length": false,
     "single-trailing-newline": false
+  },
+  "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
+  "[python]": {
+    "editor.formatOnType": true
   }
 }

@@ -69,6 +69,9 @@ brew install hledger
 echogreen "Installing HTTPie (better curl)..."
 brew install httpie
 
+echogreen "Installing jq..."
+brew install jq
+
 echogreen "Installing mdlint (Markdown linter)..."
 brew install markdownlint-cli
 
