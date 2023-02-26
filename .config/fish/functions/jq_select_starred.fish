@@ -1,3 +1,3 @@
 function jq_select_starred
-    cat "$argv" | jq -c '.[] | select(.starred)'
+    cat "$argv" | jq '.[] | select(.starred)'
 end
