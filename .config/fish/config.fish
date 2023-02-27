@@ -2,6 +2,11 @@ fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/sbin
 fish_add_path /Users/rwblickhan/.cargo/bin
 
+# pnpm
+set -gx PNPM_HOME "/Users/rwblickhan/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
+
 if status is-interactive
     # Set a longer delay for Escape for key combinations
     # Notably, allows using Esc-E to edit the line
