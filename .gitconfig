@@ -22,6 +22,7 @@
     d = "!fish -c 'git_fzf_branch_delete'"
     l = "log --oneline --decorate"
     lf = "!fish -c 'git_fzf_commit_select'"
+    lfc = "!fish -c 'git_fzf_commit_select_copy'"
     m = "!fish -c 'git_fzf_merge'"
     p = "push"
     s = "status"
