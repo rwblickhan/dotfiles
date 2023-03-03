@@ -61,7 +61,7 @@
   // <leader>o to open bookmarks list
   {
     "key": "cmd+k m",
-    "command": "bookmarks.toggleLabeled"
+    "command": "bookmarks.toggle"
   },
   {
     "key": "cmd+k o",
