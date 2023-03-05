@@ -58,6 +58,10 @@
       create: true
       force: true
       path: .markdownlintrc
+    ~/.finicky.js:
+      create: true
+      force: true
+      path: .finicky.js
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
