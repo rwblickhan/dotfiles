@@ -3,7 +3,7 @@ fish_add_path /opt/homebrew/sbin
 fish_add_path /Users/rwblickhan/.cargo/bin
 
 # pnpm
-set -gx PNPM_HOME "/Users/rwblickhan/Library/pnpm"
+set -gx PNPM_HOME /Users/rwblickhan/Library/pnpm
 set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
@@ -17,6 +17,12 @@ if status is-interactive
     set -U FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
     # Show a fancy preview window when using Ctrl+T
     set -U FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+    starship init fish | source
+
+    if not set -q TMUX
+        exec tmux attach
+    end
 end
 
 set -U EDITOR nvim
@@ -31,5 +37,4 @@ abbr -a j just
 abbr -a t tmux
 abbr -a rgn rg --files-with-matches
 
-starship init fish | source
 zoxide init fish --cmd cd | source
