@@ -15,7 +15,7 @@
 	defaultBranch = main
 [alias]
     bd = "!fish -c 'git_fzf_branch_delete'"
-    co = "!fish -c 'git_fzf_checkout'"
+    c = "!fish -c 'git_fzf_checkout'"
     cam = "!fish -c 'git_commit_all_message $argv'"
     camp = "!fish -c 'git_commit_all_message_push $argv'"
     echo = "!fish -c 'echo $argv'"
