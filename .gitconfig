@@ -14,12 +14,14 @@
 [init]
 	defaultBranch = main
 [alias]
-    b = "!fish -c 'git_fzf_checkout'"
-    cam = "!fish -c 'git_commit_all_message'"
-    camp = "!fish -c 'git_commit_all_message_push'"
-    c = "!fish -c 'git_fzf_diff'"
-    cn = "!fish -c 'git_fzf_diff_name_only'"
-    d = "!fish -c 'git_fzf_branch_delete'"
+    bd = "!fish -c 'git_fzf_branch_delete'"
+    co = "!fish -c 'git_fzf_checkout'"
+    cam = "!fish -c 'git_commit_all_message $argv'"
+    camp = "!fish -c 'git_commit_all_message_push $argv'"
+    echo = "!fish -c 'echo $argv'"
+    d = "diff"
+    df = "!fish -c 'git_fzf_diff'"
+    dfn = "!fish -c 'git_fzf_diff_name_only'"
     l = "log --oneline --decorate"
     lf = "!fish -c 'git_fzf_commit_select'"
     lfc = "!fish -c 'git_fzf_commit_select_copy'"
