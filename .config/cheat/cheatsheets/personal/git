@@ -7,3 +7,6 @@ git blame path/to/file.md -L 100,110
 
 // Show changes to particular file in last 3 months
 git log --oneline -p --since "3 months ago" path/to/file
+
+// Show changes since a particular commit
+git log <hash>.. path/to/file
