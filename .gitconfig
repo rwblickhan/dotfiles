@@ -27,6 +27,7 @@
     m = "!fish -c 'git_fzf_merge'"
     p = "push"
     s = "status"
+    unstage = "reset HEAD --"
     oops = "commit -a --no-edit --amend"
 [push]
 	autoSetupRemote = true
