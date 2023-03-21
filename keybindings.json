@@ -66,5 +66,53 @@
   {
     "key": "cmd+k o",
     "command": "bookmarks.listFromAllFiles"
+  },
+  // vim-like keybindings for opening panels
+  // Cmd-shift-h for left panel
+  // Cmd-shift-l for right panel
+  // Cmd-shift-j for bottom panel
+  {
+    "key": "shift+cmd+h",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "-selectAllSearchEditorMatches",
+    "when": "inSearchEditor"
+  },
+  {
+    "key": "shift+cmd+h",
+    "command": "-workbench.action.replaceInFiles"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "-addCursorsAtSearchResults",
+    "when": "fileMatchOrMatchFocus && searchViewletVisible"
+  },
+  {
+    "key": "alt+cmd+b",
+    "command": "-workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "-editor.action.selectHighlights",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "-workbench.action.search.toggleQueryDetails",
+    "when": "inSearchEditor || searchViewletFocus"
   }
 ]
