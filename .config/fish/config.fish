@@ -8,10 +8,6 @@ set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
 if status is-interactive
-    # Set a longer delay for Escape for key combinations
-    # Notably, allows using Esc-E to edit the line
-    set -g fish_escape_delay_ms 100
-
     # Use `fd` by default in `fzf` to hide `.gitignore`'d files
     set -U FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
     set -U FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
