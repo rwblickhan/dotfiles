@@ -7,8 +7,6 @@
   "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   // Use Ayu Dark
   "workbench.colorTheme": "Ayu Dark Bordered",
-  // Use fish shell
-  "terminal.integrated.defaultProfile.osx": "fish",
   // Highlight text after yanking
   "vim.highlightedyank.enable": true,
   // Use system clipboard for the unnamed (default) register
@@ -65,5 +63,12 @@
   "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
   "[python]": {
     "editor.formatOnType": true
-  }
+  },
+  "terminal.integrated.shell.osx": "/opt/homebrew/bin/tmux",
+  "terminal.integrated.shellArgs.osx": [
+    "new",
+    "-A",
+    "-t",
+    "${workspaceFolderBasename}"
+  ]
 }
