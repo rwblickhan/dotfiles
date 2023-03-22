@@ -21,7 +21,7 @@ if status is-interactive
     starship init fish | source
 
     if not set -q TMUX
-        exec tmux attach
+        exec tmux new -A -t default
     end
 end
 

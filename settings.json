@@ -70,5 +70,6 @@
     "-A",
     "-t",
     "${workspaceFolderBasename}"
-  ]
+  ],
+  "terminal.external.osxExec": "iTerm.app"
 }
