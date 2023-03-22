@@ -78,6 +78,9 @@ brew install jq
 echogreen "Installing mdlint (Markdown linter)..."
 brew install markdownlint-cli
 
+echogreen "Installing most (better less)..."
+brew install most
+
 echogreen "Installing Mint (Swift CLI tool package manager)..."
 brew install mint
 

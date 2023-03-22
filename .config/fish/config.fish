@@ -27,6 +27,7 @@ end
 
 set -U EDITOR nvim
 
+alias less most
 alias cat bat
 alias ls "exa --icons"
 alias du dust

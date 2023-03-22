@@ -62,6 +62,10 @@
       create: true
       force: true
       path: .finicky.js
+    ~/.mostrc:
+      create: true
+      force: true
+      path: .mostrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
