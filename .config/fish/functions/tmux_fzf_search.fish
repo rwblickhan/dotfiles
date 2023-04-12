@@ -10,7 +10,7 @@ function tmux_fzf_search
         case digits
             tmux send-keys -X search-backward '[[:digit:]]+'
         case hashes
-            tmux send-keys -X search-backward '\b([0-9a-f]{7,40}|[[:alnum:]]{52}|[0-9a-f]{64})\b'
+            tmux send-keys -X search-backward '[0-9a-f]{7,40}|[[:alnum:]]{52}|[0-9a-f]{64}'
         case parens
             tmux send-keys -X search-backward '"[^"]*"'
         case single-quotes
