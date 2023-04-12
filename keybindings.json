@@ -114,5 +114,15 @@
     "key": "shift+cmd+j",
     "command": "-workbench.action.search.toggleQueryDetails",
     "when": "inSearchEditor || searchViewletFocus"
+  },
+  // Always allow Cmd-K/Cmd-R to revert changes
+  {
+    "key": "cmd+k cmd+r",
+    "command": "git.revertSelectedRanges"
+  },
+  {
+    "key": "cmd+k cmd+r",
+    "command": "-git.revertSelectedRanges",
+    "when": "isInDiffEditor && !operationInProgress"
   }
 ]
