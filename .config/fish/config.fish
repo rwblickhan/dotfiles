@@ -14,7 +14,12 @@ if status is-interactive
     # Show a fancy preview window when using Ctrl+T
     set -U FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
+    zoxide init fish --cmd cd | source
     starship init fish | source
+
+    abbr -a j just
+    abbr -a t tmux
+    abbr -a rgn rg --files-with-matches
 
     if not set -q TMUX
         exec tmux new -A -t default
@@ -28,9 +33,3 @@ alias ls "exa --icons"
 alias du dust
 alias find fd
 alias diff delta
-
-abbr -a j just
-abbr -a t tmux
-abbr -a rgn rg --files-with-matches
-
-zoxide init fish --cmd cd | source
