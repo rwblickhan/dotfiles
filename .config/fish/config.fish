@@ -23,7 +23,6 @@ end
 
 set -U EDITOR nvim
 
-alias less most
 alias cat bat
 alias ls "exa --icons"
 alias du dust
@@ -33,6 +32,5 @@ alias diff delta
 abbr -a j just
 abbr -a t tmux
 abbr -a rgn rg --files-with-matches
-abbr -a man man -P most
 
 zoxide init fish --cmd cd | source
