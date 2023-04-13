@@ -8,15 +8,13 @@ Plug 'neovim/nvim-lspconfig'
 " CoC autocompletion
 " Remember to :CocInstall the appropriate languages and coc-snippets!
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" surround.vim
+" New actions for surroundings like parentheses and brackets
 Plug 'tpope/vim-surround'
-" Bracket auto-pairing
-Plug 'jiangmiao/auto-pairs'
-" Syntax highlighting for just
-Plug 'NoahTheDuke/vim-just'
 " tmux integration
 Plug 'christoomey/vim-tmux-navigator'
-" hledger integration
+" Syntax highlighting for just
+Plug 'NoahTheDuke/vim-just'
+" Syntax highlighting for hledger
 Plug 'ledger/vim-ledger'
 call plug#end()
 

@@ -64,6 +64,7 @@
   "[python]": {
     "editor.formatOnType": true
   },
+  // In terminal pane, use a new tmux session named after the current directory
   "terminal.integrated.shell.osx": "/opt/homebrew/bin/tmux",
   "terminal.integrated.shellArgs.osx": [
     "new",
@@ -71,6 +72,6 @@
     "-t",
     "${workspaceFolderBasename}"
   ],
-  "terminal.external.osxExec": "iTerm.app",
+  // In terminal pane on Mac, use option key as meta for e.g. M-e to edit command line on fish
   "terminal.integrated.macOptionIsMeta": true
 }
