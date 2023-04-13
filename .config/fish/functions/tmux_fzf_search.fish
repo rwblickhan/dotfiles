@@ -1,5 +1,5 @@
 function tmux_fzf_search
-    set options urls\nfiles\ndigits\nhashes\ndouble-quotes\nsingle-quotes
+    set options urls\nfiles\ndigits\nhashes\ndouble-quotes\nsingle-quotes\nparens
     set selection (echo $options | fzf)
     tmux copy-mode
     switch $selection
@@ -15,5 +15,7 @@ function tmux_fzf_search
             tmux send-keys -X search-backward '"[^"]*"'
         case single-quotes
             tmux send-keys -X search-backward '\'[^\']*\''
+        case parens
+            tmux send-keys -X search-backward '\([^\)]*\)'
     end
 end
