@@ -11,6 +11,8 @@
   "vim.highlightedyank.enable": true,
   // Use system clipboard for the unnamed (default) register
   "vim.useSystemClipboard": true,
+  // Enable CamelCaseMotion.vim plugin
+  "vim.camelCaseMotion.enable": true,
   // Default to Prettier for JS/TS/JSON formatting
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

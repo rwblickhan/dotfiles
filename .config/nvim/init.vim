@@ -10,6 +10,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " New actions for surroundings like parentheses and brackets
 Plug 'tpope/vim-surround'
+" Camel-case and snake-case motions with \w
+Plug 'bkad/CamelCaseMotion'
 " tmux integration
 Plug 'christoomey/vim-tmux-navigator'
 " Syntax highlighting for just
@@ -55,3 +57,6 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+" Use \ for CamelCaseMotion
+let g:camelcasemotion_key = '<leader>'
