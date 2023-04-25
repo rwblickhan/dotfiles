@@ -1,3 +1,3 @@
 function git_fzf_branch_delete
-    git branch -d $(git_fzf_branch_select)
+    git branch -d $(git_fzf_branch_multiselect)
 end
