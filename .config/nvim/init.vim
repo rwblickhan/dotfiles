@@ -1,6 +1,8 @@
 " Set up vim-plug plugins
 " :PlugInstall to install
 call plug#begin()
+" gc to comment things out
+Plug 'tpope/vim-commentary'
 " New actions for surroundings like parentheses and brackets
 Plug 'tpope/vim-surround'
 " Camel-case and snake-case motions with \w
