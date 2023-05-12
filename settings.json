@@ -9,12 +9,6 @@
   "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   // Use Ayu Dark
   "workbench.colorTheme": "Ayu Dark Bordered",
-  // Highlight text after yanking
-  "vim.highlightedyank.enable": true,
-  // Use system clipboard for the unnamed (default) register
-  "vim.useSystemClipboard": true,
-  // Enable CamelCaseMotion.vim plugin
-  "vim.camelCaseMotion.enable": true,
   // Default to Prettier for JS/TS/JSON formatting
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -64,10 +58,6 @@
     "line-length": false,
     "single-trailing-newline": false
   },
-  "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
-  "[python]": {
-    "editor.formatOnType": true
-  },
   // In terminal pane, use a new tmux session named after the current directory
   "terminal.integrated.shell.osx": "/opt/homebrew/bin/tmux",
   "terminal.integrated.shellArgs.osx": [
@@ -77,5 +67,18 @@
     "${workspaceFolderBasename}"
   ],
   // In terminal pane on Mac, use option key as meta for e.g. M-e to edit command line on fish
-  "terminal.integrated.macOptionIsMeta": true
+  "terminal.integrated.macOptionIsMeta": true,
+  // Set up vscode-neovim
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/rwblickhan/Developer/dotfiles/.config/nvim/init.vim",
+  // VSCodeVim Highlight text after yanking
+  "vim.highlightedyank.enable": true,
+  // Use system clipboard for the unnamed (default) register
+  "vim.useSystemClipboard": true,
+  // VSCodeVim: Enable CamelCaseMotion.vim plugin
+  "vim.camelCaseMotion.enable": true,
+  "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB"
 }
