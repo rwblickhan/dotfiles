@@ -35,7 +35,8 @@ nmap k gk
 
 " Use \ for CamelCaseMotion
 let g:camelcasemotion_key = '<leader>'
-j
+
+" https://github.com/vscode-neovim/vscode-neovim/issues/856
 augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }
