@@ -12,6 +12,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 " Camel-case and snake-case motions with \w
 Plug 'bkad/CamelCaseMotion'
+" More text object targets
+Plug 'wellle/targets.vim'
 " tmux integration
 Plug 'christoomey/vim-tmux-navigator'
 " Syntax highlighting for just
