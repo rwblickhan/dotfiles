@@ -16,9 +16,8 @@ if !exists('g:vscode')
     Plug 'ayu-theme/ayu-vim'
     " Basic LSP configurations
     Plug 'neovim/nvim-lspconfig'
-    " CoC autocompletion
-    " Remember to :CocInstall the appropriate languages and coc-snippets!
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Autocomplete with tab
+    Plug 'ervandew/supertab'
     " tmux integration
     Plug 'christoomey/vim-tmux-navigator'
     " Syntax highlighting for just
@@ -61,18 +60,4 @@ if !exists('g:vscode')
   set termguicolors
   let ayucolor="dark"
   colorscheme ayu
-
-  " Select autocomplete on tab like VS Code
-  inoremap <silent><expr> <TAB>
-        \ coc#pum#visible() ? coc#_select_confirm() :
-        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ coc#refresh()
-
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
-
-  let g:coc_snippet_next = '<tab>'
 endif
