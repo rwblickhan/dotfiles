@@ -9,6 +9,8 @@ Plug 'tpope/vim-surround'
 Plug 'bkad/CamelCaseMotion'
 " More text object targets
 Plug 'wellle/targets.vim'
+" git integration
+Plug 'tpope/vim-fugitive'
 
 if !exists('g:vscode')
     " Only install these outside of VS Code
