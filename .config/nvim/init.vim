@@ -13,6 +13,8 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'wellle/targets.vim'
 " Fix . for other plugins like vim-surround
 Plug 'tpope/vim-repeat'
+" g< and g> to swap parameter arguments around
+Plug 'machakann/vim-swap'
 
 if !exists('g:vscode')
     " Only install these outside of VS Code
