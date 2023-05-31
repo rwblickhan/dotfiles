@@ -13,6 +13,8 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'wellle/targets.vim'
 " Fix . for other plugins like vim-surround
 Plug 'tpope/vim-repeat'
+" Fix <C-a> and <C-x> for dates
+Plug 'tpope/vim-speeddating'
 " g< and g> to swap parameter arguments around
 Plug 'machakann/vim-swap'
 

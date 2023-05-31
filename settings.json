@@ -51,8 +51,11 @@
   // Force Emmet suggestions to show up at the bottom
   "emmet.showSuggestionsAsSnippets": true,
   "editor.snippetSuggestions": "bottom",
-  // Only use SwiftFormat if we have a config
+  // Only use swiftformat and swiftlint if we have a config
   "swiftformat.onlyEnableWithConfig": true,
+  "swiftlint.onlyEnableWithConfig": true,
+  "swiftformat.path": ["/opt/homebrew/bin/swiftformat"],
+  "swiftlint.path": ["/opt/homebrew/bin/swiftlint"],
   // Turn off a couple annoying Markdownlint warnings
   "markdownlint.config": {
     "line-length": false,
@@ -74,11 +77,5 @@
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/rwblickhan/Developer/dotfiles/.config/nvim/init.vim",
-  // VSCodeVim Highlight text after yanking
-  "vim.highlightedyank.enable": true,
-  // Use system clipboard for the unnamed (default) register
-  "vim.useSystemClipboard": true,
-  // VSCodeVim: Enable CamelCaseMotion.vim plugin
-  "vim.camelCaseMotion.enable": true,
-  "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB"
+  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB"
 }
