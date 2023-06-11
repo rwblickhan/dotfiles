@@ -17,6 +17,10 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 " g< and g> to swap parameter arguments around
 Plug 'machakann/vim-swap'
+" gJ to smart-join lines and gS to smart-split
+Plug 'andrewradev/splitjoin.vim'
+" ga to start alignment mode, then select an alignment
+Plug 'junegunn/vim-easy-align'
 
 if !exists('g:vscode')
     " Only install these outside of VS Code
@@ -44,6 +48,12 @@ nmap k gk
 
 " Use \ for CamelCaseMotion
 let g:camelcasemotion_key = '<leader>'
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " https://github.com/vscode-neovim/vscode-neovim/issues/856
 augroup highlight_yank
