@@ -7,6 +7,8 @@
   "editor.stickyScroll.enabled": true,
   // Use Fira Mono
   "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
+  // Show relative line numbers instead of absolute
+  "editor.lineNumbers": "relative",
   // Use Ayu Dark
   "workbench.colorTheme": "Ayu Dark Bordered",
   // Default to Prettier for JS/TS/JSON formatting
