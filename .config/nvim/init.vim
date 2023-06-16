@@ -124,7 +124,7 @@ if !exists('g:vscode')
   set expandtab
 
   " Show line numbers by default
-  set number
+  set number relativenumber
 
   " Don't force me to save files before opening a new one
   set hidden
