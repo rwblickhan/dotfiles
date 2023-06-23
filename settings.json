@@ -9,6 +9,8 @@
   "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   // Show relative line numbers instead of absolute
   "editor.lineNumbers": "relative",
+  // Show brack pairs for the active bracket
+  "editor.guides.bracketPairs": "active",
   // Use Ayu Dark
   "workbench.colorTheme": "Ayu Dark Bordered",
   // Default to Prettier for JS/TS/JSON formatting
@@ -79,5 +81,13 @@
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/rwblickhan/Developer/dotfiles/.config/nvim/init.vim",
-  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB"
+  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  // Enable GitHub Copilot
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  }
 }
