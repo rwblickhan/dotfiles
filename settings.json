@@ -37,6 +37,12 @@
   "editor.quickSuggestions": {
     "strings": true
   },
+  // Go straight to first definition if there's multiple
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
   // Don't bother me with confirmations all the time
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
