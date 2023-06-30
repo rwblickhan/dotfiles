@@ -20,6 +20,7 @@ if status is-interactive
     abbr -a j just
     abbr -a t tmux
     abbr -a rgn rg --files-with-matches
+    abbr -a gsp "git stash pop"
 
     if not set -q TMUX
         exec tmux new -A -t default
