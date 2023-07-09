@@ -71,14 +71,6 @@
     "line-length": false,
     "single-trailing-newline": false
   },
-  // In terminal pane, use a new tmux session named after the current directory
-  "terminal.integrated.shell.osx": "/opt/homebrew/bin/tmux",
-  "terminal.integrated.shellArgs.osx": [
-    "new",
-    "-A",
-    "-t",
-    "${workspaceFolderBasename}"
-  ],
   // In terminal pane on Mac, use option key as meta for e.g. M-e to edit command line on fish
   "terminal.integrated.macOptionIsMeta": true,
   // Set up vscode-neovim
@@ -87,13 +79,5 @@
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/rwblickhan/Developer/dotfiles/.config/nvim/init.vim",
-  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
-  // Enable GitHub Copilot
-  "editor.inlineSuggest.enabled": true,
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": true,
-    "scminput": false
-  }
+  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB"
 }
