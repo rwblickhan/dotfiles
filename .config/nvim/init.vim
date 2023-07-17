@@ -39,6 +39,10 @@ if !exists('g:vscode')
 endif
 call plug#end()
 
+" Use smart capitalization when searching
+set ignorecase
+set smartcase
+
 " Use system clipboard instead of * and + registers
 set clipboard+=unnamedplus
 

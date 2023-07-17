@@ -79,5 +79,6 @@
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/rwblickhan/Developer/dotfiles/.config/nvim/init.vim",
-  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB"
+  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.launch.expressions": "native"
 }
