@@ -35,3 +35,6 @@ alias lm "exa -l -s modified --no-permissions --icons --no-user --git"
 alias du dust
 alias find fd
 alias diff delta
+
+# Created by `pipx` on 2023-07-29 04:31:04
+set PATH $PATH /Users/rwblickhan/.local/bin

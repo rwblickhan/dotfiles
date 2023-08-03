@@ -81,12 +81,13 @@
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/rwblickhan/Developer/dotfiles/.config/nvim/init.vim",
   "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.launch.expressions": "native",
+  // VSCodeVim plugins
   "vim.camelCaseMotion.enable": true,
   "vim.highlightedyank.enable": true,
-  "vim.showMarksInGutter": true,
-  "vim.smartRelativeLine": true,
+  "vim.targets.enable": true,
   "vim.sneak": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
-  "vim.targets.enable": true,
+  "vim.showMarksInGutter": true,
+  "vim.smartRelativeLine": true,
   "vim.useSystemClipboard": true
 }

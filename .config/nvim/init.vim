@@ -17,10 +17,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 " g< and g> to swap parameter arguments around
 Plug 'machakann/vim-swap'
-" gJ to smart-join lines and gS to smart-split
-Plug 'andrewradev/splitjoin.vim'
-" ga to start alignment mode, then select an alignment
-Plug 'junegunn/vim-easy-align'
+" s + 2 characters to jump anywhere
+Plug 'justinmk/vim-sneak'
 
 if !exists('g:vscode')
     " Only install these outside of VS Code
@@ -53,72 +51,11 @@ nmap k gk
 " Use \ for CamelCaseMotion
 let g:camelcasemotion_key = '<leader>'
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
 " https://github.com/vscode-neovim/vscode-neovim/issues/856
 augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }
 augroup END
-
-" https://gist.github.com/PeterRincker/582ea9be24a69e6dd8e237eb877b8978
-" :[range]SortGroup[!] [n|f|o|b|x] /{pattern}/
-" e.g. :SortGroup /^header/
-" e.g. :SortGroup n /^header/
-" See :h :sort for details
-
-function! s:sort_by_header(bang, pat) range
-  let pat = a:pat
-  let opts = ""
-  if pat =~ '^\s*[nfxbo]\s'
-    let opts = matchstr(pat, '^\s*\zs[nfxbo]')
-    let pat = matchstr(pat, '^\s*[nfxbo]\s*\zs.*')
-  endif
-  let pat = substitute(pat, '^\s*', '', '')
-  let pat = substitute(pat, '\s*$', '', '')
-  let sep = '/'
-  if len(pat) > 0 && pat[0] == matchstr(pat, '.$') && pat[0] =~ '\W'
-    let [sep, pat] = [pat[0], pat[1:-2]]
-  endif
-  if pat == ''
-    let pat = @/
-  endif
-
-  let ranges = []
-  execute a:firstline . ',' . a:lastline . 'g' . sep . pat . sep . 'call add(ranges, line("."))'
-
-  let converters = {
-        \ 'n': {s-> str2nr(matchstr(s, '-\?\d\+.*'))},
-        \ 'x': {s-> str2nr(matchstr(s, '-\?\%(0[xX]\)\?\x\+.*'), 16)},
-        \ 'o': {s-> str2nr(matchstr(s, '-\?\%(0\)\?\x\+.*'), 8)},
-        \ 'b': {s-> str2nr(matchstr(s, '-\?\%(0[bB]\)\?\x\+.*'), 2)},
-        \ 'f': {s-> str2float(matchstr(s, '-\?\d\+.*'))},
-        \ }
-  let arr = []
-  for i in range(len(ranges))
-    let end = max([get(ranges, i+1, a:lastline+1) - 1, ranges[i]])
-    let line = getline(ranges[i])
-    let d = {}
-    let d.key = call(get(converters, opts, {s->s}), [strpart(line, match(line, pat))])
-    let d.group = getline(ranges[i], end)
-    call add(arr, d)
-  endfor
-  call sort(arr, {a,b -> a.key == b.key ? 0 : (a.key < b.key ? -1 : 1)})
-  if a:bang
-    call reverse(arr)
-  endif
-  let lines = []
-  call map(arr, 'extend(lines, v:val.group)')
-  let start = max([a:firstline, get(ranges, 0, 0)])
-  call setline(start, lines)
-  call setpos("'[", start)
-  call setpos("']", start+len(lines)-1)
-endfunction
-command! -range=% -bang -nargs=+ SortGroup <line1>,<line2>call <SID>sort_by_header(<bang>0, <q-args>)
 
 if !exists('g:vscode')
   " Handle tabs correctly (== by turning them into spaces 🙂)
