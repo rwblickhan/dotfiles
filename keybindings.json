@@ -56,17 +56,6 @@
     "key": "cmd+k cmd+\\",
     "command": "-workbench.action.splitEditorOrthogonal"
   },
-  // bookmarks extension keybindings
-  // <leader>m to mark
-  // <leader>o to open bookmarks list
-  {
-    "key": "cmd+k m",
-    "command": "bookmarks.toggle"
-  },
-  {
-    "key": "cmd+k o",
-    "command": "bookmarks.listFromAllFiles"
-  },
   // vim-like keybindings for opening panels
   // Cmd-shift-h for left panel
   // Cmd-shift-l for right panel
