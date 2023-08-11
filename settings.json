@@ -9,7 +9,7 @@
   "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   // Show relative line numbers instead of absolute
   "editor.lineNumbers": "relative",
-  // Show brack pairs for the active bracket
+  // Show bracket pairs for the active bracket
   "editor.guides.bracketPairs": "active",
   // Use Ayu Dark
   "workbench.colorTheme": "Ayu Dark Bordered",
@@ -66,6 +66,8 @@
   "swiftlint.onlyEnableWithConfig": true,
   "swiftformat.path": ["/opt/homebrew/bin/swiftformat"],
   "swiftlint.path": ["/opt/homebrew/bin/swiftlint"],
+  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.launch.expressions": "native",
   // Turn off a couple annoying Markdownlint warnings
   "markdownlint.config": {
     "line-length": false,
@@ -73,12 +75,6 @@
   },
   // In terminal pane on Mac, use option key as meta for e.g. M-e to edit command line on fish
   "terminal.integrated.macOptionIsMeta": true,
-  // Set up vscode-neovim
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
-  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
-  "lldb.launch.expressions": "native",
   // VSCodeVim plugins
   "vim.camelCaseMotion.enable": true,
   "vim.highlightedyank.enable": true,
