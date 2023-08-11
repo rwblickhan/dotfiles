@@ -9,8 +9,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 " Camel-case and snake-case motions with \w
 Plug 'bkad/CamelCaseMotion'
-" More text object targets
-Plug 'wellle/targets.vim'
 " Fix . for other plugins like vim-surround
 Plug 'tpope/vim-repeat'
 " Fix <C-a> and <C-x> for dates
