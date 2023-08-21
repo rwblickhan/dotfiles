@@ -1,11 +1,14 @@
+## Homebrew paths
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/sbin
+## Cargo paths
 fish_add_path /Users/rwblickhan/.cargo/bin
+## pnpm paths
+fish_add_path /Users/rwblickhan/.local/bin
 
-# pnpm
+# pnpm variables
 set -gx PNPM_HOME /Users/rwblickhan/Library/pnpm
 set -gx PATH "$PNPM_HOME" $PATH
-# pnpm end
 
 if status is-interactive
     # Use `fd` by default in `fzf` to hide `.gitignore`'d files
@@ -23,7 +26,12 @@ if status is-interactive
     abbr -a gsp "git stash pop"
 
     if not set -q TMUX
-        exec tmux new -A -t default
+        if set -q VSCODE_WORKSPACE
+            # Open tmux session matching VSCode workspace
+            exec tmux new -A -t "$VSCODE_WORKSPACE"
+        else
+            exec tmux new -A -t default
+        end
     end
 end
 
@@ -35,6 +43,3 @@ alias lm "exa -l -s modified --no-permissions --icons --no-user --git"
 alias du dust
 alias find fd
 alias diff delta
-
-# Created by `pipx` on 2023-07-29 04:31:04
-set PATH $PATH /Users/rwblickhan/.local/bin
