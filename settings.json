@@ -6,7 +6,7 @@
   // Use sticky scroll like Xcode
   "editor.stickyScroll.enabled": true,
   // Use Fira Mono
-  "editor.fontFamily": "'FuraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'FiraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   // Show relative line numbers instead of absolute
   "editor.lineNumbers": "relative",
   // Show bracket pairs for the active bracket
