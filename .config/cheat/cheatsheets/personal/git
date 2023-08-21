@@ -10,3 +10,6 @@ git log --oneline -p --since "3 months ago" path/to/file
 
 // Show changes since a particular commit
 git log <hash>.. path/to/file
+
+// Search for string in all files matching glob across all commits 
+git grep <search_string> $(git rev-list --all) -- *.json
