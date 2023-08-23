@@ -5,6 +5,7 @@ fish_add_path /opt/homebrew/sbin
 fish_add_path /Users/rwblickhan/.cargo/bin
 ## pnpm paths
 fish_add_path /Users/rwblickhan/.local/bin
+fish_add_path ~/utils
 
 # pnpm variables
 set -gx PNPM_HOME /Users/rwblickhan/Library/pnpm
@@ -43,3 +44,4 @@ alias lm "exa -l -s modified --no-permissions --icons --no-user --git"
 alias du dust
 alias find fd
 alias diff delta
+alias bbic "brew update && brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-source rainbow.sh
+source utils/rainbow.sh
 
 echogreen "Running dotbot..."
 ./dotbot.sh

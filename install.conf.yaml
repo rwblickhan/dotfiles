@@ -38,12 +38,13 @@
       create: true
       force: true
       path: .config/yamllint/config
+    ~/.config/Brewfile:
+      create: true
+      force: true
+      path: .config/Brewfile
     ~/.gitconfig:
       force: true
       path: .gitconfig
-    ~/.rainbow.sh:
-      force: true
-      path: rainbow.sh
     ~/.inputrc:
       force: true
       path: .inputrc
@@ -62,6 +63,10 @@
       create: true
       force: true
       path: .finicky.js
+    ~/utils:
+      create: true
+      force: true
+      path: utils
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
