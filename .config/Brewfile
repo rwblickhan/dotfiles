@@ -9,7 +9,7 @@ brew "bat"
 brew "cheat"
 # Better cut
 brew "choose-rust"
-# Deno TS runtime
+# Deno TypeScript runtime
 brew "deno"
 # Better du
 brew "dust"
@@ -72,3 +72,51 @@ brew "watchexec"
 cask "xcodes"
 # Better cd
 brew "zoxide"
+
+# Astro support
+vscode "astro-build.astro-vscode"
+# Auto rename HTML tags
+vscode "formulahendry.auto-rename-tag"
+# Ayu theme
+vscode "teabyii.ayu"
+# Black formatter for Python
+vscode "ms-python.black-formatter"
+# Codeium LLM autocomplete
+vscode "Codeium.codeium"
+# Copy file name command
+vscode "nemesv.copy-file-name"
+# Deno support
+vscode "denoland.vscode-deno"
+# Better error highlighting
+vscode "usernamehw.errorlens"
+# ESLint support
+vscode "dbaeumer.vscode-eslint"
+# hledger support
+vscode "mark-hansen.hledger-vscode"
+# justfile support
+vscode "skellock.just"
+# Better markdown keyboard shortcuts 
+vscode "yzhang.markdown-all-in-one"
+# markdownlint support
+vscode "DavidAnson.vscode-markdownlint"
+# MDX support
+vscode "unifiedjs.vscode-mdx"
+# Prettier formatter for TypeScript
+vscode "esbenp.prettier-vscode"
+# Better TypeScript error highlighting
+vscode "yoavbls.pretty-ts-errors"
+# Python support
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+# Rust support
+vscode "rust-lang.rust-analyzer"
+# Swift support
+vscode "sswg.swift-lang"
+# Swiftformat support
+vscode "vknabel.vscode-swiftformat"
+# Swiftlint support
+vscode "vknabel.vscode-swiftlint"
+# Tailwind support
+vscode "bradlc.vscode-tailwindcss"
+# Vim emulation
+vscode "vscodevim.vim"
