@@ -1,0 +1,2 @@
+sync:
+    ./dotbot.sh
