@@ -25,6 +25,7 @@ if status is-interactive
     abbr -a t tmux
     abbr -a rgn rg --files-with-matches
     abbr -a gsp "git stash pop"
+    abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
 
     if not set -q TMUX
         if set -q VSCODE_WORKSPACE
@@ -44,4 +45,3 @@ alias lm "exa -l -s modified --no-permissions --icons --no-user --git"
 alias du dust
 alias find fd
 alias diff delta
-alias bbic "brew update && brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"

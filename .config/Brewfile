@@ -1,0 +1,72 @@
+# Nerd Fonts
+tap "homebrew/cask-fonts"
+
+# Better cat
+brew "bat"
+# Terminal cheatsheets
+brew "cheat"
+# Better cut
+brew "choose-rust"
+# Deno TS runtime
+brew "deno"
+# Better du
+brew "dust"
+# Better ls
+brew "exa"
+# Better find
+brew "fd"
+# Fira Code / Fira Mono Nerd Fonts
+cask "font-fira-code-nerd-font"
+cask "font-fira-mono-nerd-font"
+# Route URLs to different browsers
+cask "finicky"
+# Better shell
+brew "fish"
+# Fuzzy finder
+brew "fzf"
+# GitHub CLI
+brew "gh"
+# Better diff viewer
+brew "git-delta"
+# Better curl
+brew "httpie"
+# Plain-text accounting
+brew "hledger"
+# Interact with LLM APIs easily
+brew "llm"
+# Markdown linter
+brew "markdownlint-cli"
+# Better vim
+brew "neovim"
+# Up-to-date node
+brew "node"
+# Better npm
+brew "pnpm"
+# Better make (for command running, at least)
+brew "just"
+# Better Spotlight
+cask "raycast"
+# Better grep
+brew "ripgrep"
+# Shell linter
+brew "shellcheck"
+# Better sed
+brew "sd"
+# Command prompt
+brew "starship"
+# Swift formatting
+brew "swiftformat"
+# Swift linting
+brew "swiftlint"
+# Rust implementation of tldr shell cheatsheet
+brew "tealdeer"
+# git repo viewer
+brew "tig"
+# Terminal multiplexer
+brew "tmux"
+# Directory watcher
+brew "watchexec"
+# Install Xcode easily
+cask "xcodes"
+# Better cd
+brew "zoxide"
