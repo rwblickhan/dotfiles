@@ -14,41 +14,20 @@
       create: true
       force: true
       path: keybindings.json
-    ~/.config/starship.toml:
+    ~/.config:
       create: true
       force: true
-      path: .config/starship.toml
-    ~/.config/fish:
-      create: true
-      force: true
-      path: .config/fish/
-    ~/.config/nvim:
-      create: true
-      force: true
-      path: .config/nvim/
-    ~/.config/cheat/conf.yml:
-      create: true
-      force: true
-      path: .config/cheat/conf.yml
-    ~/.config/cheat/cheatsheets/personal:
-      create: true
-      force: true
-      path: .config/cheat/cheatsheets/personal
-    ~/.config/yamllint/config:
-      create: true
-      force: true
-      path: .config/yamllint/config
-    ~/.config/Brewfile:
-      create: true
-      force: true
-      path: .config/Brewfile
+      path: .config
     ~/.gitconfig:
+      create: true
       force: true
       path: .gitconfig
     ~/.inputrc:
+      create: true
       force: true
       path: .inputrc
     ~/.tmux.conf:
+      create: true
       force: true
       path: .tmux.conf
     ~/.tmux/plugins/tpm:
