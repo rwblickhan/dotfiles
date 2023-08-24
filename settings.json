@@ -13,6 +13,8 @@
   "editor.guides.bracketPairs": "active",
   // Use Ayu Dark theme
   "workbench.colorTheme": "Ayu Dark Bordered",
+  // Preserve input between quick open panels
+  "workbench.quickOpen.preserveInput": true,
   // Default to Prettier for JS/TS/JSON formatting
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
