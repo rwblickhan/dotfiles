@@ -29,9 +29,11 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // Open CSS files in Tailwind mode
   "files.associations": {
-    "*.css": "tailwindcss"
+    // Open CSS files in Tailwind mode
+    "*.css": "tailwindcss",
+    // Treat MDX files as markdown
+    "*.mdx": "markdown"
   },
   // Show suggestions even in strings (e.g. for Tailwind)
   "editor.quickSuggestions": {
