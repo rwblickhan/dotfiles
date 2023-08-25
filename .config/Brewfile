@@ -54,6 +54,8 @@ brew "ripgrep"
 brew "shellcheck"
 # Better sed
 brew "sd"
+# Quick-find items on the screen
+cask "shortcat"
 # Command prompt
 brew "starship"
 # Swift formatting
