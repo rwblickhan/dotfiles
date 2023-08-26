@@ -73,8 +73,6 @@ cask "font-fira-mono-nerd-font"
 cask "finicky"
 # Better Spotlight
 cask "raycast"
-# Quick-find items on the screen
-cask "shortcat"
 # VS Code
 cask "visual-studio-code"
 # Install Xcode easily
