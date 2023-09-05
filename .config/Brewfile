@@ -2,6 +2,8 @@
 
 # Nerd Fonts
 tap "homebrew/cask-fonts"
+# Linty
+tap "rwblickhan/linty"
 
 # Better cat
 brew "bat"
@@ -29,6 +31,8 @@ brew "git-delta"
 brew "httpie"
 # Plain-text accounting
 brew "hledger"
+# My homegrown linter
+brew "linty"
 # Interact with LLM APIs easily
 brew "llm"
 # Markdown linter
