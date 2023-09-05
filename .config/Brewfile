@@ -94,6 +94,8 @@ vscode "nemesv.copy-file-name"
 vscode "denoland.vscode-deno"
 # Better error highlighting
 vscode "usernamehw.errorlens"
+# GitHub Actions support
+vscode "github.vscode-github-actions"
 # ESLint support
 vscode "dbaeumer.vscode-eslint"
 # hledger support
