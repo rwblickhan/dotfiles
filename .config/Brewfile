@@ -98,6 +98,8 @@ vscode "nemesv.copy-file-name"
 vscode "denoland.vscode-deno"
 # Better error highlighting
 vscode "usernamehw.errorlens"
+# GitLens to add lots of git features
+vscode "eamodio.gitlens"
 # GitHub Actions support
 vscode "github.vscode-github-actions"
 # ESLint support

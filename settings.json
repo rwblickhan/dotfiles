@@ -103,5 +103,6 @@
   "vim.smartRelativeLine": true,
   "vim.useSystemClipboard": true,
   "editor.accessibilitySupport": "off",
-  "deno.path": "/opt/homebrew/bin/deno"
+  "deno.path": "/opt/homebrew/bin/deno",
+  "diffEditor.experimental.showMoves": true
 }
