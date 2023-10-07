@@ -86,8 +86,6 @@ cask "xcodes"
 
 # Astro support
 vscode "astro-build.astro-vscode"
-# Auto rename HTML tags
-vscode "formulahendry.auto-rename-tag"
 # Ayu theme
 vscode "teabyii.ayu"
 # Black formatter for Python
