@@ -27,8 +27,6 @@ brew "fzf"
 brew "gh"
 # Better diff viewer
 brew "git-delta"
-# gif optimizer
-brew "gifsicle"
 # Better curl
 brew "httpie"
 # Plain-text accounting
