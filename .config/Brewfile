@@ -41,6 +41,8 @@ brew "markdownlint-cli"
 brew "neovim"
 # Up-to-date node
 brew "node"
+# Pandoc document converter
+brew "pandoc"
 # Install Python executables easily
 brew "pipx"
 # Better npm
