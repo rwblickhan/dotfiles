@@ -5,12 +5,16 @@
   "editor.formatOnSave": true,
   // Use sticky scroll like Xcode
   "editor.stickyScroll.enabled": true,
+  // Linked editing of HTML tags
+  "editor.linkedEditing": true,
   // Use Fira Mono
   "editor.fontFamily": "'FiraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   // Show relative line numbers instead of absolute (like vim smartcase)
   "editor.lineNumbers": "relative",
   // Show bracket pairs for the active bracket
   "editor.guides.bracketPairs": "active",
+  // Show moves in the diff editor 
+  "diffEditor.experimental.showMoves": true,
   // Use Ayu Dark theme
   "workbench.colorTheme": "Ayu Dark Bordered",
   // Preserve input between quick open panels
@@ -72,6 +76,8 @@
   "swiftlint.path": ["/opt/homebrew/bin/swiftlint"],
   "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.launch.expressions": "native",
+  // Deno setup
+  "deno.path": "/opt/homebrew/bin/deno",
   // Turn off a couple annoying Markdownlint warnings
   "markdownlint.config": {
     "line-length": false,
@@ -101,8 +107,5 @@
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.showMarksInGutter": true,
   "vim.smartRelativeLine": true,
-  "vim.useSystemClipboard": true,
-  "editor.accessibilitySupport": "off",
-  "deno.path": "/opt/homebrew/bin/deno",
-  "diffEditor.experimental.showMoves": true
+  "vim.useSystemClipboard": true
 }
