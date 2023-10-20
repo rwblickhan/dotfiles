@@ -23,7 +23,6 @@ if status is-interactive
 
     abbr -a j just
     abbr -a t tmux
-    abbr -a rgn rg --files-with-matches
     abbr -a gsp "git stash pop"
     abbr -a gps "gh pr status"
     abbr -a gpm "gh pr merge"
