@@ -25,6 +25,8 @@ if status is-interactive
     abbr -a t tmux
     abbr -a rgn rg --files-with-matches
     abbr -a gsp "git stash pop"
+    abbr -a gps "gh pr status"
+    abbr -a gpm "gh pr merge"
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
 
     if not set -q TMUX
