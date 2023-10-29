@@ -67,6 +67,8 @@ brew "tealdeer"
 brew "tig"
 # Terminal multiplexer
 brew "tmux"
+# LaTeX alternative
+brew "typst"
 # Directory watcher
 brew "watchexec"
 # Better cd
