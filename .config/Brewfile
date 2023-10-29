@@ -125,6 +125,8 @@ vscode "yoavbls.pretty-ts-errors"
 # Python support
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+# Typst LSP
+vscode "nvarner.typst-lsp"
 # Rust support
 vscode "rust-lang.rust-analyzer"
 # Swift support
