@@ -13,7 +13,7 @@
   "editor.lineNumbers": "relative",
   // Show bracket pairs for the active bracket
   "editor.guides.bracketPairs": "active",
-  // Show moves in the diff editor 
+  // Show moves in the diff editor
   "diffEditor.experimental.showMoves": true,
   // Use Ayu Dark theme
   "workbench.colorTheme": "Ayu Dark Bordered",
@@ -34,6 +34,9 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typst]": {
+    "editor.defaultFormatter": "nvarner.typst-lsp"
   },
   "files.associations": {
     // Open CSS files in Tailwind mode
@@ -107,5 +110,7 @@
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.showMarksInGutter": true,
   "vim.smartRelativeLine": true,
-  "vim.useSystemClipboard": true
+  "vim.useSystemClipboard": true,
+  "typst-lsp.experimentalFormatterMode": "on",
+  "typst-lsp.exportPdf": "never"
 }
