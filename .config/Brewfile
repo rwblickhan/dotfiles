@@ -106,6 +106,8 @@ vscode "usernamehw.errorlens"
 vscode "eamodio.gitlens"
 # GitHub Actions support
 vscode "github.vscode-github-actions"
+# Shift arguments left / right
+vscode "Gruntfuggly.shifter"
 # ESLint support
 vscode "dbaeumer.vscode-eslint"
 # hledger support
