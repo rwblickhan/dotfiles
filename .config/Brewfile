@@ -61,6 +61,8 @@ brew "starship"
 brew "swiftformat"
 # Swift linting
 brew "swiftlint"
+# Better tail with syntax highlighting
+brew "tailspin"
 # Rust implementation of tldr shell cheatsheet
 brew "tealdeer"
 # git repo viewer
