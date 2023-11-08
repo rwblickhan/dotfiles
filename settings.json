@@ -9,7 +9,7 @@
   "editor.linkedEditing": true,
   // Use Fira Mono
   "editor.fontFamily": "'FiraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
-  // Show relative line numbers instead of absolute (like vim smartcase)
+  // Show relative line numbers instead of absolute (like vim smart numbers)
   "editor.lineNumbers": "relative",
   // Show bracket pairs for the active bracket
   "editor.guides.bracketPairs": "active",
@@ -35,6 +35,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  // Default to typst-lsp for Typst formatting
   "[typst]": {
     "editor.defaultFormatter": "nvarner.typst-lsp"
   },
@@ -63,7 +64,7 @@
   "editor.fontLigatures": false,
   // Auto-update TypeScript imports when moving things around
   "typescript.updateImportsOnFileMove.enabled": "always",
-  // Never show me node_modules
+  // Never show node_modules
   "files.exclude": {
     "node_modules": true
   },
@@ -72,21 +73,27 @@
   // Force Emmet suggestions to show up at the bottom
   "emmet.showSuggestionsAsSnippets": true,
   "editor.snippetSuggestions": "bottom",
-  // Only use swiftformat and swiftlint if we have a config
-  "swiftformat.onlyEnableWithConfig": true,
-  "swiftlint.onlyEnableWithConfig": true,
-  "swiftformat.path": ["/opt/homebrew/bin/swiftformat"],
-  "swiftlint.path": ["/opt/homebrew/bin/swiftlint"],
-  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
-  "lldb.launch.expressions": "native",
-  // Deno setup
-  "deno.path": "/opt/homebrew/bin/deno",
   // Turn off a couple annoying Markdownlint warnings
   "markdownlint.config": {
     "line-length": false,
     "single-trailing-newline": false
   },
-  // Default to fish for integrated terminal
+  // Use typst-lsp experimental formatter
+  "typst-lsp.experimentalFormatterMode": "on",
+  // Don't export PDF via typst-lsp; use typst watch instead
+  "typst-lsp.exportPdf": "never",
+  // Only use swiftformat and swiftlint if we have a config
+  "swiftformat.onlyEnableWithConfig": true,
+  "swiftlint.onlyEnableWithConfig": true,
+  // General swiftformat / swiftlint config
+  "swiftformat.path": ["/opt/homebrew/bin/swiftformat"],
+  "swiftlint.path": ["/opt/homebrew/bin/swiftlint"],
+  // General lldb config (for swift lsp)
+  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.launch.expressions": "native",
+  // General Deno config
+  "deno.path": "/opt/homebrew/bin/deno",
+  // https://rwblickhan.org/technical/til/20230820-tmux-in-vscode/
   "terminal.integrated.profiles.osx": {
     "bash": null,
     "zsh": null,
@@ -96,7 +103,6 @@
       "icon": "terminal-tmux"
     }
   },
-  // Send workspace folder name to integrated terminal
   "terminal.integrated.env.osx": {
     "VSCODE_WORKSPACE": "${workspaceFolderBasename}"
   },
@@ -111,6 +117,15 @@
   "vim.showMarksInGutter": true,
   "vim.smartRelativeLine": true,
   "vim.useSystemClipboard": true,
-  "typst-lsp.experimentalFormatterMode": "on",
-  "typst-lsp.exportPdf": "never"
+  // Emulate vim-swap via shifter extension
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["g", "<"],
+      "commands": ["shiftArgumentLeft"]
+    },
+    {
+      "before": ["g", ">"],
+      "commands": ["shiftArgumentRight"]
+    }
+  ]
 }
