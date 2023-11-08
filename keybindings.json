@@ -138,5 +138,15 @@
     "key": "cmd+i",
     "command": "-inlineChat.start",
     "when": "inlineChatHasProvider && !editorReadonly"
+  },
+  {
+    "key": "cmd+k cmd+i",
+    "command": "codeium.openCodeiumCommand",
+    "when": "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-codeium.openCodeiumCommand",
+    "when": "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible"
   }
 ]
