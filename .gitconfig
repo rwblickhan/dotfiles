@@ -27,6 +27,7 @@
     m = "!fish -c 'git_fzf_merge'"
     p = "push"
     r = "!fish -c 'git_fzf_restore'"
+    rs = "!fish -c 'git_fzf_restore_staged'"
     s = "status"
     unstage = "reset HEAD --"
     oops = "commit -a --no-edit --amend"
