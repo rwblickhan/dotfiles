@@ -1,6 +1,6 @@
 function tmux_fzf_search
-    set options urls\nfiles\ndigits\nhashes\ndouble-quotes\nsingle-quotes\nparens
-    set selection (echo $options | fzf)
+    set options urls files digits hashes double-quotes single-quotes parens
+    set selection (printf '%s\n' $options | fzf)
     tmux copy-mode
     switch $selection
         case urls
