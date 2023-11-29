@@ -28,6 +28,7 @@ if status is-interactive
     abbr -a gpm "gh pr merge"
     abbr -a gpv "gh pr view -w"
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
+    abbr -a ga "git add ."
 
     if not set -q TMUX
         if set -q VSCODE_WORKSPACE
