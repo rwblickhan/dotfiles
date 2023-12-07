@@ -6,5 +6,5 @@ function frg --description 'rg tui built with fzf and bat'
             --delimiter ':' \
             --preview "bat --color=always {1} --theme='Solarized (light)' --highlight-line {2}" \
             --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-            --bind "enter:become($EDITOR +{2} {1})"
+            --bind "enter:become(code {1})"
 end
