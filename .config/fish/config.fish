@@ -21,6 +21,7 @@ if status is-interactive
     zoxide init fish --cmd cd | source
     starship init fish | source
 
+    abbr -a g git
     abbr -a j just
     abbr -a t tmux
     abbr -a gsp "git stash pop"
