@@ -127,9 +127,5 @@
       "before": ["g", ">"],
       "commands": ["shiftArgumentRight"]
     }
-  ],
-  "codeium.enableConfig": {
-    "*": true,
-    "markdown": true
-  }
+  ]
 }
