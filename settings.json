@@ -45,8 +45,10 @@
     // Treat MDX files as markdown
     "*.mdx": "markdown"
   },
-  // Show suggestions even in strings (e.g. for Tailwind)
+  // Show suggestions even in strings and comments (e.g. for Tailwind)
   "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
     "strings": true
   },
   // Go straight to first definition if there's multiple
