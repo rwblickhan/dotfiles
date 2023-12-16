@@ -39,6 +39,21 @@
   "[typst]": {
     "editor.defaultFormatter": "nvarner.typst-lsp"
   },
+  // Enable quick suggestions in Markdown / MDX
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "comments": true,
+      "strings": true,
+      "other": true
+    }
+  },
+  "[mdx]": {
+    "editor.quickSuggestions": {
+      "comments": true,
+      "strings": true,
+      "other": true
+    }
+  },
   "files.associations": {
     // Open CSS files in Tailwind mode
     "*.css": "tailwindcss",
