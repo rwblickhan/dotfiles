@@ -5,6 +5,8 @@ tap "homebrew/cask-fonts"
 # Linty
 tap "rwblickhan/linty"
 
+# Syntasx-aware sed
+brew "ast-grep"
 # Better cat
 brew "bat"
 # Terminal cheatsheets
