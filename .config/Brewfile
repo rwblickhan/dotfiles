@@ -33,6 +33,8 @@ brew "git-delta"
 brew "httpie"
 # Plain-text accounting
 brew "hledger"
+# Add a more up-to-date less
+brew "less"
 # My homegrown linter
 brew "linty"
 # Interact with LLM APIs easily
