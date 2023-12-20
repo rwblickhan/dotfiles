@@ -24,6 +24,7 @@ if status is-interactive
     abbr -a g git
     abbr -a j just
     abbr -a t tmux
+    abbr -a f rfv
     abbr -a gsp "git stash pop"
     abbr -a gps "gh pr status"
     abbr -a gpm "gh pr merge"

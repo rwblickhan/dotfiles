@@ -1,12 +1,14 @@
 [user]
  	name = Russell Blickhan
  	email = rwblickhan@gmail.com
-[pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
-	branch = false
+[core]
+    pager = delta
+[delta]
+    line-numbers = true
+    side-by-side = true
+    hyperlinks = true
+    hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+    map-styles = bold purple => syntax magenta, bold cyan => syntax blue
 [interactive]
     diffFilter = delta --color-only --features=interactive
 [pull]
@@ -35,6 +37,7 @@
 [push]
 	autoSetupRemote = true
 [diff]
+    colorMoved = default
     tool = vscode
 [difftool]
     prompt = false
