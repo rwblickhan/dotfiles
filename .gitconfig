@@ -8,7 +8,6 @@
     side-by-side = true
     hyperlinks = true
     hyperlinks-file-link-format = "vscode://file/{path}:{line}"
-    map-styles = bold purple => syntax magenta, bold cyan => syntax blue
 [interactive]
     diffFilter = delta --color-only --features=interactive
 [pull]
