@@ -19,7 +19,7 @@
   "workbench.colorTheme": "Ayu Dark Bordered",
   // Preserve input between quick open panels
   "workbench.quickOpen.preserveInput": true,
-  // Default to Prettier for JS/TS/JSON formatting
+  // Default to Prettier for webapp formatting
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -36,6 +36,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // Default to typst-lsp for Typst formatting
