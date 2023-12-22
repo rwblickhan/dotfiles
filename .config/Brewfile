@@ -80,6 +80,8 @@ brew "watchexec"
 # Better cd
 brew "zoxide"
 
+# Boop toolkit
+cask "boop"
 # Calibre ebook manager
 cask "calibre"
 # Datasette desktop application
