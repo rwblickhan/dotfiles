@@ -82,6 +82,8 @@ brew "zoxide"
 
 # Calibre ebook manager
 cask "calibre"
+# Datasette desktop application
+cask "datasette"
 # Fira Code / Fira Mono Nerd Fonts
 cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
