@@ -112,25 +112,10 @@
   "swiftformat.path": ["/opt/homebrew/bin/swiftformat"],
   "swiftlint.path": ["/opt/homebrew/bin/swiftlint"],
   // General lldb config (for swift lsp)
-  "lldb.library": "/Applications/Xcode-14.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.library": "/Applications/Xcode-15.1.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.launch.expressions": "native",
   // General Deno config
   "deno.path": "/opt/homebrew/bin/deno",
-  // https://rwblickhan.org/technical/til/20230820-tmux-in-vscode/
-  "terminal.integrated.profiles.osx": {
-    "bash": null,
-    "zsh": null,
-    "fish": {
-      "path": "/opt/homebrew/bin/fish",
-      "args": ["-l"],
-      "icon": "terminal-tmux"
-    }
-  },
-  "terminal.integrated.env.osx": {
-    "VSCODE_WORKSPACE": "${workspaceFolderBasename}"
-  },
-  // In integrated terminal on Mac, use option key as meta for e.g. M-e to edit command line on fish
-  "terminal.integrated.macOptionIsMeta": true,
   // VSCodeVim plugins
   "vim.camelCaseMotion.enable": true,
   "vim.highlightedyank.enable": true,
