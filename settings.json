@@ -135,5 +135,6 @@
       "before": ["g", ">"],
       "commands": ["shiftArgumentRight"]
     }
-  ]
+  ],
+  "terminal.integrated.defaultProfile.osx": "zsh"
 }
