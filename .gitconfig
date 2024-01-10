@@ -2,10 +2,8 @@
  	name = Russell Blickhan
  	email = rwblickhan@gmail.com
 [core]
-    pager = delta
+    pager = delta --side-by-side --line-numbers
 [delta]
-    line-numbers = true
-    side-by-side = true
     hyperlinks = true
     hyperlinks-file-link-format = "vscode://file/{path}:{line}"
 [interactive]
@@ -20,9 +18,10 @@
     c = "!fish -c 'git_fzf_checkout'"
     cam = "!fish -c 'git_commit_all_message $argv'"
     camp = "!fish -c 'git_commit_all_message_push $argv'"
-    d = "diff HEAD"
-    df = "!fish -c 'git_fzf_diff'"
-    dfn = "!fish -c 'git_fzf_diff_name_only'"
+    d = "!fish -c 'git_fzf_diff_file'"
+    ds = "!fish -c 'git_fzf_diff_file_staged'"
+    db = "!fish -c 'git_fzf_diff_branch'"
+    dbn = "!fish -c 'git_fzf_diff_branch_name_only'"
     l = "log --oneline --decorate"
     lf = "!fish -c 'git_fzf_commit_select'"
     lfc = "!fish -c 'git_fzf_commit_select_copy'"
@@ -31,17 +30,11 @@
     r = "!fish -c 'git_fzf_restore'"
     rs = "!fish -c 'git_fzf_restore_staged'"
     s = "status"
-    unstage = "reset HEAD --"
     oops = "commit -a --no-edit --amend"
 [push]
 	autoSetupRemote = true
 [diff]
     colorMoved = default
-    tool = vscode
-[difftool]
-    prompt = false
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
     tool = vscode
 [mergetool "vscode"]
