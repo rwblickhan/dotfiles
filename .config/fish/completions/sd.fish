@@ -1,5 +1,0 @@
-complete sd -x -s f -l flags -d "<flags> Regex flags. May be combined (like `-f mc`)."
-complete sd -x -s h -l help -d "Prints help information"
-complete sd -s s -l string-mode -d "Treat expressions as non-regex strings"
-complete sd -s p -l preview -d "Output result into stdout and do not modify files"
-complete sd -x -s V -l version -d "Prints version information"
