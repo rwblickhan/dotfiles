@@ -3,10 +3,10 @@
 name: codez
 root: ~/sandbox/asana
 
-pre-window: fish
+pre_window: fish
 windows:
   - codez:
       layout: even-horizontal
       panes:
-        - fish -c 'git up'
-        - fish -c 'z sand sync -k webapp'
+        - git up
+        - z sand sync -k webapp
