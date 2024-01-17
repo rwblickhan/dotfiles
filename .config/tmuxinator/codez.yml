@@ -7,5 +7,5 @@ windows:
   - codez:
       layout: even-horizontal
       panes:
-        - 
+        - git up
         - z sand sync -k webapp
