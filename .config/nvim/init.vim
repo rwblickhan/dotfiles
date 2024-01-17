@@ -17,22 +17,20 @@ Plug 'tpope/vim-speeddating'
 Plug 'machakann/vim-swap'
 " s + 2 characters to jump anywhere
 Plug 'justinmk/vim-sneak'
-
-if !exists('g:vscode')
-    " Only install these outside of VS Code
-    " Ayu theme
-    Plug 'ayu-theme/ayu-vim'
-    " Basic LSP configurations
-    Plug 'neovim/nvim-lspconfig'
-    " Autocomplete with tab
-    Plug 'ervandew/supertab'
-    " tmux integration
-    Plug 'christoomey/vim-tmux-navigator'
-    " Syntax highlighting for just
-    Plug 'NoahTheDuke/vim-just'
-    " Syntax highlighting for hledger
-    Plug 'ledger/vim-ledger'
-endif
+" Ayu theme
+Plug 'ayu-theme/ayu-vim'
+" Basic LSP configurations
+Plug 'neovim/nvim-lspconfig'
+" Autocomplete with tab
+Plug 'ervandew/supertab'
+" tmux integration
+Plug 'christoomey/vim-tmux-navigator'
+" Syntax highlighting for just
+Plug 'NoahTheDuke/vim-just'
+" Syntax highlighting for hledger
+Plug 'ledger/vim-ledger'
+" More text objects
+Plug 'wellle/targets.vim'
 call plug#end()
 
 " Use smart capitalization when searching
@@ -55,21 +53,19 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }
 augroup END
 
-if !exists('g:vscode')
-  " Handle tabs correctly (== by turning them into spaces 🙂)
-  filetype plugin indent on
-  set tabstop=4
-  set shiftwidth=4
-  set expandtab
+" Handle tabs correctly (== by turning them into spaces 🙂)
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
-  " Show line numbers by default
-  set number relativenumber
+" Show line numbers by default
+set number relativenumber
 
-  " Don't force me to save files before opening a new one
-  set hidden
+" Don't force me to save files before opening a new one
+set hidden
 
-  " Set up ayu color scheme
-  set termguicolors
-  let ayucolor="dark"
-  colorscheme ayu
-endif
+" Set up ayu color scheme
+set termguicolors
+let ayucolor="dark"
+colorscheme ayu
