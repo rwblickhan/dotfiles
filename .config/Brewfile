@@ -133,7 +133,7 @@ vscode "unifiedjs.vscode-mdx"
 # Prettier formatter for TypeScript
 vscode "esbenp.prettier-vscode"
 # Better TypeScript error highlighting
-vscode "yoavbls.pretty-ts-errors"
+vscode "YoavBls.pretty-ts-errors"
 # Python support
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
