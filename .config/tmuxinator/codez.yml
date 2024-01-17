@@ -3,6 +3,7 @@
 name: codez
 root: ~/sandbox/asana
 
+pre-window: fish
 windows:
   - codez:
       layout: even-horizontal
