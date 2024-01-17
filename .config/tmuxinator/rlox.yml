@@ -1,0 +1,11 @@
+# /Users/rwblickhan/.config/tmuxinator/rlox.yml
+
+name: rlox
+root: ~/Developer/rlox
+
+windows:
+  - rlox:
+      layout: even-horizontal
+      panes:
+        - just watch
+        - git status
