@@ -44,6 +44,10 @@ set clipboard+=unnamedplus
 nmap j gj
 nmap k gk
 
+" Use H and L for beginning/end of line
+nnoremap H ^
+nnoremap L $
+
 " Use \ for CamelCaseMotion
 let g:camelcasemotion_key = '<leader>'
 
