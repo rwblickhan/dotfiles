@@ -26,6 +26,7 @@
     lf = "!fish -c 'git_fzf_commit_select'"
     lfc = "!fish -c 'git_fzf_commit_select_copy'"
     m = "!fish -c 'git_fzf_merge'"
+    mt = "mergetool"
     p = "push"
     r = "!fish -c 'git_fzf_restore'"
     rs = "!fish -c 'git_fzf_restore_staged'"
