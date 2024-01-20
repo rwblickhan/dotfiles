@@ -137,7 +137,11 @@
     },
     {
       "before": ["g", "r"],
-      "commands": ["references-view.findReferences"]
+      "commands": ["editor.action.referenceSearch.trigger"]
+    },
+    {
+      "before": ["g", "y"],
+      "commands": ["editor.showCallHierarchy"]
     },
     {
       "before": ["L"],
