@@ -19,6 +19,8 @@
   "workbench.colorTheme": "Ayu Dark Bordered",
   // Preserve input between quick open panels
   "workbench.quickOpen.preserveInput": true,
+  // Enable sticky scroll in tree views
+  "workbench.tree.enableStickyScroll": true,
   // Default to Prettier for webapp formatting
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
