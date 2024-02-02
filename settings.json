@@ -41,6 +41,9 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   // Default to typst-lsp for Typst formatting
   "[typst]": {
     "editor.defaultFormatter": "nvarner.typst-lsp"
@@ -150,6 +153,10 @@
     {
       "before": ["H"],
       "after": ["^"]
+    },
+    {
+      "before": ["g", "R"],
+      "commands": ["editor.action.rename"]
     }
   ],
   "vim.visualModeKeyBindings": [
