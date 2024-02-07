@@ -1,0 +1,11 @@
+# /Users/rwblickhan/.config/tmuxinator/astro.yml
+
+name: astro
+root: ~/Developer/astro-rwblickhan.org
+
+windows:
+  - astro:
+      layout: even-horizontal
+      panes:
+        - just run
+        - code .
