@@ -33,12 +33,7 @@ if status is-interactive
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
 
     if not set -q TMUX
-        if set -q VSCODE_WORKSPACE
-            # Open tmux session matching VSCode workspace
-            exec tmux new -A -t "$VSCODE_WORKSPACE"
-        else
-            exec tmux new -A -t default
-        end
+        exec tmux new -A -t default
     end
 end
 
