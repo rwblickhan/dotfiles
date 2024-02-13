@@ -31,10 +31,6 @@ if status is-interactive
     abbr -a gpm "gh pr merge"
     abbr -a gpv "gh pr view -w"
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
-
-    if not set -q TMUX
-        exec tmux new -A -t default
-    end
 end
 
 set -U EDITOR nvim
