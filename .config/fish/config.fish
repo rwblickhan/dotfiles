@@ -31,6 +31,8 @@ if status is-interactive
     abbr -a gpm "gh pr merge"
     abbr -a gpv "gh pr view -w"
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
+    abbr -a rlox "tmuxinator start rlox"
+    abbr -a astro "tmuxinator start astro"
 end
 
 set -U EDITOR nvim
