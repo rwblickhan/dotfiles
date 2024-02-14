@@ -23,10 +23,12 @@ if status is-interactive
 
     abbr -a g git
     abbr -a j just
+    abbr -a n nvim
+    abbr -a p pnpm
+    abbr -a px pnpx
     abbr -a t tmux
     abbr -a tx tmuxinator
     abbr -a f rfv
-    abbr -a gsp "git stash pop"
     abbr -a gps "gh pr status"
     abbr -a gpm "gh pr merge"
     abbr -a gpv "gh pr view -w"

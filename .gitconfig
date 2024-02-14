@@ -32,6 +32,7 @@
     r = "!fish -c 'git_fzf_restore'"
     rs = "!fish -c 'git_fzf_restore_staged'"
     s = "status"
+    st = "stash"
     oops = "commit -a --no-edit --amend"
 [push]
 	autoSetupRemote = true
