@@ -13,6 +13,10 @@
   "editor.lineNumbers": "relative",
   // Show bracket pairs for the active bracket
   "editor.guides.bracketPairs": "active",
+  // Fix stylelint issues on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "always"
+  },
   // Show moves in the diff editor
   "diffEditor.experimental.showMoves": true,
   // Use Ayu Dark theme
@@ -50,6 +54,8 @@
   "[typst]": {
     "editor.defaultFormatter": "nvarner.typst-lsp"
   },
+  // Validate SCSS with stylelint
+  "stylelint.validate": ["css", "scss"],
   // Enable quick suggestions in Markdown / MDX
   "[markdown]": {
     "editor.quickSuggestions": {
