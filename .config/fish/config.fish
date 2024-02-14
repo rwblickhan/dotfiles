@@ -33,6 +33,7 @@ if status is-interactive
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
     abbr -a rlox "tmuxinator start rlox"
     abbr -a astro "tmuxinator start astro"
+    abbr -a sneak "tmuxinator start sneak"
 end
 
 set -U EDITOR nvim
