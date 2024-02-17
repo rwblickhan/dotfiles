@@ -38,8 +38,10 @@
 	autoSetupRemote = true
 [diff]
     colorMoved = default
+	algorithm = histogram
 [merge]
     tool = vscode
+	conflictStyle = zdiff3
 [mergetool "vscode"]
     cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [mergetool]
