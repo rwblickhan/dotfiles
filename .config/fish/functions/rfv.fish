@@ -1,6 +1,6 @@
 function rfv --description 'rg tui built with fzf and bat'
     # https://github.com/junegunn/fzf/blob/master/ADVANCED.md#using-fzf-as-the-secondary-filter
-    rg --smart-case --color=always --line-number --no-heading "$argv" |
+    rg --auto-hybrid-regex --smart-case --color=always --line-number --no-heading "$argv" |
         fzf -m --ansi \
             --color 'hl:-1:underline,hl+:-1:underline:reverse' \
             --delimiter ':' \
