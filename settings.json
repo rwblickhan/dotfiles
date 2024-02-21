@@ -136,6 +136,7 @@
   "vim.showMarksInGutter": true,
   "vim.smartRelativeLine": true,
   "vim.useSystemClipboard": true,
+  "vim.gdefault": true,
   "vim.normalModeKeyBindings": [
     // Emulate vim-swap via shifter extension
     {

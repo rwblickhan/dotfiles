@@ -33,6 +33,9 @@ Plug 'ledger/vim-ledger'
 Plug 'wellle/targets.vim'
 call plug#end()
 
+" Use g in substitutions by default
+set gdefault
+
 " Use smart capitalization when searching
 set ignorecase
 set smartcase
