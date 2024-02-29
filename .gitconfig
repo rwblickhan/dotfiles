@@ -19,6 +19,7 @@
     cam = "!fish -c 'git_commit_all_message $argv'"
     camp = "!fish -c 'git_commit_all_message_push $argv'"
     d = "diff"
+    ds = "diff HEAD"
     df = "!fish -c 'git_fzf_diff_file'"
     dfs = "!fish -c 'git_fzf_diff_file_staged'"
     db = "!fish -c 'git_fzf_diff_branch'"
