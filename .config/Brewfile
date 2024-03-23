@@ -13,6 +13,8 @@ brew "bat"
 brew "cheat"
 # Better cut
 brew "choose-rust"
+# Structured diffs
+brew "difftastic"
 # Deno TypeScript runtime
 brew "deno"
 # Better du

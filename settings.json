@@ -188,5 +188,7 @@
       "after": ["^"]
     }
   ],
-  "terminal.integrated.defaultProfile.osx": "zsh"
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "vim.matchpairs": "(:),{:},[:],<:>",
+  "rust-analyzer.check.command": "clippy"
 }

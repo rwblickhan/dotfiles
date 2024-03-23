@@ -6,12 +6,12 @@
 [delta]
     hyperlinks = true
     hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+[init]
+	defaultBranch = main
 [interactive]
     diffFilter = delta --color-only --features=interactive
 [pull]
 	rebase = false
-[init]
-	defaultBranch = main
 [alias]
     a = "add ."
     bd = "!fish -c 'git_fzf_branch_delete'"
@@ -40,6 +40,13 @@
 [diff]
     colorMoved = default
 	algorithm = histogram
+    tool = difftastic
+[difftool]
+        prompt = false
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+        difftool = true
 [merge]
     tool = vscode
 	conflictStyle = zdiff3
