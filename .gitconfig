@@ -24,6 +24,7 @@
     dfs = "!fish -c 'git_fzf_diff_file_staged'"
     db = "!fish -c 'git_fzf_diff_branch'"
     dbn = "!fish -c 'git_fzf_diff_branch_name_only'"
+    dt = "difftool"
     l = "log --oneline --decorate"
     lf = "!fish -c 'git_fzf_commit_select'"
     lfc = "!fish -c 'git_fzf_commit_select_copy'"
