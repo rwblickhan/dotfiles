@@ -4,21 +4,19 @@
 tap "homebrew/cask-fonts"
 # Linty
 tap "rwblickhan/linty"
-# liteclit
+# litecli
 tap "dbcli/tap"
 
-# Syntasx-aware sed
-brew "ast-grep"
 # Better cat
 brew "bat"
 # Terminal cheatsheets
 brew "cheat"
-# Better cut
-brew "choose-rust"
 # Structured diffs
 brew "difftastic"
 # Deno TypeScript runtime
 brew "deno"
+# sqlite but columnar; also useful as a jq replacement 
+brew "duckdb"
 # Better du
 brew "dust"
 # Better ls
@@ -88,12 +86,8 @@ brew "watchexec"
 # Better cd
 brew "zoxide"
 
-# Boop toolkit
-cask "boop"
 # Calibre ebook manager
 cask "calibre"
-# Datasette desktop application
-cask "datasette"
 # Fira Code / Fira Mono Nerd Fonts
 cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
@@ -147,7 +141,7 @@ vscode "YoavBls.pretty-ts-errors"
 # Python support
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
-# Typst LSP
+# Typst support
 vscode "nvarner.typst-lsp"
 # Rust support
 vscode "rust-lang.rust-analyzer"
@@ -157,7 +151,5 @@ vscode "sswg.swift-lang"
 vscode "vknabel.vscode-swiftformat"
 # Swiftlint support
 vscode "vknabel.vscode-swiftlint"
-# Tailwind support
-vscode "bradlc.vscode-tailwindcss"
 # Vim emulation
 vscode "vscodevim.vim"
