@@ -4,6 +4,8 @@
 tap "homebrew/cask-fonts"
 # Linty
 tap "rwblickhan/linty"
+# liteclit
+tap "dbcli/tap"
 
 # Syntasx-aware sed
 brew "ast-grep"
@@ -39,6 +41,8 @@ brew "hledger"
 brew "less"
 # My homegrown linter
 brew "linty"
+# Better sqlite CLI
+brew "litecli"
 # Interact with LLM APIs easily
 brew "llm"
 # Markdown linter
