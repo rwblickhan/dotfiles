@@ -1,3 +1,5 @@
 .DS_Store
 .config/iterm2
 .config/raycast
+.config/litecli/log
+.config/litecli/history
