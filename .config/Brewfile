@@ -11,6 +11,8 @@ tap "dbcli/tap"
 brew "bat"
 # Terminal cheatsheets
 brew "cheat"
+# Datasette database explorer
+brew "datasette"
 # Structured diffs
 brew "difftastic"
 # Deno TypeScript runtime
