@@ -25,7 +25,7 @@ if status is-interactive
     abbr -a j just
     abbr -a n nvim
     abbr -a p pnpm
-    abbr -a px pnpx
+    abbr -a px "pnpm dlx"
     abbr -a t tmux
     abbr -a tx tmuxinator
     abbr -a f rfv
