@@ -61,10 +61,12 @@ brew "pnpm"
 brew "just"
 # Better grep
 brew "ripgrep"
-# Shell linter
-brew "shellcheck"
 # Better sed
 brew "sd"
+# Shell linter
+brew "shellcheck"
+# sqlite utils from simonw
+brew "sqlite-utils"
 # Command prompt
 brew "starship"
 # Swift formatting
