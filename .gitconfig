@@ -24,6 +24,7 @@
     db = "!fish -c 'git_fzf_diff_branch'"
     dbn = "!fish -c 'git_fzf_diff_branch_name_only'"
     dt = "difftool"
+    dts = "difftool --staged"
     l = "log"
     lc = "log --oneline --decorate"
     ld = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
