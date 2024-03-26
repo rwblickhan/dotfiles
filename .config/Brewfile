@@ -6,9 +6,13 @@ tap "homebrew/cask-fonts"
 tap "rwblickhan/linty"
 # litecli
 tap "dbcli/tap"
+# bunh
+tap "oven-sh/bun"
 
 # Better cat
 brew "bat"
+# bun runtime
+brew "bun"
 # Terminal cheatsheets
 brew "cheat"
 # Datasette database explorer
@@ -110,6 +114,8 @@ vscode "astro-build.astro-vscode"
 vscode "teabyii.ayu"
 # Black formatter for Python
 vscode "ms-python.black-formatter"
+# Bun support
+vscode "oven.bun-vscode"
 # Codeium LLM autocomplete
 vscode "Codeium.codeium"
 # Copy file name command
