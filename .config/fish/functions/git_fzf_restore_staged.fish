@@ -1,7 +1,8 @@
 function git_fzf_restore_staged
     set files (git diff --name-only --cached)
     if test (count $files) -gt 0
-        printf '%s\n' $files | fzf -m --preview="echo {} | xargs git diff HEAD | delta" | xargs git restore --staged
+        set selected_files (printf '%s\n' $files | fzf -m --preview="echo {} | xargs git diff --staged | delta")
+        git restore --staged $selected_files
     else
         echo "No staged changes found"
     end
