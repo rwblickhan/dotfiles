@@ -12,12 +12,6 @@ set -gx PNPM_HOME /Users/rwblickhan/Library/pnpm
 set -gx PATH "$PNPM_HOME" $PATH
 
 if status is-interactive
-    # Use `fd` by default in `fzf` to hide `.gitignore`'d files
-    set -U FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
-    set -U FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-    # Show a fancy preview window when using Ctrl+T
-    set -U FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
-
     zoxide init fish --cmd cd | source
     starship init fish | source
 
@@ -35,7 +29,14 @@ if status is-interactive
     abbr -a sneak "tmuxinator start sneak"
 end
 
-set -U EDITOR nvim
+set -gx EDITOR nvim
+# Bind Ctrl-T to toggle-all
+set -gx FZF_DEFAULT_OPTS '--bind ctrl-t:toggle-all'
+# Use `fd` by default in `fzf` to hide `.gitignore`'d files
+set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
+set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+# Show a fancy preview window when using Ctrl+T
+set -gx FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 alias cat bat
 alias ls "exa --icons"

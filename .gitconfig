@@ -16,6 +16,7 @@
     a = "add ."
     bd = "!fish -c 'git_fzf_branch_delete'"
     c = "!fish -c 'git_fzf_checkout'"
+    cm = "commit -m"
     camp = "!fish -c 'git_commit_all_message_push $argv'"
     d = "diff"
     ds = "diff HEAD"
@@ -37,17 +38,17 @@
     st = "stash"
     oops = "commit -a --no-edit --amend"
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true
 [diff]
     colorMoved = default
 	algorithm = histogram
     tool = difftastic
 [difftool]
-        prompt = false
+    prompt = false
 [difftool "difftastic"]
-        cmd = difft "$LOCAL" "$REMOTE"
+    cmd = difft "$LOCAL" "$REMOTE"
 [pager]
-        difftool = true
+    difftool = true
 [merge]
     tool = vscode
 	conflictStyle = zdiff3

@@ -6,7 +6,8 @@ root: ~/sandbox/asana
 pre_window: fish
 windows:
   - codez:
-      layout: even-horizontal
+      layout: main-vertical
       panes:
         - git up
         - z sand sync -k webapp
+        - z test --diff
