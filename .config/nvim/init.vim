@@ -50,6 +50,8 @@ nmap k gk
 " Use H and L for beginning/end of line
 nnoremap H ^
 nnoremap L $
+vnoremap H ^
+vnoremap L $
 
 " Use \ for CamelCaseMotion
 let g:camelcasemotion_key = '<leader>'
