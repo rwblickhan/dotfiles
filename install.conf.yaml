@@ -46,6 +46,10 @@
       create: true
       force: true
       path: utils
+    ~/.raycast:
+      create: true
+      force: true
+      path: .raycast
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
