@@ -47,8 +47,4 @@ if status is-interactive
     abbr -a rlox "tmuxinator start rlox"
     abbr -a astro "tmuxinator start astro"
     abbr -a sneak "tmuxinator start sneak"
-
-    if not set -q TMUX
-        exec tmux new -A -t default
-    end
 end
