@@ -5,7 +5,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Stop astro
+# @raycast.title Start rwb
 # @raycast.mode silent
 # @raycast.packageName iTerm
 
@@ -47,16 +47,8 @@ on has_windows()
 end has_windows
 
 on send_text()
-	tell application "iTerm" to tell the first window to tell current session to write text "tmuxinator stop astro"
+	tell application "iTerm" to tell the first window to tell current session to write text "tmuxinator start rwb"
 end send_text
-
-on quit_iterm()
-	tell application "iTerm" to quit
-end quit_iterm
-
-on quit_vscode()
-	tell application "Visual Studio Code" to quit
-end quit_vscode
 
 -- Main
 on run
@@ -86,8 +78,4 @@ on run
 
 	send_text()
 	call_forward()
-	quit_iterm()
-	quit_vscode()
 end run
-
-

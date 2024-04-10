@@ -1,6 +1,6 @@
-# /Users/rwblickhan/.config/tmuxinator/astro.yml
+# /Users/rwblickhan/.config/tmuxinator/rwb.yml
 
-name: astro
+name: rwb
 root: ~/Developer/astro-rwblickhan.org
 
 windows:
