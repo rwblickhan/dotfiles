@@ -28,7 +28,7 @@
     dts = "difftool --staged"
     l = "log"
     ld = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
-    lp = "log -p"
+    lp = "log --oneline -p"
     ls = "log --oneline --decorate"
     m = "!fish -c 'git_fzf_merge'"
     mt = "mergetool"
