@@ -191,5 +191,6 @@
   // Match <> as a pair in addition to standard pairs
   "vim.matchpairs": "(:),{:},[:],<:>",
   // Use clippy as the linter for rust
-  "rust-analyzer.check.command": "clippy"
+  "rust-analyzer.check.command": "clippy",
+  "git.enableSmartCommit": true
 }
