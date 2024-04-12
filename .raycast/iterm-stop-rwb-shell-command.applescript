@@ -84,10 +84,12 @@ on run
 		delay 0.01
 	end repeat
 
-	send_text()
 	call_forward()
+	send_text()
+	delay 0.1
+	repeat while is_processing()
+		delay 0.01
+	end repeat
 	quit_iterm()
 	quit_vscode()
 end run
-
-
