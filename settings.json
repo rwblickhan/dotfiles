@@ -192,5 +192,6 @@
   "vim.matchpairs": "(:),{:},[:],<:>",
   // Use clippy as the linter for rust
   "rust-analyzer.check.command": "clippy",
-  "git.enableSmartCommit": true
+  "git.enableSmartCommit": true,
+  "security.promptForLocalFileProtocolHandling": false
 }
