@@ -3,3 +3,4 @@
 .config/raycast
 .config/litecli/log
 .config/litecli/history
+.config/zed/.tmp*

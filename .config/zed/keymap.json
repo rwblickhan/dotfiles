@@ -8,6 +8,7 @@
     "context": "Workspace",
     "bindings": {
       "cmd-p": "command_palette::Toggle",
+      "cmd-shift-h": "workspace::ToggleLeftDock",
       "cmd-shift-j": "workspace::ToggleBottomDock"
     }
   }
