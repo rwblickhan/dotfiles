@@ -17,6 +17,7 @@
     a = "add ."
     bd = "!fish -c 'git_fzf_branch_delete'"
     c = "!fish -c 'git_fzf_checkout'"
+    cap = "!fish -c 'git commit -a && git push'"
     cm = "commit -m"
     camp = "!fish -c 'git_commit_all_message_push $argv'"
     d = "diff"
