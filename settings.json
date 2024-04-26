@@ -164,7 +164,7 @@
       "after": ["^"]
     },
     {
-      "before": ["g", "R"],
+      "before": ["c", "d"],
       "commands": ["editor.action.rename"]
     }
   ],
@@ -190,6 +190,8 @@
   ],
   // Match <> as a pair in addition to standard pairs
   "vim.matchpairs": "(:),{:},[:],<:>",
+  // Use sneak for multiline f
+  "vim.sneakReplacesF": true,
   // Use clippy as the linter for rust
   "rust-analyzer.check.command": "clippy",
   "git.enableSmartCommit": true,

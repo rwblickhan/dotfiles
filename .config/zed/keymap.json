@@ -1,0 +1,14 @@
+[
+  {
+    "bindings": {
+      "cmd-o": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-p": "command_palette::Toggle",
+      "cmd-shift-j": "workspace::ToggleBottomDock"
+    }
+  }
+]

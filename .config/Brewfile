@@ -107,6 +107,8 @@ cask "raycast"
 cask "visual-studio-code"
 # Install Xcode easily
 cask "xcodes"
+# Zed editor
+cask "zed"
 
 # Astro support
 vscode "astro-build.astro-vscode"
@@ -128,6 +130,8 @@ vscode "usernamehw.errorlens"
 vscode "bmalehorn.vscode-fish"
 # GitLens to add lots of git features
 vscode "eamodio.gitlens"
+# File utils like deleting current file
+vscode "sleistner.vscode-fileutils"
 # GitHub Actions support
 vscode "github.vscode-github-actions"
 # Shift arguments left / right
