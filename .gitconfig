@@ -3,6 +3,7 @@
  	email = rwblickhan@gmail.com
 [core]
     pager = delta --side-by-side --line-numbers
+    hooksPath = ~/.git_hooks
 [delta]
     hyperlinks = true
     hyperlinks-file-link-format = "vscode://file/{path}:{line}"
