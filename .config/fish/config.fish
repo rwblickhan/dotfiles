@@ -47,4 +47,8 @@ if status is-interactive
     abbr -a rlox "tmuxinator start rlox"
     abbr -a rwb "tmuxinator start rwb"
     abbr -a sneak "tmuxinator start sneak"
+
+    if not set -q TMUX && not set -q ZED_TERM
+        exec tmux new -A -t default
+    end
 end

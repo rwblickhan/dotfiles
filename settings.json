@@ -195,5 +195,6 @@
   // Use clippy as the linter for rust
   "rust-analyzer.check.command": "clippy",
   "git.enableSmartCommit": true,
-  "security.promptForLocalFileProtocolHandling": false
+  "security.promptForLocalFileProtocolHandling": false,
+  "terminal.integrated.defaultProfile.osx": "zsh"
 }

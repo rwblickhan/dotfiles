@@ -11,6 +11,7 @@
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "theme": "Ayu Dark",
+  // vim-related settings
   "vim_mode": true,
   "relative_line_numbers": true,
   "cursor_blink": false,
@@ -18,12 +19,16 @@
     "use_multiline_find": true,
     "use_smartcase_find": true
   },
+  // Save on focus change
+  "autosave": "on_focus_change",
+  // Show git status on tabs
   "tabs": {
     "git_status": true
   },
   "terminal": {
     "copy_on_select": true
   },
+  // Enable deno
   "deno": {
     "enable": true
   }
