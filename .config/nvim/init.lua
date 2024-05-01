@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "markdown", "markdown_inline" },
+  ensure_installed = { "markdown", "markdown_inline", "ledger" },
   -- Use treesitter highlighting
   highlight = {
     enable = true,
