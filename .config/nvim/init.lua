@@ -8,6 +8,7 @@ Plug('tpope/vim-speeddating')
 Plug('tpope/vim-fugitive')
 Plug('bkad/CamelCaseMotion')
 Plug('machakann/vim-swap')
+Plug('tadmccorkle/markdown.nvim')
 Plug('christoomey/vim-tmux-navigator')
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 Plug('Shatur/neovim-ayu')
@@ -52,11 +53,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 require('nvim-treesitter.configs').setup {
+  ensure_installed = { "markdown", "markdown_inline" },
   -- Use treesitter highlighting
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
+  -- Use markdown.nvim 
+  markdown = {
+    enable = true
+  }
 }
 
 -- Use ayu dark
