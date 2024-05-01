@@ -36,6 +36,7 @@ vim.g.mapleader = '\\'
 -- Use /g by default in regex substitution
 vim.opt.gdefault = true
 -- Use 2 spaces for tabs
+vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
 -- Show relative line numbers
@@ -53,11 +54,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "markdown", "markdown_inline", "ledger" },
+  ensure_installed = { "markdown", "markdown_inline", "ledger", "lua" },
   -- Use treesitter highlighting
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    enable = true
   },
   -- Use markdown.nvim 
   markdown = {
