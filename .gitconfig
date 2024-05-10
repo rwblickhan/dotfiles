@@ -1,60 +1,60 @@
 [user]
- 	name = Russell Blickhan
- 	email = rwblickhan@gmail.com
+  name = Russell Blickhan
+  email = rwblickhan@gmail.com
 [core]
-    pager = delta --side-by-side --line-numbers
-    hooksPath = ~/.git_hooks
+  pager = delta --side-by-side --line-numbers
+  hooksPath = ~/.git_hooks
 [delta]
-    hyperlinks = true
-    hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+  hyperlinks = true
+  hyperlinks-file-link-format = "vscode://file/{path}:{line}"
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [interactive]
-    diffFilter = delta --color-only --features=interactive
+  diffFilter = delta --color-only --features=interactive
 [pull]
-	rebase = false
+rebase = false
 [alias]
-    a = "add ."
-    bd = "!fish -c 'git_fzf_branch_delete'"
-    c = "!fish -c 'git_fzf_checkout'"
-    cap = "!fish -c 'git commit -a && git push'"
-    cm = "commit -m"
-    camp = "!fish -c 'git_commit_all_message_push $argv'"
-    d = "diff"
-    ds = "diff HEAD"
-    df = "!fish -c 'git_fzf_diff_file'"
-    dfs = "!fish -c 'git_fzf_diff_file_staged'"
-    db = "!fish -c 'git_fzf_diff_branch'"
-    dbn = "!fish -c 'git_fzf_diff_branch_name_only'"
-    dt = "difftool"
-    dts = "difftool --staged"
-    l = "log"
-    ld = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
-    lp = "log --oneline -p"
-    ls = "log --oneline --decorate"
-    m = "!fish -c 'git_fzf_merge'"
-    mt = "mergetool"
-    r = "!fish -c 'git_fzf_restore'"
-    rs = "!fish -c 'git_fzf_restore_staged'"
-    s = "status"
-    st = "stash"
-    oops = "commit -a --no-edit --amend"
+  a = "add ."
+  bd = "!fish -c 'git_fzf_branch_delete'"
+  c = "!fish -c 'git_fzf_checkout'"
+  cap = "!fish -c 'git commit -a && git push'"
+  cm = "commit -m"
+  camp = "!fish -c 'git_commit_all_message_push $argv'"
+  d = "diff"
+  ds = "diff HEAD"
+  df = "!fish -c 'git_fzf_diff_file'"
+  dfs = "!fish -c 'git_fzf_diff_file_staged'"
+  db = "!fish -c 'git_fzf_diff_branch'"
+  dbn = "!fish -c 'git_fzf_diff_branch_name_only'"
+  dt = "difftool"
+  dts = "difftool --staged"
+  l = "log"
+  ld = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
+  lp = "log --oneline -p"
+  ls = "log --oneline --decorate"
+  m = "!fish -c 'git_fzf_merge'"
+  mt = "mergetool"
+  r = "!fish -c 'git_fzf_restore'"
+  rs = "!fish -c 'git_fzf_restore_staged'"
+  s = "status"
+  st = "stash"
+  oops = "commit -a --no-edit --amend"
 [push]
-    autoSetupRemote = true
+  autoSetupRemote = true
 [diff]
-    colorMoved = default
-	algorithm = histogram
-    tool = difftastic
+  colorMoved = default
+algorithm = histogram
+  tool = difftastic
 [difftool]
-    prompt = false
+  prompt = false
 [difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"
+  cmd = difft "$LOCAL" "$REMOTE"
 [pager]
-    difftool = true
+  difftool = true
 [merge]
-    tool = vscode
-	conflictStyle = zdiff3
+  tool = vscode
+  conflictStyle = zdiff3
 [mergetool "vscode"]
-    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [mergetool]
 	keepBackup = false
