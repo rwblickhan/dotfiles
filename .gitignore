@@ -4,3 +4,4 @@
 .config/litecli/log
 .config/litecli/history
 .config/zed/.tmp*
+.config/zed/embeddings
