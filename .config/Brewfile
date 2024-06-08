@@ -94,6 +94,8 @@ brew "watchexec"
 # Better cd
 brew "zoxide"
 
+# Non-Apple display management
+cask "betterdisplay"
 # Calibre ebook manager
 cask "calibre"
 # Fira Code / Fira Mono Nerd Fonts
