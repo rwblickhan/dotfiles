@@ -2,7 +2,6 @@ local vim = vim
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
-Plug('tpope/vim-surround')
 Plug('tpope/vim-repeat')
 Plug('tpope/vim-speeddating')
 Plug('bkad/CamelCaseMotion')
@@ -24,6 +23,18 @@ require('mini.diff').setup({})
 require('mini.git').setup({})
 require('mini.pairs').setup()
 require('mini.jump').setup()
+require('mini.surround').setup({
+    mappings = {
+      add = 'ys',
+      delete = 'ds',
+      find = '',
+      find_left = '',
+      highlight = '',
+      replace = 'cs',
+      update_n_lines = '',
+    },
+    search_method = 'cover_or_next',
+  })
 
 vim.keymap.set('n', 'H', '^', { noremap = true })
 vim.keymap.set('n', 'L', '$', { noremap = true })
