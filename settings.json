@@ -1,31 +1,19 @@
 {
-  // Auto-save on focus change
   "files.autoSave": "onFocusChange",
-  // Auto-format on save
   "editor.formatOnSave": true,
-  // Use sticky scroll like Xcode
   "editor.stickyScroll.enabled": true,
-  // Linked editing of HTML tags
   "editor.linkedEditing": true,
   // Use Fira Mono
   "editor.fontFamily": "'FiraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
-  // Show relative line numbers instead of absolute (like vim smart numbers)
   "editor.lineNumbers": "relative",
-  // Show bracket pairs for the active bracket
   "editor.guides.bracketPairs": "active",
-  // Fix stylelint issues on save
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": "always"
   },
-  // Show moves in the diff editor
   "diffEditor.experimental.showMoves": true,
-  // Use Ayu Dark theme
   "workbench.colorTheme": "Ayu Dark Bordered",
-  // Preserve input between quick open panels
   "workbench.quickOpen.preserveInput": true,
-  // Enable sticky scroll in tree views
   "workbench.tree.enableStickyScroll": true,
-  // Default to Prettier for webapp formatting
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -50,7 +38,6 @@
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // Default to typst-lsp for Typst formatting
   "[typst]": {
     "editor.defaultFormatter": "nvarner.typst-lsp"
   },
@@ -72,9 +59,7 @@
     }
   },
   "files.associations": {
-    // Open CSS files in Tailwind mode
     "*.css": "tailwindcss",
-    // Treat MDX files as markdown
     "*.mdx": "markdown"
   },
   // Show suggestions even in strings and comments (e.g. for Tailwind)
@@ -89,20 +74,15 @@
   "editor.gotoLocation.multipleImplementations": "goto",
   "editor.gotoLocation.multipleReferences": "goto",
   "editor.gotoLocation.multipleTypeDefinitions": "goto",
-  // Don't bother me with confirmations all the time
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  // Don't bother me with the minimap
   "editor.minimap.enabled": false,
   // https://practicaltypography.com/ligatures-in-programming-fonts-hell-no.html
   "editor.fontLigatures": false,
-  // Auto-update TypeScript imports when moving things around
   "typescript.updateImportsOnFileMove.enabled": "always",
-  // Never show node_modules
   "files.exclude": {
     "node_modules": true
   },
-  // `git fetch` on open
   "git.autofetch": true,
   // Force Emmet suggestions to show up at the bottom
   "emmet.showSuggestionsAsSnippets": true,
@@ -112,22 +92,17 @@
     "line-length": false,
     "single-trailing-newline": false
   },
-  // Use typst-lsp experimental formatter
   "typst-lsp.experimentalFormatterMode": "on",
   // Don't export PDF via typst-lsp; use typst watch instead
   "typst-lsp.exportPdf": "never",
-  // Only use swiftformat and swiftlint if we have a config
   "swiftformat.onlyEnableWithConfig": true,
   "swiftlint.onlyEnableWithConfig": true,
-  // General swiftformat / swiftlint config
   "swiftformat.path": ["/opt/homebrew/bin/swiftformat"],
   "swiftlint.path": ["/opt/homebrew/bin/swiftlint"],
   // General lldb config (for swift lsp)
   "lldb.library": "/Applications/Xcode-15.1.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.launch.expressions": "native",
-  // General Deno config
   "deno.path": "/opt/homebrew/bin/deno",
-  // VSCodeVim plugins
   "vim.camelCaseMotion.enable": true,
   "vim.highlightedyank.enable": true,
   "vim.targets.enable": true,
@@ -190,11 +165,8 @@
   ],
   // Match <> as a pair in addition to standard pairs
   "vim.matchpairs": "(:),{:},[:],<:>",
-  // Use sneak for multiline f
   "vim.sneakReplacesF": true,
-  // Use clippy as the linter for rust
   "rust-analyzer.check.command": "clippy",
   "git.enableSmartCommit": true,
-  "security.promptForLocalFileProtocolHandling": false,
-  "terminal.integrated.defaultProfile.osx": "zsh"
+  "security.promptForLocalFileProtocolHandling": false
 }
