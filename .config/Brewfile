@@ -169,3 +169,5 @@ vscode "vknabel.vscode-swiftformat"
 vscode "vknabel.vscode-swiftlint"
 # Vim emulation
 vscode "vscodevim.vim"
+# Go-to-fuzzy-line
+vscode "rbaumier.go-to-fuzzy"
