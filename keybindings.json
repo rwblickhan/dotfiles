@@ -148,5 +148,14 @@
     "key": "cmd+i",
     "command": "-codeium.openCodeiumCommand",
     "when": "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible"
+  },
+  // Use Cmd-f for fuzzy-find instead
+  {
+    "key": "cmd+f",
+    "c mmand": "-actions.find"
+  },
+  {
+    "key": "cmd+f",
+    "command": "go-to-fuzzy.find"
   }
 ]
