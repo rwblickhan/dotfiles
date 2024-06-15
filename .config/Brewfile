@@ -11,8 +11,6 @@ tap "oven-sh/bun"
 
 # Better cat
 brew "bat"
-# bun runtime
-brew "bun"
 # Terminal cheatsheets
 brew "cheat"
 # Datasette database explorer
