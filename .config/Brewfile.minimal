@@ -1,0 +1,73 @@
+# https://matthiasportzel.com/brewfile/
+
+# Better cat
+brew "bat"
+# Terminal cheatsheets
+brew "cheat"
+# Structured diffs
+brew "difftastic"
+# Better ls
+brew "exa"
+# Better find
+brew "fd"
+# Better shell
+brew "fish"
+# Fuzzy finder
+brew "fzf"
+# GitHub CLI
+brew "gh"
+# Better diff viewer
+brew "git-delta"
+# Better curl
+brew "httpie"
+# Add a more up-to-date less
+brew "less"
+# Better vim
+brew "neovim"
+# Better grep
+brew "ripgrep"
+# Better sed
+brew "sd"
+# Command prompt
+brew "starship"
+# Better tail with syntax highlighting
+brew "tailspin"
+# Rust implementation of tldr shell cheatsheet
+brew "tealdeer"
+# git repo viewer
+brew "tig"
+# Terminal multiplexer
+brew "tmux"
+# tmux automation
+brew "tmuxinator"
+# Directory watcher
+brew "watchexec"
+# Better cd
+brew "zoxide"
+
+# Fira Code / Fira Mono Nerd Fonts
+cask "font-fira-code-nerd-font"
+cask "font-fira-mono-nerd-font"
+# Better Spotlight
+cask "raycast"
+# VS Code
+cask "visual-studio-code"
+
+# Ayu theme
+vscode "teabyii.ayu"
+# Copy file name command
+vscode "nemesv.copy-file-name"
+# Better error highlighting
+vscode "usernamehw.errorlens"
+# GitLens to add lots of git features
+vscode "eamodio.gitlens"
+# File utils like deleting current file
+vscode "sleistner.vscode-fileutils"
+# Shift arguments left / right
+vscode "Gruntfuggly.shifter"
+# Better TypeScript error highlighting
+vscode "YoavBls.pretty-ts-errors"
+# Vim emulation
+vscode "vscodevim.vim"
+# Go-to-fuzzy-line
+vscode "rbaumier.go-to-fuzzy"
