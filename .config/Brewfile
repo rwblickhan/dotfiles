@@ -1,13 +1,7 @@
 # https://matthiasportzel.com/brewfile/
 
-# Nerd Fonts
-tap "homebrew/cask-fonts"
-# Linty
-tap "rwblickhan/linty"
 # litecli
 tap "dbcli/tap"
-# bunh
-tap "oven-sh/bun"
 
 # Better cat
 brew "bat"
@@ -41,8 +35,6 @@ brew "httpie"
 brew "hledger"
 # Add a more up-to-date less
 brew "less"
-# My homegrown linter
-brew "linty"
 # Better sqlite CLI
 brew "litecli"
 # Interact with LLM APIs easily
@@ -116,8 +108,6 @@ vscode "astro-build.astro-vscode"
 vscode "teabyii.ayu"
 # Black formatter for Python
 vscode "ms-python.black-formatter"
-# Bun support
-vscode "oven.bun-vscode"
 # Codeium LLM autocomplete
 vscode "Codeium.codeium"
 # Copy file name command
