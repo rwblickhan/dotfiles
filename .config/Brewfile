@@ -41,6 +41,8 @@ brew "litecli"
 brew "llm"
 # Markdown linter
 brew "markdownlint-cli"
+# Mac App Store CLI installer
+brew "mas"
 # Better vim
 brew "neovim"
 # Up-to-date node
