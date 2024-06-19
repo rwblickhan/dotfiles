@@ -106,6 +106,7 @@ cask "zed"
 
 mas "Drafts", id: 143_595_7248
 mas "GoodLinks", id: 147_433_5294
+mas "Fantastical", id: 975_937_182
 mas "iA Writer", id: 775_737_590
 mas "Things 3", id: 904_280_696
 mas "Ulysses", id: 122_557_0693
