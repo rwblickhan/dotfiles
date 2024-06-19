@@ -104,6 +104,12 @@ cask "xcodes"
 # Zed editor
 cask "zed"
 
+mas "Drafts", id: 143_595_7248
+mas "GoodLinks", id: 147_433_5294
+mas "iA Writer", id: 775_737_590
+mas "Things 3", id: 904_280_696
+mas "Ulysses", id: 122_557_0693
+
 # Astro support
 vscode "astro-build.astro-vscode"
 # Ayu theme
