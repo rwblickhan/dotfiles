@@ -19,6 +19,7 @@ rebase = false
   c = "!fish -c 'git_fzf_checkout'"
   cap = "!fish -c 'git commit -a && git push'"
   cm = "commit -m"
+  cam = "commit -a -m"
   camp = "!fish -c 'git_commit_all_message_push $argv'"
   d = "diff"
   ds = "diff HEAD"
