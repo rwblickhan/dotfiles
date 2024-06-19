@@ -168,3 +168,5 @@ vscode "vknabel.vscode-swiftlint"
 vscode "vscodevim.vim"
 # Go-to-fuzzy-line
 vscode "rbaumier.go-to-fuzzy"
+# Stylelint support
+vscode "stylelint.vscode-stylelint"
