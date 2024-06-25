@@ -35,6 +35,7 @@ if status is-interactive
     starship init fish | source
 
     abbr -a g git
+    abbr -a gsp git stash pop
     abbr -a j just
     abbr -a n nvim
     abbr -a p pnpm
