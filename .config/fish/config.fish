@@ -40,16 +40,7 @@ if status is-interactive
     abbr -a n nvim
     abbr -a p pnpm
     abbr -a px "pnpm exec"
-    abbr -a t tmux
-    abbr -a tx tmuxinator
     abbr -a f rfv
     abbr -a z zed
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
-    abbr -a rlox "tmuxinator start rlox"
-    abbr -a rwb "tmuxinator start rwb"
-    abbr -a sneak "tmuxinator start sneak"
-
-    if not set -q TMUX && not set -q ZED_TERM
-        exec tmux new -A -t default
-    end
 end

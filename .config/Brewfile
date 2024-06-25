@@ -75,10 +75,6 @@ brew "tailspin"
 brew "tealdeer"
 # git repo viewer
 brew "tig"
-# Terminal multiplexer
-brew "tmux"
-# tmux automation
-brew "tmuxinator"
 # LaTeX alternative
 brew "typst"
 # Directory watcher
