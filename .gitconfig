@@ -29,6 +29,10 @@ rebase = false
   dbn = "!fish -c 'git_fzf_diff_branch_name_only'"
   dt = "difftool"
   dts = "difftool --staged"
+  # https://kiranrao.ca/2024/06/21/git-config.html
+  hist = "log --graph --abbrev-commit --decorate --date=short \
+		--format=format:'%C(bold cyan)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' \
+		--branches --remotes --tags"
   l = "log"
   ld = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
   lp = "log --oneline -p"
