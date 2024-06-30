@@ -42,10 +42,6 @@
       create: true
       force: true
       path: .markdownlintrc
-    ~/.finicky.js:
-      create: true
-      force: true
-      path: .finicky.js
     ~/utils:
       create: true
       force: true
