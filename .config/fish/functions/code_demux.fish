@@ -1,5 +1,5 @@
 function code_demux
     for arg in $argv
-        zed $arg
+        code -g $arg
     end
 end
