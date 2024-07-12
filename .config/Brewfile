@@ -167,3 +167,5 @@ vscode "vscodevim.vim"
 vscode "rbaumier.go-to-fuzzy"
 # Stylelint support
 vscode "stylelint.vscode-stylelint"
+# TOML support
+vscode "tamasfe.even-better-toml"

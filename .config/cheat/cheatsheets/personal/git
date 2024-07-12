@@ -13,3 +13,6 @@ git log <hash>.. path/to/file
 
 // Search for string in all files matching glob across all commits 
 git grep <search_string> $(git rev-list --all) -- *.json
+
+// Revert a file to the version on main
+git checkout main -- path/to/file

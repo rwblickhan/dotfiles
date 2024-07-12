@@ -100,7 +100,7 @@
   "swiftformat.path": ["/opt/homebrew/bin/swiftformat"],
   "swiftlint.path": ["/opt/homebrew/bin/swiftlint"],
   // General lldb config (for swift lsp)
-  "lldb.library": "/Applications/Xcode-15.1.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.library": "/Applications/Xcode-15.2.0-Beta.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.launch.expressions": "native",
   "deno.path": "/opt/homebrew/bin/deno",
   "vim.camelCaseMotion.enable": true,
@@ -168,5 +168,6 @@
   "vim.sneakReplacesF": true,
   "rust-analyzer.check.command": "clippy",
   "git.enableSmartCommit": true,
-  "security.promptForLocalFileProtocolHandling": false
+  "security.promptForLocalFileProtocolHandling": false,
+  "workbench.editor.empty.hint": "hidden"
 }
