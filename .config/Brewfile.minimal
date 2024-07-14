@@ -36,10 +36,6 @@ brew "tailspin"
 brew "tealdeer"
 # git repo viewer
 brew "tig"
-# Terminal multiplexer
-brew "tmux"
-# tmux automation
-brew "tmuxinator"
 # Directory watcher
 brew "watchexec"
 # Better cd
