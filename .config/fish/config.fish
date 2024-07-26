@@ -25,7 +25,7 @@ set -gx EDITOR nvim
 
 # Aliases
 alias cat bat
-alias ls "exa --icons"
+alias ls "eza --icons"
 alias du dust
 alias find fd
 alias diff delta

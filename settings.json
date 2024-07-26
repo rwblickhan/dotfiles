@@ -169,5 +169,6 @@
   "rust-analyzer.check.command": "clippy",
   "git.enableSmartCommit": true,
   "security.promptForLocalFileProtocolHandling": false,
-  "workbench.editor.empty.hint": "hidden"
+  "workbench.editor.empty.hint": "hidden",
+  "editor.accessibilitySupport": "off"
 }

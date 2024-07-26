@@ -7,7 +7,7 @@ brew "cheat"
 # Structured diffs
 brew "difftastic"
 # Better ls
-brew "exa"
+brew "eza"
 # Better find
 brew "fd"
 # Better shell
