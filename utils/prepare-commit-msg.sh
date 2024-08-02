@@ -48,7 +48,7 @@ spin_pid=$!  # Capture the process ID of the spinning animation
 
 # Generate the commit message using `git diff` piped into `llm` command
 # The LLM command takes a system prompt from a file as input
-if ! commit_msg=$(git diff --cached | llm -s "$(cat ~/.config/prompts/commit-system-prompt.txt)" 2>&1); then
+if ! commit_msg=$(git diff --cached --patch | llm -s "$(cat ~/.config/prompts/commit-system-prompt.txt)" 2>&1); then
   # Stop the spinning animation by killing its process
   kill $spin_pid
   wait $spin_pid 2>/dev/null  # Wait for the process to terminate and suppress error messages
@@ -75,5 +75,4 @@ echo "${GREEN}$commit_msg${NC}"
 echo "${BLUE}=================================${NC}"
 echo
 
-# Write the generated commit message to the specified file (usually the commit message file in .git)
-echo "$commit_msg" > "$1"
+echo "$commit_msg"
