@@ -91,6 +91,8 @@ cask "calibre"
 # Fira Code / Fira Mono Nerd Fonts
 cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
+# Terminal replacement
+cask "iterm2"
 # Better Spotlight
 cask "raycast"
 # VS Code
