@@ -6,3 +6,4 @@
 .config/zed/.tmp*
 .config/zed/embeddings
 .config/zed/prompts
+.config/gcloud
