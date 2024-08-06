@@ -33,6 +33,7 @@ alias find fd
 alias diff delta
 
 if status is-interactive
+    nodenv init - fish | source
     zoxide init fish --cmd cd | source
     starship init fish | source
 
