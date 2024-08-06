@@ -34,6 +34,7 @@ alias diff delta
 
 if status is-interactive
     nodenv init - fish | source
+    pyenv init - | source
     zoxide init fish --cmd cd | source
     starship init fish | source
 
