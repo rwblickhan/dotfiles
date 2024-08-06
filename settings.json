@@ -10,6 +10,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": "always"
   },
+  "css.enabledLanguages": ["html", "typescriptreact"],
   "diffEditor.experimental.showMoves": true,
   "workbench.colorTheme": "Ayu Dark Bordered",
   "workbench.quickOpen.preserveInput": true,
