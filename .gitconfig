@@ -1,6 +1,6 @@
 [user]
   name = Russell Blickhan
-  email = rwblickhan@gmail.com
+	email = russell@descript.com
 [core]
   pager = delta --line-numbers
   hooksPath = ~/.git_hooks
