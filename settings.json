@@ -131,6 +131,13 @@
       "commands": ["editor.showCallHierarchy"]
     },
     {
+      "before": ["g", "s"],
+      "commands": [
+        "editor.action.addSelectionToNextFindMatch",
+        "workbench.action.findInFiles"
+      ]
+    },
+    {
       "before": ["L"],
       "after": ["$"]
     },
@@ -170,5 +177,7 @@
   "git.enableSmartCommit": true,
   "security.promptForLocalFileProtocolHandling": false,
   "workbench.editor.empty.hint": "hidden",
-  "editor.accessibilitySupport": "off"
+  "editor.accessibilitySupport": "off",
+  "git.openRepositoryInParentFolders": "always",
+  "cSpell.userWords": ["descript", "testid"]
 }
