@@ -2,9 +2,9 @@
 
 # litecli
 tap "dbcli/tap"
-# git-spice
-tap "abhinav/tap"
 
+# git stacking
+brew "abhinav/tap/git-spice"
 # Better cat
 brew "bat"
 # Terminal cheatsheets
@@ -33,8 +33,6 @@ brew "fzf"
 brew "gh"
 # Better diff viewer
 brew "git-delta"
-# git stacking
-brew "git-spice"
 # Better curl
 brew "httpie"
 # Plain-text accounting

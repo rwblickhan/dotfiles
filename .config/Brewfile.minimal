@@ -1,8 +1,7 @@
 # https://matthiasportzel.com/brewfile/
 
-# git-spice
-tap "abhinav/tap"
 
+brew "abhinav/tap/git-spice"
 # Better cat
 brew "bat"
 # Terminal cheatsheets
@@ -21,8 +20,6 @@ brew "fzf"
 brew "gh"
 # Better diff viewer
 brew "git-delta"
-# git stacking
-brew "git-spice"
 # Better curl
 brew "httpie"
 # Add a more up-to-date less
