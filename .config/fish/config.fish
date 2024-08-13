@@ -33,7 +33,6 @@ alias diff delta
 if status is-interactive
     zoxide init fish --cmd cd | source
     starship init fish | source
-    eval "$(gs shell completion fish)"
 
     abbr -a g git
     abbr -a gsp git stash pop
