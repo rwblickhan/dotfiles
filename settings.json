@@ -179,5 +179,7 @@
   "workbench.editor.empty.hint": "hidden",
   "editor.accessibilitySupport": "off",
   "git.openRepositoryInParentFolders": "always",
-  "cSpell.userWords": ["descript", "testid"]
+  "cSpell.userWords": ["descript", "testid"],
+  "editor.accessibilitySupport": "off",
+  "astro.content-intellisense": true
 }
