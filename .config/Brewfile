@@ -173,3 +173,5 @@ vscode "rbaumier.go-to-fuzzy"
 vscode "stylelint.vscode-stylelint"
 # TOML support
 vscode "tamasfe.even-better-toml"
+# CSS Modules support
+vscode "clinyong.vscode-css-modules"

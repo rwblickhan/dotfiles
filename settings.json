@@ -59,7 +59,7 @@
     }
   },
   "files.associations": {
-    "*.css": "tailwindcss",
+    "*.css": "css",
     "*.mdx": "markdown"
   },
   // Show suggestions even in strings and comments (e.g. for Tailwind)
