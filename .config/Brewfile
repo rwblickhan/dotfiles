@@ -175,3 +175,5 @@ vscode "stylelint.vscode-stylelint"
 vscode "tamasfe.even-better-toml"
 # CSS Modules support
 vscode "clinyong.vscode-css-modules"
+# Bookmarks
+vscode "alefragnani.Bookmarks"
