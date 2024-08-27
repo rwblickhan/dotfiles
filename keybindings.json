@@ -19,42 +19,16 @@
     "key": "shift+cmd+p",
     "command": "-workbench.action.showCommands"
   },
-  // vim-tmux-navigator keybindings
-  // <C-k>/<C-j>/<C-h>/<C-l> to navigate
+  // iTerm2-like keybindings
+  // Cmd-d to split vertically
+  // Cmd-shift-d to split horizontally
   {
-    "key": "ctrl+k",
-    "command": "workbench.action.navigateUp",
-    "when": "!terminalFocus"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.navigateDown",
-    "when": "!terminalFocus"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.navigateLeft",
-    "when": "!terminalFocus"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.navigateRight",
-    "when": "!terminalFocus"
-  },
-  // tmux-like keybindings
-  // <leader>| to split vertically
-  // <leader>- to split horizontally
-  {
-    "key": "cmd+k shift+\\",
+    "key": "cmd+d",
     "command": "workbench.action.splitEditor"
   },
   {
-    "key": "cmd+k -",
+    "key": "cmd+shift+d",
     "command": "workbench.action.splitEditorOrthogonal"
-  },
-  {
-    "key": "cmd+k cmd+\\",
-    "command": "-workbench.action.splitEditorOrthogonal"
   },
   // vim-like keybindings for opening panels
   // Cmd-shift-h for left panel
@@ -73,10 +47,6 @@
     "command": "workbench.action.togglePanel"
   },
   {
-    "key": "cmd+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
-  },
-  {
     "key": "shift+cmd+l",
     "command": "-selectAllSearchEditorMatches",
     "when": "inSearchEditor"
@@ -89,10 +59,6 @@
     "key": "shift+cmd+l",
     "command": "-addCursorsAtSearchResults",
     "when": "fileMatchOrMatchFocus && searchViewletVisible"
-  },
-  {
-    "key": "alt+cmd+b",
-    "command": "-workbench.action.toggleAuxiliaryBar"
   },
   {
     "key": "shift+cmd+l",
@@ -109,50 +75,10 @@
     "key": "cmd+k cmd+r",
     "command": "git.revertSelectedRanges"
   },
-  {
-    "key": "cmd+k cmd+r",
-    "command": "-git.revertSelectedRanges",
-    "when": "isInDiffEditor && !operationInProgress"
-  },
-  {
-    "key": "cmd+i",
-    "command": "-editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
-  },
-  {
-    "key": "cmd+i",
-    "command": "-codeium.superCompletion",
-    "when": "editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
-  },
-  {
-    "key": "cmd+i",
-    "command": "-focusSuggestion",
-    "when": "suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-  },
-  {
-    "key": "cmd+i",
-    "command": "-toggleSuggestionDetails",
-    "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "cmd+i",
-    "command": "-inlineChat.start",
-    "when": "inlineChatHasProvider && !editorReadonly"
-  },
-  {
-    "key": "cmd+k cmd+i",
-    "command": "codeium.openCodeiumCommand",
-    "when": "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible"
-  },
-  {
-    "key": "cmd+i",
-    "command": "-codeium.openCodeiumCommand",
-    "when": "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible"
-  },
   // Use Cmd-f for fuzzy-find instead
   {
     "key": "cmd+f",
-    "c mmand": "-actions.find"
+    "command": "-actions.find"
   },
   {
     "key": "cmd+f",
