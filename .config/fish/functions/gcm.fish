@@ -57,7 +57,7 @@ Write a simple, one-line commit message for this diff, with no additional commen
         echo $commit_message
         echo -e ""
 
-        set choice (read_input "Do you want to (a)ccept, (e)dit or (r)egenerate? ")
+        set choice (read_input "Do you want to (a)ccept, (e)dit, (r)egenerate, or (c)ancel? ")
 
         switch $choice
             case 'a' 'A' ''
