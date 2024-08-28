@@ -2,7 +2,7 @@
   name = Russell Blickhan
   email = rwblickhan@gmail.com
 [core]
-  pager = delta --side-by-side --line-numbers
+  pager = delta --line-numbers
   hooksPath = ~/.git_hooks
 [delta]
   hyperlinks = true
@@ -29,6 +29,7 @@ rebase = false
   dfs = "!fish -c 'git_fzf_diff_file_staged'"
   db = "!fish -c 'git_fzf_diff_branch'"
   dbn = "!fish -c 'git_fzf_diff_branch_name_only'"
+  dm = "diff main"
   dt = "difftool"
   dts = "difftool --staged"
   # https://kiranrao.ca/2024/06/21/git-config.html
