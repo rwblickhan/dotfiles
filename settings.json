@@ -138,6 +138,14 @@
       ]
     },
     {
+      "before": ["g", "l"],
+      "commands": ["bookmarks.list"]
+    },
+    {
+      "before": ["g", "L"],
+      "commands": ["bookmarks.listFromAllFiles"]
+    },
+    {
       "before": ["L"],
       "after": ["$"]
     },
