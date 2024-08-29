@@ -113,6 +113,42 @@
   "vim.useSystemClipboard": true,
   "vim.gdefault": true,
   "vim.normalModeKeyBindings": [
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    // Zed-style keybindings
+    {
+      "before": ["c", "d"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["g", "s"],
+      "commands": ["editor.action.referenceSearch.trigger"]
+    },
+    {
+      "before": ["g", "/"],
+      "commands": [
+        "editor.action.addSelectionToNextFindMatch",
+        "workbench.action.findInFiles"
+      ]
+    },
+    {
+      "before": ["g", "]"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["g", "["],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["g", "."],
+      "commands": ["editor.action.quickFix"]
+    },
     // Emulate vim-swap via shifter extension
     {
       "before": ["g", "<"],
@@ -122,21 +158,12 @@
       "before": ["g", ">"],
       "commands": ["shiftArgumentRight"]
     },
-    {
-      "before": ["g", "r"],
-      "commands": ["editor.action.referenceSearch.trigger"]
-    },
+    // Call hierarchy
     {
       "before": ["g", "y"],
       "commands": ["editor.showCallHierarchy"]
     },
-    {
-      "before": ["g", "s"],
-      "commands": [
-        "editor.action.addSelectionToNextFindMatch",
-        "workbench.action.findInFiles"
-      ]
-    },
+    // Bookmarks hotkeys
     {
       "before": ["g", "l"],
       "commands": ["bookmarks.list"]
@@ -144,18 +171,6 @@
     {
       "before": ["g", "L"],
       "commands": ["bookmarks.listFromAllFiles"]
-    },
-    {
-      "before": ["L"],
-      "after": ["$"]
-    },
-    {
-      "before": ["H"],
-      "after": ["^"]
-    },
-    {
-      "before": ["c", "d"],
-      "commands": ["editor.action.rename"]
     }
   ],
   "vim.visualModeKeyBindings": [
