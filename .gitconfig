@@ -23,6 +23,7 @@ rebase = false
   cm = "commit -m"
   cam = "commit -a -m"
   camp = "!fish -c 'git_commit_all_message_push $argv'"
+  cp = "cherry-pick"
   d = "diff"
   ds = "diff HEAD"
   df = "!fish -c 'git_fzf_diff_file'"
