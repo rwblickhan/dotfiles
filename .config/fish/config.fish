@@ -23,6 +23,8 @@ set -gx FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always --line-ra
 # Editor
 set -gx EDITOR nvim
 
+set -gx LEDGER_FILE ~/Developer/finance/2024.journal
+
 # Aliases
 alias cat bat
 alias ls "eza --icons"
