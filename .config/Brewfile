@@ -51,6 +51,8 @@ brew "mas"
 brew "neovim"
 # Up-to-date node
 brew "node"
+# Better JS runtime
+brew "oven-sh/bun/bun"
 # Pandoc document converter
 brew "pandoc"
 # Install Python executables easily
@@ -59,6 +61,8 @@ brew "pipx"
 brew "pnpm"
 # Better make (for command running, at least)
 brew "just"
+# Pretty-print json
+brew "jq"
 # Better grep
 brew "ripgrep"
 # Better sed
