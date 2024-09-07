@@ -2040,6 +2040,8 @@
 			<string></string>
 			<key>Silence Bell</key>
 			<false/>
+			<key>Smart Selection Actions Use Interpolated Strings</key>
+			<false/>
 			<key>Smart Selection Rules</key>
 			<array>
 				<dict>
@@ -2059,6 +2061,8 @@
 					<string>([a-zA-Z0-9_]+::)+[a-zA-Z0-9_]+</string>
 				</dict>
 				<dict>
+					<key>actions</key>
+					<array/>
 					<key>notes</key>
 					<string>Paths</string>
 					<key>precision</key>
@@ -2067,12 +2071,14 @@
 					<string>\~?/?([[:letter:][:number:]._-]+/+)+[[:letter:][:number:]._-]+/?</string>
 				</dict>
 				<dict>
+					<key>actions</key>
+					<array/>
 					<key>notes</key>
 					<string>Quoted string</string>
 					<key>precision</key>
 					<string>normal</string>
 					<key>regex</key>
-					<string>@?"(?:[^"\\]|\\.)*"</string>
+					<string>@?["'](?:[^"'\\]|\\.)*["']</string>
 				</dict>
 				<dict>
 					<key>notes</key>
@@ -2137,6 +2143,14 @@
 					<string>normal</string>
 					<key>regex</key>
 					<string>@?\((?:[^\)\\]|\\.)*\)</string>
+				</dict>
+				<dict>
+					<key>notes</key>
+					<string>Asterisks</string>
+					<key>precision</key>
+					<string>normal</string>
+					<key>regex</key>
+					<string>@?\*(?:[^\*\\]|\\.)*\*</string>
 				</dict>
 			</array>
 			<key>Sync Title</key>
