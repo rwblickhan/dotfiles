@@ -2,6 +2,8 @@
 
 # litecli
 tap "dbcli/tap"
+# bun
+tap "oven-sh/bun"
 
 # git stacking
 brew "abhinav/tap/git-spice"

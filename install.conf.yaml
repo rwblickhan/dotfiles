@@ -22,10 +22,6 @@
       create: true
       force: true
       path: .gitconfig
-    ~/.git_hooks:
-      create: true
-      force: true
-      path: .git_hooks
     ~/.inputrc:
       create: true
       force: true
