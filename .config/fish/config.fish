@@ -46,7 +46,7 @@ if status is-interactive
     abbr -a px "pnpm exec"
     abbr -a f rfv
     abbr -a z zed
-    abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
+    abbr -a bbic "brew bundle install --file=~/.config/Brewfile.minimal --no-lock && brew upgrade"
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
