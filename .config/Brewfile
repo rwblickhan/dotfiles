@@ -99,6 +99,8 @@ cask "calibre"
 # Fira Code / Fira Mono Nerd Fonts
 cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
+# Use rcmd as hyperkey instead
+cask "hyperkey"
 # Terminal replacement
 cask "iterm2"
 # Better Spotlight
