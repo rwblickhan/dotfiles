@@ -1,5 +1,7 @@
 # https://matthiasportzel.com/brewfile/
 
+# git-spice
+tap "abhinav/tap"
 # litecli
 tap "dbcli/tap"
 # bun
