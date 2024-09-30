@@ -1,14 +1,10 @@
 # https://matthiasportzel.com/brewfile/
 
-# git-spice
-tap "abhinav/tap"
 # litecli
 tap "dbcli/tap"
 # bun
 tap "oven-sh/bun"
 
-# git stacking
-brew "abhinav/tap/git-spice"
 # Better cat
 brew "bat"
 # Terminal cheatsheets

@@ -1,6 +1,5 @@
 # https://matthiasportzel.com/brewfile/
 
-brew "abhinav/tap/git-spice"
 # Better cat
 brew "bat"
 # Terminal cheatsheets
