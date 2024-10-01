@@ -42,6 +42,7 @@ rebase = false
   lp = "log --oneline -p"
   ls = "log --oneline --decorate"
   m = "!fish -c 'git_fzf_merge'"
+  mm = "merge main"
   mt = "mergetool"
   r = "!fish -c 'git_fzf_restore'"
   rs = "!fish -c 'git_fzf_restore_staged'"
