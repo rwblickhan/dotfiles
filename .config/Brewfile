@@ -188,3 +188,5 @@ vscode "ecmel.vscode-html-css"
 vscode "vunguyentuan.vscode-css-variables"
 # Path autocompletion
 vscode "christian-kohler.path-intellisense"
+# Spell checker
+vscode "streetsidesoftware.code-spell-checker"
