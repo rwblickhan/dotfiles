@@ -182,3 +182,9 @@ vscode "tamasfe.even-better-toml"
 vscode "clinyong.vscode-css-modules"
 # Bookmarks
 vscode "alefragnani.Bookmarks"
+# HTML CSS IntelliSense support
+vscode "ecmel.vscode-html-css"
+# CSS Variables IntelliSense support
+vscode "vunguyentuan.vscode-css-variables"
+# Path autocompletion
+vscode "christian-kohler.path-intellisense"
