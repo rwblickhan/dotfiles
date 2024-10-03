@@ -123,8 +123,6 @@ vscode "astro-build.astro-vscode"
 vscode "teabyii.ayu"
 # Black formatter for Python
 vscode "ms-python.black-formatter"
-# Codeium LLM autocomplete
-vscode "Codeium.codeium"
 # Copy file name command
 vscode "nemesv.copy-file-name"
 # Deno support
@@ -188,5 +186,3 @@ vscode "ecmel.vscode-html-css"
 vscode "vunguyentuan.vscode-css-variables"
 # Path autocompletion
 vscode "christian-kohler.path-intellisense"
-# Spell checker
-vscode "streetsidesoftware.code-spell-checker"
