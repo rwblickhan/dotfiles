@@ -81,7 +81,9 @@
   "editor.fontLigatures": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "files.exclude": {
-    "node_modules": true
+    ".zig-cache": true,
+    "node_modules": true,
+    "zig-out": true
   },
   "git.autofetch": true,
   // Force Emmet suggestions to show up at the bottom
@@ -204,5 +206,8 @@
   "git.openRepositoryInParentFolders": "always",
   "cSpell.userWords": ["descript", "testid"],
   "editor.accessibilitySupport": "off",
-  "astro.content-intellisense": true
+  "astro.content-intellisense": true,
+  "zig.initialSetupDone": true,
+  "zig.path": "/opt/homebrew/bin/zig",
+  "zig.zls.path": "/Users/rwblickhan/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls"
 }
