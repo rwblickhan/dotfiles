@@ -82,9 +82,10 @@
   "editor.fontLigatures": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "files.exclude": {
-    ".zig-cache": true,
     "node_modules": true,
-    "zig-out": true
+    ".zig-cache": true,
+    "zig-out": true,
+    ".jest-cache": true
   },
   "git.autofetch": true,
   // Force Emmet suggestions to show up at the bottom
@@ -210,5 +211,7 @@
   "astro.content-intellisense": true,
   "zig.initialSetupDone": true,
   "zig.path": "/opt/homebrew/bin/zig",
-  "zig.zls.path": "/Users/rwblickhan/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls"
+  "zig.zls.path": "/Users/rwblickhan/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+  "remote.SSH.remotePlatform": {"coder-vscode.coder.descripthq.com--russell--rwblickhan":"linux","coder-vscode.coder.descripthq.com--russell--rwblickhan--main":"linux"},
+  "remote.SSH.connectTimeout": 1800
 }
