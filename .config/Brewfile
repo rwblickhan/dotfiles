@@ -87,6 +87,8 @@ brew "tig"
 brew "typst"
 # Directory watcher
 brew "watchexec"
+# Better c
+brew "zig"
 # Better cd
 brew "zoxide"
 
