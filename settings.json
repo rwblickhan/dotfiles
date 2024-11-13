@@ -212,6 +212,12 @@
   "zig.initialSetupDone": true,
   "zig.path": "/opt/homebrew/bin/zig",
   "zig.zls.path": "/Users/rwblickhan/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
-  "remote.SSH.remotePlatform": {"coder-vscode.coder.descripthq.com--russell--rwblickhan":"linux","coder-vscode.coder.descripthq.com--russell--rwblickhan--main":"linux"},
-  "remote.SSH.connectTimeout": 1800
+  "remote.SSH.remotePlatform": {
+    "coder-vscode.coder.descripthq.com--russell--rwblickhan": "linux",
+    "coder-vscode.coder.descripthq.com--russell--rwblickhan--main": "linux"
+  },
+  "remote.SSH.connectTimeout": 1800,
+  "git.confirmSync": false,
+  // https://github.com/microsoft/vscode/issues/98594
+  "search.followSymlinks": false
 }
