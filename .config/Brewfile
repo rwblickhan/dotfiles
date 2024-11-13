@@ -87,6 +87,8 @@ brew "tig"
 brew "typst"
 # Directory watcher
 brew "watchexec"
+# Better c
+brew "zig"
 # Better cd
 brew "zoxide"
 
@@ -186,3 +188,5 @@ vscode "ecmel.vscode-html-css"
 vscode "vunguyentuan.vscode-css-variables"
 # Path autocompletion
 vscode "christian-kohler.path-intellisense"
+# zig support
+vscode "ziglang.vscode-zig"
