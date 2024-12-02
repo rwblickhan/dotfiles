@@ -20,7 +20,6 @@ require('mini.comment').setup({})
 require('mini.completion').setup({})
 require('mini.diff').setup({})
 require('mini.git').setup({})
-require('mini.pairs').setup()
 require('mini.jump').setup()
 require('mini.surround').setup({
     mappings = {
@@ -74,30 +73,6 @@ require('nvim-treesitter.configs').setup {
   indent = {
     enable = true
   },
-  -- Use markdown.nvim 
-  markdown = {
-    enable = true,
-    inline_surround = {
-      emphasis = {
-        txt = "_"
-      }
-    },
-    on_attach = function(bufnr)
-      local function toggle(key)
-        return "<Esc>gv<Cmd>lua require'markdown.inline'"
-          .. ".toggle_emphasis_visual'" .. key .. "'<CR>"
-      end
-
-      local map = vim.keymap.set
-      local opts = { buffer = bufnr }
-      map({ 'n', 'i' }, '<M-o>', '<Cmd>MDListItemBelow<CR>', opts)
-      map({ 'n', 'i' }, '<M-O>', '<Cmd>MDListItemAbove<CR>', opts)
-      map('n', '<M-c>', '<Cmd>MDTaskToggle<CR>', opts)
-      map('x', '<M-c>', ':MDTaskToggle<CR>', opts)
-      map("x", "<C-b>", toggle("b"), { buffer = bufnr })
-      map("x", "<C-i>", toggle("i"), { buffer = bufnr })
-    end,
-  }
 }
 
 -- Use ayu dark
