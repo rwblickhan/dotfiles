@@ -37,6 +37,8 @@ brew "git-delta"
 brew "httpie"
 # Plain-text accounting
 brew "hledger"
+# git replacement
+brew "jj"
 # Add a more up-to-date less
 brew "less"
 # Better sqlite CLI
