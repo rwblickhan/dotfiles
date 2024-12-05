@@ -111,6 +111,8 @@ cask "raycast"
 cask "visual-studio-code"
 # Install Xcode easily
 cask "xcodes"
+# Zen web browser
+cask "zen-browser"
 # Zed editor
 cask "zed"
 
