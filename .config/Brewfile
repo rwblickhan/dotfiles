@@ -37,6 +37,8 @@ brew "git-delta"
 brew "httpie"
 # Plain-text accounting
 brew "hledger"
+# git replacement
+brew "jj"
 # Add a more up-to-date less
 brew "less"
 # Better sqlite CLI
@@ -81,8 +83,6 @@ brew "swiftlint"
 brew "tailspin"
 # Rust implementation of tldr shell cheatsheet
 brew "tealdeer"
-# git repo viewer
-brew "tig"
 # LaTeX alternative
 brew "typst"
 # Directory watcher
@@ -109,6 +109,8 @@ cask "raycast"
 cask "visual-studio-code"
 # Install Xcode easily
 cask "xcodes"
+# Zen web browser
+cask "zen-browser"
 # Zed editor
 cask "zed"
 

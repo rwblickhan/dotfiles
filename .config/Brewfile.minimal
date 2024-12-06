@@ -36,8 +36,6 @@ brew "starship"
 brew "tailspin"
 # Rust implementation of tldr shell cheatsheet
 brew "tealdeer"
-# git repo viewer
-brew "tig"
 # Directory watcher
 brew "watchexec"
 # Better cd
