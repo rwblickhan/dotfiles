@@ -83,8 +83,6 @@ brew "swiftlint"
 brew "tailspin"
 # Rust implementation of tldr shell cheatsheet
 brew "tealdeer"
-# git repo viewer
-brew "tig"
 # LaTeX alternative
 brew "typst"
 # Directory watcher
