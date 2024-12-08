@@ -2,17 +2,11 @@
 
 # litecli
 tap "dbcli/tap"
-# bun
-tap "oven-sh/bun"
 
 # Better cat
 brew "bat"
 # Terminal cheatsheets
 brew "cheat"
-# Cocoapods Swift package manager
-brew "cocoapods"
-# Datasette database explorer
-brew "datasette"
 # Structured diffs
 brew "difftastic"
 # Deno TypeScript runtime
@@ -126,8 +120,6 @@ mas "Velja", id: 160_763_5845
 vscode "astro-build.astro-vscode"
 # Ayu theme
 vscode "teabyii.ayu"
-# Black formatter for Python
-vscode "ms-python.black-formatter"
 # Copy file name command
 vscode "nemesv.copy-file-name"
 # Deno support
@@ -140,8 +132,6 @@ vscode "bmalehorn.vscode-fish"
 vscode "eamodio.gitlens"
 # File utils like deleting current file
 vscode "sleistner.vscode-fileutils"
-# GitHub Actions support
-vscode "github.vscode-github-actions"
 # Shift arguments left / right
 vscode "Gruntfuggly.shifter"
 # ESLint support
@@ -160,9 +150,6 @@ vscode "unifiedjs.vscode-mdx"
 vscode "esbenp.prettier-vscode"
 # Better TypeScript error highlighting
 vscode "YoavBls.pretty-ts-errors"
-# Python support
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
 # Typst support
 vscode "nvarner.typst-lsp"
 # Rust support
@@ -185,9 +172,9 @@ vscode "tamasfe.even-better-toml"
 vscode "clinyong.vscode-css-modules"
 # Bookmarks
 vscode "alefragnani.Bookmarks"
-# HTML CSS IntelliSense support
+# HTML/CSS support
 vscode "ecmel.vscode-html-css"
-# CSS Variables IntelliSense support
+# CSS Variables support
 vscode "vunguyentuan.vscode-css-variables"
 # Path autocompletion
 vscode "christian-kohler.path-intellisense"
