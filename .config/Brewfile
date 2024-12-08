@@ -154,12 +154,6 @@ vscode "YoavBls.pretty-ts-errors"
 vscode "nvarner.typst-lsp"
 # Rust support
 vscode "rust-lang.rust-analyzer"
-# Swift support
-vscode "sswg.swift-lang"
-# Swiftformat support
-vscode "vknabel.vscode-swiftformat"
-# Swiftlint support
-vscode "vknabel.vscode-swiftlint"
 # Vim emulation
 vscode "vscodevim.vim"
 # Go-to-fuzzy-line
