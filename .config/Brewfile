@@ -86,8 +86,6 @@ brew "zig"
 # Better cd
 brew "zoxide"
 
-# Better Alt-Tab behavior
-cask "alt-tab"
 # Non-Apple display management
 cask "betterdisplay"
 # Calibre ebook manager
