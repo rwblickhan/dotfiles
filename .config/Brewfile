@@ -97,6 +97,7 @@ cask "font-fira-mono-nerd-font"
 cask "hyperkey"
 # Terminal replacement
 cask "iterm2"
+cask "mac-mouse-fix"
 # Better Spotlight
 cask "raycast"
 # VS Code
