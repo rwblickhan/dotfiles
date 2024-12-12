@@ -2,17 +2,11 @@
 
 # litecli
 tap "dbcli/tap"
-# bun
-tap "oven-sh/bun"
 
 # Better cat
 brew "bat"
 # Terminal cheatsheets
 brew "cheat"
-# Cocoapods Swift package manager
-brew "cocoapods"
-# Datasette database explorer
-brew "datasette"
 # Structured diffs
 brew "difftastic"
 # Deno TypeScript runtime
@@ -103,6 +97,8 @@ cask "font-fira-mono-nerd-font"
 cask "hyperkey"
 # Terminal replacement
 cask "iterm2"
+# Fix mouse scrolling
+cask "mac-mouse-fix"
 # Better Spotlight
 cask "raycast"
 # VS Code
@@ -116,6 +112,7 @@ cask "zed"
 
 mas "GoodLinks", id: 147_433_5294
 mas "Fantastical", id: 975_937_182
+mas "Hidden Bar", id: 145_245_3066
 mas "iA Writer", id: 775_737_590
 mas "Things 3", id: 904_280_696
 mas "Ulysses", id: 122_557_0693
@@ -125,8 +122,6 @@ mas "Velja", id: 160_763_5845
 vscode "astro-build.astro-vscode"
 # Ayu theme
 vscode "teabyii.ayu"
-# Black formatter for Python
-vscode "ms-python.black-formatter"
 # Copy file name command
 vscode "nemesv.copy-file-name"
 # Deno support
@@ -139,8 +134,6 @@ vscode "bmalehorn.vscode-fish"
 vscode "eamodio.gitlens"
 # File utils like deleting current file
 vscode "sleistner.vscode-fileutils"
-# GitHub Actions support
-vscode "github.vscode-github-actions"
 # Shift arguments left / right
 vscode "Gruntfuggly.shifter"
 # ESLint support
@@ -159,19 +152,10 @@ vscode "unifiedjs.vscode-mdx"
 vscode "esbenp.prettier-vscode"
 # Better TypeScript error highlighting
 vscode "YoavBls.pretty-ts-errors"
-# Python support
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
 # Typst support
 vscode "nvarner.typst-lsp"
 # Rust support
 vscode "rust-lang.rust-analyzer"
-# Swift support
-vscode "sswg.swift-lang"
-# Swiftformat support
-vscode "vknabel.vscode-swiftformat"
-# Swiftlint support
-vscode "vknabel.vscode-swiftlint"
 # Vim emulation
 vscode "vscodevim.vim"
 # Go-to-fuzzy-line
@@ -184,9 +168,9 @@ vscode "tamasfe.even-better-toml"
 vscode "clinyong.vscode-css-modules"
 # Bookmarks
 vscode "alefragnani.Bookmarks"
-# HTML CSS IntelliSense support
+# HTML/CSS support
 vscode "ecmel.vscode-html-css"
-# CSS Variables IntelliSense support
+# CSS Variables support
 vscode "vunguyentuan.vscode-css-variables"
 # Path autocompletion
 vscode "christian-kohler.path-intellisense"

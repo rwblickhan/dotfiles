@@ -46,6 +46,8 @@ cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
 # Terminal replacement
 cask "iterm2"
+# Fix mouse scrolling on Mac
+cask "mac-mouse-fix"
 # Better Spotlight
 cask "raycast"
 # VS Code
