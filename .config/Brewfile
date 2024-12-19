@@ -177,3 +177,5 @@ vscode "ziglang.vscode-zig"
 # GitHub Copilot
 vscode "GitHub.copilot-chat"
 vscode "GitHub.copilot"
+# Open in GitHub
+vscode "sysoev.vscode-open-in-github"
