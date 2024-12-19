@@ -212,6 +212,8 @@
   "zig.initialSetupDone": true,
   "zig.path": "/opt/homebrew/bin/zig",
   "zig.zls.path": "/Users/rwblickhan/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.statusBarItem.enabled": true,
   "remote.SSH.remotePlatform": {
     "coder-vscode.coder.descripthq.com--russell--rwblickhan": "linux",
     "coder-vscode.coder.descripthq.com--russell--rwblickhan--main": "linux"
