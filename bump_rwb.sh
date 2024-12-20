@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Log
+# @raycast.title Bump rwblickhan.org
 # @raycast.mode compact
 
 # Optional parameters:
