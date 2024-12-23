@@ -15,7 +15,6 @@
 rebase = false
 [alias]
   a = "add ."
-  auto = "!fish -c 'git commit -a -m $(~/utils/prepare-commit-msg.sh) && git push'"
   bd = "!fish -c 'git_fzf_branch_delete'"
   c = "!fish -c 'git_fzf_checkout'"
   cam = "commit -a -m"
