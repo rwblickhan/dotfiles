@@ -5,6 +5,7 @@ tap "dbcli/tap"
 
 # Better cat
 brew "bat"
+brew "bat-extras"
 # Terminal cheatsheets
 brew "cheat"
 # Structured diffs
