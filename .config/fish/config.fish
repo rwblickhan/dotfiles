@@ -31,6 +31,7 @@ alias ls "eza --icons"
 alias du dust
 alias find fd
 alias diff delta
+alias man "BAT_THEME='Monokai Extended' batman"
 
 if status is-interactive
     zoxide init fish --cmd cd | source
