@@ -1,3 +1,4 @@
 font-family = "FiraMono Nerd Font Mono"
 theme = "Tomorrow Night Bright"
 macos-titlebar-style = "tabs"
+focus-follows-mouse = true
