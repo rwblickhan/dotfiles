@@ -39,6 +39,7 @@ if status is-interactive
 
     abbr -a g git
     abbr -a gsp git stash pop
+    abbr -a gc git camp
     abbr -a j just
     abbr -a n nvim
     abbr -a p pnpm
