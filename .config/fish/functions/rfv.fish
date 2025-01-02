@@ -6,5 +6,5 @@ function rfv --description 'rg tui built with fzf and bat'
             --delimiter ':' \
             --preview "bat --color=always {1} --theme='Solarized (light)' --highlight-line {2}" \
             --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-            --bind "enter:become(code_demux {+1..2})"
+            --bind "enter:become(fish -c 'code_demux {+1..2}')"
 end
