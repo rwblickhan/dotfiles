@@ -61,7 +61,7 @@
   },
   "files.associations": {
     "*.css": "css",
-    "*.mdx": "markdown"
+    "*.mdx": "mdx"
   },
   // Show suggestions even in strings and comments (e.g. for Tailwind)
   "editor.quickSuggestions": {
@@ -200,6 +200,7 @@
   // Match <> as a pair in addition to standard pairs
   "vim.matchpairs": "(:),{:},[:],<:>",
   "vim.sneakReplacesF": true,
+  "vim.replaceWithRegister": true,
   "rust-analyzer.check.command": "clippy",
   "git.enableSmartCommit": true,
   "security.promptForLocalFileProtocolHandling": false,

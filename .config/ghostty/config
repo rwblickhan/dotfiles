@@ -1,0 +1,5 @@
+font-family = "FiraMono Nerd Font Mono"
+theme = "Tomorrow Night Bright"
+macos-titlebar-style = "tabs"
+keybind = alt+left=unbind
+keybind = alt+right=unbind

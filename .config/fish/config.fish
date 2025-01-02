@@ -23,7 +23,7 @@ set -gx FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always --line-ra
 # Editor
 set -gx EDITOR nvim
 
-set -gx LEDGER_FILE ~/Developer/finance/2024.journal
+set -gx LEDGER_FILE ~/Developer/finance/2025.journal
 
 # Aliases
 alias cat bat
@@ -31,6 +31,7 @@ alias ls "eza --icons"
 alias du dust
 alias find fd
 alias diff delta
+alias man "BAT_THEME='Monokai Extended' batman"
 
 if status is-interactive
     nodenv init - fish | source
@@ -40,6 +41,7 @@ if status is-interactive
 
     abbr -a g git
     abbr -a gsp git stash pop
+    abbr -a gc git camp
     abbr -a j just
     abbr -a n nvim
     abbr -a p pnpm
@@ -47,6 +49,9 @@ if status is-interactive
     abbr -a f rfv
     abbr -a z zed
     abbr -a bbic "brew bundle install --file=~/.config/Brewfile.minimal --no-lock && brew upgrade"
+    abbr -a --command gh pv 'pr view -v'
+    abbr -a --command gh ps 'pr status'
+    abbr -a --command gh pm 'pr merge'
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish

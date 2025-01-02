@@ -8,10 +8,10 @@ Plug('bkad/CamelCaseMotion')
 Plug('machakann/vim-swap')
 Plug('tadmccorkle/markdown.nvim')
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
-Plug('Shatur/neovim-ayu')
 Plug('junegunn/fzf')
 Plug('junegunn/fzf.vim')
 Plug('echasnovski/mini.nvim')
+Plug('vim-scripts/twilight256.vim')
 vim.call('plug#end')
 
 require('mini.basics').setup()
@@ -75,10 +75,11 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- Use ayu dark
-require('ayu').setup({
-  mirage = false,
-  terminal = true,
-  overrides = {},
+-- Set the background to black
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    vim.api.nvim_set_hl(0, 'Normal', { bg = '#000000' })
+  end
 })
-require('ayu').colorscheme()
+
+vim.cmd.colorscheme('twilight256')
