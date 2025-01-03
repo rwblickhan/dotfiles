@@ -12,6 +12,7 @@ Plug('junegunn/fzf')
 Plug('junegunn/fzf.vim')
 Plug('echasnovski/mini.nvim')
 Plug('vim-scripts/twilight256.vim')
+Plug('vim-scripts/ReplaceWithRegister')
 vim.call('plug#end')
 
 require('mini.basics').setup()
