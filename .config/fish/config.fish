@@ -47,6 +47,7 @@ if status is-interactive
     abbr -a f rfv
     abbr -a z zed
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
+    abbr -a --command git st 'stash'
     abbr -a --command gh pv 'pr view -w'
     abbr -a --command gh ps 'pr status'
     abbr -a --command gh pm 'pr merge'
