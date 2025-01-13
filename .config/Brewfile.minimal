@@ -48,6 +48,8 @@ cask "font-fira-mono-nerd-font"
 cask "ghostty"
 # Terminal replacement
 cask "iterm2"
+# Fix keymappings
+cask "karabiner-elements"
 # Fix mouse scrolling on Mac
 cask "mac-mouse-fix"
 # Better Spotlight

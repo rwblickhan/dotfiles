@@ -49,7 +49,6 @@ rebase = false
   rs = "!fish -c 'git_fzf_restore_staged'"
   rsw = "!fish -c 'git_fzf_restore_staged_worktree'"
   s = "status"
-  st = "stash"
   oops = "commit -a --no-edit --amend"
 [push]
   autoSetupRemote = true
