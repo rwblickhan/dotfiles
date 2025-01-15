@@ -35,6 +35,8 @@ require('mini.surround').setup({
     search_method = 'cover_or_next',
   })
 
+vim.keymap.set('n', 'j', 'gj', { noremap = true })
+vim.keymap.set('n', 'k', 'gk', { noremap = true })
 vim.keymap.set('n', 'H', '^', { noremap = true })
 vim.keymap.set('n', 'L', '$', { noremap = true })
 vim.keymap.set('v', 'H', '^', { noremap = true })
