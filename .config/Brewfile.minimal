@@ -44,10 +44,10 @@ brew "zoxide"
 # Fira Code / Fira Mono Nerd Fonts
 cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
+# Fix keymappings
+cask "hyperkey"
 # Terminal replacement
 cask "iterm2"
-# Fix keymappings
-cask "karabiner-elements"
 # Fix mouse scrolling on Mac
 cask "mac-mouse-fix"
 # Better Spotlight
