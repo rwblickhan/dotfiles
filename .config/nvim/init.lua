@@ -2,17 +2,16 @@ local vim = vim
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
-Plug('tpope/vim-repeat')
-Plug('tpope/vim-speeddating')
 Plug('bkad/CamelCaseMotion')
-Plug('machakann/vim-swap')
-Plug('tadmccorkle/markdown.nvim')
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+Plug('echasnovski/mini.nvim')
 Plug('junegunn/fzf')
 Plug('junegunn/fzf.vim')
-Plug('echasnovski/mini.nvim')
+Plug('machakann/vim-swap')
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+Plug('tadmccorkle/markdown.nvim')
+Plug('tpope/vim-repeat')
+Plug('tpope/vim-speeddating')
 Plug('vim-scripts/twilight256.vim')
-Plug('vim-scripts/ReplaceWithRegister')
 vim.call('plug#end')
 
 require('mini.basics').setup()
@@ -22,6 +21,7 @@ require('mini.completion').setup({})
 require('mini.diff').setup({})
 require('mini.git').setup({})
 require('mini.jump').setup()
+require('mini.operators').setup()
 require('mini.surround').setup({
     mappings = {
       add = 'ys',
@@ -35,6 +35,8 @@ require('mini.surround').setup({
     search_method = 'cover_or_next',
   })
 
+vim.keymap.set('n', 'j', 'gj', { noremap = true })
+vim.keymap.set('n', 'k', 'gk', { noremap = true })
 vim.keymap.set('n', 'H', '^', { noremap = true })
 vim.keymap.set('n', 'L', '$', { noremap = true })
 vim.keymap.set('v', 'H', '^', { noremap = true })
