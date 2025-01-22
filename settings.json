@@ -42,6 +42,9 @@
   "[typst]": {
     "editor.defaultFormatter": "nvarner.typst-lsp"
   },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
   // Validate SCSS with stylelint
   "stylelint.validate": ["css", "scss"],
   // Enable quick suggestions in Markdown / MDX
@@ -218,11 +221,10 @@
   "cSpell.userWords": ["descript", "testid"],
   "editor.accessibilitySupport": "off",
   "astro.content-intellisense": true,
-  "zig.initialSetupDone": true,
   "zig.path": "/opt/homebrew/bin/zig",
-  "zig.zls.path": "/Users/rwblickhan/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
   "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": true,
+  "zig.zls.enabled": "on",
   "remote.SSH.remotePlatform": {
     "coder-vscode.coder.descripthq.com--russell--rwblickhan": "linux",
     "coder-vscode.coder.descripthq.com--russell--rwblickhan--main": "linux"
