@@ -33,6 +33,9 @@ alias find fd
 alias diff delta
 alias man "BAT_THEME='Monokai Extended' batman"
 
+bind alt-backspace backward-kill-word
+bind ctrl-backspace backward-kill-token
+
 if status is-interactive
     zoxide init fish --cmd cd | source
     starship init fish | source
