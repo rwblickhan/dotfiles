@@ -41,6 +41,9 @@
   "[typst]": {
     "editor.defaultFormatter": "nvarner.typst-lsp"
   },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
   // Validate SCSS with stylelint
   "stylelint.validate": ["css", "scss"],
   // Enable quick suggestions in Markdown / MDX
