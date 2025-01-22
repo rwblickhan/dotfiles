@@ -98,6 +98,8 @@ cask "font-fira-mono-nerd-font"
 cask "ghostty"
 # Fix keymappings
 cask "hyperkey"
+# SVG editor
+cask "inkscape"
 # Terminal replacement
 cask "iterm2"
 # Fix mouse scrolling
