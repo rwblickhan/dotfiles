@@ -179,12 +179,13 @@
       "commands": ["editor.showCallHierarchy"]
     },
     // Bookmarks hotkeys
+    { "before": ["m"], "commands": ["bookmarks.toggle"] },
     {
-      "before": ["g", "l"],
+      "before": ["'"],
       "commands": ["bookmarks.list"]
     },
     {
-      "before": ["g", "L"],
+      "before": ["\""],
       "commands": ["bookmarks.listFromAllFiles"]
     }
   ],
