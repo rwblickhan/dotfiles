@@ -41,8 +41,6 @@ if status is-interactive
     starship init fish | source
 
     abbr -a g git
-    abbr -a gsp git stash pop
-    abbr -a gc git camp
     abbr -a j just
     abbr -a n nvim
     abbr -a p pnpm
@@ -51,6 +49,7 @@ if status is-interactive
     abbr -a z zed
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile --no-lock && brew upgrade"
     abbr -a --command git st 'stash'
+    abbr -a --command git sp 'stash pop'
     abbr -a --command gh pv 'pr view -w'
     abbr -a --command gh ps 'pr status'
     abbr -a --command gh pm 'pr merge'
