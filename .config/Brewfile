@@ -96,8 +96,6 @@ cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
 # Better terminal
 cask "ghostty"
-# Fix keymappings
-cask "hyperkey"
 # SVG editor
 cask "inkscape"
 # Terminal replacement
