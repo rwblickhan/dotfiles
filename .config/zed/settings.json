@@ -8,7 +8,7 @@
 // from the command palette or from `Zed` application menu.
 {
   "buffer_font_family": "FiraMono Nerd Font Mono",
-  "theme": "Twilight",
+  "theme": "Tomorrow at Midnight Min",
   // vim-related settings
   "vim_mode": true,
   "vim": {

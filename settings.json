@@ -233,5 +233,7 @@
   "remote.SSH.connectTimeout": 1800,
   "git.confirmSync": false,
   // https://github.com/microsoft/vscode/issues/98594
-  "search.followSymlinks": false
+  "search.followSymlinks": false,
+  "zig.zls.enabled": "on",
+  "search.useParentIgnoreFiles": true
 }
