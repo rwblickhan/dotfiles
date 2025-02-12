@@ -223,5 +223,6 @@
   "zig.path": "/opt/homebrew/bin/zig",
   "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": true,
-  "zig.zls.enabled": "on"
+  "zig.zls.enabled": "on",
+  "search.useParentIgnoreFiles": true
 }
