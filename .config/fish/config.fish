@@ -55,6 +55,8 @@ if status is-interactive
     abbr -a --command gh pv 'pr view -w'
     abbr -a --command gh ps 'pr status'
     abbr -a --command gh pm 'pr merge'
+    abbr -a --command gt r 'restack'
+    abbr -a --command gt s 'sync'
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
