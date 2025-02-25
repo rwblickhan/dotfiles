@@ -60,6 +60,8 @@ if status is-interactive
     abbr -a --command gt r 'restack'
     abbr -a --command gt s 'sync'
     abbr -a --command gt t 'top'
+    abbr -a --command gt u 'up'
+    abbr -a --command gt d 'down'
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
