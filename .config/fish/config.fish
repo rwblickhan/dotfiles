@@ -49,7 +49,8 @@ if status is-interactive
     abbr -a bbic "brew bundle install --file=~/.config/Brewfile.minimal --no-lock && brew upgrade"
     abbr -a --command git br 'branch'
     abbr -a --command git st 'stash'
-    abbr -a --command git sp 'stash pop'
+    abbr -a --command git stp 'stash pop'
+    abbr -a --command git std 'stash drop'
     abbr -a --command gh pv 'pr view -w'
     abbr -a --command gh ps 'pr status'
     abbr -a --command gh pm 'pr merge'
