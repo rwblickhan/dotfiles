@@ -75,15 +75,6 @@
     "key": "cmd+k cmd+r",
     "command": "git.revertSelectedRanges"
   },
-  // Use Cmd-f for fuzzy-find instead
-  {
-    "key": "cmd+f",
-    "command": "-actions.find"
-  },
-  {
-    "key": "cmd+f",
-    "command": "go-to-fuzzy.find"
-  },
   // fish-like keybindings: Ctrl-f for GitHub Copilot suggestions
   {
     "key": "ctrl+f",
