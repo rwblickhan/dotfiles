@@ -39,14 +39,6 @@
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[typst]": {
-    "editor.defaultFormatter": "nvarner.typst-lsp"
-  },
-  "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
-  },
-  // Validate SCSS with stylelint
-  "stylelint.validate": ["css", "scss"],
   // Enable quick suggestions in Markdown / MDX
   "[markdown]": {
     "editor.quickSuggestions": {
@@ -94,22 +86,6 @@
   // Force Emmet suggestions to show up at the bottom
   "emmet.showSuggestionsAsSnippets": true,
   "editor.snippetSuggestions": "bottom",
-  // Turn off a couple annoying Markdownlint warnings
-  "markdownlint.config": {
-    "line-length": false,
-    "single-trailing-newline": false
-  },
-  "typst-lsp.experimentalFormatterMode": "on",
-  // Don't export PDF via typst-lsp; use typst watch instead
-  "typst-lsp.exportPdf": "never",
-  "swiftformat.onlyEnableWithConfig": true,
-  "swiftlint.onlyEnableWithConfig": true,
-  "swiftformat.path": ["/opt/homebrew/bin/swiftformat"],
-  "swiftlint.path": ["/opt/homebrew/bin/swiftlint"],
-  // General lldb config (for swift lsp)
-  "lldb.library": "/Applications/Xcode-15.2.0-Beta.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
-  "lldb.launch.expressions": "native",
-  "deno.path": "/opt/homebrew/bin/deno",
   "vim.camelCaseMotion.enable": true,
   "vim.highlightedyank.enable": true,
   "vim.targets.enable": true,
@@ -220,12 +196,8 @@
   "editor.accessibilitySupport": "off",
   "git.openRepositoryInParentFolders": "always",
   "cSpell.userWords": ["descript", "testid"],
-  "editor.accessibilitySupport": "off",
-  "astro.content-intellisense": true,
-  "zig.path": "/opt/homebrew/bin/zig",
   "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": true,
-  "zig.zls.enabled": "on",
   "remote.SSH.remotePlatform": {
     "coder-vscode.coder.descripthq.com--russell--rwblickhan": "linux",
     "coder-vscode.coder.descripthq.com--russell--rwblickhan--main": "linux"
@@ -234,6 +206,5 @@
   "git.confirmSync": false,
   // https://github.com/microsoft/vscode/issues/98594
   "search.followSymlinks": false,
-  "zig.zls.enabled": "on",
   "search.useParentIgnoreFiles": true
 }
