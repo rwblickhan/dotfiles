@@ -11,3 +11,4 @@
 .config/configstore
 .config/graphite/user_config
 .config/qBittorrent/
+.config/graphite/user_config
