@@ -46,7 +46,7 @@ if status is-interactive
     abbr -a px "pnpm exec"
     abbr -a f rfv
     abbr -a z zed
-    abbr -a bbic "brew bundle install --file=~/.config/Brewfile.minimal --no-lock && brew upgrade"
+    abbr -a bbic "brew bundle install --file=~/.config/Brewfile.minimal && brew upgrade"
     abbr -a --command git br 'branch'
     abbr -a --command git st 'stash'
     abbr -a --command git stp 'stash pop'
