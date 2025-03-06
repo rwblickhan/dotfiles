@@ -9,3 +9,4 @@
 .config/configstore
 .config/gcloud
 .config/qBittorrent/
+.config/graphite/user_config
