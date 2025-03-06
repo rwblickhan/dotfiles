@@ -159,8 +159,6 @@ vscode "nvarner.typst-lsp"
 vscode "rust-lang.rust-analyzer"
 # Vim emulation
 vscode "vscodevim.vim"
-# Go-to-fuzzy-line
-vscode "rbaumier.go-to-fuzzy"
 # Stylelint support
 vscode "stylelint.vscode-stylelint"
 # TOML support
