@@ -98,8 +98,6 @@ cask "font-fira-mono-nerd-font"
 cask "ghostty"
 # SVG editor
 cask "inkscape"
-# Terminal replacement
-cask "iterm2"
 # Fix mouse scrolling
 cask "mac-mouse-fix"
 # Better Spotlight
