@@ -47,6 +47,7 @@ if status is-interactive
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile && brew upgrade"
     abbr -a --command git br 'branch'
     abbr -a --command git st 'stash'
+    abbr -a --command git sts 'stash show -p'
     abbr -a --command git stp 'stash pop'
     abbr -a --command git std 'stash drop'
     abbr -a --command gh pv 'pr view -w'
