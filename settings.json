@@ -149,6 +149,11 @@
       "before": ["g", ">"],
       "commands": ["shiftArgumentRight"]
     },
+    // Open file on remote
+    {
+      "before": ["g", "o"],
+      "commands": ["gitlens.openFileOnRemote"]
+    },
     // Call hierarchy
     {
       "before": ["g", "y"],
