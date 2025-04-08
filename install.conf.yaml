@@ -34,6 +34,10 @@
       create: true
       force: true
       path: utils
+    ~/.hammerspoon:
+      create: true
+      force: true
+      path: .hammerspoon
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

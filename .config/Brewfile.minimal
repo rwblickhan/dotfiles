@@ -44,8 +44,10 @@ brew "zoxide"
 # Fira Code / Fira Mono Nerd Fonts
 cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
-# Terminal replacement
-cask "iterm2"
+# Better terminal
+cask "ghostty"
+# Various configurations
+cask "hammerspoon"
 # Fix mouse scrolling on Mac
 cask "mac-mouse-fix"
 # Better Spotlight
