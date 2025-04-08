@@ -46,8 +46,8 @@ cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
 # Better terminal
 cask "ghostty"
-# Terminal replacement
-cask "iterm2"
+# Various configurations
+cask "hammerspoon"
 # Fix mouse scrolling on Mac
 cask "mac-mouse-fix"
 # Better Spotlight

@@ -96,6 +96,8 @@ cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
 # Better terminal
 cask "ghostty"
+# Various configurations
+cask "hammerspoon"
 # SVG editor
 cask "inkscape"
 # Fix mouse scrolling
