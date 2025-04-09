@@ -211,5 +211,11 @@
   "git.confirmSync": false,
   // https://github.com/microsoft/vscode/issues/98594
   "search.followSymlinks": false,
-  "search.useParentIgnoreFiles": true
+  "search.useParentIgnoreFiles": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  }
 }
