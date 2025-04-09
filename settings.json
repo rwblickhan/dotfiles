@@ -229,5 +229,11 @@
   "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": true,
   "zig.zls.enabled": "on",
-  "search.useParentIgnoreFiles": true
+  "search.useParentIgnoreFiles": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  }
 }
