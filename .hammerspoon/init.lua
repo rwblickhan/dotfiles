@@ -1,8 +1,11 @@
-hs.hotkey.bind({"rightCtrl"}, "x", function()
+hs.loadSpoon("LeftRightHotkey")
+spoon.LeftRightHotkey:start()
+
+local function typeCheckbox()
     hs.eventtap.keyStrokes("- [x]")
-end)
-hs.hotkey.bind({"rightAlt"}, "x", function()
-    hs.eventtap.keyStrokes("- [x]")
-end)
+end
+
+spoon.LeftRightHotkey:bind({"rCtrl"}, "x", typeCheckbox)
+spoon.LeftRightHotkey:bind({"rOpt"}, "x", typeCheckbox)
 
 print("Markdown checkbox config created!")
