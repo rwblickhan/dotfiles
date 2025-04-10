@@ -61,10 +61,21 @@ local function typeCheckbox()
     hs.eventtap.keyStrokes("- [x]")
 end
 
-spoon.LeftRightHotkey:bind({"rCtrl"}, "x", typeCheckbox)
+local function searchHighlighted()
+    hs.eventtap.keyStroke({"cmd"}, "c")
+    hs.timer.doAfter(0.1, function()
+        hs.eventtap.keyStroke({"cmd"}, "f")
+        hs.timer.doAfter(0.1, function()
+            hs.eventtap.keyStroke({"cmd"}, "v")
+        end)
+    end)
+end
+
 spoon.LeftRightHotkey:bind({"rOpt"}, "x", typeCheckbox)
 print("Markdown checkbox config created!")
 
-spoon.LeftRightHotkey:bind({"rCtrl"}, "l", typeMarkdownLink)
 spoon.LeftRightHotkey:bind({"rOpt"}, "l", typeMarkdownLink)
 print("Markdown link config created!")
+
+spoon.LeftRightHotkey:bind({"rOpt"}, "f", searchHighlighted)
+print("Search highlighted config created!")
