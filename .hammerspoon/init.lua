@@ -40,7 +40,7 @@ local function findURLAndText()
     return recentText, recentURL
 end
 
-local function createMarkdownLink()
+local function typeMarkdownLink()
     local text, url = findURLAndText()
     
     if not text then
@@ -65,6 +65,6 @@ spoon.LeftRightHotkey:bind({"rCtrl"}, "x", typeCheckbox)
 spoon.LeftRightHotkey:bind({"rOpt"}, "x", typeCheckbox)
 print("Markdown checkbox config created!")
 
-spoon.LeftRightHotkey:bind({"rCtrl"}, "l", createMarkdownLink)
-spoon.LeftRightHotkey:bind({"rOpt"}, "l", createMarkdownLink)
+spoon.LeftRightHotkey:bind({"rCtrl"}, "l", typeMarkdownLink)
+spoon.LeftRightHotkey:bind({"rOpt"}, "l", typeMarkdownLink)
 print("Markdown link config created!")
