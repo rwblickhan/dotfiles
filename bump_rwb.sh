@@ -12,4 +12,4 @@
 # @raycast.author rwblickhan
 # @raycast.authorURL https://raycast.com/rwblickhan
 
-just bump_rwb
+fish -c bump_rwb

@@ -6,6 +6,7 @@ fish_add_path /Users/rwblickhan/.cargo/bin
 ## pnpm paths
 fish_add_path /Users/rwblickhan/.local/bin
 fish_add_path ~/utils
+fish_add_path ~/bin
 
 # pnpm variables
 set -gx PNPM_HOME /Users/rwblickhan/Library/pnpm
