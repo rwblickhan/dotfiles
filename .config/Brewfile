@@ -20,6 +20,8 @@ brew "dust"
 brew "eza"
 # Better find
 brew "fd"
+# ffmpeg support for yt-dlp
+brew "ffmpeg"
 # Better shell
 brew "fish"
 # Fuzzy finder
@@ -82,6 +84,8 @@ brew "tealdeer"
 brew "typst"
 # Directory watcher
 brew "watchexec"
+# YouTube downloader
+brew "yt-dlp"
 # Better c
 brew "zig"
 # Better cd
