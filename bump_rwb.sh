@@ -12,4 +12,4 @@
 # @raycast.author rwblickhan
 # @raycast.authorURL https://raycast.com/rwblickhan
 
-cd ~/Developer/astro-rwblickhan.org && just log
+fish -c bump_rwb
