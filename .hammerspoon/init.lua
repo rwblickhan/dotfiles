@@ -5,6 +5,42 @@ spoon.LeftRightHotkey:start()
 local clipboardHistory = {}
 local maxClipboardHistory = 10
 
+-- Submit arrow keys when pressing ctrl + mouse buttons
+local bracketTap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
+    local keyCode = event:getKeyCode()
+    -- ctrl is coming from the keyboard, but if this event is coming from the
+    -- mouse, that won't be picked up in flags
+    local keyboardModifiers = hs.eventtap.checkKeyboardModifiers()
+    if keyboardModifiers then
+        -- ]
+        if keyCode == 30 and keyboardModifiers.ctrl then
+            if keyboardModifiers.alt then
+                hs.eventtap.event.newKeyEvent({ 'alt' }, "up", true):post()
+                hs.eventtap.event.newKeyEvent({ 'alt' }, "up", false):post()
+            else
+                hs.eventtap.event.newKeyEvent({}, "up", true):post()
+                hs.eventtap.event.newKeyEvent({}, "up", false):post()
+            end
+            return true
+        end
+        -- [
+        if keyCode == 33 and keyboardModifiers.ctrl then
+            if keyboardModifiers.alt then
+                hs.eventtap.event.newKeyEvent({ 'alt' }, "down", true):post()
+                hs.eventtap.event.newKeyEvent({ 'alt' }, "down", false):post()
+            else
+                hs.eventtap.event.newKeyEvent({}, "down", true):post()
+                hs.eventtap.event.newKeyEvent({}, "down", false):post()
+            end
+            return true
+        end
+    end
+
+    return false
+end)
+bracketTap:start()
+print("Bracket arrow keys enabled!")
+
 -- Insert clipboard changes into local memory
 local clipboardWatcher = hs.pasteboard.watcher.new(function(contents)
     if contents then
