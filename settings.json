@@ -235,5 +235,8 @@
     "plaintext": false,
     "markdown": true,
     "scminput": false
-  }
+  },
+  "Lua.workspace.library": [
+    "/Users/rwblickhan/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
+  ]
 }
