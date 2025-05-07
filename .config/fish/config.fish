@@ -62,7 +62,7 @@ if status is-interactive
       starship init fish | source
     end
 
-    abbr -a c code
+    abbr -a co code
     abbr -a f rfv
     abbr -a g git
     abbr -a j just
