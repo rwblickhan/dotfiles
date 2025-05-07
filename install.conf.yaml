@@ -3,6 +3,8 @@
     link:
       relink: true
 
+- clean: ["~"]
+
 - link:
     ~/Library/Application Support/Code/User/settings.json:
       create: true
