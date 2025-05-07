@@ -8,6 +8,8 @@ fish_add_path /Users/rwblickhan/.local/bin
 fish_add_path ~/utils
 fish_add_path ~/bin
 
+set -gx MANPATH $MANPATH ~/man
+
 # pnpm variables
 set -gx PNPM_HOME /Users/rwblickhan/Library/pnpm
 set -gx PATH "$PNPM_HOME" $PATH
@@ -40,19 +42,21 @@ if status is-interactive
     zoxide init fish --cmd cd | source
     starship init fish | source
 
+    abbr -a c code
+    abbr -a f rfv
     abbr -a g git
     abbr -a j just
     abbr -a n nvim
     abbr -a p pnpm
-    abbr -a px "pnpm exec"
-    abbr -a f rfv
     abbr -a z zed
     abbr -a bbic "brew bundle install --file=~/.config/Brewfile.minimal && brew upgrade"
+
     abbr -a --command git br 'branch'
     abbr -a --command git st 'stash'
     abbr -a --command git sts 'stash show -p'
     abbr -a --command git stp 'stash pop'
     abbr -a --command git std 'stash drop'
+
     abbr -a --command gh pv 'pr view -w'
     abbr -a --command gh ps 'pr status'
     abbr -a --command gh pm 'pr merge'
@@ -65,6 +69,3 @@ if status is-interactive
     abbr -a --command gt u 'up'
     abbr -a --command gt d 'down'
 end
-
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
