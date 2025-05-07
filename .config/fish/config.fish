@@ -40,19 +40,21 @@ if status is-interactive
     zoxide init fish --cmd cd | source
     starship init fish | source
 
+    abbr -a c code
+    abbr -a f rfv
     abbr -a g git
     abbr -a j just
     abbr -a n nvim
     abbr -a p pnpm
-    abbr -a px "pnpm exec"
-    abbr -a f rfv
     abbr -a z zed
+
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile && brew upgrade"
     abbr -a --command git br 'branch'
     abbr -a --command git st 'stash'
     abbr -a --command git sts 'stash show -p'
     abbr -a --command git stp 'stash pop'
     abbr -a --command git std 'stash drop'
+
     abbr -a --command gh pv 'pr view -w'
     abbr -a --command gh ps 'pr status'
     abbr -a --command gh pm 'pr merge'
