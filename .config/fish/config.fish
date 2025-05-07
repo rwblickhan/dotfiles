@@ -8,6 +8,8 @@ fish_add_path /Users/rwblickhan/.local/bin
 fish_add_path ~/utils
 fish_add_path ~/bin
 
+set -gx MANPATH $MANPATH ~/man
+
 # pnpm variables
 set -gx PNPM_HOME /Users/rwblickhan/Library/pnpm
 set -gx PATH "$PNPM_HOME" $PATH
