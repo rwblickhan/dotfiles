@@ -71,7 +71,5 @@ vscode "Gruntfuggly.shifter"
 vscode "YoavBls.pretty-ts-errors"
 # Vim emulation
 vscode "vscodevim.vim"
-# Go-to-fuzzy-line
-vscode "rbaumier.go-to-fuzzy"
 # Bookmarks
 vscode "alefragnani.Bookmarks"
