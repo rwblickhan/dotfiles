@@ -29,18 +29,38 @@ set -gx EDITOR nvim
 set -gx LEDGER_FILE ~/Developer/finance/2025.journal
 
 # Aliases
-alias cat bat
-alias ls "eza --icons"
-alias du dust
-alias find fd
-alias diff delta
-alias man "BAT_THEME='Monokai Extended' batman"
+if command -sq bat
+  alias cat bat
+end
+if command -sq eza
+  alias ls "eza --icons"
+end
+if command -sq dust
+  alias du dust
+end
+if command -sq fd
+  alias find fd
+end
+if command -sq delta
+  alias diff delta
+end
+if command -sq batman
+  alias man "BAT_THEME='Monokai Extended' batman"
+end
 
 if status is-interactive
-    nodenv init - fish | source
-    pyenv init - | source
-    zoxide init fish --cmd cd | source
-    starship init fish | source
+    if command -sq nodenv
+      nodenv init - fish | source
+    end
+    if command -sq pyenv
+      pyenv init - | source
+    end
+    if command -sq zoxide
+      zoxide init fish --cmd cd | source
+    end
+    if command -sq starship
+      starship init fish | source
+    end
 
     abbr -a c code
     abbr -a f rfv
