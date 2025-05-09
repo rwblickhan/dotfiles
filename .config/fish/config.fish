@@ -69,6 +69,8 @@ if status is-interactive
     abbr -a n nvim
     abbr -a p pnpm
     abbr -a z zed
+    abbr -a api "code ~/descript/services/api"
+    abbr -a client "code ~/descript/pkg-js/client"
     abbr -a bbic "brew bundle install --file=~/.config/Brewfile.minimal && brew upgrade"
 
     abbr -a --command git br 'branch'
