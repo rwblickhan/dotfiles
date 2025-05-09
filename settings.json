@@ -2,7 +2,6 @@
   "files.autoSave": "onFocusChange",
   "editor.formatOnSave": true,
   "editor.stickyScroll.enabled": true,
-  "editor.linkedEditing": true,
   // Use Fira Mono
   "editor.fontFamily": "'FiraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.lineNumbers": "relative",
