@@ -91,5 +91,5 @@ if status is-interactive
 
     abbr -a api 'code ~/descript/services/api'
     abbr -a client 'code ~/descript/pkg-js/client'
-    abbr -a sync 'git checkout main && gt sync'
+    abbr -a sync 'git checkout main && gt sync && gt ss -u'
 end
