@@ -84,11 +84,11 @@ if status is-interactive
     abbr -a --command gt c 'create'
     abbr -a --command gt ct 'continue'
     abbr -a --command gt r 'restack'
-    abbr -a --command gt s 'sync'
     abbr -a --command gt t 'top'
     abbr -a --command gt u 'up'
     abbr -a --command gt d 'down'
 
     abbr -a --position command api 'code ~/descript/services/api'
     abbr -a --position command client 'code ~/descript/pkg-js/client'
+    abbr -a --position command sync 'git checkout main && gt sync'
 end
