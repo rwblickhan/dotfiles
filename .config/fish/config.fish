@@ -88,4 +88,7 @@ if status is-interactive
     abbr -a --command gt t 'top'
     abbr -a --command gt u 'up'
     abbr -a --command gt d 'down'
+
+    abbr -a --position command api 'code ~/descript/services/api'
+    abbr -a --position command client 'code ~/descript/pkg-js/client'
 end
