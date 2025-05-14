@@ -43,6 +43,9 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
   // Validate SCSS with stylelint
   "stylelint.validate": ["css", "scss"],
   // Enable quick suggestions in Markdown / MDX
@@ -233,9 +236,12 @@
     "*": true,
     "plaintext": false,
     "markdown": true,
-    "scminput": false
+    "scminput": false,
+    "svelte": false,
+    "rust": false
   },
   "Lua.workspace.library": [
     "/Users/rwblickhan/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
-  ]
+  ],
+  "svelte.enable-ts-plugin": true
 }
