@@ -38,6 +38,18 @@
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[typst]": {
+    "editor.defaultFormatter": "nvarner.typst-lsp"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
   // Enable quick suggestions in Markdown / MDX
   "[markdown]": {
     "editor.quickSuggestions": {
@@ -215,9 +227,12 @@
     "*": true,
     "plaintext": false,
     "markdown": true,
-    "scminput": false
+    "scminput": false,
+    "svelte": false,
+    "rust": false
   },
   "Lua.workspace.library": [
     "/Users/rwblickhan/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
-  ]
+  ],
+  "svelte.enable-ts-plugin": true
 }
