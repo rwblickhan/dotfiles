@@ -92,4 +92,5 @@ if status is-interactive
     abbr -a api 'code ~/descript/services/api'
     abbr -a client 'code ~/descript/pkg-js/client'
     abbr -a sync 'git checkout main && gt sync && gt ss -u'
+    abbr -a start-web 'pnpm run start-web-secure'
 end
