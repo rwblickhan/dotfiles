@@ -54,6 +54,64 @@ if clipboardWatcher then
     clipboardWatcher:start()
 end
 
+local function chromeDuplicator()
+    local chrome = hs.application.find("Google Chrome")
+    if not chrome then return end
+
+    local originalWindow = chrome:focusedWindow()
+    if not originalWindow then return end
+    local originalFrame = originalWindow:frame()
+
+    hs.eventtap.keyStroke({ "cmd" }, "l")
+    hs.timer.doAfter(0.1, function()
+        hs.eventtap.keyStroke({ "cmd" }, "c")
+
+        hs.timer.doAfter(0.1, function()
+            hs.eventtap.keyStroke({ "cmd" }, "n")
+
+            hs.timer.doAfter(0.1, function()
+                hs.eventtap.keyStroke({ "cmd" }, "v")
+                hs.eventtap.keyStroke({}, "return")
+
+                hs.timer.doAfter(0.1, function()
+                    local newWindow = chrome:focusedWindow()
+                    if not newWindow then return end
+
+                    local screen = hs.screen.mainScreen()
+                    local screenFrame = screen:frame()
+
+                    local newFrame = hs.geometry.rect(
+                        originalFrame.x + originalFrame.w,
+                        originalFrame.y,
+                        originalFrame.w,
+                        originalFrame.h
+                    )
+                    if newFrame.x + newFrame.w > screenFrame.x + screenFrame.w then
+                        local leftFrame = hs.geometry.rect(
+                            screenFrame.x,
+                            originalFrame.y,
+                            originalFrame.w,
+                            originalFrame.h
+                        )
+
+                        local rightFrame = hs.geometry.rect(
+                            screenFrame.x + originalFrame.w,
+                            originalFrame.y,
+                            originalFrame.w,
+                            originalFrame.h
+                        )
+
+                        originalWindow:setFrame(leftFrame)
+                        newWindow:setFrame(rightFrame)
+                    else
+                        newWindow:setFrame(newFrame)
+                    end
+                end)
+            end)
+        end)
+    end)
+end
+
 local function isURL(text)
     if not text then return false end
     local pattern = "^https?://[%w-_%.%?%.:/%+=&%%]+$"
@@ -118,3 +176,6 @@ print("Markdown link config created!")
 
 spoon.LeftRightHotkey:bind({ "rOpt" }, "f", searchHighlighted)
 print("Search highlighted config created!")
+
+spoon.LeftRightHotkey:bind({ "rOpt" }, "d", chromeDuplicator)
+print("Chrome duplicator config created!")
