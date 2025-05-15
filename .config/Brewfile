@@ -62,6 +62,8 @@ brew "pnpm"
 brew "just"
 # Pretty-print json
 brew "jq"
+# Backups
+brew "restic"
 # Better grep
 brew "ripgrep"
 # Better sed
