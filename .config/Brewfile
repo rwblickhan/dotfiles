@@ -188,5 +188,5 @@ vscode "GitHub.copilot-chat"
 vscode "GitHub.copilot"
 # Open in GitHub
 vscode "sysoev.vscode-open-in-github"
-# Lit
-vscode "runem.lit-plugin"
+# Svelt
+vscode "svelte.svelte-vscode"
