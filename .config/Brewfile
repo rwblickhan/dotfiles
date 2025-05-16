@@ -6,6 +6,8 @@ tap "dbcli/tap"
 # Better cat
 brew "bat"
 brew "bat-extras"
+# Install rust binaries
+brew "cargo-binstall"
 # Terminal cheatsheets
 brew "cheat"
 # Structured diffs

@@ -235,10 +235,11 @@
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,
-    "markdown": true,
+    "markdown": false,
     "scminput": false,
     "svelte": false,
-    "rust": false
+    "rust": false,
+    "mdx": false
   },
   "Lua.workspace.library": [
     "/Users/rwblickhan/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
