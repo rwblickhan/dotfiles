@@ -179,3 +179,11 @@ print("Search highlighted config created!")
 
 spoon.LeftRightHotkey:bind({ "rOpt" }, "d", chromeDuplicator)
 print("Chrome duplicator config created!")
+
+spoon.LeftRightHotkey:bind({ "rOpt" }, "j", function()
+    hs.eventtap.keyStroke({}, "down") 
+end)
+spoon.LeftRightHotkey:bind({ "rOpt" }, "k", function()
+    hs.eventtap.keyStroke({}, "up") 
+end)
+print("Up/down hotkey config created!")
