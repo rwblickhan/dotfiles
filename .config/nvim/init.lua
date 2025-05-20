@@ -6,6 +6,7 @@ Plug('bkad/CamelCaseMotion')
 Plug('echasnovski/mini.nvim')
 Plug('machakann/vim-swap')
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+Plug('nvim-treesitter/nvim-treesitter-textobjects')
 Plug('tpope/vim-repeat')
 Plug('tpope/vim-speeddating')
 Plug('vim-scripts/twilight256.vim')
@@ -34,6 +35,8 @@ require('mini.surround').setup({
 
 vim.keymap.set('n', 'j', 'gj', { noremap = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true })
+vim.keymap.set('n', 'gj', 'j', { noremap = true })
+vim.keymap.set('n', 'gk', 'k', { noremap = true })
 vim.keymap.set('n', 'H', '^', { noremap = true })
 vim.keymap.set('n', 'L', '$', { noremap = true })
 vim.keymap.set('v', 'H', '^', { noremap = true })
@@ -83,3 +86,44 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 })
 
 vim.cmd.colorscheme('twilight256')
+
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["af"] = "@function.outer",  -- around function
+        ["if"] = "@function.inner",  -- inner function
+        ["ac"] = "@class.outer",     -- around class
+        ["ic"] = "@class.inner",     -- inner class
+      },
+      include_surrounding_whitespace = true,
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    },
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+      },
+    },
+  },
+}
