@@ -6,6 +6,8 @@ tap "dbcli/tap"
 # Better cat
 brew "bat"
 brew "bat-extras"
+# Install rust binaries
+brew "cargo-binstall"
 # Terminal cheatsheets
 brew "cheat"
 # Structured diffs
@@ -62,6 +64,8 @@ brew "pnpm"
 brew "just"
 # Pretty-print json
 brew "jq"
+# Backups
+brew "restic"
 # Better grep
 brew "ripgrep"
 # Better sed
@@ -184,5 +188,5 @@ vscode "GitHub.copilot-chat"
 vscode "GitHub.copilot"
 # Open in GitHub
 vscode "sysoev.vscode-open-in-github"
-# Lit
-vscode "runem.lit-plugin"
+# Svelt
+vscode "svelte.svelte-vscode"

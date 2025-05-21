@@ -14,3 +14,4 @@
 .config/graphite/user_config
 .hammerspoon/Spoons/EmmyLua.spoon/annotations/
 .config/rclone/rclone.conf
+secrets.fish

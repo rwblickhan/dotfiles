@@ -70,6 +70,7 @@ if status is-interactive
     abbr -a p pnpm
     abbr -a z zed
     abbr -a bbic "brew bundle install --file=~/.config/Brewfile.minimal && brew upgrade"
+    abbr -a --position anywhere r2b s3:https://d68842214bc7eab6283e7ef8876b12e6.r2.cloudflarestorage.com/backups
 
     abbr -a --command git br 'branch'
     abbr -a --command git st 'stash'
