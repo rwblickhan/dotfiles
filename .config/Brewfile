@@ -114,6 +114,8 @@ cask "mac-mouse-fix"
 cask "raycast"
 # VS Code
 cask "visual-studio-code"
+# Better terminal
+cask "wezterm"
 # Install Xcode easily
 cask "xcodes"
 # Zen web browser
