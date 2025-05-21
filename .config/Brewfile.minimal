@@ -52,6 +52,8 @@ cask "hammerspoon"
 cask "mac-mouse-fix"
 # Better Spotlight
 cask "raycast"
+# Better terminal
+cask "wezterm"
 # VS Code
 cask "visual-studio-code"
 
