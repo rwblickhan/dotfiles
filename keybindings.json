@@ -74,5 +74,16 @@
   {
     "key": "cmd+k cmd+r",
     "command": "git.revertSelectedRanges"
+  },
+  // Allowing escape in vim mode even if a Copilot suggestion is visible
+  {
+    "key": "escape",
+    "command": "extension.vim_escape",
+    "when": "editorTextFocus && vim.active && !dirtyDiffVisible && !inDebugRepl && !inlineEditIsVisible && !inlineSuggestionVisible && !notebookEditorFocused && !suggestWidgetVisible && !testing.isInPeek && !testing.isPeekVisible || editorTextFocus && vim.active && !dirtyDiffVisible && !inDebugRepl && !inlineEditIsVisible && !suggestWidgetVisible && !testing.isInPeek && !testing.isPeekVisible && vim.mode == 'Insert'"
+  },
+  {
+    "key": "escape",
+    "command": "-extension.vim_escape",
+    "when": "editorTextFocus && vim.active && !dirtyDiffVisible && !inDebugRepl && !inlineEditIsVisible && !inlineSuggestionVisible && !notebookEditorFocused && !suggestWidgetVisible && !testing.isInPeek && !testing.isPeekVisible || editorTextFocus && vim.active && !dirtyDiffVisible && !inDebugRepl && !inlineEditIsVisible && !inlineSuggestionVisible && !suggestWidgetVisible && !testing.isInPeek && !testing.isPeekVisible && vim.mode == 'Insert'"
   }
 ]
