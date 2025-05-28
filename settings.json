@@ -235,5 +235,8 @@
   "Lua.workspace.library": [
     "/Users/rwblickhan/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
   ],
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
 }
