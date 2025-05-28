@@ -104,7 +104,7 @@ vim.opt.clipboard:append('unnamedplus')
 vim.g.camelcasemotion_key = '<leader>'
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "markdown", "markdown_inline", "ledger", "lua", "typescript", "tsx" },
+  ensure_installed = { "astro", "markdown", "markdown_inline", "ledger", "lua", "typescript", "tsx" },
   -- Use treesitter highlighting
   highlight = {
     enable = true,
