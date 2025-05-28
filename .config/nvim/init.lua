@@ -4,7 +4,6 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 Plug('bkad/CamelCaseMotion')
 Plug('echasnovski/mini.nvim')
-Plug('machakann/vim-swap')
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 Plug('nvim-treesitter/nvim-treesitter-textobjects')
 Plug('tpope/vim-repeat')
@@ -59,13 +58,6 @@ vim.opt.clipboard:append('unnamedplus')
 -- Use \ as CamelCaseMotion hotkey
 vim.g.camelcasemotion_key = '<leader>'
 
--- Highlight on yank 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 150 })
-  end,
-})
-
 require('nvim-treesitter.configs').setup {
   ensure_installed = { "markdown", "markdown_inline", "ledger", "lua" },
   -- Use treesitter highlighting
@@ -78,14 +70,6 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- Set the background to black
-vim.api.nvim_create_autocmd('ColorScheme', {
-  callback = function()
-    vim.api.nvim_set_hl(0, 'Normal', { bg = '#000000' })
-  end
-})
-
-vim.cmd.colorscheme('twilight256')
 
 require'nvim-treesitter.configs'.setup {
   textobjects = {
@@ -103,10 +87,10 @@ require'nvim-treesitter.configs'.setup {
     swap = {
       enable = true,
       swap_next = {
-        ["<leader>a"] = "@parameter.inner",
+        ["g>"] = "@parameter.inner",
       },
       swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
+        ["g<"] = "@parameter.inner",
       },
     },
     move = {
@@ -124,6 +108,30 @@ require'nvim-treesitter.configs'.setup {
       goto_previous_end = {
         ["[M"] = "@function.outer",
       },
+      goto_next = {
+        ["]d"] = "@conditional.outer",
+      },
+      goto_previous = {
+        ["[d"] = "@conditional.outer",
+      }
     },
   },
 }
+
+if not vim.g.vscode then
+  -- Set the background to black
+  vim.api.nvim_create_autocmd('ColorScheme', {
+    callback = function()
+      vim.api.nvim_set_hl(0, 'Normal', { bg = '#000000' })
+    end
+  })
+
+  vim.cmd.colorscheme('twilight256')
+
+  -- Highlight on yank 
+  vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+      vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 150 })
+    end,
+  })
+end
