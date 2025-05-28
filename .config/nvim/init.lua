@@ -40,8 +40,6 @@ vim.keymap.set('n', 'H', '^', { noremap = true })
 vim.keymap.set('n', 'L', '$', { noremap = true })
 vim.keymap.set('v', 'H', '^', { noremap = true })
 vim.keymap.set('v', 'L', '$', { noremap = true })
-vim.keymap.set('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { expr = true })
-vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
 
 -- Use \ as leader
 vim.g.mapleader = '\\'
@@ -134,4 +132,7 @@ if not vim.g.vscode then
       vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 150 })
     end,
   })
+
+  vim.keymap.set('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { expr = true })
+  vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
 end
