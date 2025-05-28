@@ -185,13 +185,6 @@ if not vim.g.vscode then
 
   vim.cmd.colorscheme('twilight256')
 
-  -- Highlight on yank 
-  vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-      vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 150 })
-    end,
-  })
-
   vim.keymap.set('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { expr = true })
   vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
 end
