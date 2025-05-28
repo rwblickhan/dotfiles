@@ -41,6 +41,49 @@ vim.keymap.set('n', 'L', '$', { noremap = true })
 vim.keymap.set('v', 'H', '^', { noremap = true })
 vim.keymap.set('v', 'L', '$', { noremap = true })
 
+if vim.g.vscode then
+  vim.keymap.set('n', 'cd', function()
+    require('vscode').action('editor.action.rename')
+  end)
+
+  vim.keymap.set('n', 'g/', function()
+    require('vscode').action('workbench.action.findInFiles', { args = { query = vim.fn.expand('<cword>') } })
+  end)
+
+  vim.keymap.set('n', 'gs', function()
+    require('vscode').action('editor.action.referenceSearch.trigger', { args = { query = vim.fn.expand('<cword>') } })
+  end)
+
+  vim.keymap.set('n', 'g]', function()
+    require('vscode').action('editor.action.marker.next')
+  end)
+
+  vim.keymap.set('n', 'g[', function()
+    require('vscode').action('editor.action.marker.previous')
+  end)
+
+  vim.keymap.set('n', 'g.', function()
+    require('vscode').action('editor.action.quickFix')
+  end)
+
+  vim.keymap.set('n', 'go', function()
+    require('vscode').action('gitlens.openFileOnRemote')
+  end)
+
+  vim.keymap.set('n', 'm', function()
+    require('vscode').action('bookmarks.toggle')
+  end)
+
+  vim.keymap.set('n', '\'', function()
+    require('vscode').action('bookmarks.list')
+  end)
+
+  vim.keymap.set('n', '"', function()
+    require('vscode').action('bookmarks.listFromAllFiles')
+  end)
+end
+
+
 -- Use \ as leader
 vim.g.mapleader = '\\'
 -- Use /g by default in regex substitution
@@ -57,7 +100,7 @@ vim.opt.clipboard:append('unnamedplus')
 vim.g.camelcasemotion_key = '<leader>'
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "markdown", "markdown_inline", "ledger", "lua" },
+  ensure_installed = { "markdown", "markdown_inline", "ledger", "lua", "typescript", "tsx" },
   -- Use treesitter highlighting
   highlight = {
     enable = true,
