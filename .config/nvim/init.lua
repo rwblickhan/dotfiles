@@ -130,6 +130,8 @@ require'nvim-treesitter.configs'.setup {
         ["ii"] = "@conditional.inner",
         ["al"] = "@loop.outer",
         ["il"] = "@loop.inner",
+        ["as"] = "@assignment.outer",
+        ["is"] = "@assignment.inner",
       },
       include_surrounding_whitespace = true,
     },
