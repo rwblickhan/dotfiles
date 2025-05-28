@@ -118,10 +118,14 @@ require'nvim-treesitter.configs'.setup {
       enable = true,
       lookahead = true,
       keymaps = {
-        ["af"] = "@function.outer",  -- around function
-        ["if"] = "@function.inner",  -- inner function
-        ["ac"] = "@class.outer",     -- around class
-        ["ic"] = "@class.inner",     -- inner class
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["ai"] = "@conditional.outer",
+        ["ii"] = "@conditional.inner",
+        ["al"] = "@loop.outer",
+        ["il"] = "@loop.inner",
       },
       include_surrounding_whitespace = true,
     },
@@ -138,24 +142,30 @@ require'nvim-treesitter.configs'.setup {
       enable = true,
       set_jumps = true,
       goto_next_start = {
-        ["]m"] = "@function.outer",
+        ["]f"] = "@function.outer",
+        ["]c"] = "@class.outer",
+        ["]i"] = "@conditional.outer",
+        ["]l"] = "@loop.outer",
       },
       goto_next_end = {
-        ["]M"] = "@function.outer",
+        ["]F"] = "@function.outer",
+        ["]C"] = "@class.outer",
+        ["]I"] = "@conditional.outer",
+        ["]L"] = "@loop.outer",
       },
       goto_previous_start = {
-        ["[m"] = "@function.outer",
+        ["[f"] = "@function.outer",
+        ["[c"] = "@class.outer",
+        ["[i"] = "@conditional.outer",
+        ["[l"] = "@loop.outer",
       },
       goto_previous_end = {
-        ["[M"] = "@function.outer",
+        ["[F"] = "@function.outer",
+        ["[C"] = "@class.outer",
+        ["[I"] = "@conditional.outer",
+        ["[L"] = "@loop.outer",
       },
-      goto_next = {
-        ["]d"] = "@conditional.outer",
-      },
-      goto_previous = {
-        ["[d"] = "@conditional.outer",
-      }
-    },
+    }
   },
 }
 
