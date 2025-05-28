@@ -145,8 +145,6 @@ vscode "usernamehw.errorlens"
 vscode "bmalehorn.vscode-fish"
 # File utils like deleting current file
 vscode "sleistner.vscode-fileutils"
-# Shift arguments left / right
-vscode "Gruntfuggly.shifter"
 # ESLint support
 vscode "dbaeumer.vscode-eslint"
 # hledger support
@@ -168,7 +166,7 @@ vscode "nvarner.typst-lsp"
 # Rust support
 vscode "rust-lang.rust-analyzer"
 # Vim emulation
-vscode "vscodevim.vim"
+vscode "asvetliakov.vscode-neovim"
 # Stylelint support
 vscode "stylelint.vscode-stylelint"
 # TOML support
