@@ -14,8 +14,6 @@ brew "cheat"
 brew "difftastic"
 # Deno TypeScript runtime
 brew "deno"
-# sqlite but columnar; also useful as a jq replacement 
-brew "duckdb"
 # Better du
 brew "dust"
 # Better ls
@@ -36,8 +34,6 @@ brew "git-delta"
 brew "httpie"
 # Plain-text accounting
 brew "hledger"
-# git replacement
-brew "jj"
 # Add a more up-to-date less
 brew "less"
 # Better sqlite CLI
@@ -52,15 +48,13 @@ brew "mas"
 brew "neovim"
 # Up-to-date node
 brew "node"
-# Better JS runtime
-brew "oven-sh/bun/bun"
 # Pandoc document converter
 brew "pandoc"
 # Install Python executables easily
 brew "pipx"
 # Better npm
 brew "pnpm"
-# Better make (for command running, at least)
+# Better make
 brew "just"
 # Pretty-print json
 brew "jq"
@@ -76,10 +70,6 @@ brew "shellcheck"
 brew "sqlite-utils"
 # Command prompt
 brew "starship"
-# Swift formatting
-brew "swiftformat"
-# Swift linting
-brew "swiftlint"
 # Better tail with syntax highlighting
 brew "tailspin"
 # Rust implementation of tldr shell cheatsheet
@@ -90,8 +80,6 @@ brew "typst"
 brew "watchexec"
 # YouTube downloader
 brew "yt-dlp"
-# Better c
-brew "zig"
 # Better cd
 brew "zoxide"
 
@@ -137,8 +125,6 @@ vscode "astro-build.astro-vscode"
 vscode "teabyii.ayu"
 # Copy file name command
 vscode "nemesv.copy-file-name"
-# Deno support
-vscode "denoland.vscode-deno"
 # Better error highlighting
 vscode "usernamehw.errorlens"
 # Fish support
@@ -181,12 +167,10 @@ vscode "ecmel.vscode-html-css"
 vscode "vunguyentuan.vscode-css-variables"
 # Path autocompletion
 vscode "christian-kohler.path-intellisense"
-# zig support
-vscode "ziglang.vscode-zig"
 # GitHub Copilot
 vscode "GitHub.copilot-chat"
 vscode "GitHub.copilot"
 # Open in GitHub
 vscode "sysoev.vscode-open-in-github"
-# Svelt
+# Svelte
 vscode "svelte.svelte-vscode"
