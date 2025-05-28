@@ -43,9 +43,6 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
-  "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode"
-  },
   // Validate SCSS with stylelint
   "stylelint.validate": ["css", "scss"],
   // Enable quick suggestions in Markdown / MDX
@@ -102,14 +99,6 @@
   "typst-lsp.experimentalFormatterMode": "on",
   // Don't export PDF via typst-lsp; use typst watch instead
   "typst-lsp.exportPdf": "never",
-  "swiftformat.onlyEnableWithConfig": true,
-  "swiftlint.onlyEnableWithConfig": true,
-  "swiftformat.path": ["/opt/homebrew/bin/swiftformat"],
-  "swiftlint.path": ["/opt/homebrew/bin/swiftlint"],
-  // General lldb config (for swift lsp)
-  "lldb.library": "/Applications/Xcode-15.2.0-Beta.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
-  "lldb.launch.expressions": "native",
-  "deno.path": "/opt/homebrew/bin/deno",
   "rust-analyzer.check.command": "clippy",
   "git.enableSmartCommit": true,
   "security.promptForLocalFileProtocolHandling": false,
@@ -117,12 +106,9 @@
   "editor.accessibilitySupport": "off",
   "git.openRepositoryInParentFolders": "always",
   "cSpell.userWords": ["descript", "testid"],
-  "editor.accessibilitySupport": "off",
   "astro.content-intellisense": true,
-  "zig.path": "/opt/homebrew/bin/zig",
   "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": true,
-  "zig.zls.enabled": "on",
   "search.useParentIgnoreFiles": true,
   "github.copilot.enable": {
     "*": true,
@@ -136,7 +122,6 @@
   "Lua.workspace.library": [
     "/Users/rwblickhan/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
   ],
-  "svelte.enable-ts-plugin": true,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   }

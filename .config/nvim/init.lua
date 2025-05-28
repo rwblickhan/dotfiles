@@ -20,17 +20,17 @@ require('mini.git').setup({})
 require('mini.jump').setup()
 require('mini.operators').setup()
 require('mini.surround').setup({
-    mappings = {
-      add = 'ys',
-      delete = 'ds',
-      find = '',
-      find_left = '',
-      highlight = '',
-      replace = 'cs',
-      update_n_lines = '',
-    },
-    search_method = 'cover_or_next',
-  })
+  mappings = {
+    add = 'ys',
+    delete = 'ds',
+    find = '',
+    find_left = '',
+    highlight = '',
+    replace = 'cs',
+    update_n_lines = '',
+  },
+  search_method = 'cover_or_next',
+})
 
 vim.keymap.set('n', 'j', 'gj', { noremap = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true })
@@ -67,11 +67,11 @@ if vim.g.vscode then
   end)
 
   vim.keymap.set('n', 'go', function()
-    require('vscode').action('gitlens.openFileOnRemote')
+    require('vscode').action('openInGithub.openInGitHubHistory')
   end)
 
   vim.keymap.set('n', 'gy', function()
-    require('vscode').action('ditor.showCallHierarchy')
+    require('vscode').action('editor.showCallHierarchy')
   end)
 
   vim.keymap.set('n', 'm', function()
@@ -116,7 +116,7 @@ require('nvim-treesitter.configs').setup {
 }
 
 
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   textobjects = {
     select = {
       enable = true,
@@ -185,6 +185,6 @@ if not vim.g.vscode then
 
   vim.cmd.colorscheme('twilight256')
 
-  vim.keymap.set('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { expr = true })
+  vim.keymap.set('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
   vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
 end
