@@ -59,7 +59,7 @@ if vim.g.vscode then
   end)
 
   vim.keymap.set('n', 'g[', function()
-    require('vscode').action('editor.action.marker.previous')
+    require('vscode').action('editor.action.marker.prev')
   end)
 
   vim.keymap.set('n', 'g.', function()
@@ -68,6 +68,10 @@ if vim.g.vscode then
 
   vim.keymap.set('n', 'go', function()
     require('vscode').action('gitlens.openFileOnRemote')
+  end)
+
+  vim.keymap.set('n', 'gy', function()
+    require('vscode').action('ditor.showCallHierarchy')
   end)
 
   vim.keymap.set('n', 'm', function()
