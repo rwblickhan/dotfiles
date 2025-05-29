@@ -36,6 +36,8 @@ brew "starship"
 brew "tailspin"
 # Rust implementation of tldr shell cheatsheet
 brew "tealdeer"
+# tmux
+brew "tmux"
 # Directory watcher
 brew "watchexec"
 # Better cd
