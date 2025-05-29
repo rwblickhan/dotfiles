@@ -26,6 +26,14 @@
       create: true
       force: true
       path: .inputrc
+    ~/.tmux.conf:
+      create: true
+      force: true
+      path: .tmux.conf
+    ~/.tmux/plugins/tpm:
+      create: true
+      force: true
+      path: tpm
     ~/.markdownlintrc:
       create: true
       force: true
