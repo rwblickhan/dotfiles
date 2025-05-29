@@ -38,6 +38,10 @@
       create: true
       force: true
       path: .hammerspoon
+    ~/.tmux.conf:
+      create: true
+      force: true
+      path: .tmux.conf
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
