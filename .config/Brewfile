@@ -14,8 +14,6 @@ brew "cheat"
 brew "difftastic"
 # Deno TypeScript runtime
 brew "deno"
-# sqlite but columnar; also useful as a jq replacement 
-brew "duckdb"
 # Better du
 brew "dust"
 # Better ls
@@ -36,14 +34,10 @@ brew "git-delta"
 brew "httpie"
 # Plain-text accounting
 brew "hledger"
-# git replacement
-brew "jj"
 # Add a more up-to-date less
 brew "less"
 # Better sqlite CLI
 brew "litecli"
-# Interact with LLM APIs easily
-brew "llm"
 # Markdown linter
 brew "markdownlint-cli"
 # Mac App Store CLI installer
@@ -52,15 +46,13 @@ brew "mas"
 brew "neovim"
 # Up-to-date node
 brew "node"
-# Better JS runtime
-brew "oven-sh/bun/bun"
 # Pandoc document converter
 brew "pandoc"
 # Install Python executables easily
 brew "pipx"
 # Better npm
 brew "pnpm"
-# Better make (for command running, at least)
+# Better make
 brew "just"
 # Pretty-print json
 brew "jq"
@@ -72,14 +64,8 @@ brew "ripgrep"
 brew "sd"
 # Shell linter
 brew "shellcheck"
-# sqlite utils from simonw
-brew "sqlite-utils"
 # Command prompt
 brew "starship"
-# Swift formatting
-brew "swiftformat"
-# Swift linting
-brew "swiftlint"
 # Better tail with syntax highlighting
 brew "tailspin"
 # Rust implementation of tldr shell cheatsheet
@@ -90,8 +76,6 @@ brew "typst"
 brew "watchexec"
 # YouTube downloader
 brew "yt-dlp"
-# Better c
-brew "zig"
 # Better cd
 brew "zoxide"
 
@@ -104,7 +88,7 @@ cask "font-fira-code-nerd-font"
 cask "font-fira-mono-nerd-font"
 # Better terminal
 cask "ghostty"
-# Various configurations
+# Personal automations
 cask "hammerspoon"
 # SVG editor
 cask "inkscape"
@@ -114,12 +98,8 @@ cask "mac-mouse-fix"
 cask "raycast"
 # VS Code
 cask "visual-studio-code"
-# Better terminal
-cask "wezterm"
 # Install Xcode easily
 cask "xcodes"
-# Zen web browser
-cask "zen-browser"
 # Zed editor
 cask "zed"
 
@@ -137,8 +117,6 @@ vscode "astro-build.astro-vscode"
 vscode "teabyii.ayu"
 # Copy file name command
 vscode "nemesv.copy-file-name"
-# Deno support
-vscode "denoland.vscode-deno"
 # Better error highlighting
 vscode "usernamehw.errorlens"
 # Fish support
@@ -181,12 +159,7 @@ vscode "ecmel.vscode-html-css"
 vscode "vunguyentuan.vscode-css-variables"
 # Path autocompletion
 vscode "christian-kohler.path-intellisense"
-# zig support
-vscode "ziglang.vscode-zig"
-# GitHub Copilot
-vscode "GitHub.copilot-chat"
-vscode "GitHub.copilot"
 # Open in GitHub
 vscode "sysoev.vscode-open-in-github"
-# Svelt
-vscode "svelte.svelte-vscode"
+# Lua support
+vscode "sumneko.lua"

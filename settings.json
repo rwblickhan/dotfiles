@@ -47,9 +47,6 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
-  "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode"
-  },
   // Enable quick suggestions in Markdown / MDX
   "[markdown]": {
     "editor.quickSuggestions": {
@@ -127,7 +124,6 @@
   "Lua.workspace.library": [
     "/Users/rwblickhan/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
   ],
-  "svelte.enable-ts-plugin": true,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   }
