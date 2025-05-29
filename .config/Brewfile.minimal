@@ -54,8 +54,6 @@ cask "hammerspoon"
 cask "mac-mouse-fix"
 # Better Spotlight
 cask "raycast"
-# Better terminal
-cask "wezterm"
 # VS Code
 cask "visual-studio-code"
 
@@ -73,7 +71,7 @@ vscode "sleistner.vscode-fileutils"
 vscode "Gruntfuggly.shifter"
 # Better TypeScript error highlighting
 vscode "YoavBls.pretty-ts-errors"
-# Vim emulation
-vscode "vscodevim.vim"
 # Bookmarks
 vscode "alefragnani.Bookmarks"
+# Vim emulation
+vscode "asvetliakov.vscode-neovim"
