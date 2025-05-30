@@ -15,7 +15,9 @@ require('mini.basics').setup()
 require('mini.ai').setup({})
 require('mini.comment').setup({})
 require('mini.completion').setup({})
-require('mini.diff').setup({})
+if not vim.g.vscode then
+  require('mini.diff').setup({})
+end
 require('mini.git').setup({})
 require('mini.jump').setup()
 require('mini.operators').setup()

@@ -2,4 +2,3 @@ font-family = "FiraMono Nerd Font Mono"
 theme = "Tomorrow Night Bright"
 macos-titlebar-style = "tabs"
 command = "/opt/homebrew/bin/fish"
-confirm-close-surface = false
