@@ -8,6 +8,8 @@ fish_add_path /Users/rwblickhan/.local/bin
 fish_add_path ~/utils
 fish_add_path ~/bin
 
+source ~/utils/secrets.fish
+
 set -gx MANPATH $MANPATH ~/man
 
 # pnpm variables
