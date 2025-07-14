@@ -44,9 +44,6 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
-  "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
-  },
   // Enable quick suggestions in Markdown / MDX
   "[markdown]": {
     "editor.quickSuggestions": {
