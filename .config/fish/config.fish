@@ -75,7 +75,6 @@ if status is-interactive
     abbr -a bbic "brew bundle install --file=~/.config/Brewfile.minimal && brew upgrade"
     abbr -a --position anywhere r2b s3:https://d68842214bc7eab6283e7ef8876b12e6.r2.cloudflarestorage.com/backups
 
-    abbr -a --command git br 'branch'
     abbr -a --command git st 'stash'
     abbr -a --command git sts 'stash show -p'
     abbr -a --command git stp 'stash pop'
@@ -84,14 +83,6 @@ if status is-interactive
     abbr -a --command gh pv 'pr view -w'
     abbr -a --command gh ps 'pr status'
     abbr -a --command gh pm 'pr merge'
-
-    abbr -a gtb 'gt bottom'
-    abbr -a gtc 'gt create'
-    abbr -a gtct 'gt continue'
-    abbr -a gtr 'gt restack'
-    abbr -a gtt 'gt top'
-    abbr -a gtu 'gt up'
-    abbr -a gtd 'gt down'
 
     abbr -a api 'cursor ~/descript/services/api'
     abbr -a client 'cursor ~/descript/pkg-js/client'
