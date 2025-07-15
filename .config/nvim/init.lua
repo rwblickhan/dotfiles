@@ -69,7 +69,7 @@ if vim.g.vscode then
   end)
 
   vim.keymap.set('n', 'go', function()
-    require('vscode').action('openInGithub.openInGitHubHistory')
+    require('vscode').action('openInGitHub.openFile')
   end)
 
   vim.keymap.set('n', 'gy', function()
