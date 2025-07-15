@@ -51,6 +51,7 @@ if status is-interactive
 
     abbr -a exp expense
     abbr -a f rfv
+    abbr -a c code
     abbr -a g git
     abbr -a j just
     abbr -a n nvim
