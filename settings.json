@@ -100,10 +100,7 @@
   "cSpell.userWords": ["descript", "testid"],
   "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": true,
-  "remote.SSH.remotePlatform": {
-    "coder-vscode.coder.descripthq.com--russell--rwblickhan": "linux",
-    "coder-vscode.coder.descripthq.com--russell--rwblickhan--main": "linux"
-  },
+  "remote.SSH.remotePlatform": {"coder-vscode.coder.descripthq.com--russell--rwblickhan":"linux","coder-vscode.coder.descripthq.com--russell--rwblickhan--main":"linux","coder-vscode.coder.descripthq.com--russell--russell.main":"linux"},
   "remote.SSH.connectTimeout": 1800,
   "git.confirmSync": false,
   // https://github.com/microsoft/vscode/issues/98594
