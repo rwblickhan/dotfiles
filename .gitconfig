@@ -11,7 +11,7 @@
 [interactive]
   diffFilter = delta --color-only --features=interactive
 [pull]
-rebase = false
+  rebase = false
 [alias]
   a = "add ."
   bd = "!fish -c 'git_fzf_branch_delete'"

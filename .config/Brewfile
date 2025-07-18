@@ -101,7 +101,7 @@ cask "raycast"
 # VS Code
 cask "visual-studio-code"
 # Install Xcode easily
-cask "xcodes"
+cask "xcodes-app"
 # Zed editor
 cask "zed"
 
@@ -165,3 +165,5 @@ vscode "christian-kohler.path-intellisense"
 vscode "sysoev.vscode-open-in-github"
 # Lua support
 vscode "sumneko.lua"
+# Claude Code
+vscode "Anthropic.claude-code"
