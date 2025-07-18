@@ -11,7 +11,7 @@
 [interactive]
   diffFilter = delta --color-only --features=interactive
 [pull]
-rebase = false
+  rebase = false
 [alias]
   a = "add ."
   bd = "!fish -c 'git_fzf_branch_delete'"
@@ -52,7 +52,7 @@ rebase = false
   autoSetupRemote = true
 [diff]
   colorMoved = default
-algorithm = histogram
+  algorithm = histogram
   tool = difftastic
 [difftool]
   prompt = false
