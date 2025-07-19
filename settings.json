@@ -93,6 +93,7 @@
   "editor.snippetSuggestions": "bottom",
   // Turn off a couple annoying Markdownlint warnings
   "markdownlint.config": {
+    "no-inline-html": false,
     "line-length": false,
     "single-trailing-newline": false,
     "no-blanks-blockquote": false
