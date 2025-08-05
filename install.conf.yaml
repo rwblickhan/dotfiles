@@ -38,6 +38,10 @@
       create: true
       force: true
       path: .hammerspoon
+    ~/.gitignore_global:
+      create: true
+      force: true
+      path: .gitignore_global
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
