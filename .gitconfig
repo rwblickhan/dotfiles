@@ -3,6 +3,7 @@
 	email = russell@descript.com
 [core]
   pager = delta --line-numbers
+  excludesfile = ~/.gitignore_global
 [delta]
   hyperlinks = true
   hyperlinks-file-link-format = "vscode://file/{path}:{line}"
