@@ -48,6 +48,11 @@ if vim.g.vscode then
     require('vscode').action('editor.action.rename')
   end)
 
+  vim.keymap.set('n', 'gD', function()
+    require('vscode').action('workbench.action.splitEditor')
+    require('vscode').action('editor.action.goToDeclaration')
+  end)
+
   vim.keymap.set('n', 'g/', function()
     require('vscode').action('workbench.action.findInFiles', { args = { query = vim.fn.expand('<cword>') } })
   end)
