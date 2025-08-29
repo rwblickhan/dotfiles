@@ -56,11 +56,12 @@ if status is-interactive
     end
 
     abbr -a exp expense
-    abbr -a f rfv
     abbr -a c code
+    abbr -a f rfv
     abbr -a g git
     abbr -a j just
     abbr -a n nvim
+    abbr -a o open
     abbr -a p pnpm
     abbr -a z zed
     abbr -a bbic "brew bundle install --file=~/.config/Brewfile.minimal && brew upgrade"
