@@ -42,12 +42,6 @@ if command -sq batman
 end
 
 if status is-interactive
-    if command -sq nodenv
-      nodenv init - fish | source
-    end
-    if command -sq pyenv
-      pyenv init - | source
-    end
     if command -sq zoxide
       zoxide init fish --cmd cd | source
     end
