@@ -3,6 +3,8 @@
 # litecli
 tap "dbcli/tap"
 
+# 1password password manager
+brew "1password-cli"
 # Better cat
 brew "bat"
 brew "bat-extras"
