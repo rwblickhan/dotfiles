@@ -7,6 +7,7 @@
 .config/zed/embeddings
 .config/zed/prompts
 .config/configstore
+.config/op
 .config/gcloud
 .config/configstore
 .config/graphite/user_config
