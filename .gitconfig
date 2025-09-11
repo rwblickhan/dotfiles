@@ -14,7 +14,7 @@
 [pull]
   rebase = false
 [alias]
-  a = "add ."
+  a = "add"
   bd = "!fish -c 'git_fzf_branch_delete'"
   c = "!fish -c 'git_fzf_checkout'"
   cam = "commit -a -m"
