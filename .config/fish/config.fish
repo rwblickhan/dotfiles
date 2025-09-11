@@ -49,7 +49,7 @@ if status is-interactive
       starship init fish | source
     end
 
-    abbr -a exp expense
+    abbr -a a 'git a'
     abbr -a c code
     abbr -a f rfv
     abbr -a g git
@@ -57,10 +57,11 @@ if status is-interactive
     abbr -a n nvim
     abbr -a o open
     abbr -a p pnpm
+    abbr -a s 'git commit && git push'
     abbr -a z zed
 
     abbr -a --position anywhere r2b s3:https://d68842214bc7eab6283e7ef8876b12e6.r2.cloudflarestorage.com/backups
 
+    abbr -a exp expense
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile && brew upgrade"
-    abbr -a submit "git commit && git push"
 end
