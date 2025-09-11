@@ -3,8 +3,6 @@
 # litecli
 tap "dbcli/tap"
 
-# 1password password manager
-brew "1password-cli"
 # Better cat
 brew "bat"
 brew "bat-extras"
@@ -83,6 +81,8 @@ brew "yt-dlp"
 # Better cd
 brew "zoxide"
 
+# 1password password manager
+cask "1password-cli"
 # Non-Apple display management
 cask "betterdisplay"
 # Calibre ebook manager
