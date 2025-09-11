@@ -62,4 +62,5 @@ if status is-interactive
     abbr -a --position anywhere r2b s3:https://d68842214bc7eab6283e7ef8876b12e6.r2.cloudflarestorage.com/backups
 
     abbr -a bbic "brew bundle install --cleanup --file=~/.config/Brewfile && brew upgrade"
+    abbr -a submit "git commit && git push"
 end
