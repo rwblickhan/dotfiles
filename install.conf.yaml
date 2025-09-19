@@ -10,15 +10,7 @@
       create: true
       force: true
       path: settings.json
-    ~/Library/Application Support/Cursor/User/settings.json:
-      create: true
-      force: true
-      path: settings.json
     ~/Library/Application Support/Code/User/keybindings.json:
-      create: true
-      force: true
-      path: keybindings.json
-    ~/Library/Application Support/Cursor/User/keybindings.json:
       create: true
       force: true
       path: keybindings.json
