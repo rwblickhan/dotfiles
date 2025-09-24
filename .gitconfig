@@ -16,7 +16,6 @@
 [alias]
   a = "add"
   bd = "branch -d"
-  c = "!fish -c 'git_fzf_checkout'"
   cam = "commit -a -m"
   camp = "!fish -c 'git_commit_all_message_push $argv'"
   d = "diff --ignore-all-space"
