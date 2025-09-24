@@ -18,6 +18,7 @@
   b = "branch"
   bd = "branch -d"
   c = "switch"
+  cm = "switch main"
   cam = "commit -a -m"
   camp = "!fish -c 'git_commit_all_message_push $argv'"
   d = "diff --ignore-all-space"
