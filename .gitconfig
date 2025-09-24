@@ -49,6 +49,7 @@
   stp = "stash pop"
   sts = "stash show -p"
   oops = "commit -a --no-edit --amend"
+  c- = "switch -"
 [push]
   autoSetupRemote = true
 [diff]
