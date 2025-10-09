@@ -54,6 +54,7 @@ if status is-interactive
     abbr -a f rfv
     abbr -a g git
     abbr -a j just
+    abbr -a m mise
     abbr -a n nvim
     abbr -a o open
     abbr -a p pnpm
