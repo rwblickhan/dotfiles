@@ -1,0 +1,2 @@
+#!/usr/bin/env fish
+git cm && delete_closed_pr_branches
