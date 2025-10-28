@@ -42,10 +42,9 @@ function delete_closed_pr_branches
             continue
         end
 
-        # Check if branch has attached workflows
-        set workflow_count (gh run list --branch $branch --limit 1 --json status --jq 'length' 2>/dev/null)
-        if test "$workflow_count" -gt 0
-            echo (set_color yellow)"⊘ Skipping '$branch' (has attached workflow)"(set_color normal)
+        # Check if branch has attached worktree
+        if git worktree list | grep -q "\\[$branch\\]"
+            echo (set_color yellow)"⊘ Skipping '$branch' (has attached worktree)"(set_color normal)
             set skipped_count (math $skipped_count + 1)
             continue
         end
