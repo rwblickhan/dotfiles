@@ -1,2 +1,2 @@
 #!/usr/bin/env fish
-git cm && delete_closed_pr_branches
+git cm && git pull && delete_closed_pr_branches
