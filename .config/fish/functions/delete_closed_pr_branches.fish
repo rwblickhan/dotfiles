@@ -37,17 +37,25 @@ function delete_closed_pr_branches
     for branch in $local_branches
         # Skip current branch
         if test "$branch" = "$current_branch"
-            echo "⊘ Skipping '$branch' (currently checked out)"
+            echo (set_color yellow)"⊘ Skipping '$branch' (currently checked out)"(set_color normal)
+            set skipped_count (math $skipped_count + 1)
+            continue
+        end
+
+        # Check if branch has attached workflows
+        set workflow_count (gh run list --branch $branch --limit 1 --json status --jq 'length' 2>/dev/null)
+        if test "$workflow_count" -gt 0
+            echo (set_color yellow)"⊘ Skipping '$branch' (has attached workflow)"(set_color normal)
             set skipped_count (math $skipped_count + 1)
             continue
         end
 
         # Check if branch has a PR and if it's closed
         set pr_state (gh pr list --state all --head $branch --json state --jq '.[0].state' 2>/dev/null)
-        
+
         if test -z "$pr_state"
             # No PR found for this branch
-            echo (set_color red)"⊘ Skipping '$branch' (no PR found)"(set_color normal)
+            echo (set_color yellow)"⊘ Skipping '$branch' (no PR found)"(set_color normal)
             set no_pr_count (math $no_pr_count + 1)
             continue
         end
