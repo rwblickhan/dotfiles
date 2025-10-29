@@ -67,6 +67,8 @@ function delete_closed_pr_branches
             else
                 echo (set_color red)"✗ Failed to delete branch '$branch'"(set_color normal)
             end
+        else
+            echo (set_color yellow)"⊘ Skipping '$branch' (open PR found)"(set_color normal)
         end
     end
 
