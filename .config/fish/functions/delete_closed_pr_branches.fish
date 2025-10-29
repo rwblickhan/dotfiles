@@ -28,24 +28,17 @@ function delete_closed_pr_branches
     # Get current branch
     set current_branch (git branch --show-current)
     
-    # Track statistics
-    set deleted_count 0
-    set skipped_count 0
-    set no_pr_count 0
-
     # Iterate through local branches
     for branch in $local_branches
         # Skip current branch
         if test "$branch" = "$current_branch"
             echo (set_color yellow)"⊘ Skipping '$branch' (currently checked out)"(set_color normal)
-            set skipped_count (math $skipped_count + 1)
             continue
         end
 
         # Check if branch has attached worktree
         if git worktree list | grep -q "\\[$branch\\]"
             echo (set_color yellow)"⊘ Skipping '$branch' (has attached worktree)"(set_color normal)
-            set skipped_count (math $skipped_count + 1)
             continue
         end
 
@@ -55,7 +48,6 @@ function delete_closed_pr_branches
         if test -z "$pr_state"
             # No PR found for this branch
             echo (set_color yellow)"⊘ Skipping '$branch' (no PR found)"(set_color normal)
-            set no_pr_count (math $no_pr_count + 1)
             continue
         end
 
@@ -63,7 +55,6 @@ function delete_closed_pr_branches
             # Delete the branch
             if git branch -D $branch 2>/dev/null
                 echo (set_color green)"✓ Deleted branch '$branch' (PR state: $pr_state)"(set_color normal)
-                set deleted_count (math $deleted_count + 1)
             else
                 echo (set_color red)"✗ Failed to delete branch '$branch'"(set_color normal)
             end
@@ -71,11 +62,4 @@ function delete_closed_pr_branches
             echo (set_color yellow)"⊘ Skipping '$branch' (open PR found)"(set_color normal)
         end
     end
-
-    # Print summary
-    echo ""
-    echo "Summary:"
-    echo "  Deleted: $deleted_count"
-    echo "  Skipped: $skipped_count"
-    echo "  No PR found: $no_pr_count"
 end
