@@ -53,7 +53,7 @@ function delete_closed_pr_branches
 
         if test "$pr_state" = "CLOSED" -o "$pr_state" = "MERGED"
             # Delete the branch
-            if git branch -D $branch 2>/dev/null
+            if git branch -D $branch &>/dev/null
                 echo (set_color green)"✓ Deleted branch '$branch' (PR state: $pr_state)"(set_color normal)
             else
                 echo (set_color red)"✗ Failed to delete branch '$branch'"(set_color normal)
