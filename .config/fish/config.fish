@@ -29,24 +29,24 @@ set -gx EDITOR nvim
 set -gx LEDGER_FILE ~/Developer/finance/2025.journal
 
 if command -sq bat
-  alias cat bat
+    alias cat bat
 end
 if command -sq eza
-  alias ls "eza --icons"
+    alias ls "eza --icons"
 end
 if command -sq delta
-  alias diff delta
+    alias diff delta
 end
 if command -sq batman
-  alias man "BAT_THEME='Monokai Extended' batman"
+    alias man "BAT_THEME='Monokai Extended' batman"
 end
 
 if status is-interactive
     if command -sq zoxide
-      zoxide init fish --cmd cd | source
+        zoxide init fish --cmd cd | source
     end
     if command -sq starship
-      starship init fish | source
+        starship init fish | source
     end
 
     abbr -a a 'git a'
@@ -58,7 +58,7 @@ if status is-interactive
     abbr -a n nvim
     abbr -a o open
     abbr -a p pnpm
-    abbr -a s 'git commit && git push'
+    abbr --set-cursor -a s 'git commit -m "%" && git push'
     abbr -a z zed
 
     abbr -a --position anywhere r2b s3:https://d68842214bc7eab6283e7ef8876b12e6.r2.cloudflarestorage.com/backups
