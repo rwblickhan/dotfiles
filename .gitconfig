@@ -16,7 +16,7 @@
 [alias]
   a = "add"
   b = "branch"
-  bd = "branch -d"
+  bd = "!fish -c 'git_fzf_branch_delete'"
   c = "!fish -c 'git_fzf_checkout'"
   cb = "checkout -b"
   cm = "switch main"
