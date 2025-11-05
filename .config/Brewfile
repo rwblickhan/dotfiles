@@ -24,6 +24,8 @@ brew "fd"
 brew "ffmpeg"
 # Better shell
 brew "fish"
+# Fish LSP
+brew "fish-lsp"
 # Fuzzy finder
 brew "fzf"
 # GitHub CLI
