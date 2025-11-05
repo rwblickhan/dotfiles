@@ -30,6 +30,8 @@ brew "fzf"
 brew "gh"
 # Better diff viewer
 brew "git-delta"
+# vim competitor
+brew "helix"
 # Better curl
 brew "httpie"
 # Plain-text accounting
