@@ -25,7 +25,7 @@ set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 # Show a fancy preview window when using Ctrl+T
 set -gx FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
-set -gx EDITOR nvim
+set -gx EDITOR hx
 set -gx LEDGER_FILE ~/Developer/finance/2025.journal
 
 if command -sq bat
@@ -53,6 +53,7 @@ if status is-interactive
     abbr -a c code
     abbr -a f rfv
     abbr -a g git
+    abbr -a h hx
     abbr -a j just
     abbr -a m mise
     abbr -a n nvim
