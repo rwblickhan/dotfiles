@@ -10,6 +10,8 @@ brew "bat-extras"
 brew "cargo-binstall"
 # Terminal cheatsheets
 brew "cheat"
+# Brewfile manager
+brew "chezmoi"
 # Structured diffs
 brew "difftastic"
 # Deno TypeScript runtime
