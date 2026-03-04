@@ -16,8 +16,7 @@
 [alias]
   a = "add"
   b = "branch"
-  bd = "!fish -c 'git_fzf_branch_delete'"
-  c = "!fish -c 'git_fzf_checkout'"
+  c = "switch"
   cb = "checkout -b"
   cm = "switch main"
   cam = "commit -a -m"
@@ -38,7 +37,7 @@
   ld = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
   lp = "log --oneline -p"
   ls = "log --oneline --decorate"
-  m = "!fish -c 'git_fzf_merge'"
+  m = "merge --no-edit"
   ma = "merge --abort"
   mc = "merge --continue"
   mm = "merge main --no-edit"
