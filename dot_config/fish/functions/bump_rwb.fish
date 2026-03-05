@@ -4,7 +4,9 @@ function bump_rwb
     echo "Error: current revision is already described"
     return 1
   end
-  if not jj log -r "@- & main" --no-graph -T 'x' 2>/dev/null | string match -q 'x'
+  set -l parent_id (jj log -r "@-" --no-graph -T 'commit_id')
+  set -l main_id (jj log -r "main" --no-graph -T 'commit_id')
+  if test "$parent_id" != "$main_id"
     echo "Error: parent of current revision is not the main bookmark"
     return 1
   end
