@@ -4,6 +4,41 @@ file-types = ["fish", { glob = "*.fish.tmpl" }]
 auto-format = false
 
 [[language]]
+name = "typescript"
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "typescript" ] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "tsx" ] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "javascript" ] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "jsx" ] }
+auto-format = true
+
+[[language]]
+name = "json"
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "json" ] }
+auto-format = true
+
+[[language]]
+name = "html"
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "html" ] }
+auto-format = true
+
+[[language]]
+name = "css"
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "css" ] }
+auto-format = true
+
+[[language]]
 name = "ledger"
 scope = "source.ledger"
 file-types = ["journal", "ledger", "hledger"]
