@@ -1,3 +1,9 @@
+{{- $tsFormatter := "typescript" -}}
+{{- $tsxFormatter := "tsx" -}}
+{{- if eq .chezmoi.hostname "Russells-MacBook-Pro" -}}
+{{- $tsFormatter = "prettier" -}}
+{{- $tsxFormatter = "prettier" -}}
+{{- end -}}
 [[language]]
 name = "fish"
 file-types = ["fish", { glob = "*.fish.tmpl" }]
@@ -5,12 +11,12 @@ auto-format = false
 
 [[language]]
 name = "typescript"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "typescript" ] }
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "{{ $tsFormatter }}" ] }
 auto-format = true
 
 [[language]]
 name = "tsx"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "tsx" ] }
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "{{ $tsxFormatter }}" ] }
 auto-format = true
 
 [[language]]
