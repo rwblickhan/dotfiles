@@ -3,3 +3,8 @@
 [user]
 email = "rwb@rwblickhan.org"
 name = "Russell Blickhan"
+
+[aliases]
+push = ["git", "push"]
+s = ["show"]
+sn = ["show", "--name-only"]
