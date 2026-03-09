@@ -8,3 +8,4 @@ name = "Russell Blickhan"
 push = ["git", "push"]
 s = ["show"]
 sn = ["show", "--name-only"]
+l = ["log"]
