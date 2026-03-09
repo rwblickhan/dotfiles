@@ -39,6 +39,11 @@ formatter = { command = "dprint", args = [ "fmt", "--stdin", "css" ] }
 auto-format = true
 
 [[language]]
+name = "markdown"
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "markdown" ] }
+auto-format = true
+
+[[language]]
 name = "ledger"
 scope = "source.ledger"
 file-types = ["journal", "ledger", "hledger"]
