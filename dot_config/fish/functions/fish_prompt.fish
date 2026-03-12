@@ -31,7 +31,7 @@ function fish_prompt
                         set_color normal
                 end
         else
-                echo -n (fish_vcs_prompt)
+                echo -n (fish_git_prompt)
         end
 
         echo
