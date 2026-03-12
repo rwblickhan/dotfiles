@@ -48,9 +48,6 @@ if status is-interactive
     if command -sq zoxide
         zoxide init fish --cmd cd | source
     end
-    if command -sq starship
-        starship init fish | source
-    end
     if command -sq mise
         mise activate fish | source
     end
