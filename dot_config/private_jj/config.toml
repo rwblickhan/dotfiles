@@ -6,6 +6,7 @@ name = "Russell Blickhan"
 
 [aliases]
 d = ["describe"]
+e = ["edit"]
 l = ["log"]
 push = ["git", "push"]
 s = ["show"]
