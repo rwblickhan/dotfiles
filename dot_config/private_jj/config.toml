@@ -5,7 +5,6 @@ email = "rwb@rwblickhan.org"
 name = "Russell Blickhan"
 
 [aliases]
-d = ["describe"]
 e = ["edit"]
 l = ["log"]
 push = ["git", "push"]
