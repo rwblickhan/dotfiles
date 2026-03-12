@@ -10,3 +10,9 @@ l = ["log"]
 push = ["git", "push"]
 s = ["show"]
 sn = ["show", "--name-only"]
+
+[ui]
+diff-formatter = "delta"
+
+[merge-tools]
+delta.diff-expected-exit-codes = [0, 1]
