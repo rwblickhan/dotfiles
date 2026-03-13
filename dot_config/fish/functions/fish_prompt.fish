@@ -1,4 +1,5 @@
 function fish_prompt
+        set last_status $status
         # https://www.reasonable.work/colors/
         # cerulean 2
         set_color --bold 0092c5
@@ -32,6 +33,10 @@ function fish_prompt
                 end
         else
                 echo -n (fish_git_prompt)
+        end
+
+        if test $last_status -ne 0
+            echo -n ' ❌'
         end
 
         echo
