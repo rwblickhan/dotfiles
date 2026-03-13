@@ -44,6 +44,8 @@ if command -sq batman
     alias man "BAT_THEME='Monokai Extended' batman"
 end
 
+set -g fish_transient_prompt 1
+
 if status is-interactive
     if command -sq zoxide
         zoxide init fish --cmd cd | source
