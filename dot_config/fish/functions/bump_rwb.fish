@@ -10,7 +10,7 @@ function bump_rwb
     echo "Error: parent of current revision is not the main bookmark"
     return 1
   end
-  if jj diff | string match -qr '.'
+  if jj diff --name-only | string match -qr '.'
     jj describe -m "Log"; and mise run push
   else
     echo "No changes!"
