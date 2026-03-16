@@ -44,6 +44,11 @@ formatter = { command = "dprint", args = [ "fmt", "--stdin", "markdown" ] }
 auto-format = true
 
 [[language]]
+name = "toml"
+formatter = { command = "dprint", args = [ "fmt", "--stdin", "toml" ] }
+auto-format = true
+
+[[language]]
 name = "ledger"
 scope = "source.ledger"
 file-types = ["journal", "ledger", "hledger"]
