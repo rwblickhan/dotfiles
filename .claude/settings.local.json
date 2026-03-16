@@ -5,7 +5,8 @@
       "Bash(jj status:*)",
       "Bash(jj describe:*)",
       "Bash(jj git:*)",
-      "Bash(jj bookmark:*)"
+      "Bash(jj bookmark:*)",
+      "Bash(jj commit:*)"
     ]
   }
 }
