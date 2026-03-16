@@ -7,9 +7,16 @@
       "Bash(jj git:*)",
       "Bash(jj bookmark:*)",
       "Bash(jj commit:*)",
+      "Bash(jj diff:*)",
+      "Bash(jj file:*)",
+      "Bash(jj --version)",
       "WebFetch(domain:oxc.rs)",
       "Bash(brew search:*)",
-      "Bash(chezmoi apply:*)"
+      "Bash(chezmoi apply:*)",
+      "Bash(jj workspace:*)",
+      "Bash(jj help:*)",
+      "Bash(jj tag:*)",
+      "Bash(jj:*)"
     ]
   }
 }
