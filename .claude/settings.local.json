@@ -6,7 +6,10 @@
       "Bash(jj describe:*)",
       "Bash(jj git:*)",
       "Bash(jj bookmark:*)",
-      "Bash(jj commit:*)"
+      "Bash(jj commit:*)",
+      "Bash(jj diff:*)",
+      "Bash(jj file:*)",
+      "Bash(jj --version)"
     ]
   }
 }
