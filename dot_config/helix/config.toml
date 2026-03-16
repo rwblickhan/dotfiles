@@ -3,6 +3,12 @@ theme = "ayu_dark"
 [editor]
 line-number = "relative"
 
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
@@ -12,6 +18,8 @@ select = "underline"
 enable = true
 
 [keys.normal]
+# Convenience for goto-word
+"ret" = "goto_word"
 # split navigation (vim-tmux-navigator style)
 C-h = 'jump_view_left'
 C-j = 'jump_view_down'
@@ -27,6 +35,10 @@ L = 'extend_to_line_end'
 G = "goto_last_line"
 "*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_next"]
 "#" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_prev"]
+
+[keys.normal."space"]
+# <space>o to open file picker in current directory
+o = "file_picker_in_current_buffer_directory"
 
 [keys.select]
 # subwords
