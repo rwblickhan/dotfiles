@@ -68,7 +68,6 @@ if status is-interactive
     abbr -a o open
     abbr -a p pnpm
     abbr --set-cursor -a s 'git commit -m "%" && git push'
-    abbr -a z zed
 
     {{ if ne .chezmoi.hostname "Russells-MacBook-Pro" }}
     abbr -a --position anywhere r2b s3:{{ onepasswordRead "op://Private/Cloudflare Backups/endpoint" }}
