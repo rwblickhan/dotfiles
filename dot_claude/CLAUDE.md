@@ -2,6 +2,10 @@
 
 I use both jj (jujutsu) and git for version control. In a directory where both jj and git are active, prefer using jj.
 
+## Shell
+
+I use fish shell. Unless I specify otherwise, assume I want fish functions and fish-compatible shell scripts.
+
 ## General Project Setup
 
 I use mise for general project setup. For any project built from scratch or starting from a template (like the output of `bun init` or `cargo init`), always add a `mise.toml` with basic project workflows.
