@@ -8,7 +8,8 @@
       "Bash(jj bookmark:*)",
       "Bash(jj commit:*)",
       "WebFetch(domain:oxc.rs)",
-      "Bash(brew search:*)"
+      "Bash(brew search:*)",
+      "Bash(chezmoi apply:*)"
     ]
   }
 }
