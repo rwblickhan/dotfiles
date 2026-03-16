@@ -3,6 +3,9 @@ theme = "ayu_dark"
 [editor]
 line-number = "relative"
 
+[editor.auto-save]
+after-delay.enable = true
+
 [editor.lsp]
 inlay-hints-length-limit = 20
 
