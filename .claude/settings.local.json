@@ -6,7 +6,9 @@
       "Bash(jj describe:*)",
       "Bash(jj git:*)",
       "Bash(jj bookmark:*)",
-      "Bash(jj commit:*)"
+      "Bash(jj commit:*)",
+      "WebFetch(domain:oxc.rs)",
+      "Bash(brew search:*)"
     ]
   }
 }

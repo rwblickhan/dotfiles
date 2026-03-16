@@ -1,9 +1,3 @@
-{{- $tsFormatter := "typescript" -}}
-{{- $tsxFormatter := "tsx" -}}
-{{- if eq .chezmoi.hostname "Russells-MacBook-Pro" -}}
-{{- $tsFormatter = "prettier" -}}
-{{- $tsxFormatter = "prettier" -}}
-{{- end -}}
 [[language]]
 name = "fish"
 file-types = ["fish", { glob = "*.fish.tmpl" }]
@@ -11,27 +5,27 @@ auto-format = false
 
 [[language]]
 name = "typescript"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "{{ $tsFormatter }}" ] }
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "oxlint", "oxfmt"]
 auto-format = true
 
 [[language]]
 name = "tsx"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "{{ $tsxFormatter }}" ] }
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "oxlint", "oxfmt"]
 auto-format = true
 
 [[language]]
 name = "javascript"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "javascript" ] }
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "oxlint", "oxfmt"]
 auto-format = true
 
 [[language]]
 name = "jsx"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "jsx" ] }
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "oxlint", "oxfmt"]
 auto-format = true
 
 [[language]]
 name = "json"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "json" ] }
+language-servers = ["oxfmt"]
 auto-format = true
 
 [[language]]
@@ -58,3 +52,11 @@ language-servers = ["ledger-language-server"]
 
 [language-server.ledger-language-server]
 command = "ledger-language-server"
+
+[language-server.oxfmt]
+command = "oxfmt"
+args = ["--lsp"]
+
+[language-server.oxlint]
+command = "oxlint"
+args = ["--lsp"]
