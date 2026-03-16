@@ -5,6 +5,7 @@ line-number = "relative"
 
 [editor.lsp]
 display-inlay-hints = true
+inlay-hints-length-limit = 20
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
@@ -20,15 +21,13 @@ enable = true
 [keys.normal]
 # Convenience for goto-word
 "ret" = "goto_word"
+# <space>o to open file picker in current directory
+"space" = { o = "file_picker_in_current_buffer_directory" }
 # split navigation (vim-tmux-navigator style)
 C-h = 'jump_view_left'
 C-j = 'jump_view_down'
 C-k = 'jump_view_up'
 C-l = 'jump_view_right'
-# subwords
-W = 'move_next_sub_word_start'
-B = 'move_prev_sub_word_start'
-E = 'move_next_sub_word_end'
 # vim muscle memory
 H = 'extend_to_line_start'
 L = 'extend_to_line_end'
@@ -36,15 +35,7 @@ G = "goto_last_line"
 "*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_next"]
 "#" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_prev"]
 
-[keys.normal."space"]
-# <space>o to open file picker in current directory
-o = "file_picker_in_current_buffer_directory"
-
 [keys.select]
-# subwords
-W = 'extend_next_sub_word_start'
-B = 'extend_prev_sub_word_start'
-E = 'extend_next_sub_word_end'
 # vim muscle memory
 H = 'extend_to_line_start'
 L = 'extend_to_line_end'
