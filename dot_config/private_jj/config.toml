@@ -7,6 +7,7 @@ name = "Russell Blickhan"
 [aliases]
 e = ["edit"]
 l = ["log"]
+lb = ["log", "-r", "bookmarks()"]
 push = ["git", "push"]
 s = ["show"]
 sn = ["show", "--name-only"]
