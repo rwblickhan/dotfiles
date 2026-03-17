@@ -25,27 +25,27 @@ auto-format = true
 
 [[language]]
 name = "json"
-language-servers = ["oxfmt"]
+formatter = { command = "dprint", args = ["fmt", "--stdin", "json"] }
 auto-format = true
 
 [[language]]
 name = "html"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "html" ] }
+formatter = { command = "dprint", args = ["fmt", "--stdin", "html"] }
 auto-format = true
 
 [[language]]
 name = "css"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "css" ] }
+formatter = { command = "dprint", args = ["fmt", "--stdin", "css"] }
 auto-format = true
 
 [[language]]
 name = "markdown"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "markdown" ] }
+formatter = { command = "dprint", args = ["fmt", "--stdin", "markdown"] }
 auto-format = true
 
 [[language]]
 name = "toml"
-formatter = { command = "dprint", args = [ "fmt", "--stdin", "toml" ] }
+formatter = { command = "dprint", args = ["fmt", "--stdin", "toml"] }
 auto-format = true
 
 [[language]]
