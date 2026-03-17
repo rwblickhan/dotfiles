@@ -3,6 +3,15 @@ theme = "ayu_dark"
 [editor]
 line-number = "relative"
 
+[editor.auto-save]
+after-delay.enable = true
+
+[editor.lsp]
+inlay-hints-length-limit = 20
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
@@ -12,15 +21,12 @@ select = "underline"
 enable = true
 
 [keys.normal]
+"ret" = "goto_word"
 # split navigation (vim-tmux-navigator style)
 C-h = 'jump_view_left'
 C-j = 'jump_view_down'
 C-k = 'jump_view_up'
 C-l = 'jump_view_right'
-# subwords
-W = 'move_next_sub_word_start'
-B = 'move_prev_sub_word_start'
-E = 'move_next_sub_word_end'
 # vim muscle memory
 H = 'extend_to_line_start'
 L = 'extend_to_line_end'
@@ -28,11 +34,11 @@ G = "goto_last_line"
 "*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_next"]
 "#" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_prev"]
 
+[keys.normal."space"]
+o = "file_picker_in_current_buffer_directory"
+i = ":toggle lsp.display-inlay-hints"
+
 [keys.select]
-# subwords
-W = 'extend_next_sub_word_start'
-B = 'extend_prev_sub_word_start'
-E = 'extend_next_sub_word_end'
 # vim muscle memory
 H = 'extend_to_line_start'
 L = 'extend_to_line_end'

@@ -9,7 +9,10 @@
       "Bash(jj commit:*)",
       "Bash(jj diff:*)",
       "Bash(jj file:*)",
-      "Bash(jj --version)"
+      "Bash(jj --version)",
+      "WebFetch(domain:oxc.rs)",
+      "Bash(brew search:*)",
+      "Bash(chezmoi apply:*)"
     ]
   }
 }
