@@ -8,11 +8,6 @@ fish_add_path /Users/rwblickhan/.local/bin
 fish_add_path ~/utils
 fish_add_path ~/bin
 
-{{ if ne .chezmoi.hostname "Russells-MacBook-Pro" }}
-export AWS_ACCESS_KEY_ID={{ onepasswordRead "op://Private/Cloudflare Backups/access_key_id" }}
-export AWS_SECRET_ACCESS_KEY={{ onepasswordRead "op://Private/Cloudflare Backups/secret_access_key" }}
-{{ end }}
-
 set -gx MANPATH $MANPATH ~/man
 
 # pnpm variables
@@ -69,10 +64,6 @@ if status is-interactive
     abbr -a p pnpm
     abbr --set-cursor -a s 'git commit -m "%" && git push'
 
-    {{ if ne .chezmoi.hostname "Russells-MacBook-Pro" }}
-    abbr -a --position anywhere r2b s3:{{ onepasswordRead "op://Private/Cloudflare Backups/endpoint" }}
-    {{ end }}
-
     abbr -a exp expense
-    abbr -a bbic "brew bundle install {{ if ne .chezmoi.hostname "Russells-MacBook-Pro" }}--cleanup {{ end }}--file=~/Brewfile && brew upgrade"
+    abbr -a bbic "brew bundle install --cleanup --file=~/Brewfile && brew upgrade"
 end

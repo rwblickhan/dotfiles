@@ -1,3 +1,5 @@
 function backup
-    restic -r s3:https://d68842214bc7eab6283e7ef8876b12e6.r2.cloudflarestorage.com/backups backup --verbose ~/Movies/ ~/Calibre\ Library/ ~/Developer/ ~/Documents/ ~/Desktop/
+    set -lx AWS_ACCESS_KEY_ID (op read "op://Private/Cloudflare Backups/access_key_id")
+    set -lx AWS_SECRET_ACCESS_KEY (op read "op://Private/Cloudflare Backups/secret_access_key")
+    restic -r s3:(r2b_endpoint)/backups backup --verbose ~/Movies/ ~/Calibre\ Library/ ~/Developer/ ~/Documents/ ~/Desktop/
 end
