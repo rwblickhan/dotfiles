@@ -16,7 +16,9 @@
       "Bash(jj workspace:*)",
       "Bash(jj help:*)",
       "Bash(jj tag:*)",
-      "Bash(jj:*)"
+      "Bash(jj:*)",
+      "Bash(git rm:*)",
+      "Bash(git submodule:*)"
     ]
   }
 }
