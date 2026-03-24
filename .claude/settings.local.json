@@ -18,7 +18,8 @@
       "Bash(jj tag:*)",
       "Bash(jj:*)",
       "Bash(git rm:*)",
-      "Bash(git submodule:*)"
+      "Bash(git submodule:*)",
+      "WebFetch(domain:ghostty.org)"
     ]
   }
 }

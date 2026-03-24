@@ -65,6 +65,7 @@ if status is-interactive
     abbr -a p pnpm
     abbr --set-cursor -a s 'git commit -m "%" && git push'
 
+    abbr -a nw new_workspace
     abbr -a exp expense
     abbr -a bbic "brew bundle install --cleanup --file=~/Brewfile && brew upgrade"
 end
