@@ -1,5 +1,5 @@
 function bump_rwb
-  cd ~/Developer/astro-rwblickhan.org
+  cd ~/Developer/astro-rwblickhan.org/main
   if jj log -r "@" --no-graph -T 'description' | string match -qr '.'
     echo "Error: current revision is already described"
     return 1
