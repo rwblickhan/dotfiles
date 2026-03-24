@@ -38,13 +38,13 @@ if [ -n "$DIR" ] && [ -d "$DIR" ]; then
       else
         DESC_PART=" ${DIM}(no description)${RESET}"
       fi
-      REPO_LINE="${CYAN}jj workspace: ${WHITE}${JJ_WS_NAME}${DESC_PART}"
+      REPO_LINE="🛠️ ${WHITE}${JJ_WS_NAME}${DESC_PART}"
     fi
   else
     # Fall back to git branch if not in a jj workspace
     GIT_BRANCH=$(cd "$DIR" && git branch --show-current 2>/dev/null)
     if [ -n "$GIT_BRANCH" ]; then
-      REPO_LINE="${CYAN}git branch: ${WHITE}${GIT_BRANCH}${RESET}"
+      REPO_LINE="🌿 ${WHITE}${GIT_BRANCH}${RESET}"
     fi
   fi
 fi
