@@ -4,8 +4,6 @@ function fish_prompt
     set -l stat
     set -l pwd
 
-    # https://www.reasonable.work/colors/
-    # cerulean 2
     if contains -- --final-rendering $argv
         set pwd (path basename $PWD)
     else
@@ -16,6 +14,8 @@ function fish_prompt
         end
     end
 
+    # https://www.reasonable.work/colors/
+    # cerulean 2
     set_color --bold 0092c5
     echo -n $pwd
     set_color normal
