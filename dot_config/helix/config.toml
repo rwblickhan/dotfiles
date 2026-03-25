@@ -34,8 +34,10 @@ G = "goto_last_line"
 "*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_next"]
 "#" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_prev"]
 
+[keys.normal.g]
+"/" = ["move_prev_word_start", "move_next_word_end", "search_selection", "global_search"]
+
 [keys.normal."space"]
-o = "file_picker_in_current_buffer_directory"
 i = ":toggle lsp.display-inlay-hints"
 
 [keys.select]
