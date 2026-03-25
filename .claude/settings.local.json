@@ -19,7 +19,11 @@
       "Bash(jj:*)",
       "Bash(git rm:*)",
       "Bash(git submodule:*)",
-      "WebFetch(domain:ghostty.org)"
+      "WebFetch(domain:ghostty.org)",
+      "Bash(claude auth:*)",
+      "Bash(claude mcp:*)",
+      "Bash(claude plugin:*)",
+      "Bash(claude agents:*)"
     ]
   }
 }
