@@ -19,7 +19,7 @@ set -gx PATH "$PNPM_HOME" $PATH
 set -gx FZF_DEFAULT_OPTS '--bind ctrl-t:toggle-all'
 # Use `fd` by default in `fzf` to hide `.gitignore`'d files
 set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
-set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+set -gx FZF_CTRL_T_COMMAND 'fd --type f --hidden --follow --exclude .git . $dir'
 # Show a fancy preview window when using Ctrl+T
 set -gx FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
@@ -47,6 +47,9 @@ if status is-interactive
     end
     if command -sq mise
         mise activate fish | source
+    end
+    if command -sq fzf
+        fzf --fish | source
     end
 
     source ~/utils/fzf-git.sh/fzf-git.fish
