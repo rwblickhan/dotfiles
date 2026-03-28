@@ -28,17 +28,21 @@ function buttondown_newsletter_draft --description "Create a Buttondown draft fr
     # Extract body: everything after the closing --- of frontmatter
     set -l body (awk '/^---$/{n++; if(n==2){found=1; next}} found{print}' $filepath | string collect)
 
+    # Convert :::aside{...} ... ::: blocks to blockquotes
+    set -l body (printf '%s' "$body" | awk '/^:::aside/{in_aside=1; next} /^:::$/ && in_aside{in_aside=0; next} in_aside{print "> " $0; next} {print}' | string collect)
+
     set -l base_name (basename $filepath .md)
 
     # Resolve relative image URLs to absolute using the published website
-    set -l page_html (curl -s "https://rwblickhan.org/newsletters/$base_name")
+    set -l page_html (curl -sL "https://rwblickhan.org/newsletters/$base_name" | string collect)
     if test -n "$page_html"
         set -l img_paths (printf '%s' "$body" | rg -o '!\[[^\]]*\]\(([^)]+\.(jpe?g|png|gif|webp|avif|svg))\)' -r '$1')
         for img_path in $img_paths
             set -l img_stem (string replace -r '\.[^.]+$' '' (basename "$img_path"))
-            set -l matches (printf '%s' "$page_html" | rg -o "src=\"([^\"]*$img_stem[^\"]*)\"" -r '$1')
+            set -l src_pattern (string join '' 'src="([^"]*' $img_stem '[^"]*)"')
+            set -l matches (printf '%s' "$page_html" | rg -o $src_pattern -r '$1')
             if test (count $matches) -gt 0
-                set body (string replace "$img_path" "https://rwblickhan.org$matches[1]" "$body")
+                set body (string replace "$img_path" "https://rwblickhan.org$matches[1]" "$body" | string collect)
             end
         end
     end
