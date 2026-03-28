@@ -1,6 +1,0 @@
----
-syntax: bash
----
-
-// Choose first item, delimited by :
-choose -f ':' 0

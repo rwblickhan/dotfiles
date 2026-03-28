@@ -14,8 +14,6 @@ brew "bat-extras"
 brew "oven-sh/bun/bun"
 # Install rust binaries
 brew "cargo-binstall"
-# Terminal cheatsheets
-brew "cheat"
 # Brewfile manager
 brew "chezmoi"
 # Deno (primarily for yt-dlp support)
@@ -66,8 +64,6 @@ brew "marksman"
 brew "mas"
 # Environment manager
 brew "mise"
-# Better vim
-brew "neovim"
 # Up-to-date node
 brew "node"
 # JavaScript/TypeScript formatter
@@ -88,10 +84,6 @@ brew "ripgrep"
 brew "sd"
 # Shell linter
 brew "shellcheck"
-# Command prompt
-brew "starship"
-# Rust implementation of tldr shell cheatsheet
-brew "tealdeer"
 # Typst language server
 brew "tinymist"
 # TypeScript LSP
@@ -109,21 +101,18 @@ brew "zoxide"
 
 # 1password password manager
 cask "1password-cli"
+# Atkinson Hyperlegible
+cask "font-atkinson-hyperlegible"
 # Non-Apple display management
 cask "betterdisplay"
 # Calibre ebook manager
 cask "calibre"
 # Claude Code
 cask "claude-code"
-# Fira Code / Fira Mono Nerd Fonts
-cask "font-fira-code-nerd-font"
-cask "font-fira-mono-nerd-font"
 # Better terminal
 cask "ghostty"
 # Personal automations
 cask "hammerspoon"
-# SVG editor
-cask "inkscape"
 # Jellyfin media server
 cask "jellyfin"
 # Fix mouse scrolling
