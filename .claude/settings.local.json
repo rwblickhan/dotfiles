@@ -23,7 +23,8 @@
       "Bash(claude auth:*)",
       "Bash(claude mcp:*)",
       "Bash(claude plugin:*)",
-      "Bash(claude agents:*)"
+      "Bash(claude agents:*)",
+      "Bash(gh api:*)"
     ]
   }
 }

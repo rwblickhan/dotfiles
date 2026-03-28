@@ -26,6 +26,8 @@ brew "dprint"
 brew "dust"
 # Better ls
 brew "eza"
+# Language server for tools that don't support LSP natively
+brew "efm-langserver"
 # Better find
 brew "fd"
 # ffmpeg support for yt-dlp

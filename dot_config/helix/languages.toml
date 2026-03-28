@@ -40,6 +40,7 @@ auto-format = true
 
 [[language]]
 name = "markdown"
+language-servers = ["marksman", { name = "efm", only-features = ["diagnostics"] }]
 formatter = { command = "dprint", args = ["fmt", "--stdin", "markdown"] }
 auto-format = true
 
@@ -65,3 +66,6 @@ args = ["--lsp"]
 [language-server.oxlint]
 command = "oxlint"
 args = ["--lsp"]
+
+[language-server.efm]
+command = "efm-langserver"
