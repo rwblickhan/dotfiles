@@ -11,6 +11,7 @@ inlay-hints-length-limit = 20
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
+other-lines = "error"
 
 [editor.cursor-shape]
 insert = "bar"
