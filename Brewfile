@@ -103,6 +103,8 @@ brew "zoxide"
 
 # 1password password manager
 cask "1password-cli"
+# Finder replacement
+cask "bloom"
 # Atkinson Hyperlegible
 cask "font-atkinson-hyperlegible"
 # Non-Apple display management
