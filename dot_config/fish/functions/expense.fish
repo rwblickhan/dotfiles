@@ -1,3 +1,3 @@
 function expense
-  cd ~/Developer/finance && just a
+  cd ~/Developer/finance && mise run add
 end
