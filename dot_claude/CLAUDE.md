@@ -1,3 +1,5 @@
+# CLAUDE.md
+
 ## Version Control
 
 I use both jj (jujutsu) and git for version control. In a directory where both jj and git are active, prefer using jj.
@@ -8,7 +10,7 @@ I use fish shell. Unless I specify otherwise, assume I want fish functions and f
 
 ## General Project Setup
 
-I use mise for general project setup. For any project built from scratch or starting from a template (like the output of `bun init` or `cargo init`), always add a `mise.toml` with basic project workflows.
+I use mise for general project setup. For any project built from scratch or starting from a template (like the output of `bun init` or `cargo init`), always add a `mise.toml` with basic project workflows, including short aliases where relevant.
 
 ## Command-Line Tool Usage
 
@@ -22,3 +24,8 @@ I use mise for general project setup. For any project built from scratch or star
 - When possible, include Mise tasks to generate and install manfiles and fish shell completions.
   - Manfiles should be installed into `~/man/man1` and fish completions should be installed into `~/.config/fish/completions`.
   - For instance, in a Rust project, I would expect to see usage of the `clap`, `clap_mangen`, and `clap_complete` crates to generate these.
+
+## When Building Webapps
+
+- If building a completely static website, prefer using [Astro](https://astro.build/).
+- Otherwise, for all other webapp projects, prefer using [Vite+](https://viteplus.dev/).
