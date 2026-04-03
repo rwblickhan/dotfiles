@@ -12,6 +12,7 @@ push = ["git", "push"]
 
 [ui]
 diff-formatter = "delta"
+default-command = "log"
 
 [merge-tools]
 delta.diff-expected-exit-codes = [0, 1]
