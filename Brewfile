@@ -94,6 +94,8 @@ brew "typescript-language-server"
 brew "typst"
 # Directory watcher
 brew "watchexec"
+# Faster Whisper-based transcription
+brew "whisper-cpp"
 # Better HTTP client
 brew "xh"
 # YouTube downloader
@@ -111,8 +113,6 @@ cask "font-atkinson-hyperlegible"
 cask "betterdisplay"
 # Calibre ebook manager
 cask "calibre"
-# Claude Code
-cask "claude-code"
 # Better terminal
 cask "ghostty"
 # Personal automations
