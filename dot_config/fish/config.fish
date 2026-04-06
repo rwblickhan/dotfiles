@@ -72,4 +72,9 @@ if status is-interactive
     abbr -a nw new_workspace
     abbr -a exp expense
     abbr -a bbic "brew bundle install --cleanup --file=~/Brewfile && brew upgrade"
+
+    abbr_subcommand gh pc "pr create -w"
+    abbr_subcommand gh pm "pr merge"
+    abbr_subcommand gh ps "pr status"
+    abbr_subcommand gh pv "pr view -w"
 end
