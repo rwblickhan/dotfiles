@@ -54,6 +54,7 @@ if status is-interactive
 
     source ~/utils/fzf-git.sh/fzf-git.fish
     source ~/utils/fzf-jj.sh/fzf-jj.fish
+    source ~/.config/fish/abbr.fish
 
     abbr -a a 'git a'
     abbr -a c code
