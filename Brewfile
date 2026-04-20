@@ -134,8 +134,6 @@ vscode "alefragnani.Bookmarks"
 vscode "Anthropic.claude-code"
 # Astro support
 vscode "astro-build.astro-vscode"
-# Vim emulation
-vscode "asvetliakov.vscode-neovim"
 # Fish support
 vscode "bmalehorn.vscode-fish"
 # Path autocompletion
@@ -154,8 +152,6 @@ vscode "esbenp.prettier-vscode"
 vscode "mark-hansen.hledger-vscode"
 # Copy file name command
 vscode "nemesv.copy-file-name"
-# Typst support
-vscode "nvarner.typst-lsp"
 # Rust support
 vscode "rust-lang.rust-analyzer"
 # justfile support
