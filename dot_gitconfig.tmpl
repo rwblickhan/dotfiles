@@ -1,6 +1,6 @@
 [user]
   name = Russell Blickhan
-  email = rwblickhan@gmail.com
+  email = {{ if eq .chezmoi.username "russellblickhan" }}russell.blickhan@vanta.com{{ else }}rwb@rwblickhan.org{{ end }}
 [core]
   pager = delta --line-numbers
   excludesfile = ~/.gitignore_global
