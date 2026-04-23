@@ -11,6 +11,10 @@ tap "dbcli/tap"
 tap "gitpod-io/tap"
 {{ end -}}
 
+{{ if eq .chezmoi.username "russellblickhan" -}}
+# AWS credentials manager
+brew "aws-vault"
+{{ end -}}
 # Better cat
 brew "bat"
 brew "bat-extras"
