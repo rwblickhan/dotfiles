@@ -29,3 +29,5 @@ curl https://mise.run | sh
 ~/.local/bin/mise install-into jujutsu@latest /tmp/jj-install
 mv /tmp/jj-install/jj ~/.local/bin
 rm -rf /tmp/jj-install
+
+npm i -g typescript-language-server
