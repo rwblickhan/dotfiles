@@ -1,6 +1,7 @@
 sh -c "$(curl -fsLS https://get.chezmoi.io)" -- -b $HOME/.local/bin
 chezmoi init --apply https://github.com/rwblickhan/chezmoi.git
-sudo apt install fish git-delta fd-find -y
+sudo add-apt-repository ppa:maveonair/helix-editor
+sudo apt install fish git-delta fd-find helix -y
 
 # Alias fdfind to fd
 ln -s $(which fdfind) ~/.local/bin/fd
