@@ -1,6 +1,6 @@
 sh -c "$(curl -fsLS https://get.chezmoi.io)" -- -b $HOME/.local/bin
 chezmoi init --apply https://github.com/rwblickhan/chezmoi.git
-sudo apt install fish git-delta -y
+sudo apt install fish git-delta fd-find -y
 
 # Install jj
 curl https://mise.run | sh
