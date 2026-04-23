@@ -1,6 +1,10 @@
 sh -c "$(curl -fsLS https://get.chezmoi.io)" -- -b $HOME/.local/bin
 chezmoi init --apply https://github.com/rwblickhan/chezmoi.git
-sudo apt install fish git-delta fd-find -y
+sudo apt install git-delta fd-find -y
+
+# Install fish from GitHub releases
+FISH_VERSION=$(curl -fsLS https://api.github.com/repos/fish-shell/fish-shell/releases/latest | grep '"tag_name"' | sed 's/.*"tag_name": "\(.*\)".*/\1/')
+curl -fsLS "https://github.com/fish-shell/fish-shell/releases/download/${FISH_VERSION}/fish-${FISH_VERSION}-linux-x86_64.tar.xz" | tar -xJ -C ~/.local/bin
 
 # Install Helix from GitHub releases
 HX_VERSION=$(curl -fsLS https://api.github.com/repos/helix-editor/helix/releases/latest | grep '"tag_name"' | sed 's/.*"tag_name": "\(.*\)".*/\1/')
