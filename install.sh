@@ -6,6 +6,11 @@ sudo apt install git-delta fd-find -y
 FISH_VERSION=$(curl -fsLS https://api.github.com/repos/fish-shell/fish-shell/releases/latest | grep '"tag_name"' | sed 's/.*"tag_name": "\(.*\)".*/\1/')
 curl -fsLS "https://github.com/fish-shell/fish-shell/releases/download/${FISH_VERSION}/fish-${FISH_VERSION}-linux-x86_64.tar.xz" | tar -xJ -C ~/.local/bin
 
+# Install fzf from GitHub releases
+FZF_VERSION=$(curl -fsLS https://api.github.com/repos/junegunn/fzf/releases/latest | grep '"tag_name"' | sed 's/.*"tag_name": "v\(.*\)".*/\1/')
+rm -f ~/.local/bin/fzf
+curl -fsLS "https://github.com/junegunn/fzf/releases/download/v${FZF_VERSION}/fzf-${FZF_VERSION}-linux_amd64.tar.gz" | tar -xz -C ~/.local/bin
+
 # Install Helix from GitHub releases
 HX_VERSION=$(curl -fsLS https://api.github.com/repos/helix-editor/helix/releases/latest | grep '"tag_name"' | sed 's/.*"tag_name": "\(.*\)".*/\1/')
 HX_TARBALL="helix-${HX_VERSION}-x86_64-linux.tar.xz"
