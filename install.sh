@@ -1,6 +1,6 @@
 sh -c "$(curl -fsLS https://get.chezmoi.io)" -- -b $HOME/.local/bin
 chezmoi init --apply https://github.com/rwblickhan/chezmoi.git
-sudo apt install git-delta fd-find -y
+sudo apt install git-delta fd-find bat -y
 
 # Install fish from GitHub releases
 FISH_VERSION=$(curl -fsLS https://api.github.com/repos/fish-shell/fish-shell/releases/latest | grep '"tag_name"' | sed 's/.*"tag_name": "\(.*\)".*/\1/')
