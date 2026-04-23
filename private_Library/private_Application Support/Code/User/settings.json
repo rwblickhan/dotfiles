@@ -126,5 +126,10 @@
   ],
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
-  }
+  },
+  "remote.SSH.remotePlatform": {
+    "*.gitpod.local": "linux",
+    "*.gitpod.remote": "linux"
+  },
+  "task.allowAutomaticTasks": "on"
 }
