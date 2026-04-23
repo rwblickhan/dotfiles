@@ -6,6 +6,10 @@ tap "rwblickhan/tap"
 tap "oven-sh/bun"
 # litecli
 tap "dbcli/tap"
+{{ if eq .chezmoi.username "russellblickhan" -}}
+# ona (Gitpod CLI)
+tap "gitpod-io/tap"
+{{ end -}}
 
 # Better cat
 brew "bat"
@@ -72,6 +76,10 @@ brew "node"
 brew "oxfmt"
 # JavaScript/TypeScript linter
 brew "oxlint"
+{{ if eq .chezmoi.username "russellblickhan" -}}
+# Gitpod CLI
+brew "gitpod-io/tap/ona"
+{{ end -}}
 # Pandoc document converter
 brew "pandoc"
 # Install Python executables easily
