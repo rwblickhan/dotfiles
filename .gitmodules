@@ -1,3 +1,6 @@
 [submodule "utils/fzf-git.sh"]
 	path = utils/fzf-git.sh
 	url = https://github.com/junegunn/fzf-git.sh.git
+[submodule "utils/fzf-jj.sh"]
+	path = utils/fzf-jj.sh
+	url = https://github.com/rwblickhan/fzf-jj.sh.git
