@@ -21,8 +21,9 @@ mkdir -p ~/.config/helix
 cp -r "/tmp/helix-${HX_VERSION}-x86_64-linux/runtime" ~/.config/helix/runtime
 rm -rf "/tmp/${HX_TARBALL}" "/tmp/helix-${HX_VERSION}-x86_64-linux"
 
-# Alias fdfind to fd
+# Aliases
 ln -s $(which fdfind) ~/.local/bin/fd
+ln -s $(which batcat) ~/.local/bin/bat
 
 # Install jj
 curl https://mise.run | sh
