@@ -180,3 +180,15 @@ vscode "YoavBls.pretty-ts-errors"
 vscode "yzhang.markdown-all-in-one"
 # VSCodeVim
 vscode "vscodevim.vim"
+{{ if eq .chezmoi.username "russellblickhan" -}}
+# Dev Containers support
+vscode "ms-vscode-remote.remote-containers"
+# Gitpod Flex
+vscode "gitpod.gitpod-flex"
+# Remote SSH
+vscode "ms-vscode-remote.remote-ssh"
+# Remote Explorer
+vscode "ms-vscode.remote-explorer"
+# Remote SSH editing
+vscode "ms-vscode-remote.remote-ssh-edit"
+{{ end -}}
