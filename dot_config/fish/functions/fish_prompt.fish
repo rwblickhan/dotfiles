@@ -15,7 +15,7 @@ function fish_prompt
     end
 
     if set -q ZMX_SESSION
-        echo -n "[$ZMX_SESSION]"
+        echo -n "[$ZMX_SESSION] "
     end
     # https://www.reasonable.work/colors/
     # cerulean 2
