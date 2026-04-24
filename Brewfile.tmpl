@@ -6,8 +6,6 @@ tap "rwblickhan/tap"
 tap "oven-sh/bun"
 # litecli
 tap "dbcli/tap"
-# zmx
-tap "neurosnap/tap"
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # ona (Gitpod CLI)
 tap "gitpod-io/tap"
@@ -117,7 +115,7 @@ brew "yt-dlp"
 # Better cd
 brew "zoxide"
 # session persistence
-brew "zmx"
+brew "neurosnap/tap/zmx"
 
 # 1password password manager
 cask "1password-cli"
