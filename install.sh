@@ -32,5 +32,3 @@ mv /tmp/jj-install/jj ~/.local/bin
 rm -rf /tmp/jj-install
 
 npm i -g typescript-language-server
-
-export PATH="/workspaces/obsidian/node_modules/.bin:$PATH"

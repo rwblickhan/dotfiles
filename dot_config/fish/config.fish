@@ -1,4 +1,5 @@
 fish_add_path ~/.local/bin
+fish_add_path /workspaces/obsidian/node_modules/.bin
 ## Homebrew paths
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/sbin
