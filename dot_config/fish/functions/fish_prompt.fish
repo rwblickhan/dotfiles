@@ -14,6 +14,9 @@ function fish_prompt
         end
     end
 
+    if set -q ZMX_SESSION
+        echo -n "[$ZMX_SESSION]"
+    end
     # https://www.reasonable.work/colors/
     # cerulean 2
     set_color --bold 0092c5

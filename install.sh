@@ -31,4 +31,7 @@ curl https://mise.run | sh
 mv /tmp/jj-install/jj ~/.local/bin
 rm -rf /tmp/jj-install
 
+# Install zmx
+curl -fsLS "https://zmx.sh/a/zmx-0.5.0-linux-x86_64.tar.gz" | tar -xz -C ~/.local/bin
+
 npm i -g typescript-language-server
