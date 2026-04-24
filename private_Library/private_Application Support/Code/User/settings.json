@@ -3,45 +3,45 @@
   "editor.formatOnSave": true,
   "editor.stickyScroll.enabled": true,
   // Use Fira Mono
-  "editor.fontFamily": "'FiraMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'Atkinson Hyperlegible Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.lineNumbers": "relative",
   "editor.guides.bracketPairs": "active",
   "editor.codeActionsOnSave": {
-    "source.fixAll.stylelint": "always"
+    "source.fixAll.stylelint": "always",
   },
   "diffEditor.experimental.showMoves": true,
   "workbench.colorTheme": "Ayu Dark Bordered",
   "workbench.quickOpen.preserveInput": true,
   "workbench.tree.enableStickyScroll": true,
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typst]": {
-    "editor.defaultFormatter": "nvarner.typst-lsp"
+    "editor.defaultFormatter": "nvarner.typst-lsp",
   },
   "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
+    "editor.defaultFormatter": "astro-build.astro-vscode",
   },
   // Validate SCSS with stylelint
   "stylelint.validate": ["css", "scss"],
@@ -50,25 +50,25 @@
     "editor.quickSuggestions": {
       "comments": true,
       "strings": true,
-      "other": true
-    }
+      "other": true,
+    },
   },
   "[mdx]": {
     "editor.quickSuggestions": {
       "comments": true,
       "strings": true,
-      "other": true
-    }
+      "other": true,
+    },
   },
   "files.associations": {
     "*.css": "css",
-    "*.mdx": "mdx"
+    "*.mdx": "mdx",
   },
   // Show suggestions even in strings and comments (e.g. for Tailwind)
   "editor.quickSuggestions": {
     "other": true,
     "comments": true,
-    "strings": true
+    "strings": true,
   },
   // Go straight to first definition if there's multiple
   "editor.gotoLocation.multipleDeclarations": "goto",
@@ -85,7 +85,7 @@
   "files.exclude": {
     ".zig-cache": true,
     "node_modules": true,
-    "zig-out": true
+    "zig-out": true,
   },
   "git.autofetch": true,
   // Force Emmet suggestions to show up at the bottom
@@ -96,40 +96,21 @@
     "no-inline-html": false,
     "line-length": false,
     "single-trailing-newline": false,
-    "no-blanks-blockquote": false
+    "no-blanks-blockquote": false,
   },
-  "typst-lsp.experimentalFormatterMode": "on",
-  // Don't export PDF via typst-lsp; use typst watch instead
-  "typst-lsp.exportPdf": "never",
   "rust-analyzer.check.command": "clippy",
   "git.enableSmartCommit": true,
   "security.promptForLocalFileProtocolHandling": false,
   "workbench.editor.empty.hint": "hidden",
   "editor.accessibilitySupport": "off",
   "git.openRepositoryInParentFolders": "always",
-  "cSpell.userWords": ["descript", "testid"],
   "astro.content-intellisense": true,
   "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": true,
   "search.useParentIgnoreFiles": true,
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false,
-    "svelte": false,
-    "rust": false,
-    "mdx": false
-  },
-  "Lua.workspace.library": [
-    "/Users/rwblickhan/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
-  ],
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
   "remote.SSH.remotePlatform": {
     "*.gitpod.local": "linux",
-    "*.gitpod.remote": "linux"
+    "*.gitpod.remote": "linux",
   },
-  "task.allowAutomaticTasks": "on"
+  "task.allowAutomaticTasks": "on",
 }
