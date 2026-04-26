@@ -78,4 +78,6 @@ if status is-interactive
     abbr_subcommand gh pm "pr merge"
     abbr_subcommand gh ps "pr status"
     abbr_subcommand gh pv "pr view -w"
+
+    abbr_subcommand jj dm "desc -m"
 end
