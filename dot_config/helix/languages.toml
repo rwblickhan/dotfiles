@@ -5,22 +5,22 @@ auto-format = false
 
 [[language]]
 name = "typescript"
-language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "oxlint", "oxfmt"]
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "eslint", "oxlint", "oxfmt"]
 auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "oxlint", "oxfmt"]
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "eslint", "oxlint", "oxfmt"]
 auto-format = true
 
 [[language]]
 name = "javascript"
-language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "oxlint", "oxfmt"]
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "eslint", "oxlint", "oxfmt"]
 auto-format = true
 
 [[language]]
 name = "jsx"
-language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "oxlint", "oxfmt"]
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "eslint", "oxlint", "oxfmt"]
 auto-format = true
 
 [[language]]
@@ -69,3 +69,15 @@ args = ["--lsp"]
 
 [language-server.efm]
 command = "efm-langserver"
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+validate = "on"
+run = "onType"
+nodePath = ""
+rulesCustomizations = []
+problems = { shortenToSingleLine = false }
+experimental = { useFlatConfig = false }

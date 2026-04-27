@@ -13,6 +13,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 brew tap neurosnap/tap
 
+npm install -g vscode-langservers-extracted
+
 brew install \
     bat \
     fd \
