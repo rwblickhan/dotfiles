@@ -74,5 +74,6 @@
     "*.gitpod.local": "linux",
     "*.gitpod.remote": "linux"
   },
-  "task.allowAutomaticTasks": "on"
+  "task.allowAutomaticTasks": "on",
+  "helixKeymap.toggleRelativeLineNumbers": true
 }
