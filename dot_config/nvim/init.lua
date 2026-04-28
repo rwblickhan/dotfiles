@@ -14,6 +14,7 @@ require('mini.comment').setup({})
 require('mini.completion').setup({})
 require('mini.git').setup({})
 require('mini.jump').setup()
+require('mini.jump2d').setup()
 require('mini.operators').setup()
 require('mini.surround').setup({
   mappings = {
