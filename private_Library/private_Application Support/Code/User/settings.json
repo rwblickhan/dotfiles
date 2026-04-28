@@ -75,5 +75,7 @@
     "*.gitpod.remote": "linux"
   },
   "task.allowAutomaticTasks": "on",
-  "helixKeymap.toggleRelativeLineNumbers": true
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
 }
