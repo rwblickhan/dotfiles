@@ -11,11 +11,10 @@ vim.call('plug#end')
 require('mini.basics').setup()
 require('mini.ai').setup({})
 require('mini.comment').setup({})
-require('mini.completion').setup({})
 require('mini.git').setup({})
 require('mini.jump').setup()
 require('mini.jump2d').setup()
-require('mini.operators').setup()
+require('mini.operators').setup({ replace = { prefix = "<leader>R" }})
 require('mini.surround').setup({
   mappings = {
     add = 'ys',
