@@ -39,33 +39,36 @@ vim.keymap.set('v', 'H', '^', { noremap = true })
 vim.keymap.set('v', 'L', '$', { noremap = true })
 
 if vim.g.vscode then
-  vim.keymap.set('n', 'cd', function()
+  vim.keymap.set('n', '<leader>r', function()
     require('vscode').action('editor.action.rename')
   end)
 
-  vim.keymap.set('n', 'gD', function()
-    require('vscode').action('workbench.action.splitEditor')
-    require('vscode').action('editor.action.goToDeclaration')
+  vim.keymap.set('n', '<leader>.', function()
+    require('vscode').action('editor.action.quickFix')
   end)
 
   vim.keymap.set('n', 'g/', function()
     require('vscode').action('workbench.action.findInFiles', { args = { query = vim.fn.expand('<cword>') } })
   end)
 
-  vim.keymap.set('n', 'gs', function()
+  vim.keymap.set('n', 'gr', function()
     require('vscode').action('editor.action.referenceSearch.trigger', { args = { query = vim.fn.expand('<cword>') } })
   end)
 
-  vim.keymap.set('n', 'g]', function()
+  vim.keymap.set('n', ']d', function()
     require('vscode').action('editor.action.marker.next')
   end)
 
-  vim.keymap.set('n', 'g[', function()
+  vim.keymap.set('n', '[d', function()
     require('vscode').action('editor.action.marker.prev')
   end)
 
-  vim.keymap.set('n', 'g.', function()
-    require('vscode').action('editor.action.quickFix')
+  vim.keymap.set('n', ']g', function()
+    require('vscode').action('workbench.action.editor.nextChange')
+  end)
+
+  vim.keymap.set('n', '[g', function()
+    require('vscode').action('workbench.action.editor.previousChange')
   end)
 
   vim.keymap.set('n', 'go', function()
@@ -87,19 +90,11 @@ if vim.g.vscode then
   vim.keymap.set('n', '"', function()
     require('vscode').action('bookmarks.listFromAllFiles')
   end)
-
-  vim.keymap.set('n', ']H', function()
-    require('vscode').action('workbench.action.editor.nextChange')
-  end)
-
-  vim.keymap.set('n', '[H', function()
-    require('vscode').action('workbench.action.editor.previousChange')
-  end)
 end
 
 
 -- Use \ as leader
-vim.g.mapleader = '\\'
+vim.g.mapleader = '<space>'
 -- Use /g by default in regex substitution
 vim.opt.gdefault = true
 -- Use 2 spaces for tabs
@@ -111,4 +106,4 @@ vim.opt.relativenumber = true
 -- Use system clipboard
 vim.opt.clipboard:append('unnamedplus')
 -- Use \ as CamelCaseMotion hotkey
-vim.g.camelcasemotion_key = '<leader>'
+vim.g.camelcasemotion_key = '\\'
