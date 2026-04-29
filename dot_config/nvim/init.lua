@@ -43,7 +43,7 @@ if vim.g.vscode then
     require('vscode').action('editor.action.rename')
   end)
 
-  vim.keymap.set('n', '<leader>.', function()
+  vim.keymap.set('n', '<leader>a', function()
     require('vscode').action('editor.action.quickFix')
   end)
 
