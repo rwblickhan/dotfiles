@@ -1,4 +1,4 @@
-function snag --description 'Pick desired files from a chosen branch'
+function git_snag --description 'Pick desired files from a chosen branch'
   # use fzf to choose source branch to snag files FROM
   set branch (git for-each-ref --format='%(refname:short)' refs/heads | fzf --height 20% --layout=reverse --border)
   # avoid doing work if branch isn't set
