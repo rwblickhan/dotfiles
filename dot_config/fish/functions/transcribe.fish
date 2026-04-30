@@ -28,7 +28,7 @@ function transcribe --description "Convert audio to WAV and transcribe with whis
 
     echo "Transcribing -> $output_base.txt"
     whisper-cli \
-        -m ~/Developer/ggml-large-v3-turbo.bin \
+        -m ~/ggml-large-v3-turbo.bin \
         -f $wav_tmp \
         -of $output_base \
         --output-txt \
