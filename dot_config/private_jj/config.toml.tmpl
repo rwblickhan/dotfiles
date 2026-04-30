@@ -4,12 +4,6 @@
 email = "{{ if eq .chezmoi.username "rwblickhan" }}rwb@rwblickhan.org{{ else }}russell.blickhan@vanta.com{{ end }}"
 name = "Russell Blickhan"
 
-[aliases]
-e = ["edit"]
-l = ["log"]
-lb = ["log", "-r", "bookmarks()"]
-push = ["git", "push"]
-
 [ui]
 diff-formatter = "delta"
 default-command = "log"
