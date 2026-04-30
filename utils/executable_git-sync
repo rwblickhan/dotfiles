@@ -1,2 +1,2 @@
 #!/usr/bin/env fish
-git cm && git pull && sync_pr_branches
+git switch main && git pull && sync_pr_branches
