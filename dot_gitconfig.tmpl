@@ -13,45 +13,6 @@
   diffFilter = delta --color-only --features=interactive
 [pull]
   rebase = false
-[alias]
-  a = "add"
-  b = "branch"
-  c = "switch"
-  cb = "checkout -b"
-  cm = "switch main"
-  cam = "commit -a -m"
-  camp = "!fish -c 'git_commit_all_message_push $argv'"
-  d = "diff --ignore-all-space"
-  ds = "diff HEAD --ignore-all-space"
-  df = "!fish -c 'git_fzf_diff_file'"
-  db = "!fish -c 'git_fzf_diff_branch'"
-  dbn = "!fish -c 'git_fzf_diff_branch_name_only'"
-  dm = "diff main --ignore-all-space"
-  dt = "difftool"
-  dts = "difftool --staged"
-  # https://kiranrao.ca/2024/06/21/git-config.html
-  hist = "log --graph --abbrev-commit --decorate --date=short \
-		--format=format:'%C(bold cyan)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' \
-		--branches --remotes --tags"
-  l = "log"
-  ld = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
-  lp = "log --oneline -p"
-  ls = "log --oneline --decorate"
-  m = "merge --no-edit"
-  ma = "merge --abort"
-  mc = "merge --continue"
-  mm = "merge main --no-edit"
-  mt = "mergetool"
-  r = "restore"
-  rs = "restore --staged"
-  rsw = "restore --staged --worktree"
-  s = "status"
-  st = "stash"
-  std = "stash drop"
-  stp = "stash pop"
-  sts = "stash show -p"
-  oops = "commit -a --no-edit --amend"
-  c- = "switch -"
 [push]
   autoSetupRemote = true
 [diff]

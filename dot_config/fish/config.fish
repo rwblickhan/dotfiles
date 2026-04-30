@@ -57,7 +57,6 @@ if status is-interactive
     source ~/utils/fzf-jj.sh/fzf-jj.fish
     source ~/.config/fish/abbr.fish
 
-    abbr -a a 'git a'
     abbr -a c code
     abbr -a ch chezmoi
     abbr -a f rfv
@@ -85,4 +84,19 @@ if status is-interactive
     abbr_subcommand jj l log
     abbr_subcommand jj lb "log -r 'bookmarks()'"
     abbr_subcommand jj p "git push"
+
+    abbr_subcommand g b branch
+    abbr_subcommand g c switch
+    abbr_subcommand g cb "checkout -b"
+    abbr_subcommand g cm "switch main"
+    abbr_subcommand g d "diff --ignore-all-space"
+    abbr_subcommand g ds "diff HEAD --ignore-all-space"
+    abbr_subcommand g dm "diff main --ignore-all-space"
+    abbr_subcommand g m "merge --no-edit"
+    abbr_subcommand g ma "merge --abort"
+    abbr_subcommand g mc "merge --continue"
+    abbr_subcommand g mm "merge main --no-edit"
+    abbr_subcommand g mt mergetool
+    abbr_subcommand g s status
+    abbr_subcommand g st stash
 end
