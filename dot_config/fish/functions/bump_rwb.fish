@@ -11,7 +11,7 @@ function bump_rwb
     return 1
   end
   if jj diff --name-only | string match -qr '.'
-    jj describe -m "Log"; and mise run push
+    jj fix; and jj describe -m "Log"; and mise run push
   else
     echo "No changes!"
   end
