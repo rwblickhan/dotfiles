@@ -8,8 +8,9 @@ sh -c "$(curl -fsLS https://get.chezmoi.io)" -- -b "$HOME/.local/bin"
 # Install Homebrew
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Add brew to PATH for this session (Linux install path)
+# Add brew to PATH for this session and persist to .bashrc (Linux install path)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+printf '\neval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"\n' >> "$HOME/.bashrc"
 
 brew tap neurosnap/tap
 
