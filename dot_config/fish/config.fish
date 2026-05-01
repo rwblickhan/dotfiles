@@ -57,6 +57,7 @@ if status is-interactive
     source ~/utils/fzf-jj.sh/fzf-jj.fish
     source ~/.config/fish/abbr.fish
 
+    abbr -a ash "autossh -M 0 -q"
     abbr -a c code
     abbr -a ch chezmoi
     abbr -a f rfv

@@ -11,6 +11,8 @@ tap "dbcli/tap"
 tap "gitpod-io/tap"
 {{ end -}}
 
+# SSH tunneling
+brew "autossh"
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # AWS credentials manager
 brew "aws-vault"
