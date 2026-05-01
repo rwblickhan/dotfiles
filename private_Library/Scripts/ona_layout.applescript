@@ -6,13 +6,13 @@ tell application "Ghostty"
 	set paneRight to split paneTopLeft direction right
 	set paneBottomLeft to split paneTopLeft direction down
 
-	input text "ssh ona.web-dev" to paneTopLeft
+	input text "ash ona.web-dev" to paneTopLeft
 	send key "enter" to paneTopLeft
 
-	input text "ssh ona.claude" to paneBottomLeft
+	input text "ash ona.claude" to paneBottomLeft
 	send key "enter" to paneBottomLeft
 
-	input text "ssh ona.editor" to paneRight
+	input text "ash ona.editor" to paneRight
 	send key "enter" to paneRight
 
 	focus paneTopLeft
