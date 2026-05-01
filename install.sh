@@ -11,6 +11,7 @@ NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ho
 # Add brew to PATH for this session and persist to .bashrc (Linux install path)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 printf '\neval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"\n' >> "$HOME/.bashrc"
+printf '\nexec fish\n' >> "$HOME/.bashrc"
 
 brew tap neurosnap/tap
 
