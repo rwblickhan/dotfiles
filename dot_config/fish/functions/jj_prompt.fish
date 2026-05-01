@@ -14,7 +14,11 @@ function jj_prompt
         if test -z "$jj_desc"
             echo -n " (no description set)"
         else
-            echo -n " $jj_desc"
+            if test (string length $jj_desc) -gt 20
+                echo -n " "(string sub -l 20 $jj_desc)"…"
+            else
+                echo -n " $jj_desc"
+            end
         end
         set_color normal
 
@@ -22,7 +26,11 @@ function jj_prompt
             echo -n " on "
             # jj purple
             set_color --bold bc99d4
-            echo -n $jj_bm
+            if test (string length $jj_bm) -gt 20
+                echo -n (string sub -l 20 $jj_bm)"…"
+            else
+                echo -n $jj_bm
+            end
             set_color normal
         end
     else
