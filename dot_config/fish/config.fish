@@ -65,11 +65,11 @@ if status is-interactive
     abbr -a h hx
     abbr -a j jj
     abbr -a m mise
+    abbr -a n nvim
     abbr -a o open
     abbr -a p pnpm
     abbr -a r 'mise run'
     abbr -a z zmx
-    abbr --set-cursor -a s 'git commit -m "%" && git push'
 
     abbr -a nw new_workspace
     abbr -a exp expense
