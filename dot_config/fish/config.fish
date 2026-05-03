@@ -84,7 +84,8 @@ if status is-interactive
     abbr_subcommand jj e edit
     abbr_subcommand jj l log
     abbr_subcommand jj lb "log -r 'bookmarks()'"
-    abbr_subcommand jj p "git push"
+    abbr_subcommand jj gf "git fetch"
+    abbr_subcommand jj gp "git push"
     abbr_subcommand jj sn "show --name-only"
 
     abbr_subcommand git b branch
