@@ -92,12 +92,13 @@ function sync_mochi --description "Sync Mochi markdown exports to an Obsidian va
                 continue
             end
 
-            echo "Copying: $fname"
-            set dest "$vault/$fname"
+            set dest_fname (string replace -r '^[A-Za-z0-9]+ - ' '' $fname)
+            echo "Copying: $dest_fname"
+            set dest "$vault/$dest_fname"
             echo '---' > $dest
             echo "mochi-id: $id" >> $dest
             echo '---' >> $dest
-            cat $src_file >> $dest
+            perl -0777 -pe 's/([^\n])\n---/$1\n\n---/g; s/---\n([^\n])/---\n\n$1/g' $src_file >> $dest
 
             set -a known_ids $id
             set copied (math $copied + 1)
