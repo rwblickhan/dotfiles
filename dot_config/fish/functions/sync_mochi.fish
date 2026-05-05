@@ -6,7 +6,7 @@ function sync_mochi --description "Sync Mochi markdown exports to an Obsidian va
         echo "Usage: sync_mochi"
         echo
         echo "Syncs Mochi markdown exports to an Obsidian vault."
-        echo "Opens \$EDITOR each run to choose decks and vault path."
+        echo "Opens \$EDITOR each run to choose export dir, vault, and decks."
         echo
         echo "Options:"
         echo "  -h, --help  Show this help"
@@ -24,7 +24,8 @@ function sync_mochi --description "Sync Mochi markdown exports to an Obsidian va
 
     # Parse config -------------------------------------------------------
     set vault ""
-    set decks
+    set export_root ""
+    set deck_names
 
     while read -l line
         set line (string trim $line)
@@ -39,8 +40,10 @@ function sync_mochi --description "Sync Mochi markdown exports to an Obsidian va
         switch $key
             case vault
                 set vault $val
+            case export
+                set export_root $val
             case deck
-                set -a decks $val
+                set -a deck_names $val
         end
     end < $tmpfile
 
@@ -51,7 +54,12 @@ function sync_mochi --description "Sync Mochi markdown exports to an Obsidian va
         return 1
     end
 
-    if test (count $decks) -eq 0
+    if test -z "$export_root"
+        echo "sync_mochi: no export directory set in config" >&2
+        return 1
+    end
+
+    if test (count $deck_names) -eq 0
         echo "sync_mochi: no decks selected" >&2
         return 1
     end
@@ -61,12 +69,18 @@ function sync_mochi --description "Sync Mochi markdown exports to an Obsidian va
         return 1
     end
 
+    if not test -d $export_root
+        echo "sync_mochi: export directory does not exist: $export_root" >&2
+        return 1
+    end
+
     # Sync ---------------------------------------------------------------
     set known_ids (rg --no-filename -o '^mochi-id: (.+)$' -r '$1' --glob '*.md' $vault 2>/dev/null)
     set copied 0
     set skipped 0
 
-    for deck in $decks
+    for deck_name in $deck_names
+        set deck "$export_root/$deck_name"
         if not test -d $deck
             echo "sync_mochi: deck not found: $deck" >&2
             continue
@@ -99,19 +113,19 @@ function sync_mochi --description "Sync Mochi markdown exports to an Obsidian va
     echo "Done: $copied copied, $skipped already synced"
 end
 
-# Scan ~/Downloads/markdown-export for Mochi deck directories
+# Scan an export root for Mochi deck directories, printing just the names
 function _sync_mochi_detect_decks
-    set export_root ~/Downloads/markdown-export
+    set export_root $argv[1]
     test -d $export_root; or return
     find $export_root -maxdepth 1 -mindepth 1 -type d | sort | while read -l d
-        string match -qr '^[A-Za-z0-9]{8} - ' (basename $d); and echo $d
+        string match -qr '^[A-Za-z0-9]{8} - ' (basename $d); and basename $d
     end
 end
 
 # Write a fresh config to the given file path
 function _sync_mochi_write_config
     set config_file $argv[1]
-    set available (_sync_mochi_detect_decks)
+    set available (_sync_mochi_detect_decks ~/Downloads/markdown-export)
 
     echo '# sync_mochi — save and close to run' > $config_file
     echo >> $config_file
@@ -119,13 +133,14 @@ function _sync_mochi_write_config
     if test (count $available) -gt 0
         echo -n '# Available decks:' >> $config_file
         for d in $available
-            echo -n " $(basename $d)" >> $config_file
+            echo -n " $d" >> $config_file
         end
         echo >> $config_file
         echo >> $config_file
     end
 
     echo 'vault ~/Documents/Obsidian Vaults/mochi' >> $config_file
+    echo 'export ~/Downloads/markdown-export' >> $config_file
     echo >> $config_file
     echo '# Decks to sync — uncomment to enable:' >> $config_file
 
@@ -134,6 +149,6 @@ function _sync_mochi_write_config
             echo "# deck $d" >> $config_file
         end
     else
-        echo '# deck ~/Downloads/markdown-export/<ID> - <Name>' >> $config_file
+        echo '# deck <ID> - <Name>' >> $config_file
     end
 end
