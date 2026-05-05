@@ -106,6 +106,15 @@ function sync_mochi --description "Sync Mochi markdown exports to an Obsidian va
             set -a known_ids $id
             set copied (math $copied + 1)
         end
+
+        for src_file in (find $deck -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" -o -name "*.png" \) | sort)
+            set fname (basename $src_file)
+            set dest "$vault/$fname"
+            test -f $dest; and continue
+            echo "Copying: $fname"
+            cp $src_file $dest
+            set copied (math $copied + 1)
+        end
     end
 
     echo
