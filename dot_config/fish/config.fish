@@ -82,8 +82,7 @@ if status is-interactive
 
     abbr_subcommand jj dm "desc -m"
     abbr_subcommand jj e edit
-    abbr_subcommand jj gf "git fetch"
-    abbr_subcommand jj gp "git push"
+    abbr_subcommand jj g git
     abbr_subcommand jj l log
     abbr_subcommand jj lb "log -r 'bookmarks()'"
     abbr_subcommand jj n new
