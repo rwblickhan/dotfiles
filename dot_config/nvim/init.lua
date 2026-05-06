@@ -16,7 +16,7 @@ require('mini.jump').setup()
 require('mini.jump2d').setup({
   mappings = { start_jumping = 'gw' },
 })
-require('mini.operators').setup({ replace = { prefix = "<leader>R" }})
+require('mini.operators').setup({ replace = { prefix = "R" }})
 require('mini.surround').setup({
   mappings = {
     add = 'ys',
