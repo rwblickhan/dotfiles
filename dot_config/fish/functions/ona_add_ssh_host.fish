@@ -3,6 +3,9 @@ function ona_add_ssh_host --description "Append zmx config to ona's ssh config"
         echo "Usage: ona_add_ssh_host <hostname>"
         return 1
     end
+    if test -f ~/.ssh/ona/config
+        sd '\nHost ona\.\*\n([ \t]+[^\n]+\n)+' '' ~/.ssh/ona/config
+    end
     begin
         echo ""
         echo "Host ona.*"
