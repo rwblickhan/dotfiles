@@ -16,5 +16,5 @@ tell application "Ghostty"
 	input text "ash ona.editor" to paneRight
 	send key "enter" to paneRight
 
-	focus paneTopLeft
+	focus paneRight
 end tell
