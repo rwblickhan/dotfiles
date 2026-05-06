@@ -1,8 +1,9 @@
 tell application "Ghostty"
 	activate
 
-	set win to new window
-	set paneTopLeft to terminal 1 of selected tab of win
+	set win to front window
+	set newTab to new tab in win
+	set paneTopLeft to terminal 1 of newTab
 	set paneRight to split paneTopLeft direction right
 	set paneBottomLeft to split paneTopLeft direction down
 
