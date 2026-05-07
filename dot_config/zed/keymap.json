@@ -25,7 +25,8 @@
   {
     "context": "Workspace",
     "bindings": {
-      "cmd-shift-l": "workspace::ToggleRightDock"
+      "cmd-shift-l": "workspace::ToggleRightDock",
+      "cmd-shift-j": "workspace::ToggleBottomDock"
     }
   },
   {
