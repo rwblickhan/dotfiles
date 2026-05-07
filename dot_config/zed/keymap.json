@@ -1,0 +1,37 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "unbind": {
+      "cmd-o": "workspace::Open",
+      "cmd-p": "file_finder::Toggle"
+    }
+  },
+  {
+    "unbind": {}
+  },
+  {
+    "bindings": {
+      "cmd-shift-o": "workspace::Open",
+      "cmd-o": "file_finder::Toggle",
+      "cmd-p": "command_palette::Toggle"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-shift-l": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "cmd-shift-l": "editor::SelectAllMatches"
+    }
+  }
+]
