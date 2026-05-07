@@ -19,9 +19,7 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/workspaces/obsidian/./"
-          ]
+          "paths": ["/workspaces/obsidian/./"]
         }
       ]
     }
@@ -43,12 +41,7 @@
     "show": "never"
   },
   "autosave": "on_focus_change",
-  "buffer_font_fallbacks": [
-    "Menlo",
-    "Monaco",
-    "Courier New",
-    "monospace"
-  ],
+  "buffer_font_fallbacks": ["Menlo", "Monaco", "Courier New", "monospace"],
   "buffer_font_family": "Atkinson Hyperlegible Mono",
   "icon_theme": {
     "mode": "system",
@@ -61,6 +54,13 @@
   "theme": {
     "mode": "dark",
     "light": "Ayu Light",
-    "dark": "Ayu Dark",
+    "dark": "Ayu Dark"
   },
+  "lsp": {
+    "tsgo": {
+      "settings": {
+        "package_version": "7.0.0-dev.20260316.1"
+      }
+    }
+  }
 }
