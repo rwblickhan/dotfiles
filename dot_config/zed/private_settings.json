@@ -1,0 +1,65 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "vim": {
+    "gdefault": true,
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true
+  },
+  "ssh_connections": [
+    {
+      "host": "019dfe2d-40e2-7299-bda3-095c312bb6cd.gitpod.environment",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/workspaces/obsidian/./"
+          ]
+        }
+      ]
+    }
+  ],
+  "git": {
+    "inline_blame": {
+      "enabled": true
+    }
+  },
+  "base_keymap": "VSCode",
+  "relative_line_numbers": "enabled",
+  "sticky_scroll": {
+    "enabled": true
+  },
+  "gutter": {
+    "line_numbers": true
+  },
+  "minimap": {
+    "show": "never"
+  },
+  "autosave": "on_focus_change",
+  "buffer_font_fallbacks": [
+    "Menlo",
+    "Monaco",
+    "Courier New",
+    "monospace"
+  ],
+  "buffer_font_family": "Atkinson Hyperlegible Mono",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "Ayu Light",
+    "dark": "Ayu Dark",
+  },
+}
