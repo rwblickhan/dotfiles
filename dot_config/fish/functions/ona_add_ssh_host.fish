@@ -4,7 +4,14 @@ function ona_add_ssh_host --description "Append zmx config to ona's ssh config"
         return 1
     end
     if test -f ~/.ssh/ona/config
-        sd '\nHost ona\.\*\n([ \t]+[^\n]+\n)+' '' ~/.ssh/ona/config
+        python3 -c "
+import re, sys
+with open(sys.argv[1]) as f:
+    content = f.read()
+content = re.sub(r'\nHost ona\.\*\n(?:[ \t]+[^\n]+\n)+', '', content)
+with open(sys.argv[1], 'w') as f:
+    f.write(content)
+" ~/.ssh/ona/config
     end
     begin
         echo ""
