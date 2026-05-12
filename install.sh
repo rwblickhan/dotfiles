@@ -15,8 +15,6 @@ printf '\n# Fix Zed remote extension permissions (root-owned .tmp dirs block ext
 
 brew tap neurosnap/tap
 
-npm install -g vscode-langservers-extracted
-
 BREW_FORMULAE=(
     bat
     fd
@@ -25,7 +23,6 @@ BREW_FORMULAE=(
     git-delta
     helix
     jj
-    typescript-language-server
     neurosnap/tap/zmx
 )
 
