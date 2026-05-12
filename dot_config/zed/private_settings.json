@@ -15,11 +15,13 @@
   },
   "ssh_connections": [
     {
-      "host": "019dfe2d-40e2-7299-bda3-095c312bb6cd.gitpod.environment",
+      "host": "019e1d65-f248-7215-8edc-a8a91803d08b.gitpod.environment",
       "args": [],
       "projects": [
         {
-          "paths": ["/workspaces/obsidian/./"]
+          "paths": [
+            "/workspaces/obsidian/./"
+          ]
         }
       ]
     }
