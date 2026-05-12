@@ -17,18 +17,23 @@ brew tap neurosnap/tap
 
 npm install -g vscode-langservers-extracted
 
-brew install \
-    bat \
-    fd \
-    fish \
-    fzf \
-    git-delta \
-    helix \
-    jj \
-    typescript-language-server \
+BREW_FORMULAE=(
+    bat
+    fd
+    fish
+    fzf
+    git-delta
+    helix
+    jj
+    typescript-language-server
     neurosnap/tap/zmx
+)
 
-# Symlink all brew-installed binaries to ~/.local/bin so brew doesn't need to be on PATH
-for bin in /home/linuxbrew/.linuxbrew/bin/*; do
-    ln -sf "$bin" "$HOME/.local/bin/$(basename "$bin")"
+brew install "${BREW_FORMULAE[@]}"
+
+# Symlink binaries for explicitly installed formulae to ~/.local/bin to avoid overwriting builtin node/python/etc
+for formula in "${BREW_FORMULAE[@]}"; do
+    brew list "$formula" 2>/dev/null | grep '/bin/' | while read -r bin; do
+        ln -sf "$bin" "$HOME/.local/bin/$(basename "$bin")"
+    done
 done
