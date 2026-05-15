@@ -1,6 +1,4 @@
 hs.loadSpoon("EmmyLua")
-hs.loadSpoon("LeftRightHotkey")
-spoon.LeftRightHotkey:start()
 
 local function urlEncode(s)
     return s:gsub("([^%w%-%.%_%~ ])", function(c)
