@@ -87,6 +87,24 @@ local function bindConditionalHotkey(mods, key, condition, fn)
     return hk
 end
 
+local function showOrHide(appName)
+    local app = hs.application.get(appName)
+    if app and app:isFrontmost() then
+        app:hide()
+    elseif app then
+        app:unhide()
+        app:activate()
+        local win = app:mainWindow()
+        if win then
+            win:raise()
+        else
+            hs.eventtap.keyStroke({"cmd"}, "n")
+        end
+    else
+        hs.application.launchOrFocus(appName)
+    end
+end
+
 local hyper      = { "cmd", "ctrl", "alt", "shift" }
 local modsChrome = { "cmd", "shift" }
 
@@ -95,6 +113,24 @@ hs.hotkey.bind(hyper, "j", function() hs.eventtap.keyStroke({}, "down") end)
 hs.hotkey.bind(hyper, "k", function() hs.eventtap.keyStroke({}, "up") end)
 hs.hotkey.bind(hyper, "h", function() hs.eventtap.keyStroke({}, "left") end)
 hs.hotkey.bind(hyper, "l", function() hs.eventtap.keyStroke({}, "right") end)
+
+-- App show/hide hotkeys
+hs.hotkey.bind(hyper, "1", function() showOrHide("1Password") end)
+hs.hotkey.bind(hyper, "3", function() showOrHide("Music") end)
+hs.hotkey.bind(hyper, "8", function() showOrHide("Things3") end)
+hs.hotkey.bind(hyper, "a", function() showOrHide("Claude") end)
+hs.hotkey.bind(hyper, "b", function() showOrHide("Google Chrome") end)
+hs.hotkey.bind(hyper, "c", function() showOrHide("Fantastical") end)
+hs.hotkey.bind(hyper, "d", function() showOrHide("Drafts") end)
+hs.hotkey.bind(hyper, "e", function() showOrHide("Mimestream") end)
+hs.hotkey.bind(hyper, "m", function() showOrHide("Facebook") end)
+hs.hotkey.bind(hyper, "n", function() showOrHide("Obsidian") end)
+hs.hotkey.bind(hyper, "s", function() showOrHide("Slack") end)
+hs.hotkey.bind(hyper, "t", function() showOrHide("Ghostty") end)
+hs.hotkey.bind(hyper, "v", function() showOrHide("Visual Studio Code") end)
+hs.hotkey.bind(hyper, "x", function() showOrHide("Zed") end)
+hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
+hs.hotkey.bind(hyper, "\\", function() showOrHide("Bloom") end)
 
 -- Chrome-specific hotkeys
 bindConditionalHotkey(modsChrome, "d", isChromeFocused, sendTabToDrafts)
