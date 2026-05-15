@@ -146,6 +146,9 @@ hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
 -- / = files
 hs.hotkey.bind(hyper, "/", function() showOrHide("Bloom") end)
 
+-- f1 = Activity Monitor
+hs.hotkey.bind({}, "f1", function() showOrHide("Activity Monitor") end)
+
 -- Chrome-specific hotkeys
 bindConditionalHotkey(modsChrome, "d", isChromeFocused, sendTabToDrafts)
 bindConditionalHotkey(modsChrome, "l", isChromeFocused, copyTabAsMarkdown)
