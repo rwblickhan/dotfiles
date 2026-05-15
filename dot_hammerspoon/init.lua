@@ -87,9 +87,10 @@ local function bindConditionalHotkey(mods, key, condition, fn)
     return hk
 end
 
-local function showOrHide(appName)
+local function showOrHide(appName, backupAppName)
     local app = hs.application.get(appName)
-    if app and app:isFrontmost() then
+    local front = hs.application.frontmostApplication()
+    if app and front and app:pid() == front:pid() then
         app:hide()
     elseif app then
         app:unhide()
@@ -101,7 +102,7 @@ local function showOrHide(appName)
             hs.eventtap.keyStroke({"cmd"}, "n")
         end
     else
-        hs.application.launchOrFocus(appName)
+        hs.application.launchOrFocus(backupAppName or appName)
     end
 end
 
@@ -120,7 +121,7 @@ hs.hotkey.bind(hyper, "1", function() showOrHide("1Password") end)
 -- # = Music
 hs.hotkey.bind(hyper, "3", function() showOrHide("Music") end)
 -- * = Things
-hs.hotkey.bind(hyper, "8", function() showOrHide("Things3") end)
+hs.hotkey.bind(hyper, "8", function() showOrHide("Things", "Things3") end)
 -- a = AI
 hs.hotkey.bind(hyper, "a", function() showOrHide("Claude") end)
 -- b = browser
