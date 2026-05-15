@@ -31,6 +31,7 @@ local function urlEncode(s)
 end
 
 hs.hotkey.bind({ "cmd", "shift" }, "d", function()
+    if hs.application.frontmostApplication():name() ~= "Google Chrome" then return end
     local script = [[
         tell application "Google Chrome"
             set tabTitle to title of active tab of front window
@@ -52,6 +53,7 @@ hs.hotkey.bind({ "cmd", "shift" }, "d", function()
 end)
 
 hs.hotkey.bind({ "cmd", "shift" }, "l", function()
+    if hs.application.frontmostApplication():name() ~= "Google Chrome" then return end
     local script = [[
         tell application "Google Chrome"
             set tabTitle to title of active tab of front window
