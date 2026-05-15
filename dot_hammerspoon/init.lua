@@ -52,6 +52,31 @@ hs.hotkey.bind({ "cmd", "shift" }, "d", function()
     end
 end)
 
+hs.hotkey.bind({ "cmd", "shift" }, "h", function()
+    if hs.application.frontmostApplication():name() ~= "Google Chrome" then return end
+    local win = hs.application.get("Google Chrome"):mainWindow()
+    if not win then return end
+
+    local function findButton(element)
+        for _, label in ipairs({ "Collapse Tabs", "Expand Tabs" }) do
+            if element:attributeValue("AXDescription") == label then
+                return element
+            end
+        end
+        for _, child in ipairs(element:attributeValue("AXChildren") or {}) do
+            local found = findButton(child)
+            if found then return found end
+        end
+    end
+
+    local btn = findButton(hs.axuielement.windowElement(win))
+    if btn then
+        btn:performAction("AXPress")
+    else
+        hs.notify.new({ title = "Hammerspoon", informativeText = "Expand / collapse tabs button not found" }):send()
+    end
+end)
+
 hs.hotkey.bind({ "cmd", "shift" }, "l", function()
     if hs.application.frontmostApplication():name() ~= "Google Chrome" then return end
     local script = [[
