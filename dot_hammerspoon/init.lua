@@ -23,3 +23,48 @@ hs.hotkey.bind({ "cmd", "ctrl", "alt", "shift" }, "k", sendUpArrow)
 hs.hotkey.bind({ "cmd", "ctrl", "alt", "shift" }, "h", sendLeftArrow)
 hs.hotkey.bind({ "cmd", "ctrl", "alt", "shift" }, "l", sendRightArrow)
 print("Arrow key navigation config created!")
+
+local function urlEncode(s)
+    return s:gsub("([^%w%-%.%_%~ ])", function(c)
+        return string.format("%%%02X", string.byte(c))
+    end):gsub(" ", "+")
+end
+
+hs.hotkey.bind({ "cmd", "shift" }, "d", function()
+    local script = [[
+        tell application "Google Chrome"
+            set tabTitle to title of active tab of front window
+            set tabURL to URL of active tab of front window
+            close active tab of front window
+        end tell
+        return tabTitle & "|||" & tabURL
+    ]]
+    local ok, result = hs.osascript.applescript(script)
+    if ok then
+        local sep = result:find("|||", 1, true)
+        local title = result:sub(1, sep - 1)
+        local url = result:sub(sep + 3)
+        local text = urlEncode(title .. "\n" .. url)
+        hs.urlevent.openURL("drafts://x-callback-url/create?text=" .. text)
+        hs.notify.new({ title = "Sent to Drafts", informativeText = title }):send()
+        hs.application.launchOrFocus("Google Chrome")
+    end
+end)
+
+hs.hotkey.bind({ "cmd", "shift" }, "l", function()
+    local script = [[
+        tell application "Google Chrome"
+            set tabTitle to title of active tab of front window
+            set tabURL to URL of active tab of front window
+        end tell
+        return tabTitle & "|||" & tabURL
+    ]]
+    local ok, result = hs.osascript.applescript(script)
+    if ok then
+        local sep = result:find("|||", 1, true)
+        local title = result:sub(1, sep - 1)
+        local url = result:sub(sep + 3)
+        hs.pasteboard.setContents("[" .. title .. "](" .. url .. ")")
+        hs.notify.new({ title = "Copied", informativeText = title }):send()
+    end
+end)
