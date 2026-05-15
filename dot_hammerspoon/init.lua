@@ -115,22 +115,36 @@ hs.hotkey.bind(hyper, "h", function() hs.eventtap.keyStroke({}, "left") end)
 hs.hotkey.bind(hyper, "l", function() hs.eventtap.keyStroke({}, "right") end)
 
 -- App show/hide hotkeys
+-- 1 = 1password
 hs.hotkey.bind(hyper, "1", function() showOrHide("1Password") end)
+-- # = Music
 hs.hotkey.bind(hyper, "3", function() showOrHide("Music") end)
+-- * = Things
 hs.hotkey.bind(hyper, "8", function() showOrHide("Things3") end)
+-- a = AI
 hs.hotkey.bind(hyper, "a", function() showOrHide("Claude") end)
+-- b = browser
 hs.hotkey.bind(hyper, "b", function() showOrHide("Google Chrome") end)
+-- c = calendar
 hs.hotkey.bind(hyper, "c", function() showOrHide("Fantastical") end)
+-- d = draft
 hs.hotkey.bind(hyper, "d", function() showOrHide("Drafts") end)
+-- e = email
 hs.hotkey.bind(hyper, "e", function() showOrHide("Mimestream") end)
+-- m = messenger
 hs.hotkey.bind(hyper, "m", function() showOrHide("Facebook") end)
+-- n = notes
 hs.hotkey.bind(hyper, "n", function() showOrHide("Obsidian") end)
+-- s = slack
 hs.hotkey.bind(hyper, "s", function() showOrHide("Slack") end)
+-- t = terminal
 hs.hotkey.bind(hyper, "t", function() showOrHide("Ghostty") end)
+-- v = vs code
 hs.hotkey.bind(hyper, "v", function() showOrHide("Visual Studio Code") end)
-hs.hotkey.bind(hyper, "x", function() showOrHide("Zed") end)
+-- z = zoom
 hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
-hs.hotkey.bind(hyper, "\\", function() showOrHide("Bloom") end)
+-- / = files
+hs.hotkey.bind(hyper, "/", function() showOrHide("Bloom") end)
 
 -- Chrome-specific hotkeys
 bindConditionalHotkey(modsChrome, "d", isChromeFocused, sendTabToDrafts)
