@@ -2,36 +2,17 @@ hs.loadSpoon("EmmyLua")
 hs.loadSpoon("LeftRightHotkey")
 spoon.LeftRightHotkey:start()
 
-local function sendDownArrow()
-    hs.eventtap.keyStroke({}, "down")
-end
-
-local function sendUpArrow()
-    hs.eventtap.keyStroke({}, "up")
-end
-
-local function sendRightArrow()
-    hs.eventtap.keyStroke({}, "right")
-end
-
-local function sendLeftArrow()
-    hs.eventtap.keyStroke({}, "left")
-end
-
-hs.hotkey.bind({ "cmd", "ctrl", "alt", "shift" }, "j", sendDownArrow)
-hs.hotkey.bind({ "cmd", "ctrl", "alt", "shift" }, "k", sendUpArrow)
-hs.hotkey.bind({ "cmd", "ctrl", "alt", "shift" }, "h", sendLeftArrow)
-hs.hotkey.bind({ "cmd", "ctrl", "alt", "shift" }, "l", sendRightArrow)
-print("Arrow key navigation config created!")
-
 local function urlEncode(s)
     return s:gsub("([^%w%-%.%_%~ ])", function(c)
         return string.format("%%%02X", string.byte(c))
     end):gsub(" ", "+")
 end
 
-hs.hotkey.bind({ "cmd", "shift" }, "d", function()
-    if hs.application.frontmostApplication():name() ~= "Google Chrome" then return end
+local function isChromeFocused()
+    return hs.application.frontmostApplication():name() == "Google Chrome"
+end
+
+local function sendTabToDrafts()
     local script = [[
         tell application "Google Chrome"
             set tabTitle to title of active tab of front window
@@ -50,10 +31,27 @@ hs.hotkey.bind({ "cmd", "shift" }, "d", function()
         hs.notify.new({ title = "Sent to Drafts", informativeText = title }):send()
         hs.application.launchOrFocus("Google Chrome")
     end
-end)
+end
 
-hs.hotkey.bind({ "cmd", "shift" }, "h", function()
-    if hs.application.frontmostApplication():name() ~= "Google Chrome" then return end
+local function copyTabAsMarkdown()
+    local script = [[
+        tell application "Google Chrome"
+            set tabTitle to title of active tab of front window
+            set tabURL to URL of active tab of front window
+        end tell
+        return tabTitle & "|||" & tabURL
+    ]]
+    local ok, result = hs.osascript.applescript(script)
+    if ok then
+        local sep = result:find("|||", 1, true)
+        local title = result:sub(1, sep - 1)
+        local url = result:sub(sep + 3)
+        hs.pasteboard.setContents("[" .. title .. "](" .. url .. ")")
+        hs.notify.new({ title = "Copied", informativeText = title }):send()
+    end
+end
+
+local function collapseChromeTabs()
     local win = hs.application.get("Google Chrome"):mainWindow()
     if not win then return end
 
@@ -75,23 +73,32 @@ hs.hotkey.bind({ "cmd", "shift" }, "h", function()
     else
         hs.notify.new({ title = "Hammerspoon", informativeText = "Expand / collapse tabs button not found" }):send()
     end
-end)
+end
 
-hs.hotkey.bind({ "cmd", "shift" }, "l", function()
-    if hs.application.frontmostApplication():name() ~= "Google Chrome" then return end
-    local script = [[
-        tell application "Google Chrome"
-            set tabTitle to title of active tab of front window
-            set tabURL to URL of active tab of front window
-        end tell
-        return tabTitle & "|||" & tabURL
-    ]]
-    local ok, result = hs.osascript.applescript(script)
-    if ok then
-        local sep = result:find("|||", 1, true)
-        local title = result:sub(1, sep - 1)
-        local url = result:sub(sep + 3)
-        hs.pasteboard.setContents("[" .. title .. "](" .. url .. ")")
-        hs.notify.new({ title = "Copied", informativeText = title }):send()
-    end
-end)
+local function bindConditionalHotkey(mods, key, condition, fn)
+    local hk
+    hk = hs.hotkey.bind(mods, key, function()
+        if not condition() then
+            hk:disable()
+            hs.eventtap.keyStroke(mods, key)
+            hk:enable()
+        else
+            fn()
+        end
+    end)
+    return hk
+end
+
+local hyper      = { "cmd", "ctrl", "alt", "shift" }
+local modsChrome = { "cmd", "shift" }
+
+-- Arrow key navigation
+hs.hotkey.bind(hyper, "j", function() hs.eventtap.keyStroke({}, "down") end)
+hs.hotkey.bind(hyper, "k", function() hs.eventtap.keyStroke({}, "up") end)
+hs.hotkey.bind(hyper, "h", function() hs.eventtap.keyStroke({}, "left") end)
+hs.hotkey.bind(hyper, "l", function() hs.eventtap.keyStroke({}, "right") end)
+
+-- Chrome-specific hotkeys
+bindConditionalHotkey(modsChrome, "d", isChromeFocused, sendTabToDrafts)
+bindConditionalHotkey(modsChrome, "l", isChromeFocused, copyTabAsMarkdown)
+bindConditionalHotkey(modsChrome, "h", isChromeFocused, collapseChromeTabs)
