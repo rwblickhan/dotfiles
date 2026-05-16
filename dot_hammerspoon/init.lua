@@ -88,22 +88,24 @@ local function bindConditionalHotkey(mods, key, condition, fn)
 end
 
 local function showOrHide(appName, backupAppName)
-    local app = hs.application.get(appName)
-    local front = hs.application.frontmostApplication()
-    if app and front and app:pid() == front:pid() then
-        app:hide()
-    elseif app then
-        app:unhide()
-        app:activate()
-        local win = app:mainWindow()
-        if win then
-            win:raise()
+    hs.timer.doAfter(0, function()
+        local app = hs.application.get(appName)
+        local front = hs.application.frontmostApplication()
+        if app and front and app:pid() == front:pid() then
+            app:hide()
+        elseif app then
+            app:unhide()
+            app:activate()
+            local win = app:mainWindow()
+            if win then
+                win:raise()
+            else
+                hs.eventtap.keyStroke({"cmd"}, "n")
+            end
         else
-            hs.eventtap.keyStroke({"cmd"}, "n")
+            hs.application.launchOrFocus(backupAppName or appName)
         end
-    else
-        hs.application.launchOrFocus(backupAppName or appName)
-    end
+    end)
 end
 
 local hyper      = { "cmd", "ctrl", "alt", "shift" }
