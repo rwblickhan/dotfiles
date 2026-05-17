@@ -71,8 +71,6 @@ if status is-interactive
     abbr -a r 'mise run'
     abbr -a z zmx
 
-    abbr -a nw new_workspace
-    abbr -a exp expense
     abbr -a bbic "brew bundle install --cleanup --file=~/Brewfile && brew upgrade"
 
     abbr_subcommand gh pc "pr create -w"
@@ -81,6 +79,7 @@ if status is-interactive
     abbr_subcommand gh ps "pr status"
     abbr_subcommand gh pv "pr view -w"
 
+    abbr_subcommand jj cim "ci -m"
     abbr_subcommand jj dm "desc -m"
     abbr_subcommand jj e edit
     abbr_subcommand jj g git
