@@ -122,8 +122,6 @@ hs.hotkey.bind(hyper, "c", function() showOrHide("Fantastical") end)
 hs.hotkey.bind(hyper, "d", function() showOrHide("Drafts") end)
 -- e = email
 hs.hotkey.bind(hyper, "e", function() showOrHide("Mimestream") end)
--- m = messenger
-hs.hotkey.bind(hyper, "m", function() showOrHide("Messenger") end)
 -- n = notes
 hs.hotkey.bind(hyper, "n", function() showOrHide("Obsidian") end)
 -- s = slack
