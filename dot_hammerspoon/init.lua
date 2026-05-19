@@ -1,17 +1,17 @@
 hs.loadSpoon("EmmyLua")
 
 local function urlEncode(s)
-    return s:gsub("([^%w%-%.%_%~ ])", function(c)
-        return string.format("%%%02X", string.byte(c))
-    end):gsub(" ", "%%20")
+  return s:gsub("([^%w%-%.%_%~ ])", function(c)
+    return string.format("%%%02X", string.byte(c))
+  end):gsub(" ", "%%20")
 end
 
 local function isChromeFocused()
-    return hs.application.frontmostApplication():name() == "Google Chrome"
+  return hs.application.frontmostApplication():name() == "Google Chrome"
 end
 
 local function sendTabToDrafts()
-    local script = [[
+  local script = [[
         tell application "Google Chrome"
             set tabTitle to title of active tab of front window
             set tabURL to URL of active tab of front window
@@ -19,93 +19,81 @@ local function sendTabToDrafts()
         end tell
         return tabTitle & "|||" & tabURL
     ]]
-    local ok, result = hs.osascript.applescript(script)
-    if ok then
-        local sep = result:find("|||", 1, true)
-        local title = result:sub(1, sep - 1)
-        local url = result:sub(sep + 3)
-        local text = urlEncode("[" .. title .. "](" .. url .. ")")
-        hs.urlevent.openURL("drafts://x-callback-url/create?text=" .. text)
-        hs.notify.new({ title = "Sent to Drafts", informativeText = title }):send()
-        hs.application.launchOrFocus("Google Chrome")
-    end
+  local ok, result = hs.osascript.applescript(script)
+  if ok then
+    local sep = result:find("|||", 1, true)
+    local title = result:sub(1, sep - 1)
+    local url = result:sub(sep + 3)
+    local text = urlEncode("[" .. title .. "](" .. url .. ")")
+    hs.urlevent.openURL("drafts://x-callback-url/create?text=" .. text)
+    hs.notify.new({ title = "Sent to Drafts", informativeText = title }):send()
+    hs.application.launchOrFocus("Google Chrome")
+  end
 end
 
 local function copyTabAsMarkdown()
-    local script = [[
+  local script = [[
         tell application "Google Chrome"
             set tabTitle to title of active tab of front window
             set tabURL to URL of active tab of front window
         end tell
         return tabTitle & "|||" & tabURL
     ]]
-    local ok, result = hs.osascript.applescript(script)
-    if ok then
-        local sep = result:find("|||", 1, true)
-        local title = result:sub(1, sep - 1)
-        local url = result:sub(sep + 3)
-        hs.pasteboard.setContents("[" .. title .. "](" .. url .. ")")
-        hs.notify.new({ title = "Copied", informativeText = title }):send()
-    end
+  local ok, result = hs.osascript.applescript(script)
+  if ok then
+    local sep = result:find("|||", 1, true)
+    local title = result:sub(1, sep - 1)
+    local url = result:sub(sep + 3)
+    hs.pasteboard.setContents("[" .. title .. "](" .. url .. ")")
+    hs.notify.new({ title = "Copied", informativeText = title }):send()
+  end
 end
 
 local function collapseChromeTabs()
-    local win = hs.application.get("Google Chrome"):mainWindow()
-    if not win then return end
+  local win = hs.application.get("Google Chrome"):mainWindow()
+  if not win then return end
 
-    local function findButton(element)
-        for _, label in ipairs({ "Collapse Tabs", "Expand Tabs" }) do
-            if element:attributeValue("AXDescription") == label then
-                return element
-            end
-        end
-        for _, child in ipairs(element:attributeValue("AXChildren") or {}) do
-            local found = findButton(child)
-            if found then return found end
-        end
+  local function findButton(element)
+    for _, label in ipairs({ "Collapse Tabs", "Expand Tabs" }) do
+      if element:attributeValue("AXDescription") == label then
+        return element
+      end
     end
+    for _, child in ipairs(element:attributeValue("AXChildren") or {}) do
+      local found = findButton(child)
+      if found then return found end
+    end
+  end
 
-    local btn = findButton(hs.axuielement.windowElement(win))
-    if btn then
-        btn:performAction("AXPress")
-    else
-        hs.notify.new({ title = "Hammerspoon", informativeText = "Expand / collapse tabs button not found" }):send()
-    end
+  local btn = findButton(hs.axuielement.windowElement(win))
+  if btn then
+    btn:performAction("AXPress")
+  else
+    hs.notify.new({ title = "Hammerspoon", informativeText = "Expand / collapse tabs button not found" }):send()
+  end
 end
 
 local function bindConditionalHotkey(mods, key, condition, fn)
-    local hk
-    hk = hs.hotkey.bind(mods, key, function()
-        if not condition() then
-            hk:disable()
-            hs.eventtap.keyStroke(mods, key)
-            hk:enable()
-        else
-            fn()
-        end
-    end)
-    return hk
+  local hk
+  hk = hs.hotkey.bind(mods, key, function()
+    if not condition() then
+      hk:disable()
+      hs.eventtap.keyStroke(mods, key)
+      hk:enable()
+    else
+      fn()
+    end
+  end)
+  return hk
 end
 
-local function showOrHide(appName, backupAppName)
-    hs.timer.doAfter(0, function()
-        local app = hs.application.get(appName)
-        local front = hs.application.frontmostApplication()
-        if app and front and app:pid() == front:pid() then
-            app:hide()
-        elseif app then
-            app:unhide()
-            app:activate()
-            local win = app:mainWindow()
-            if win then
-                win:raise()
-            else
-                hs.eventtap.keyStroke({"cmd"}, "n")
-            end
-        else
-            hs.application.launchOrFocus(backupAppName or appName)
-        end
-    end)
+local function showOrHide(appName)
+  local app = hs.application.find(appName)
+  if app ~= nil and app:isFrontmost() then
+    app:hide()
+  else
+    hs.application.open(appName)
+  end
 end
 
 local hyper      = { "cmd", "ctrl", "alt", "shift" }
@@ -123,7 +111,7 @@ hs.hotkey.bind(hyper, "1", function() showOrHide("1Password") end)
 -- # = Music
 hs.hotkey.bind(hyper, "3", function() showOrHide("Music") end)
 -- * = Things
-hs.hotkey.bind(hyper, "8", function() showOrHide("Things", "Things3") end)
+hs.hotkey.bind(hyper, "8", function() showOrHide("com.culturedcode.ThingsMac") end)
 -- a = AI
 hs.hotkey.bind(hyper, "a", function() showOrHide("Claude") end)
 -- b = browser
@@ -135,7 +123,7 @@ hs.hotkey.bind(hyper, "d", function() showOrHide("Drafts") end)
 -- e = email
 hs.hotkey.bind(hyper, "e", function() showOrHide("Mimestream") end)
 -- m = messenger
-hs.hotkey.bind(hyper, "m", function() showOrHide("Facebook") end)
+hs.hotkey.bind(hyper, "m", function() showOrHide("Messenger") end)
 -- n = notes
 hs.hotkey.bind(hyper, "n", function() showOrHide("Obsidian") end)
 -- s = slack
