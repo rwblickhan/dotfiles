@@ -10,3 +10,9 @@ default-command = "log"
 
 [merge-tools]
 delta.diff-expected-exit-codes = [0, 1]
+
+[aliases]
+push = ["util", "exec", "--", "jj-hp", "push"]
+
+[jj-hooks]
+advance-bookmarks = true
