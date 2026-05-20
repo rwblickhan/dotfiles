@@ -15,10 +15,7 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
-  "stylelint.validate": [
-    "css",
-    "scss"
-  ],
+  "stylelint.validate": ["css", "scss"],
   "editor.gotoLocation.multipleDeclarations": "goto",
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.gotoLocation.multipleImplementations": "goto",
@@ -35,7 +32,6 @@
     "node_modules": true,
     "zig-out": true
   },
-  "git.autofetch": true,
   // Force Emmet suggestions to show up at the bottom
   "emmet.showSuggestionsAsSnippets": true,
   "editor.snippetSuggestions": "bottom",
