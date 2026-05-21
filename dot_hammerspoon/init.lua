@@ -49,13 +49,14 @@ local function copyTabAsMarkdown()
   end
 end
 
-local function openChromeTabInSplitView()
-  local win = hs.application.get("Google Chrome"):mainWindow()
+local function clickAppButton(appName, matchFn, notFoundMsg)
+  local app = hs.application.get(appName)
+  if not app then return end
+  local win = app:mainWindow()
   if not win then return end
 
   local function findButton(element)
-    local desc = element:attributeValue("AXDescription") or ""
-    if desc:lower():find("split view", 1, true) then
+    if matchFn(element:attributeValue("AXDescription") or "") then
       return element
     end
     for _, child in ipairs(element:attributeValue("AXChildren") or {}) do
@@ -68,32 +69,22 @@ local function openChromeTabInSplitView()
   if btn then
     btn:performAction("AXPress")
   else
-    hs.notify.new({ title = "Hammerspoon", informativeText = "Split view button not found" }):send()
+    hs.notify.new({ title = "Hammerspoon", informativeText = notFoundMsg }):send()
   end
 end
 
+local function openChromeTabInSplitView()
+  clickAppButton("Google Chrome",
+    function(desc) return desc:lower():find("split view", 1, true) end,
+    "Split view button not found"
+  )
+end
+
 local function collapseChromeTabs()
-  local win = hs.application.get("Google Chrome"):mainWindow()
-  if not win then return end
-
-  local function findButton(element)
-    for _, label in ipairs({ "Collapse Tabs", "Expand Tabs" }) do
-      if element:attributeValue("AXDescription") == label then
-        return element
-      end
-    end
-    for _, child in ipairs(element:attributeValue("AXChildren") or {}) do
-      local found = findButton(child)
-      if found then return found end
-    end
-  end
-
-  local btn = findButton(hs.axuielement.windowElement(win))
-  if btn then
-    btn:performAction("AXPress")
-  else
-    hs.notify.new({ title = "Hammerspoon", informativeText = "Expand / collapse tabs button not found" }):send()
-  end
+  clickAppButton("Google Chrome",
+    function(desc) return desc == "Collapse Tabs" or desc == "Expand Tabs" end,
+    "Expand / collapse tabs button not found"
+  )
 end
 
 local function bindConditionalHotkey(mods, key, condition, fn)
@@ -171,7 +162,7 @@ local function showOrHide(appName)
   end
 end
 
-local hyper      = { "cmd", "ctrl", "alt", "shift" }
+local hyper = { "cmd", "ctrl", "alt", "shift" }
 
 -- Arrow key navigation
 hs.hotkey.bind(hyper, "j", function() hs.eventtap.keyStroke({}, "down") end)
