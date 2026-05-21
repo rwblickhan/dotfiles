@@ -87,6 +87,58 @@ local function bindConditionalHotkey(mods, key, condition, fn)
   return hk
 end
 
+local function focusFacebookMessages()
+  local chrome = hs.application.find("Google Chrome")
+
+  if not chrome or not chrome:isRunning() then
+    hs.application.open("Google Chrome")
+    return
+  end
+
+  if chrome:isFrontmost() then
+    local ok, activeTitle = hs.osascript.applescript([[
+      tell application "Google Chrome"
+        if (count of windows) > 0 then
+          return title of active tab of front window
+        else
+          return ""
+        end if
+      end tell
+    ]])
+    if ok and activeTitle and activeTitle:find("Messenger") then
+      chrome:hide()
+      return
+    end
+  end
+
+  hs.osascript.applescript([[
+    tell application "Google Chrome"
+      set foundWindow to missing value
+      set foundTabIndex to 0
+      repeat with w in windows
+        set i to 0
+        repeat with t in tabs of w
+          set i to i + 1
+          if title of t contains "Messenger" then
+            set foundWindow to w
+            set foundTabIndex to i
+            exit repeat
+          end if
+        end repeat
+        if foundWindow is not missing value then exit repeat
+      end repeat
+      if foundWindow is not missing value then
+        set index of foundWindow to 1
+        set active tab index of foundWindow to foundTabIndex
+      else
+        if (count of windows) = 0 then make new window
+        open location "https://www.facebook.com/messages"
+      end if
+      activate
+    end tell
+  ]])
+end
+
 local function showOrHide(appName)
   local app = hs.application.find(appName)
   if app ~= nil and app:isFrontmost() then
@@ -121,6 +173,8 @@ hs.hotkey.bind(hyper, "c", function() showOrHide("Fantastical") end)
 hs.hotkey.bind(hyper, "d", function() showOrHide("Drafts") end)
 -- e = email
 hs.hotkey.bind(hyper, "e", function() showOrHide("Mimestream") end)
+-- m = messenger
+hs.hotkey.bind(hyper, "m", focusFacebookMessages)
 -- n = notes
 hs.hotkey.bind(hyper, "n", function() showOrHide("Obsidian") end)
 -- s = slack
