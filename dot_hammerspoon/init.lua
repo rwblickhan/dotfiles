@@ -49,6 +49,29 @@ local function copyTabAsMarkdown()
   end
 end
 
+local function openChromeTabInSplitView()
+  local win = hs.application.get("Google Chrome"):mainWindow()
+  if not win then return end
+
+  local function findButton(element)
+    local desc = element:attributeValue("AXDescription") or ""
+    if desc:lower():find("split view", 1, true) then
+      return element
+    end
+    for _, child in ipairs(element:attributeValue("AXChildren") or {}) do
+      local found = findButton(child)
+      if found then return found end
+    end
+  end
+
+  local btn = findButton(hs.axuielement.windowElement(win))
+  if btn then
+    btn:performAction("AXPress")
+  else
+    hs.notify.new({ title = "Hammerspoon", informativeText = "Split view button not found" }):send()
+  end
+end
+
 local function collapseChromeTabs()
   local win = hs.application.get("Google Chrome"):mainWindow()
   if not win then return end
@@ -197,6 +220,7 @@ hs.hotkey.bind(hyper, "/", function() showOrHide("Bloom") end)
 hs.hotkey.bind({}, "f1", function() showOrHide("Activity Monitor") end)
 
 -- Chrome-specific hotkeys
+bindConditionalHotkey({ "cmd" }, "d", isChromeFocused, openChromeTabInSplitView)
 bindConditionalHotkey({ "cmd", "shift" }, "d", isChromeFocused, sendTabToDrafts)
 bindConditionalHotkey({ "cmd", "shift" }, "l", isChromeFocused, copyTabAsMarkdown)
 bindConditionalHotkey({ "cmd", "shift" }, "h", isChromeFocused, collapseChromeTabs)
