@@ -8,6 +8,8 @@ tap "oven-sh/bun"
 tap "dbcli/tap"
 # jj-hooks
 tap "mattwilkinsonn/tap"
+# zmx
+tap "neurosnap/tap"
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # ona (Gitpod CLI)
 tap "gitpod-io/tap"
@@ -71,7 +73,7 @@ brew "jq"
 # Better make
 brew "just"
 # Ledger/hledger language server
-brew "rwblickhan/tap/ledger-language-server"
+brew "ledger-language-server"
 # Add a more up-to-date less
 brew "less"
 # Lua language server
@@ -131,7 +133,7 @@ brew "yt-dlp"
 # Better cd
 brew "zoxide"
 # session persistence
-brew "neurosnap/tap/zmx"
+brew "zmx"
 
 # 1password password manager
 cask "1password-cli"
