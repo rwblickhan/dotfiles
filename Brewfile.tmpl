@@ -6,6 +6,8 @@ tap "rwblickhan/tap"
 tap "oven-sh/bun"
 # litecli
 tap "dbcli/tap"
+# jj-hooks
+tap "mattwilkinsonn/tap"
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # ona (Gitpod CLI)
 tap "gitpod-io/tap"
@@ -62,6 +64,8 @@ brew "hk"
 brew "hledger"
 # jj version control
 brew "jj"
+# jj hooks manager
+brew "jj-hooks"
 # Pretty-print json
 brew "jq"
 # Better make
