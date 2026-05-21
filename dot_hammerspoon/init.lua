@@ -97,7 +97,6 @@ local function showOrHide(appName)
 end
 
 local hyper      = { "cmd", "ctrl", "alt", "shift" }
-local modsChrome = { "cmd", "shift" }
 
 -- Arrow key navigation
 hs.hotkey.bind(hyper, "j", function() hs.eventtap.keyStroke({}, "down") end)
@@ -139,6 +138,6 @@ hs.hotkey.bind(hyper, "/", function() showOrHide("Bloom") end)
 hs.hotkey.bind({}, "f1", function() showOrHide("Activity Monitor") end)
 
 -- Chrome-specific hotkeys
-bindConditionalHotkey(modsChrome, "d", isChromeFocused, sendTabToDrafts)
-bindConditionalHotkey(modsChrome, "l", isChromeFocused, copyTabAsMarkdown)
-bindConditionalHotkey(modsChrome, "h", isChromeFocused, collapseChromeTabs)
+bindConditionalHotkey({ "cmd", "shift" }, "d", isChromeFocused, sendTabToDrafts)
+bindConditionalHotkey({ "cmd", "shift" }, "l", isChromeFocused, copyTabAsMarkdown)
+bindConditionalHotkey({ "cmd", "shift" }, "h", isChromeFocused, collapseChromeTabs)
