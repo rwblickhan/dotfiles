@@ -23,6 +23,7 @@ BREW_FORMULAE=(
     git-delta
     helix
     jj
+    mattwilkinsonn/tap/jj-hooks
     neurosnap/tap/zmx
 )
 
