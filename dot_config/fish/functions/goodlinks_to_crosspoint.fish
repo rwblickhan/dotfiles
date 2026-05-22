@@ -3,21 +3,16 @@ function goodlinks_to_crosspoint --description "Fetch a GoodLinks article, conve
     or return 1
 
     if set -q _flag_help
-        echo "Usage: goodlinks_to_crosspoint [OPTIONS] <search-query>"
+        echo "Usage: goodlinks_to_crosspoint [OPTIONS]"
         echo ""
-        echo "Searches GoodLinks by title, converts the article to EPUB via pandoc,"
-        echo "and uploads it to the /GoodLinks directory on a Crosspoint Reader."
-        echo "If multiple articles match, an interactive picker is shown (Tab to multiselect)."
+        echo "Fetches all unread GoodLinks articles, lets you pick via fzf (Tab to"
+        echo "multiselect), converts each to EPUB via pandoc, and uploads to the"
+        echo "/GoodLinks directory on a Crosspoint Reader."
         echo ""
         echo "Options:"
         echo "  -h, --help       Show this help"
         echo "  --host HOST      Crosspoint Reader hostname or IP (default: crosspoint.local)"
         return 0
-    end
-
-    if test (count $argv) -ne 1
-        echo "Usage: goodlinks_to_crosspoint [OPTIONS] <search-query>"
-        return 1
     end
 
     set -l token (op read "op://Private/GoodLinks/token" 2>/dev/null)
@@ -26,7 +21,6 @@ function goodlinks_to_crosspoint --description "Fetch a GoodLinks article, conve
         return 1
     end
 
-    set -l query $argv[1]
     set -l base "http://localhost:9428/api/v1"
 
     set -l host crosspoint.local
@@ -34,12 +28,11 @@ function goodlinks_to_crosspoint --description "Fetch a GoodLinks article, conve
         set host $_flag_host
     end
 
-    # Search for matching unread articles
-    echo "Searching for '$query'..."
+    echo "Fetching unread articles..."
     set -l results (xh --ignore-stdin GET "$base/links" \
-        "Authorization:Bearer $token" search==$query read==false limit==50)
+        "Authorization:Bearer $token" read==false limit==200)
     if test $status -ne 0
-        echo "Error: search request failed (is GoodLinks running?)"
+        echo "Error: request failed (is GoodLinks running?)"
         return 1
     end
     if test -z "$results"
@@ -49,27 +42,21 @@ function goodlinks_to_crosspoint --description "Fetch a GoodLinks article, conve
 
     set -l count (echo $results | jq '.data | length')
     if test $count -eq 0
-        echo "No unread articles found matching '$query'"
+        echo "No unread articles found"
         return 1
     end
-    echo "Found $count match(es)"
+    echo "Found $count unread article(s)"
 
-    # Resolve IDs — declare outside the if/else so the variable survives the block
-    set -l ids
-    if test $count -eq 1
-        set ids (echo $results | jq -r '.data[0].id')
-    else
-        set ids (echo $results | \
-            jq -r '.data[] | "\(.id)\t\(.title)\t\(.url)"' | \
-            fzf --prompt "Select articles: " \
-                --delimiter \t \
-                --with-nth 2.. \
-                --multi | \
-            cut -f1)
-        if test -z "$ids"
-            echo "No articles selected"
-            return 1
-        end
+    set -l ids (echo $results | \
+        jq -r '.data[] | "\(.id)\t\(.title)\t\(.url)"' | \
+        fzf --prompt "Select articles: " \
+            --delimiter \t \
+            --with-nth 2.. \
+            --multi | \
+        cut -f1)
+    if test -z "$ids"
+        echo "No articles selected"
+        return 1
     end
     echo "Selected "(count $ids)" article(s)"
 
