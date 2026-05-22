@@ -25,7 +25,8 @@
       "Bash(claude plugin:*)",
       "Bash(claude agents:*)",
       "Bash(gh api:*)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:goodlinks.app)"
     ]
   }
 }
