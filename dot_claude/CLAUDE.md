@@ -16,6 +16,7 @@ I use mise for general project setup. For any project built from scratch or star
 
 - Prefer rg (ripgrep) instead of grep.
 - Prefer sd instead of sed.
+- Prefer using xh instead of curl.
 
 ## When Building Command-Line Tools
 
