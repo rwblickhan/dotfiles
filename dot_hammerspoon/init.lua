@@ -110,16 +110,16 @@ local function focusFacebookMessages()
   end
 
   if chrome:isFrontmost() then
-    local ok, activeTitle = hs.osascript.applescript([[
+    local ok, activeTabIndex = hs.osascript.applescript([[
       tell application "Google Chrome"
         if (count of windows) > 0 then
-          return title of active tab of front window
+          return active tab index of front window
         else
-          return ""
+          return 0
         end if
       end tell
     ]])
-    if ok and activeTitle and activeTitle:find("Messenger") then
+    if ok and activeTabIndex == 1 then
       chrome:hide()
       return
     end
@@ -127,27 +127,9 @@ local function focusFacebookMessages()
 
   hs.osascript.applescript([[
     tell application "Google Chrome"
-      set foundWindow to missing value
-      set foundTabIndex to 0
-      repeat with w in windows
-        set i to 0
-        repeat with t in tabs of w
-          set i to i + 1
-          if title of t contains "Messenger" then
-            set foundWindow to w
-            set foundTabIndex to i
-            exit repeat
-          end if
-        end repeat
-        if foundWindow is not missing value then exit repeat
-      end repeat
-      if foundWindow is not missing value then
-        set index of foundWindow to 1
-        set active tab index of foundWindow to foundTabIndex
-      else
-        if (count of windows) = 0 then make new window
-        open location "https://www.facebook.com/messages"
-      end if
+      if (count of windows) = 0 then make new window
+      set index of front window to 1
+      set active tab index of front window to 1
       activate
     end tell
   ]])
