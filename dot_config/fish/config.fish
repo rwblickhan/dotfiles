@@ -88,7 +88,6 @@ if status is-interactive
     abbr_subcommand jj n new
     abbr_subcommand jj sn "show --name-only"
     abbr_subcommand jj up "bookmark advance -t @- && jj-hp push"
-    abbr_subcommand jj sync "git fetch && jj new main"
 
     abbr_subcommand git b branch
     abbr_subcommand git c switch
