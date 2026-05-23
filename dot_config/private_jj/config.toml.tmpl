@@ -11,6 +11,15 @@ default-command = "log"
 [merge-tools]
 delta.diff-expected-exit-codes = [0, 1]
 
+[templates]
+draft_commit_description = '''
+concat(
+  builtin_draft_commit_description,
+  "\nJJ: ignore-rest\n",
+  diff.git(),
+)
+'''
+
 [aliases]
 push = ["util", "exec", "--", "jj-hp", "push"]
 
