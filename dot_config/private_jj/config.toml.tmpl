@@ -26,6 +26,7 @@ draft_commit_description = '''
 
 [revset-aliases]
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 # stack(x, n) is the set of mutable commits reachable from 'x',
 # with 'n' parents. 'n' is often useful to customize the display
 # and return set for certain operations. 'x' can be used to target
