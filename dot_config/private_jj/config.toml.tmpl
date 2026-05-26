@@ -26,6 +26,11 @@ draft_commit_description = '''
 
 [aliases]
 push = ["util", "exec", "--", "jj-hp", "push"]
+init = ["util", "exec", "--", "bash", "-c", """
+jj git init --colocate
+# only track origin branches, not upstream or others
+jj bookmark track 'glob:*@origin'
+"""]
 
 [jj-hooks]
 advance-bookmarks = true
