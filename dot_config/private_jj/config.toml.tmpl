@@ -35,6 +35,9 @@ draft_commit_description = '''
 'stack(x)' = 'stack(x, 2)'
 'stack(x, n)' = 'ancestors(reachable(x, mutable()), n)'
 
+[revsets]
+bookmark-advance-to = 'closest_pushable(@)'
+
 [aliases]
 init = ["util", "exec", "--", "bash", "-c", """
 jj git init --colocate
