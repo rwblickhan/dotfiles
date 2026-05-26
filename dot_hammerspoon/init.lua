@@ -192,6 +192,11 @@ hs.hotkey.bind(hyper, "/", function() showOrHide("Bloom") end)
 -- f1 = Activity Monitor
 hs.hotkey.bind({}, "f1", function() showOrHide("Activity Monitor") end)
 
+-- f2 = ona layout
+hs.hotkey.bind({}, "f2", function()
+  hs.osascript.applescriptFromFile(os.getenv("HOME") .. "/Library/Scripts/ona_layout.applescript")
+end)
+
 -- Chrome-specific hotkeys
 bindConditionalHotkey({ "cmd" }, "d", isChromeFocused, openChromeTabInSplitView)
 bindConditionalHotkey({ "cmd", "shift" }, "d", isChromeFocused, sendTabToDrafts)
