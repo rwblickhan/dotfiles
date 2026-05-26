@@ -26,6 +26,13 @@ draft_commit_description = '''
 
 [revset-aliases]
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+# stack(x, n) is the set of mutable commits reachable from 'x',
+# with 'n' parents. 'n' is often useful to customize the display
+# and return set for certain operations. 'x' can be used to target
+# the set of 'roots' to traverse, e.g. @ is the current stack.
+'stack()' = 'stack(@)'
+'stack(x)' = 'stack(x, 2)'
+'stack(x, n)' = 'ancestors(reachable(x, mutable()), n)'
 
 [aliases]
 init = ["util", "exec", "--", "bash", "-c", """
