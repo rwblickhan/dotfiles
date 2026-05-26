@@ -24,6 +24,9 @@ draft_commit_description = '''
   )
 '''
 
+[revset-aliases]
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+
 [aliases]
 push = ["util", "exec", "--", "jj-hp", "push"]
 init = ["util", "exec", "--", "bash", "-c", """
