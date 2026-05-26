@@ -1,7 +1,12 @@
 # :schema https://docs.jj-vcs.dev/latest/config-schema.json
 
+[[--scope]]
+--when.repositories = ["/workspaces/obsidian"]
+[--scope.user]
+email = "russell.blickhan@vanta.com"
+
 [user]
-email = "{{ if eq .chezmoi.username "rwblickhan" }}rwb@rwblickhan.org{{ else }}russell.blickhan@vanta.com{{ end }}"
+email = "rwb@rwblickhan.org"
 name = "Russell Blickhan"
 
 [ui]
@@ -39,14 +44,28 @@ draft_commit_description = '''
 bookmark-advance-to = 'closest_pushable(@)'
 
 [aliases]
-init = ["util", "exec", "--", "bash", "-c", """
+init = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
 jj git init --colocate
 # only track origin branches, not upstream or others
 jj bookmark track 'glob:*@origin'
-"""]
-pr = ["util", "exec", "--", "bash", "-c", """
+""",
+]
+pr = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
 gh pr create --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --no-graph | cut -d ' ' -f 1)
-"""]
+""",
+]
 
 [jj-hooks]
 advance-bookmarks = true
