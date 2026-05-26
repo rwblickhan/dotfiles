@@ -28,11 +28,14 @@ draft_commit_description = '''
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 
 [aliases]
-push = ["util", "exec", "--", "jj-hp", "push"]
 init = ["util", "exec", "--", "bash", "-c", """
 jj git init --colocate
 # only track origin branches, not upstream or others
 jj bookmark track 'glob:*@origin'
+"""]
+push = ["util", "exec", "--", "jj-hp", "push"]
+pr = ["util", "exec", "--", "bash", "-c", """
+gh pr create --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --no-graph | cut -d ' ' -f 1)
 """]
 
 [jj-hooks]
