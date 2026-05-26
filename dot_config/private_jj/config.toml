@@ -30,6 +30,8 @@ draft_commit_description = '''
 '''
 
 [revset-aliases]
+'user(x)' = 'author(x) | committer(x)'
+'mine()' = 'user("rwb@rwblickhan.org") | user("russell.blickhan@vanta.com")'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 # stack(x, n) is the set of mutable commits reachable from 'x',
