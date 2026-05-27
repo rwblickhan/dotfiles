@@ -4,6 +4,8 @@
 
 I use both jj (jujutsu) and git for version control. In a directory where both jj and git are active, prefer using jj.
 
+EVERY time you plan to make a set of code changes, run `jj new` so that I don't have to split changes later.
+
 ## Shell
 
 I use fish shell. Unless I specify otherwise, assume I want fish functions and fish-compatible shell scripts.
@@ -16,7 +18,7 @@ I use mise for general project setup. For any project built from scratch or star
 
 - Prefer rg (ripgrep) instead of grep.
 - Prefer sd instead of sed.
-- Prefer using xh instead of curl.
+- Prefer xh instead of curl.
 
 ## When Building Command-Line Tools
 
