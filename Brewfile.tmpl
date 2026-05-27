@@ -10,6 +10,8 @@ tap "dbcli/tap"
 tap "mattwilkinsonn/tap"
 # zmx
 tap "neurosnap/tap"
+# delphitools
+tap "1612elphi/delphitools"
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # ona (Gitpod CLI)
 tap "gitpod-io/tap"
@@ -30,6 +32,8 @@ brew "oven-sh/bun/bun"
 brew "cargo-binstall"
 # Brewfile manager
 brew "chezmoi"
+# delphitools CLI
+brew "delphitools-cli"
 # Deno (primarily for yt-dlp support)
 brew "deno"
 # Structured diffs
