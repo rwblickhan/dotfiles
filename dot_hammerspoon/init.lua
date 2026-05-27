@@ -10,6 +10,10 @@ local function isChromeFocused()
   return hs.application.frontmostApplication():name() == "Google Chrome"
 end
 
+local function isDraftsFocused()
+  return hs.application.frontmostApplication():name() == "Drafts"
+end
+
 local function sendTabToDrafts()
   local script = [[
         tell application "Google Chrome"
@@ -47,6 +51,11 @@ local function copyTabAsMarkdown()
     hs.pasteboard.setContents("[" .. title .. "](" .. url .. ")")
     hs.notify.new({ title = "Copied", informativeText = title }):send()
   end
+end
+
+local function selectMenuItem(appName, item)
+  local app = hs.application.find(appName)
+  if app then app:selectMenuItem(item) end
 end
 
 local function clickAppButton(appName, matchFn, notFoundMsg)
@@ -196,6 +205,11 @@ hs.hotkey.bind({}, "f1", function() showOrHide("Activity Monitor") end)
 hs.hotkey.bind({}, "f2", function()
   hs.osascript.applescriptFromFile(os.getenv("HOME") .. "/Library/Scripts/ona_layout.applescript")
 end)
+
+-- Drafts-specific hotkeys
+bindConditionalHotkey({ "ctrl", "cmd" }, "l", isDraftsFocused, function() selectMenuItem("Drafts", "Link Mode") end)
+bindConditionalHotkey({ "ctrl", "cmd" }, "k", isDraftsFocused, function() selectMenuItem("Drafts", "Kebab Case") end)
+bindConditionalHotkey({ "ctrl", "cmd" }, "t", isDraftsFocused, function() selectMenuItem("Drafts", "Title Case") end)
 
 -- Chrome-specific hotkeys
 bindConditionalHotkey({ "cmd" }, "d", isChromeFocused, openChromeTabInSplitView)
