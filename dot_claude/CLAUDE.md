@@ -4,8 +4,6 @@
 
 I use both jj (jujutsu) and git for version control. In a directory where both jj and git are active, prefer using jj.
 
-EVERY time you plan to make a set of code changes, run `jj new` so that I don't have to split changes later.
-
 ## Shell
 
 I use fish shell. Unless I specify otherwise, assume I want fish functions and fish-compatible shell scripts.
