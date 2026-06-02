@@ -30,6 +30,8 @@ draft_commit_description = '''
 '''
 
 [revset-aliases]
+# set all remote bookmarks to be immutable
+'immutable_heads()' = "builtin_immutable_heads() | remote_bookmarks()"
 'user(x)' = 'author(x) | committer(x)'
 'mine()' = 'user("rwb@rwblickhan.org") | user("russell.blickhan@vanta.com")'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
