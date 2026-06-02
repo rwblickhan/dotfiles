@@ -26,12 +26,13 @@ end
 
 complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -s h -l help -d 'Print help'
 complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -s V -l version -d 'Print version'
-complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -f -a "raindrop"
-complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -f -a "import"
+complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -f -a "raindrop" -d 'Synchronize links.json directly to Raindrop.io via the API'
+complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -f -a "import" -d 'Import bookmarks from GoodLinks and Obsidian'
 complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
-complete -c sync_bookmarks -n "__fish_sync_bookmarks_using_subcommand raindrop" -s h -l help -d 'Print help'
+complete -c sync_bookmarks -n "__fish_sync_bookmarks_using_subcommand raindrop" -l dry-run -d 'Show what would change without making any API calls'
+complete -c sync_bookmarks -n "__fish_sync_bookmarks_using_subcommand raindrop" -s h -l help -d 'Print help (see more with \'--help\')'
 complete -c sync_bookmarks -n "__fish_sync_bookmarks_using_subcommand import" -s v -l verbose
 complete -c sync_bookmarks -n "__fish_sync_bookmarks_using_subcommand import" -s h -l help -d 'Print help'
-complete -c sync_bookmarks -n "__fish_sync_bookmarks_using_subcommand help; and not __fish_seen_subcommand_from raindrop import help" -f -a "raindrop"
-complete -c sync_bookmarks -n "__fish_sync_bookmarks_using_subcommand help; and not __fish_seen_subcommand_from raindrop import help" -f -a "import"
+complete -c sync_bookmarks -n "__fish_sync_bookmarks_using_subcommand help; and not __fish_seen_subcommand_from raindrop import help" -f -a "raindrop" -d 'Synchronize links.json directly to Raindrop.io via the API'
+complete -c sync_bookmarks -n "__fish_sync_bookmarks_using_subcommand help; and not __fish_seen_subcommand_from raindrop import help" -f -a "import" -d 'Import bookmarks from GoodLinks and Obsidian'
 complete -c sync_bookmarks -n "__fish_sync_bookmarks_using_subcommand help; and not __fish_seen_subcommand_from raindrop import help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
