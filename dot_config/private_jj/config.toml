@@ -46,6 +46,7 @@ draft_commit_description = '''
 
 [revsets]
 bookmark-advance-to = 'closest_pushable(@)'
+log = 'present(@) | ancestors(immutable_heads().., 2) | trunk() | bookmarks()'
 
 [aliases]
 init = [
