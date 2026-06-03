@@ -29,9 +29,6 @@ C-j = 'jump_view_down'
 C-k = 'jump_view_up'
 C-l = 'jump_view_right'
 # vim muscle memory
-H = 'extend_to_line_start'
-L = 'extend_to_line_end'
-G = "goto_last_line"
 "*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_next"]
 "#" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_prev"]
 
@@ -40,8 +37,3 @@ G = "goto_last_line"
 
 [keys.normal."space"]
 i = ":toggle lsp.display-inlay-hints"
-
-[keys.select]
-# vim muscle memory
-H = 'extend_to_line_start'
-L = 'extend_to_line_end'
