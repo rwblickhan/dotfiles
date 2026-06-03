@@ -1,7 +1,28 @@
-[[language]]
-name = "fish"
-file-types = ["fish", { glob = "*.fish.tmpl" }]
-auto-format = false
+[language-server.ledger-language-server]
+command = "ledger-language-server"
+
+[language-server.oxfmt]
+command = "oxfmt"
+args = ["--lsp"]
+
+[language-server.oxlint]
+command = "oxlint"
+args = ["--lsp"]
+
+[language-server.efm]
+command = "efm-langserver"
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+validate = "on"
+run = "onType"
+nodePath = ""
+rulesCustomizations = []
+problems = { shortenToSingleLine = false }
+experimental = { useFlatConfig = false }
 
 [[language]]
 name = "typescript"
@@ -55,29 +76,3 @@ scope = "source.ledger"
 file-types = ["journal", "ledger", "hledger"]
 comment-token = ";"
 language-servers = ["ledger-language-server"]
-
-[language-server.ledger-language-server]
-command = "ledger-language-server"
-
-[language-server.oxfmt]
-command = "oxfmt"
-args = ["--lsp"]
-
-[language-server.oxlint]
-command = "oxlint"
-args = ["--lsp"]
-
-[language-server.efm]
-command = "efm-langserver"
-
-[language-server.eslint]
-command = "vscode-eslint-language-server"
-args = ["--stdio"]
-
-[language-server.eslint.config]
-validate = "on"
-run = "onType"
-nodePath = ""
-rulesCustomizations = []
-problems = { shortenToSingleLine = false }
-experimental = { useFlatConfig = false }
