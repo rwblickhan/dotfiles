@@ -27,7 +27,9 @@
       "Bash(gh api:*)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:goodlinks.app)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(rg *)",
+      "Read(//Users/rwblickhan/.config/helix/**)"
     ]
   }
 }
