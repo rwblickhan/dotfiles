@@ -1,0 +1,24 @@
+#!/opt/homebrew/bin/fish
+
+argparse 'h/help' -- $argv
+or exit 1
+
+if set -q _flag_help
+    echo "Usage: hxclip"
+    echo ""
+    echo "Writes the current clipboard contents to a temp file and opens it"
+    echo "in Helix in a new Ghostty window."
+    exit 0
+end
+
+set -l tmpfile (mktemp)
+pbpaste > $tmpfile
+
+printf 'tell application "Ghostty"
+    set win to new window
+    set pane to terminal 1 of selected tab of win
+    input text "hx %s" to pane
+    delay 0.1
+    send key "enter" to pane
+    focus pane
+end tell' $tmpfile | osascript

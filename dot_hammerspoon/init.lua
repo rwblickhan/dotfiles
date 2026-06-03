@@ -144,6 +144,10 @@ local function focusFacebookMessages()
   ]])
 end
 
+local function hxClipboard()
+  hs.task.new(os.getenv("HOME") .. "/.local/bin/hxclip", nil):start()
+end
+
 local function showOrHide(appName)
   local app = hs.application.find(appName)
   if app ~= nil and app:isFrontmost() then
@@ -205,6 +209,9 @@ hs.hotkey.bind({}, "f1", function() showOrHide("Activity Monitor") end)
 hs.hotkey.bind({}, "f2", function()
   hs.osascript.applescriptFromFile(os.getenv("HOME") .. "/Library/Scripts/ona_layout.applescript")
 end)
+
+-- ins = edit clipboard in Helix
+hs.hotkey.bind({}, "help", hxClipboard)
 
 -- Drafts-specific hotkeys
 bindConditionalHotkey({ "ctrl", "cmd" }, "l", isDraftsFocused, function() selectMenuItem("Drafts", "Link Mode") end)
