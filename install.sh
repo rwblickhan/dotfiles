@@ -14,6 +14,7 @@ printf '\nexec fish\n' >> "$HOME/.bashrc"
 printf '\n# Fix Zed remote extension permissions (root-owned .tmp dirs block extension install)\nfind ~/.local/share/zed/remote_extensions -user root -exec sudo chown -R vscode:vscode {} + 2>/dev/null\n' >> "$HOME/.bashrc"
 
 brew tap neurosnap/tap
+brew tap mattwilkinsonn/zireael https://github.com/mattwilkinsonn/zireael
 
 BREW_FORMULAE=(
     bat
@@ -23,7 +24,7 @@ BREW_FORMULAE=(
     git-delta
     helix
     jj
-    mattwilkinsonn/tap/jj-hooks
+    mattwilkinsonn/zireael/jj-hooks
     neurosnap/tap/zmx
 )
 
