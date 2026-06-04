@@ -58,7 +58,7 @@ init = [
   """
 jj git init --colocate
 # only track origin branches, not upstream or others
-jj bookmark track 'glob:*@origin'
+jj bookmark track main --remote=origin
 """,
 ]
 pr = [
