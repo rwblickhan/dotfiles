@@ -110,38 +110,70 @@ local function bindConditionalHotkey(mods, key, condition, fn)
   return hk
 end
 
+local chromePersonalProfileDir = (function()
+  local path = os.getenv("HOME") .. "/Library/Application Support/Google/Chrome/Local State"
+  local f = io.open(path, "r")
+  if not f then return nil end
+  local state = hs.json.decode(f:read("*a"))
+  f:close()
+  if not (state and state.profile and state.profile.info_cache) then return nil end
+  for dir, info in pairs(state.profile.info_cache) do
+    if info.name == "Personal" then return dir end
+  end
+end)()
+
 local function focusFacebookMessages()
   local chrome = hs.application.find("Google Chrome")
 
+  local function launchProfile()
+    if chromePersonalProfileDir then
+      hs.execute(string.format("open -na 'Google Chrome' --args --profile-directory='%s'", chromePersonalProfileDir))
+    else
+      hs.application.open("Google Chrome")
+    end
+  end
+
   if not chrome or not chrome:isRunning() then
-    hs.application.open("Google Chrome")
+    launchProfile()
     return
   end
 
   if chrome:isFrontmost() then
-    local ok, activeTabIndex = hs.osascript.applescript([[
+    local ok, url = hs.osascript.applescript([[
       tell application "Google Chrome"
         if (count of windows) > 0 then
-          return active tab index of front window
+          return URL of active tab of front window
         else
-          return 0
+          return ""
         end if
       end tell
     ]])
-    if ok and activeTabIndex == 1 then
+    if ok and type(url) == "string" and url:find("facebook.com/messages", 1, true) then
       chrome:hide()
       return
     end
   end
 
-  hs.osascript.applescript([[
+  local ok, found = hs.osascript.applescript([[
     tell application "Google Chrome"
-      if (count of windows) = 0 then make new window
-      set index of front window to 1
-      set active tab index of front window to 1
-      activate
+      repeat with w in windows
+        set tabList to tabs of w
+        repeat with j from 1 to count of tabList
+          if URL of item j of tabList contains "facebook.com/messages" then
+            set index of w to 1
+            set active tab index of w to j
+            activate
+            return "yes"
+          end if
+        end repeat
+      end repeat
+      return "no"
     end tell
   ]])
+
+  if not (ok and found == "yes") then
+    launchProfile()
+  end
 end
 
 local function hxClipboard()
