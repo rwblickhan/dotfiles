@@ -30,7 +30,7 @@ draft_commit_description = '''
 '''
 
 [revset-aliases]
-# set all remote bookmarks to be immutable
+# Set all remote bookmarks to be immutable
 'immutable_heads()' = "builtin_immutable_heads() | remote_bookmarks()"
 'user(x)' = 'author(x) | committer(x)'
 'mine()' = 'user("rwb@rwblickhan.org") | user("russell.blickhan@vanta.com")'
@@ -57,7 +57,7 @@ init = [
   "-c",
   """
 jj git init --colocate
-# only track origin branches, not upstream or others
+# Track main by default
 jj bookmark track main --remote=origin
 """,
 ]
@@ -81,7 +81,7 @@ pull = [
 set -e
 jj git fetch
 # Rebase any fully-mutable branches by tip
-jj rebase --skip-emptied -b 'heads(mine() & mutable()) ~ descendants(immutable() & ~::trunk())' -o 'trunk()'
+jj rebase -b 'heads(mine() & mutable()) ~ descendants(immutable() & ~::trunk())' -o 'trunk()'
 jj new main
 """,
 ]
