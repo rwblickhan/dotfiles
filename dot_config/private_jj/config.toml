@@ -80,12 +80,8 @@ pull = [
   """
 set -e
 jj git fetch
-# Collect the tips of my mutable branches (commits with no descendants)
-# and rebase each onto trunk, ignoring failures.
-for tip in $(jj log --no-graph -r 'heads(mine() & mutable())' -T 'change_id ++ "\n"'); do
-  echo "Rebasing $tip onto trunk..."
-  jj rebase --skip-emptied -b "$tip" -o 'trunk()' || true
-done
+# Rebase any fully-mutable branches by tip
+jj rebase --skip-emptied -b 'heads(mine() & mutable()) ~ descendants(immutable() & ~::trunk())' -o 'trunk()'
 jj new main
 """,
 ]
