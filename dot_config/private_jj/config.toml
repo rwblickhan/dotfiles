@@ -34,7 +34,7 @@ draft_commit_description = '''
 'immutable_heads()' = "builtin_immutable_heads() | remote_bookmarks()"
 'user(x)' = 'author(x) | committer(x)'
 'mine()' = 'user("rwb@rwblickhan.org") | user("russell.blickhan@vanta.com")'
-'unmerged()' = 'mine() & ~ancestors(trunk())'
+'unmerged()' = '~ancestors(trunk())'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 # stack(x, n) is the set of mutable commits reachable from 'x',
@@ -81,7 +81,7 @@ pull = [
   """
 set -e
 jj git fetch
-jj rebase --skip-emptied -b 'mine()' -o 'trunk()'
+jj rebase --skip-emptied -b 'mine() & unmerged()' -o 'trunk()'
 jj new main
 """,
 ]
