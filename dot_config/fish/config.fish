@@ -87,7 +87,7 @@ if status is-interactive
     abbr_subcommand jj lb "log -r 'bookmarks()'"
     abbr_subcommand jj n new
     abbr_subcommand jj sn "show --name-only"
-    abbr_subcommand jj up "bookmark advance && jj-hp push"
+    abbr_subcommand jj up "bookmark advance && env PRE_COMMIT_REMOTE_URL=(git remote get-url origin) jj-hp push"
 
     abbr_subcommand git b branch
     abbr_subcommand git c switch
