@@ -13,8 +13,10 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 printf '\nexec fish\n' >> "$HOME/.bashrc"
 printf '\n# Fix Zed remote extension permissions (root-owned .tmp dirs block extension install)\nfind ~/.local/share/zed/remote_extensions -user root -exec sudo chown -R vscode:vscode {} + 2>/dev/null\n' >> "$HOME/.bashrc"
 
+
 brew tap neurosnap/tap
 brew tap mattwilkinsonn/zireael https://github.com/mattwilkinsonn/zireael
+brew trust mattwilkinsonn/zireael neurosnap/tap
 
 BREW_FORMULAE=(
     bat
