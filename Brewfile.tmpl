@@ -1,20 +1,20 @@
 # https://matthiasportzel.com/brewfile/
 
 # ledger-language-server
-tap "rwblickhan/tap", trusted: true
+tap "rwblickhan/tap"
 # bun
-tap "oven-sh/bun", trusted: true
+tap "oven-sh/bun"
 # litecli
-tap "dbcli/tap", trusted: true
-# jj-hooks
+tap "dbcli/tap"
+# jj-hooks (custom-remote tap: trust must live on the tap, not the formula)
 tap "mattwilkinsonn/zireael", "https://github.com/mattwilkinsonn/zireael", trusted: true
 # zmx
-tap "neurosnap/tap", trusted: true
+tap "neurosnap/tap"
 # delphitools
-tap "1612elphi/delphitools", trusted: true
+tap "1612elphi/delphitools"
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # ona (Gitpod CLI)
-tap "gitpod-io/tap", trusted: true
+tap "gitpod-io/tap"
 {{ end -}}
 
 # SSH tunneling
@@ -27,13 +27,13 @@ brew "aws-vault"
 brew "bat"
 brew "bat-extras"
 # JavaScript runtime
-brew "oven-sh/bun/bun"
+brew "oven-sh/bun/bun", trusted: true
 # Install rust binaries
 brew "cargo-binstall"
 # Brewfile manager
 brew "chezmoi"
 # delphitools CLI
-brew "delphitools-cli"
+brew "1612elphi/delphitools/delphitools-cli", trusted: true
 # Deno (primarily for yt-dlp support)
 brew "deno"
 # Structured diffs
@@ -77,7 +77,7 @@ brew "jq"
 # Better make
 brew "just"
 # Ledger/hledger language server
-brew "ledger-language-server"
+brew "rwblickhan/tap/ledger-language-server", trusted: true
 # Add a more up-to-date less
 brew "less"
 # Lua language server
@@ -102,7 +102,7 @@ brew "oxfmt"
 brew "oxlint"
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # Gitpod CLI
-brew "gitpod-io/tap/ona"
+brew "gitpod-io/tap/ona", trusted: true
 {{ end -}}
 # Pandoc document converter
 brew "pandoc"
@@ -133,7 +133,7 @@ brew "yt-dlp"
 # Better cd
 brew "zoxide"
 # session persistence
-brew "zmx"
+brew "neurosnap/tap/zmx", trusted: true
 
 # 1password password manager
 cask "1password-cli"
