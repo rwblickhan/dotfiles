@@ -1,20 +1,20 @@
 # https://matthiasportzel.com/brewfile/
 
 # ledger-language-server
-tap "rwblickhan/tap"
+tap "rwblickhan/tap", trusted: true
 # bun
-tap "oven-sh/bun"
+tap "oven-sh/bun", trusted: true
 # litecli
-tap "dbcli/tap"
+tap "dbcli/tap", trusted: true
 # jj-hooks
-tap "mattwilkinsonn/zireael", "https://github.com/mattwilkinsonn/zireael"
+tap "mattwilkinsonn/zireael", "https://github.com/mattwilkinsonn/zireael", trusted: true
 # zmx
-tap "neurosnap/tap"
+tap "neurosnap/tap", trusted: true
 # delphitools
-tap "1612elphi/delphitools"
+tap "1612elphi/delphitools", trusted: true
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # ona (Gitpod CLI)
-tap "gitpod-io/tap"
+tap "gitpod-io/tap", trusted: true
 {{ end -}}
 
 # SSH tunneling
