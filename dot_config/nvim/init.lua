@@ -8,29 +8,13 @@ Plug('tpope/vim-repeat')
 Plug('tpope/vim-speeddating')
 vim.call('plug#end')
 
--- Use <space> as leader key
-vim.g.mapleader = '<space>'
--- Use /g by default in regex substitution
-vim.opt.gdefault = true
--- Use 2 spaces for tabs
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.expandtab = true
--- Show relative line numbers
-vim.opt.relativenumber = true
--- Use system clipboard
-vim.opt.clipboard:append('unnamedplus')
--- Use \ as CamelCaseMotion hotkey
-vim.g.camelcasemotion_key = '\\'
-
-
 require('mini.basics').setup()
 require('mini.ai').setup({})
 require('mini.comment').setup({
   mappings = {
     comment = '',
-    comment_line = '<leader>c',
-    comment_visual = '<leader>c',
+    comment_line = '<space>c',
+    comment_visual = '<space>c',
     textobject = '',
   },
 })
@@ -117,3 +101,17 @@ if vim.g.vscode then
 end
 
 
+-- Use <space> as leader key
+vim.g.mapleader = '<space>'
+-- Use /g by default in regex substitution
+vim.opt.gdefault = true
+-- Use 2 spaces for tabs
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.expandtab = true
+-- Show relative line numbers
+vim.opt.relativenumber = true
+-- Use system clipboard
+vim.opt.clipboard:append('unnamedplus')
+-- Use \ as CamelCaseMotion hotkey
+vim.g.camelcasemotion_key = '\\'
