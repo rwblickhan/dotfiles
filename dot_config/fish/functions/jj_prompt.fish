@@ -5,7 +5,9 @@ function jj_prompt
         set jj_empty $jj_lines[1]
         set jj_desc $jj_lines[2]
         set jj_bm $jj_lines[3]
+        set jj_closest_bm (jj log -r 'closest_bookmark(@)' --no-graph -T 'bookmarks' 2>/dev/null | string split ' ')[1]
 
+        # revision
         # jj green
         set_color --bold bcc95f
         if test "$jj_empty" = true
@@ -22,15 +24,27 @@ function jj_prompt
         end
         set_color normal
 
+        # bookmark
+        # jj purple
+        set_color --bold bc99d4
         if test -n "$jj_bm"
             echo -n " on "
-            # jj purple
-            set_color --bold bc99d4
             if test (string length $jj_bm) -gt 20
                 echo -n (string sub -l 20 $jj_bm)"…"
             else
                 echo -n $jj_bm
             end
+            set_color normal
+        end
+
+        if test -n "$jj_closest_bm"
+            echo -n " (🌿 "
+            if test (string length $jj_closest_bm) -gt 20
+                echo -n (string sub -l 20 $jj_closest_bm)"…"
+            else
+                echo -n $jj_closest_bm
+            end
+            echo -n ")"
             set_color normal
         end
     else
