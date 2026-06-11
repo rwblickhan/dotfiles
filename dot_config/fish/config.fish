@@ -71,7 +71,7 @@ if status is-interactive
     abbr -a r 'mise run'
     abbr -a z zmx
 
-    abbr -a bbic "brew bundle install --file=~/Brewfile && brew upgrade && brew bundle cleanup --file=~/Brewfile"
+    abbr -a bbic "brew bundle install --file=~/Brewfile && brew bundle cleanup --file=~/Brewfile"
 
     abbr_subcommand gh pc "pr create -w"
     abbr_subcommand gh pcd "pr create --draft"
