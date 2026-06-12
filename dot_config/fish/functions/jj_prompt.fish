@@ -5,7 +5,8 @@ function jj_prompt
         set jj_empty $jj_lines[1]
         set jj_desc $jj_lines[2]
         set jj_bm $jj_lines[3]
-        set jj_closest_bm (jj log -r 'closest_bookmark(@)' --no-graph -T 'bookmarks' 2>/dev/null | string split ' ')[1]
+        set jj_closest_bm (jj log -r 'closest_bookmark(@)' --no-graph -T 'bookmarks ++ "\n"' 2>/dev/null | string match -rv '^\s*$')
+        set jj_closest_bm (string split ' ' "$jj_closest_bm[1]")[1]
 
         # revision
         # jj green
