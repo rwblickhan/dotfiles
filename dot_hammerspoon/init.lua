@@ -154,18 +154,17 @@ local function focusFacebookMessages()
     end
   end
 
+  -- The Personal profile always keeps Messenger as its first tab, so find the
+  -- window whose first tab is Messenger, switch to that tab, and raise it.
   local ok, found = hs.osascript.applescript([[
     tell application "Google Chrome"
       repeat with w in windows
-        set tabList to tabs of w
-        repeat with j from 1 to count of tabList
-          if URL of item j of tabList contains "facebook.com/messages" then
-            set index of w to 1
-            set active tab index of w to j
-            activate
-            return "yes"
-          end if
-        end repeat
+        if (count of tabs of w) > 0 and (URL of tab 1 of w contains "facebook.com/messages") then
+          set active tab index of w to 1
+          set index of w to 1
+          activate
+          return "yes"
+        end if
       end repeat
       return "no"
     end tell
