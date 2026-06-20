@@ -1,6 +1,6 @@
 # Print an optspec for argparse to handle cmd's options that are independent of any subcommand.
 function __fish_sync_bookmarks_global_optspecs
-	string join \n h/help V/version
+	string join \n links= cache= h/help V/version
 end
 
 function __fish_sync_bookmarks_needs_command
@@ -24,6 +24,8 @@ function __fish_sync_bookmarks_using_subcommand
 	contains -- $cmd[1] $argv
 end
 
+complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -l links -d 'Path to links.json [default: ./links.json]' -r -F
+complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -l cache -d 'Path to cache.db [default: ./cache.db]' -r -F
 complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -s h -l help -d 'Print help'
 complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -s V -l version -d 'Print version'
 complete -c sync_bookmarks -n "__fish_sync_bookmarks_needs_command" -f -a "raindrop" -d 'Synchronize links.json directly to Raindrop.io via the API'
