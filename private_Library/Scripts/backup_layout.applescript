@@ -2,28 +2,16 @@ tell application "Ghostty"
 	activate
 
 	set win to new window
-	set paneTopLeft to terminal 1 of selected tab of win
-	set paneTopRight to split paneTopLeft direction right
-	set paneBottomLeft to split paneTopLeft direction down
-	set paneBottomRight to split paneTopRight direction down
+	set paneLeft to terminal 1 of selected tab of win
+	set paneRight to split paneLeft direction right
 
-	focus paneTopLeft
-	input text "sync_highlights -t ~/Documents/Obsidian\\ Vaults/notes/" to paneTopLeft
+	focus paneLeft
+	input text "sync_highlights -t ~/Documents/Obsidian\\ Vaults/notes/ && sync_mochi && cd sync_bookmarks && sync_bookmarks import && sync_bookmarks raindrop" to paneLeft
 	delay 0.1
-	send key "enter" to paneTopLeft
+	send key "enter" to paneLeft
 
-	focus paneTopRight
-	input text "cd sync_bookmarks && sync_bookmarks import && sync_bookmarks raindrop" to paneTopRight
+	focus paneRight
+	input text "backup" to paneRight
 	delay 0.1
-	send key "enter" to paneTopRight
-
-	focus paneBottomLeft
-	input text "backup" to paneBottomLeft
-	delay 0.1
-	send key "enter" to paneBottomLeft
-
-	focus paneBottomRight
-	input text "sync_mochi" to paneBottomRight
-	delay 0.1
-	send key "enter" to paneBottomRight
+	send key "enter" to paneRight
 end tell
