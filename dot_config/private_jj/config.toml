@@ -71,6 +71,27 @@ pr = [
 gh pr create --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --no-graph | cut -d ' ' -f 1)
 """,
 ]
+push = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+set -e
+rev="${1:-@}"
+desc=$(jj log -r "$rev" --no-graph -T 'description.first_line()')
+# Slugify the first description line into a git-ref-safe bookmark name:
+# lowercase, collapse non-alphanumerics to hyphens, trim leading/trailing hyphens.
+name=$(printf '%s' "$desc" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')
+if [ -z "$name" ]; then
+  echo "Change $rev has no description to derive a bookmark name from." >&2
+  exit 1
+fi
+jj git push --named "russell-$name=$rev"
+""",
+  "push",
+]
 pull = [
   "util",
   "exec",
