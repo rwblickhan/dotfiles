@@ -32,6 +32,8 @@ function goodlinks_thin --description "Interactively thin out old read GoodLinks
         xh --ignore-stdin --json GET "$base/links" \
             "Authorization:Bearer $token" \
             read==true \
+            starred==false \
+            highlighted==false \
             "limit==$limit" \
             "offset==$offset" \
             sort==newestRead > $tmpfile 2>/dev/null
@@ -41,7 +43,7 @@ function goodlinks_thin --description "Interactively thin out old read GoodLinks
             return 1
         end
 
-        jq -c '.data[] | select(((.highlights // []) | length == 0) and (.starred // false | not))' $tmpfile >> $allfile
+        jq -c '.data[] | select((.highlighted // false | not) and (.starred // false | not))' $tmpfile >> $allfile
 
         set -l has_more (jq -r '.hasMore // false' $tmpfile)
         if test "$has_more" != true
