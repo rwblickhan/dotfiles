@@ -1,6 +1,6 @@
 #!/opt/homebrew/bin/fish
 
-argparse 'h/help' -- $argv
+argparse h/help -- $argv
 or exit 1
 
 if set -q _flag_help
@@ -12,13 +12,13 @@ if set -q _flag_help
 end
 
 set -l tmpfile (mktemp)
-env LANG=en_US.UTF-8 pbpaste > $tmpfile
+env LANG=en_US.UTF-8 pbpaste >$tmpfile
 
 printf 'tell application "Ghostty"
     set win to new window
     set pane to terminal 1 of selected tab of win
-    input text "hx %s" to pane
+    input text "hx %s; and env LANG=en_US.UTF-8 pbcopy < %s; and exit" to pane
     delay 0.1
     send key "enter" to pane
     focus pane
-end tell' $tmpfile | osascript
+end tell' $tmpfile $tmpfile | osascript
