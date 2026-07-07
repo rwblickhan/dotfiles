@@ -4,3 +4,4 @@
 [submodule "utils/fzf-jj.sh"]
 	path = utils/fzf-jj.sh
 	url = https://github.com/rwblickhan/fzf-jj.sh.git
+	branch = main
