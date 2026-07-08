@@ -88,7 +88,7 @@ if [ -z "$name" ]; then
   echo "Change $rev has no description to derive a bookmark name from." >&2
   exit 1
 fi
-jj-hp push -- --named "russell-$name=$rev"
+env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push -- --named "russell-$name=$rev"
 """,
   "push",
 ]
