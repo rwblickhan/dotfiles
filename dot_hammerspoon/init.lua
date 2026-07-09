@@ -243,6 +243,8 @@ end)
 
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)
+-- delete = edit clipboard in Helix
+hs.hotkey.bind(hyper, "delete", hxClipboard)
 
 -- Drafts-specific hotkeys
 bindConditionalHotkey({ "ctrl", "cmd" }, "l", isDraftsFocused, function() selectMenuItem("Drafts", "Link Mode") end)
