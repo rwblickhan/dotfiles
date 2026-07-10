@@ -106,6 +106,21 @@ jj rebase -b 'heads(mine() & mutable()) ~ descendants(immutable() & ~::trunk())'
 jj new main
 """,
 ]
+up = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+set -e
+# Any positional args are bookmark names to advance; with none, jj uses its
+# `revsets.bookmark-advance-from` default.
+jj bookmark advance "$@"
+env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push
+""",
+  "up",
+]
 
 [jj-hooks]
 advance-bookmarks = true
