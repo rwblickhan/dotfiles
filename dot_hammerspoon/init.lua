@@ -110,26 +110,13 @@ local function bindConditionalHotkey(mods, key, condition, fn)
   return hk
 end
 
-local chromePersonalProfileDir = (function()
-  local path = os.getenv("HOME") .. "/Library/Application Support/Google/Chrome/Local State"
-  local f = io.open(path, "r")
-  if not f then return nil end
-  local state = hs.json.decode(f:read("*a"))
-  f:close()
-  if not (state and state.profile and state.profile.info_cache) then return nil end
-  for dir, info in pairs(state.profile.info_cache) do
-    if info.name == "Personal" then return dir end
-  end
-end)()
-
 local function focusFacebookMessages()
   local chrome = hs.application.find("Google Chrome")
 
   local function launchProfile()
-    if chromePersonalProfileDir then
-      hs.execute(string.format("open -na 'Google Chrome' --args --profile-directory='%s'", chromePersonalProfileDir))
-    else
-      hs.application.open("Google Chrome")
+    local app = hs.application.open("Google Chrome", 5, true)
+    if app then
+      app:selectMenuItem({ "Profiles", "Russell (Personal)" })
     end
   end
 
