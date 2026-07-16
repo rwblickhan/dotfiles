@@ -22,7 +22,6 @@ select = "underline"
 enable = true
 
 [keys.normal]
-"ret" = "goto_word"
 # split navigation (vim-tmux-navigator style)
 C-h = 'jump_view_left'
 C-j = 'jump_view_down'
