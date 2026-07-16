@@ -6,12 +6,8 @@ tell application "Ghostty"
 	set paneRight to split paneLeft direction right
 
 	focus paneLeft
-	input text "sync_highlights -t ~/Documents/Obsidian\\ Vaults/notes/ && sync_mochi && sync_bookmarks --links ~/.local/share/chezmoi/links.json --cache ~/cache.db import && sync_bookmarks --links ~/links.json --cache ~/cache.db raindrop && ~/Developer/obsidian-backups && mise run copy" to paneLeft
-	delay 0.1
-	send key "enter" to paneLeft
+	input text "sync_highlights -t ~/Documents/Obsidian\\ Vaults/notes/ && sync_mochi && sync_bookmarks --links ~/.local/share/chezmoi/links.json --cache ~/cache.db import && sync_bookmarks --links ~/links.json --cache ~/cache.db raindrop && ~/Developer/obsidian-backups && mise run copy\n " to paneLeft
 
 	focus paneRight
-	input text "backup" to paneRight
-	delay 0.1
-	send key "enter" to paneRight
+	input text "backup\n " to paneRight
 end tell

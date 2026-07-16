@@ -7,17 +7,11 @@ tell application "Ghostty"
 	set paneBottomLeft to split paneTopLeft direction down
 
 	focus paneTopLeft
-	input text "autossh -M 0 -q ona.web-dev" to paneTopLeft
-	delay 0.1
-	send key "enter" to paneTopLeft
+	input text "autossh -M 0 -q ona.web-dev\n " to paneTopLeft
 
 	focus paneBottomLeft
-	input text "autossh -M 0 -q ona.claude" to paneBottomLeft
-	delay 0.1
-	send key "enter" to paneBottomLeft
+	input text "autossh -M 0 -q ona.claude\n " to paneBottomLeft
 
 	focus paneRight
-	input text "autossh -M 0 -q ona.editor" to paneRight
-	delay 0.1
-	send key "enter" to paneRight
+	input text "autossh -M 0 -q ona.editor\n " to paneRight
 end tell
