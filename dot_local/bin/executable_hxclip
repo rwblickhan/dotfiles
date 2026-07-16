@@ -18,7 +18,7 @@ printf 'tell application "Ghostty"
     set win to new window
     set pane to terminal 1 of selected tab of win
     input text "hx %s; and env LANG=en_US.UTF-8 pbcopy < %s; and exit" to pane
-    delay 0.1
+    delay 0.2
     send key "enter" to pane
     focus pane
 end tell' $tmpfile $tmpfile | osascript
