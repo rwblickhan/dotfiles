@@ -261,14 +261,6 @@ hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
 -- / = files
 hs.hotkey.bind(hyper, "/", function() showOrHide("Bloom") end)
 
--- f1 = Activity Monitor
-hs.hotkey.bind({}, "f1", function() showOrHide("Activity Monitor") end)
-
--- f2 = ona layout
-hs.hotkey.bind({}, "f2", function()
-  hs.osascript.applescriptFromFile(os.getenv("HOME") .. "/Library/Scripts/ona_layout.applescript")
-end)
-
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)
 -- delete = edit clipboard in Helix
