@@ -20,6 +20,7 @@ I use mise for general project setup. For any project built from scratch or star
 
 ## When Building Command-Line Tools
 
+- If using Rust, use the [`cli-battery-pack`](https://crates.io/crates/cli-battery-pack/0.6.3) crate for good default crate choices.
 - Always include a comprehensive `--help` option.
 - Include a Mise task to build the project and install it as a single-file executable into `~/.local/bin`.
 - When possible, include Mise tasks to generate and install manfiles and fish shell completions.
