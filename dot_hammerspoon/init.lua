@@ -183,6 +183,47 @@ hs.hotkey.bind(hyper, "k", function() hs.eventtap.keyStroke({}, "up") end)
 hs.hotkey.bind(hyper, "h", function() hs.eventtap.keyStroke({}, "left") end)
 hs.hotkey.bind(hyper, "l", function() hs.eventtap.keyStroke({}, "right") end)
 
+-- Window management
+local function moveFocusedWindowToUnit(unit)
+  local win = hs.window.focusedWindow()
+  if win then win:moveToUnit(unit) end
+end
+
+-- left half
+hs.hotkey.bind(hyper, "left", function() moveFocusedWindowToUnit({ x = 0, y = 0, w = 0.5, h = 1 }) end)
+-- right half
+hs.hotkey.bind(hyper, "right", function() moveFocusedWindowToUnit({ x = 0.5, y = 0, w = 0.5, h = 1 }) end)
+-- maximize
+hs.hotkey.bind(hyper, "up", function()
+  local win = hs.window.focusedWindow()
+  if win then win:maximize() end
+end)
+-- reasonable size (60% of screen, capped at 1025x900px, centered)
+-- matches Raycast: https://manual.raycast.com/window-management#commands
+hs.hotkey.bind(hyper, "down", function()
+  local win = hs.window.focusedWindow()
+  if not win then return end
+  local screenFrame = win:screen():frame()
+  local w = math.min(screenFrame.w * 0.6, 1025)
+  local h = math.min(screenFrame.h * 0.6, 900)
+  win:setFrame({
+    x = screenFrame.x + (screenFrame.w - w) / 2,
+    y = screenFrame.y + (screenFrame.h - h) / 2,
+    w = w,
+    h = h,
+  })
+end)
+-- next display
+hs.hotkey.bind(hyper, ".", function()
+  local win = hs.window.focusedWindow()
+  if win then win:moveToScreen(win:screen():next()) end
+end)
+-- previous display
+hs.hotkey.bind(hyper, ",", function()
+  local win = hs.window.focusedWindow()
+  if win then win:moveToScreen(win:screen():previous()) end
+end)
+
 -- App show/hide hotkeys
 -- 1 = 1password
 hs.hotkey.bind(hyper, "1", function() showOrHide("1Password") end)
