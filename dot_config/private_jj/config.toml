@@ -49,29 +49,8 @@ bookmark-advance-to = 'closest_pushable(@)'
 log = 'present(@) | ancestors(immutable_heads().., 2) | present(trunk()) | bookmarks()'
 
 [aliases]
-init = [
-  "util",
-  "exec",
-  "--",
-  "bash",
-  "-c",
-  """
-jj git init --colocate
-# Track main by default
-jj bookmark track main --remote=origin
-""",
-]
-pr = [
-  "util",
-  "exec",
-  "--",
-  "bash",
-  "-c",
-  """
-gh pr create --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --no-graph | cut -d ' ' -f 1)
-""",
-]
-push = [
+# Generate a bookmark from change description
+branch = [
   "util",
   "exec",
   "--",
@@ -88,10 +67,42 @@ if [ -z "$name" ]; then
   echo "Change $rev has no description to derive a bookmark name from." >&2
   exit 1
 fi
-env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push -- --named "russell-$name=$rev"
+name="russell-$name"
+jj bookmark set "$name" -r "$rev"
+echo "$name"
 """,
-  "push",
+  "branch",
 ]
+# Init a colocated jj repo and track main
+init = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+jj git init --colocate
+# Track main by default
+jj bookmark track main --remote=origin
+""",
+]
+# Open a PR from an unpushed change
+pr = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+set -e
+rev="${1:-@}"
+name=$(jj branch "$rev")
+env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push -- --named "$name=$rev"
+gh pr create --head "$name"
+""",
+  "pr",
+]
+# Fetch remote changes and rebase fully-mutable branches
 pull = [
   "util",
   "exec",
@@ -106,7 +117,8 @@ jj rebase -b 'heads(mine() & mutable()) ~ descendants(immutable() & ~::trunk())'
 jj new main
 """,
 ]
-up = [
+# Push a branch
+push = [
   "util",
   "exec",
   "--",
@@ -114,12 +126,10 @@ up = [
   "-c",
   """
 set -e
-# Any positional args are bookmark names to advance; with none, jj uses its
-# `revsets.bookmark-advance-from` default.
 jj bookmark advance "$@"
 env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push
 """,
-  "up",
+  "push",
 ]
 
 [jj-hooks]

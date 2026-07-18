@@ -79,11 +79,13 @@ if status is-interactive
     abbr_subcommand gh ps "pr status"
     abbr_subcommand gh pv "pr view -w"
 
-    abbr_subcommand jj cu "ci && jj up"
+    abbr_subcommand jj cp "ci && jj push"
     abbr_subcommand jj de desc
     abbr_subcommand jj di diff
     abbr_subcommand jj e edit
     abbr_subcommand jj g git
+    abbr_subcommand jj pl pull
+    abbr_subcommand jj ps push
     abbr_subcommand jj n new
     abbr_subcommand jj sh show
     abbr_subcommand jj sn "show --name-only"
