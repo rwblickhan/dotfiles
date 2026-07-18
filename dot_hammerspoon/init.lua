@@ -274,6 +274,10 @@ hs.hotkey.bind({}, "help", hxClipboard)
 -- delete = edit clipboard in Helix
 hs.hotkey.bind(hyper, "delete", hxClipboard)
 
+-- other hotkeys to set up
+-- hyper+= - QuickSoulver in Soulver 3
+-- hyper+f - global search in Bloom
+
 -- Drafts-specific hotkeys
 bindConditionalHotkey({ "ctrl", "cmd" }, "l", isDraftsFocused, function() selectMenuItem("Drafts", "Link Mode") end)
 bindConditionalHotkey({ "ctrl", "cmd" }, "k", isDraftsFocused, function() selectMenuItem("Drafts", "Kebab Case") end)
