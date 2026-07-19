@@ -266,6 +266,97 @@ hs.hotkey.bind({}, "help", hxClipboard)
 -- delete = edit clipboard in Helix
 hs.hotkey.bind(hyper, "delete", hxClipboard)
 
+-- Snippet chooser
+local snippets = {
+  { name = "LinkedIn Profile", value = "https://www.linkedin.com/in/rwblickhan/" },
+  { name = "GitHub Profile", value = "https://github.com/rwblickhan" },
+  { name = "Parent's Address", value = "520 Hemlock Lane\nLibertyville, IL 60048" },
+  { name = "Email", value = "rwblickhan@gmail.com" },
+  { name = "Date", value = function() return os.date("%Y-%m-%d") end },
+  { name = "Apple CC (hledger)", value = "liabilities:credit:apple" },
+  { name = "Amazon Prime Rewards CC (hledger)", value = "liabilities:credit:amazonprimerewards" },
+  { name = "Venmo (hledger)", value = "assets:cash:venmo" },
+  { name = "Discover CC (hledger)", value = "liabilities:credit:discover" },
+  { name = "Discover Bank (hledger)", value = "assets:banking:discover" },
+  { name = "BCU (hledger)", value = "assets:banking:bcu" },
+  { name = "Apple Savings (hledger)", value = "assets:banking:apple" },
+  { name = "Fingers", value = "👉👈" },
+  { name = "Newsletter Header", value = function()
+      local d = os.date("%Y-%m-%d")
+      return "---\ntitle:\nlastUpdatedDate: " .. d .. "\npublicationDate: " .. d .. "\nseason: 8\n---\n\n"
+    end },
+  { name = "Library Card Number", value = "21223205249140" },
+  { name = "Chase Banking", value = "assets:banking:chase" },
+  { name = "Chase Sapphire Reserve (hledger)", value = "liabilities:credit:chasesapphirereserve" },
+  { name = "Markdown Checkbox", value = "- [x]" },
+  { name = "Editing Prompt", value = "Do a basic editing pass on this newsletter. Check for major factual mistakes, run-on or incomplete sentences, confusing or contradictory sentences, and so on" },
+  { name = "Blue 4", value = "#006DCA" },
+  { name = "Work Email", value = "russell.blickhan@vanta.com" },
+  { name = "Feature Flag Override User ID", value = "rwblickhan-5d3b4e298e932a2a4bb2ec3b" },
+  { name = "Reporting Risk Migration Flag Name", value = "reporting_risk_snowflake_migration" },
+  { name = "Agent Tool Enabled Flag", value = "reporting_agent_tool_enabled" },
+}
+
+local function resolveValue(value)
+  return type(value) == "function" and value() or value
+end
+
+local function previewText(text)
+  return (text:gsub("\n", "  "))
+end
+
+local function pasteText(text)
+  local saved = hs.pasteboard.getContents()
+  hs.pasteboard.setContents(text)
+  hs.eventtap.keyStroke({ "cmd" }, "v")
+  hs.timer.doAfter(0.3, function() hs.pasteboard.setContents(saved) end)
+end
+
+-- Frecency: count decayed by a 7-day half-life, so a snippet used often but
+-- not recently still sinks below one used less often but just now.
+local frecencyHalfLifeSeconds = 7 * 24 * 3600
+
+local function recordUse(name)
+  local usage = hs.settings.get("snippetChooserUsage") or {}
+  local entry = usage[name] or { count = 0, lastUsed = 0 }
+  entry.count = entry.count + 1
+  entry.lastUsed = os.time()
+  usage[name] = entry
+  hs.settings.set("snippetChooserUsage", usage)
+end
+
+local function buildSortedChoices()
+  local usage = hs.settings.get("snippetChooserUsage") or {}
+  local now = os.time()
+  local choices = {}
+  for i, s in ipairs(snippets) do
+    local entry = usage[s.name]
+    local score = 0
+    if entry then
+      score = entry.count * math.exp(-(now - entry.lastUsed) / frecencyHalfLifeSeconds)
+    end
+    choices[i] = { text = s.name, subText = previewText(resolveValue(s.value)), id = i, score = score }
+  end
+  table.sort(choices, function(a, b)
+    if a.score == b.score then return a.id < b.id end
+    return a.score > b.score
+  end)
+  return choices
+end
+
+local snippetChooser = hs.chooser.new(function(choice)
+  if not choice then return end
+  local snippet = snippets[choice.id]
+  recordUse(snippet.name)
+  pasteText(resolveValue(snippet.value))
+end)
+
+hs.hotkey.bind({ "alt" }, "space", function()
+  snippetChooser:choices(buildSortedChoices())
+  snippetChooser:query("")
+  snippetChooser:show()
+end)
+
 -- other hotkeys to set up
 -- hyper+= - QuickSoulver in Soulver 3
 -- hyper+f - global search in Bloom
