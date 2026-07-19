@@ -357,6 +357,90 @@ hs.hotkey.bind({ "alt" }, "space", function()
   snippetChooser:show()
 end)
 
+-- Search Menu Items chooser, mimicking Raycast's "Search Menu Items" command:
+-- fuzzy-find any menu item in the frontmost app and trigger it directly.
+local function menuItemShortcut(item)
+  local char = item.AXMenuItemCmdChar
+  if not char or char == "" then return "" end
+  local glyphs = { ["\t"] = "⇥", ["\r"] = "⏎", ["\27"] = "⎋", ["\8"] = "⌫", ["\127"] = "⌦", [" "] = "Space" }
+  char = glyphs[char] or char:upper()
+  local modSet = {}
+  for _, m in ipairs(item.AXMenuItemCmdModifiers or {}) do modSet[m] = true end
+  local parts = {}
+  if modSet["ctrl"] then table.insert(parts, "⌃") end
+  if modSet["alt"] then table.insert(parts, "⌥") end
+  if modSet["shift"] then table.insert(parts, "⇧") end
+  if modSet["cmd"] then table.insert(parts, "⌘") end
+  table.insert(parts, char)
+  return table.concat(parts)
+end
+
+-- Expanding the "Services" submenu triggers a full system service registry
+-- scan and can hang for a long time, so never recurse into it.
+local function menuChildren(item)
+  if item.AXTitle == "Services" then return nil end
+  return item.AXChildren and item.AXChildren[1] or nil
+end
+
+local function flattenMenuItems(items, path, out)
+  for _, item in ipairs(items or {}) do
+    local title = item.AXTitle
+    if title and title ~= "" then
+      local children = menuChildren(item)
+      if children and #children > 0 then
+        local newPath = {}
+        for _, p in ipairs(path) do table.insert(newPath, p) end
+        table.insert(newPath, title)
+        flattenMenuItems(children, newPath, out)
+      elseif item.AXEnabled then
+        local fullPath = {}
+        for _, p in ipairs(path) do table.insert(fullPath, p) end
+        table.insert(fullPath, title)
+        table.insert(out, { title = title, path = path, fullPath = fullPath, shortcut = menuItemShortcut(item) })
+      end
+    end
+  end
+end
+
+local function buildMenuItemChoices(app)
+  local flat = {}
+  flattenMenuItems(app:getMenuItems(), {}, flat)
+  local icon = app:bundleID() and hs.image.imageFromAppBundle(app:bundleID()) or nil
+  local choices = {}
+  for i, m in ipairs(flat) do
+    local subText = table.concat(m.path, " → ")
+    if m.shortcut ~= "" then
+      subText = subText ~= "" and (subText .. "   " .. m.shortcut) or m.shortcut
+    end
+    choices[i] = { text = m.title, subText = subText, image = icon, id = i }
+  end
+  return choices, flat
+end
+
+local menuItemFlat = {}
+local menuItemApp = nil
+
+local menuItemChooser = hs.chooser.new(function(choice)
+  if not choice or not menuItemApp then return end
+  local m = menuItemFlat[choice.id]
+  if m then menuItemApp:selectMenuItem(m.fullPath) end
+end)
+
+hs.hotkey.bind(hyper, "p", function()
+  local app = hs.application.frontmostApplication()
+  if not app then return end
+  local choices, flat = buildMenuItemChoices(app)
+  if #choices == 0 then
+    hs.notify.new({ title = "Hammerspoon", informativeText = "No menu items found" }):send()
+    return
+  end
+  menuItemApp = app
+  menuItemFlat = flat
+  menuItemChooser:choices(choices)
+  menuItemChooser:query("")
+  menuItemChooser:show()
+end)
+
 -- other hotkeys to set up
 -- hyper+= - QuickSoulver in Soulver 3
 -- hyper+f - global search in Bloom
