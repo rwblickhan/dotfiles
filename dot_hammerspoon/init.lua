@@ -402,18 +402,44 @@ local function flattenMenuItems(items, path, out)
   end
 end
 
+-- Usage is keyed per-app, since the same item title (e.g. "Close") recurs
+-- across many apps' menus and shouldn't share frecency.
+local function menuItemUsageKey(app, m)
+  return (app:bundleID() or app:name()) .. "\31" .. table.concat(m.fullPath, "\31")
+end
+
+local function recordMenuItemUse(key)
+  local usage = hs.settings.get("menuItemChooserUsage") or {}
+  local entry = usage[key] or { count = 0, lastUsed = 0 }
+  entry.count = entry.count + 1
+  entry.lastUsed = os.time()
+  usage[key] = entry
+  hs.settings.set("menuItemChooserUsage", usage)
+end
+
 local function buildMenuItemChoices(app)
   local flat = {}
   flattenMenuItems(app:getMenuItems(), {}, flat)
   local icon = app:bundleID() and hs.image.imageFromAppBundle(app:bundleID()) or nil
+  local usage = hs.settings.get("menuItemChooserUsage") or {}
+  local now = os.time()
   local choices = {}
   for i, m in ipairs(flat) do
     local subText = table.concat(m.path, " → ")
     if m.shortcut ~= "" then
       subText = subText ~= "" and (subText .. "   " .. m.shortcut) or m.shortcut
     end
-    choices[i] = { text = m.title, subText = subText, image = icon, id = i }
+    local entry = usage[menuItemUsageKey(app, m)]
+    local score = 0
+    if entry then
+      score = entry.count * math.exp(-(now - entry.lastUsed) / frecencyHalfLifeSeconds)
+    end
+    choices[i] = { text = m.title, subText = subText, image = icon, id = i, score = score }
   end
+  table.sort(choices, function(a, b)
+    if a.score == b.score then return a.id < b.id end
+    return a.score > b.score
+  end)
   return choices, flat
 end
 
@@ -423,7 +449,10 @@ local menuItemApp = nil
 local menuItemChooser = hs.chooser.new(function(choice)
   if not choice or not menuItemApp then return end
   local m = menuItemFlat[choice.id]
-  if m then menuItemApp:selectMenuItem(m.fullPath) end
+  if m then
+    recordMenuItemUse(menuItemUsageKey(menuItemApp, m))
+    menuItemApp:selectMenuItem(m.fullPath)
+  end
 end)
 
 hs.hotkey.bind(hyper, "p", function()
