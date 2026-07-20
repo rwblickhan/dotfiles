@@ -295,7 +295,7 @@ local snippets = {
       return "---\ntitle:\nlastUpdatedDate: " .. d .. "\npublicationDate: " .. d .. "\nseason: 8\n---\n\n"
     end
   },
-  { name = "Markdown Checkbox",                  value = "- [x]" },
+  { name = "Crosspoint Local URL",                             value = "http://crosspoint.local/" },
   { name = "Editing Prompt",                     value = "Do a basic editing pass on this newsletter. Check for major factual mistakes, run-on or incomplete sentences, confusing or contradictory sentences, and so on" },
   { name = "Blue 4",                             value = "#006DCA" },
   { name = "Feature Flag Override User ID",      value = "rwblickhan-5d3b4e298e932a2a4bb2ec3b" },
