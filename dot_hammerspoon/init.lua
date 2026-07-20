@@ -32,7 +32,7 @@ local function sendTabToDrafts()
     local url = result:sub(sep + 3)
     local text = urlEncode("[" .. title .. "](" .. url .. ")")
     hs.urlevent.openURL("drafts://x-callback-url/create?text=" .. text)
-    hs.notify.new({ title = "Sent to Drafts", informativeText = title }):send()
+    hs.alert.show("Sent to Drafts: " .. title)
     hs.application.launchOrFocus("Google Chrome")
   end
 end
@@ -51,7 +51,7 @@ local function copyTabAsMarkdown()
     local title = result:sub(1, sep - 1)
     local url = result:sub(sep + 3)
     hs.pasteboard.setContents("[" .. title .. "](" .. url .. ")")
-    hs.notify.new({ title = "Copied", informativeText = title }):send()
+    hs.alert.show("Copied: " .. title)
   end
 end
 
@@ -80,7 +80,7 @@ local function clickAppButton(appName, matchFn, notFoundMsg)
   if btn then
     btn:performAction("AXPress")
   else
-    hs.notify.new({ title = "Hammerspoon", informativeText = notFoundMsg }):send()
+    hs.alert.show(notFoundMsg)
   end
 end
 
@@ -465,7 +465,7 @@ hs.hotkey.bind(hyper, "p", function()
   if not app then return end
   local choices, flat = buildMenuItemChoices(app)
   if #choices == 0 then
-    hs.notify.new({ title = "Hammerspoon", informativeText = "No menu items found" }):send()
+    hs.alert.show("No menu items found")
     return
   end
   menuItemApp = app
