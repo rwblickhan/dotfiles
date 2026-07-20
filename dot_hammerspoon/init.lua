@@ -285,7 +285,6 @@ local snippets = {
       local d = os.date("%Y-%m-%d")
       return "---\ntitle:\nlastUpdatedDate: " .. d .. "\npublicationDate: " .. d .. "\nseason: 8\n---\n\n"
     end },
-  { name = "Library Card Number", value = "21223205249140" },
   { name = "Chase Banking", value = "assets:banking:chase" },
   { name = "Chase Sapphire Reserve (hledger)", value = "liabilities:credit:chasesapphirereserve" },
   { name = "Markdown Checkbox", value = "- [x]" },
