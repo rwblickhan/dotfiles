@@ -24,6 +24,16 @@ rulesCustomizations = []
 problems = { shortenToSingleLine = false }
 experimental = { useFlatConfig = false }
 
+[language-server.lua-language-server.config.Lua.runtime]
+version = "Lua 5.4"
+
+[language-server.lua-language-server.config.Lua.diagnostics]
+globals = ["hs", "spoon"]
+
+[language-server.lua-language-server.config.Lua.workspace]
+library = ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"]
+checkThirdParty = false
+
 [[language]]
 name = "typescript"
 language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "eslint", "oxlint", "oxfmt"]
