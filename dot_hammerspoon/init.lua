@@ -1,5 +1,7 @@
 hs.loadSpoon("EmmyLua")
 
+hs.alert.show("Config reloaded", hs.screen.mainScreen())
+
 local function urlEncode(s)
   return s:gsub("([^%w%-%.%_%~ ])", function(c)
     return string.format("%%%02X", string.byte(c))
@@ -250,10 +252,7 @@ hs.hotkey.bind(hyper, "m", focusFacebookMessages)
 -- n = notes
 hs.hotkey.bind(hyper, "n", function() showOrHide("Obsidian") end)
 -- r = reload hammerspoon
-hs.hotkey.bind(hyper, "r", function()
-  hs.notify.new({ title = "Hammerspoon", informativeText = "Config reloaded" }):send()
-  hs.reload()
-end)
+hs.hotkey.bind(hyper, "r", hs.reload)
 -- s = slack
 hs.hotkey.bind(hyper, "s", function() showOrHide("Slack") end)
 -- t = terminal
