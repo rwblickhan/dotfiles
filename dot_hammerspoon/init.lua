@@ -241,6 +241,10 @@ hs.hotkey.bind(hyper, "c", function() showOrHide("Fantastical") end)
 hs.hotkey.bind(hyper, "d", function() showOrHide("Drafts") end)
 -- e = email
 hs.hotkey.bind(hyper, "e", function() showOrHide("Mimestream") end)
+-- g = Google Search shortcut
+hs.hotkey.bind(hyper, "g", function()
+  hs.task.new("/usr/bin/shortcuts", nil, { "run", "Google Search" }):start()
+end)
 -- m = messenger
 hs.hotkey.bind(hyper, "m", focusFacebookMessages)
 -- n = notes
@@ -256,6 +260,10 @@ hs.hotkey.bind(hyper, "s", function() showOrHide("Slack") end)
 hs.hotkey.bind(hyper, "t", function() showOrHide("Ghostty") end)
 -- v = vs code
 hs.hotkey.bind(hyper, "v", function() showOrHide("Visual Studio Code") end)
+-- w = Wikipedia Search shortcut
+hs.hotkey.bind(hyper, "w", function()
+  hs.task.new("/usr/bin/shortcuts", nil, { "run", "Wikipedia Search" }):start()
+end)
 -- z = zoom
 hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
 -- / = files
