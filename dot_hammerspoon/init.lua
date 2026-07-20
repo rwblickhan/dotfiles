@@ -270,30 +270,29 @@ hs.hotkey.bind(hyper, "delete", hxClipboard)
 local snippets = {
   { name = "LinkedIn Profile", value = "https://www.linkedin.com/in/rwblickhan/" },
   { name = "GitHub Profile", value = "https://github.com/rwblickhan" },
-  { name = "Parent's Address", value = "520 Hemlock Lane\nLibertyville, IL 60048" },
-  { name = "Email", value = "rwblickhan@gmail.com" },
+  { name = "Personal Email", value = "rwblickhan@gmail.com" },
+  { name = "Work Email", value = "russell.blickhan@vanta.com" },
   { name = "Date", value = function() return os.date("%Y-%m-%d") end },
-  { name = "Apple CC (hledger)", value = "liabilities:credit:apple" },
   { name = "Amazon Prime Rewards CC (hledger)", value = "liabilities:credit:amazonprimerewards" },
-  { name = "Venmo (hledger)", value = "assets:cash:venmo" },
-  { name = "Discover CC (hledger)", value = "liabilities:credit:discover" },
-  { name = "Discover Bank (hledger)", value = "assets:banking:discover" },
-  { name = "BCU (hledger)", value = "assets:banking:bcu" },
+  { name = "Apple CC (hledger)", value = "liabilities:credit:apple" },
   { name = "Apple Savings (hledger)", value = "assets:banking:apple" },
+  { name = "Chase Banking (hledger)", value = "assets:banking:chase" },
+  { name = "Chase Sapphire Reserve (hledger)", value = "liabilities:credit:chasesapphirereserve" },
+  { name = "Venmo (hledger)", value = "assets:cash:venmo" },
   { name = "Fingers", value = "👉👈" },
-  { name = "Newsletter Header", value = function()
+  {
+    name = "Newsletter Header",
+    value = function()
       local d = os.date("%Y-%m-%d")
       return "---\ntitle:\nlastUpdatedDate: " .. d .. "\npublicationDate: " .. d .. "\nseason: 8\n---\n\n"
-    end },
-  { name = "Chase Banking", value = "assets:banking:chase" },
-  { name = "Chase Sapphire Reserve (hledger)", value = "liabilities:credit:chasesapphirereserve" },
-  { name = "Markdown Checkbox", value = "- [x]" },
-  { name = "Editing Prompt", value = "Do a basic editing pass on this newsletter. Check for major factual mistakes, run-on or incomplete sentences, confusing or contradictory sentences, and so on" },
-  { name = "Blue 4", value = "#006DCA" },
-  { name = "Work Email", value = "russell.blickhan@vanta.com" },
-  { name = "Feature Flag Override User ID", value = "rwblickhan-5d3b4e298e932a2a4bb2ec3b" },
+    end
+  },
+  { name = "Markdown Checkbox",                  value = "- [x]" },
+  { name = "Editing Prompt",                     value = "Do a basic editing pass on this newsletter. Check for major factual mistakes, run-on or incomplete sentences, confusing or contradictory sentences, and so on" },
+  { name = "Blue 4",                             value = "#006DCA" },
+  { name = "Feature Flag Override User ID",      value = "rwblickhan-5d3b4e298e932a2a4bb2ec3b" },
   { name = "Reporting Risk Migration Flag Name", value = "reporting_risk_snowflake_migration" },
-  { name = "Agent Tool Enabled Flag", value = "reporting_agent_tool_enabled" },
+  { name = "Agent Tool Enabled Flag",            value = "reporting_agent_tool_enabled" },
 }
 
 local function resolveValue(value)
