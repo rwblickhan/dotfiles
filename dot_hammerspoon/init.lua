@@ -483,7 +483,15 @@ local windowChooserWindows = {}
 local windowChooser = hs.chooser.new(function(choice)
   if not choice then return end
   local win = windowChooserWindows[choice.id]
-  if win then win:focus() end
+  if not win then return end
+  -- hs.window:focus() raises the window and *then* activates its app. For
+  -- multi-window apps like Chrome, that app activation restores focus to the
+  -- app's own last-key window afterward, clobbering our raise and surfacing
+  -- the wrong window. So activate the app first, let it settle, then raise the
+  -- specific window last so our choice wins the final z-order.
+  local app = win:application()
+  if app then app:activate() end
+  hs.timer.doAfter(0.05, function() win:raise():focus() end)
 end)
 
 local function buildWindowChoices()
@@ -495,7 +503,10 @@ local function buildWindowChoices()
     local icon = app and app:bundleID() and hs.image.imageFromAppBundle(app:bundleID()) or nil
     local title = win:title()
     if not title or title == "" then title = appName end
-    choices[i] = { text = title, subText = appName, image = icon, id = i }
+    -- Fold the app name into `text` (the only field the chooser's built-in
+    -- search matches) so queries like "chrome" narrow to that app's windows;
+    -- subText keeps the app name as a dimmed second line for readability.
+    choices[i] = { text = title .. "  —  " .. appName, subText = appName, image = icon, id = i }
   end
   return choices, windows
 end
