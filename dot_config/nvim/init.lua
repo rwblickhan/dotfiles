@@ -21,7 +21,7 @@ require('mini.comment').setup({
 require('mini.git').setup({})
 require('mini.jump').setup()
 require('mini.jump2d').setup({
-  mappings = { start_jumping = '<CR>' },
+  mappings = { start_jumping = 'gw' },
 })
 require('mini.operators').setup({ replace = { prefix = "R" }})
 require('mini.surround').setup({
