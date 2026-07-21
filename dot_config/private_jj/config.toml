@@ -97,9 +97,8 @@ pr = [
 set -e
 rev="${1:-@}"
 name=$(jj branch "$rev")
-env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push -- --named "$name=$rev"
-gh pr create --head "$name"
 env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push -b "$name"
+gh pr create --head "$name"
 """,
   "pr",
 ]
