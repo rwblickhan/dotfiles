@@ -294,7 +294,7 @@ local snippets = {
       return "---\ntitle:\nlastUpdatedDate: " .. d .. "\npublicationDate: " .. d .. "\nseason: 8\n---\n\n"
     end
   },
-  { name = "Crosspoint Local URL",                             value = "http://crosspoint.local/" },
+  { name = "Crosspoint Local URL",               value = "http://crosspoint.local/" },
   { name = "Editing Prompt",                     value = "Do a basic editing pass on this newsletter. Check for major factual mistakes, run-on or incomplete sentences, confusing or contradictory sentences, and so on" },
   { name = "Blue 4",                             value = "#006DCA" },
   { name = "Feature Flag Override User ID",      value = "rwblickhan-5d3b4e298e932a2a4bb2ec3b" },
@@ -475,9 +475,47 @@ hs.hotkey.bind(hyper, "p", function()
   menuItemChooser:show()
 end)
 
+-- Window picker: fuzzy-find any open window across all apps and focus it.
+-- Windows are listed front-to-back (most recently focused first), so the
+-- last-used window is always the top choice for a quick alt-tab-style switch.
+local windowChooserWindows = {}
+
+local windowChooser = hs.chooser.new(function(choice)
+  if not choice then return end
+  local win = windowChooserWindows[choice.id]
+  if win then win:focus() end
+end)
+
+local function buildWindowChoices()
+  local windows = hs.window.orderedWindows()
+  local choices = {}
+  for i, win in ipairs(windows) do
+    local app = win:application()
+    local appName = app and app:name() or "?"
+    local icon = app and app:bundleID() and hs.image.imageFromAppBundle(app:bundleID()) or nil
+    local title = win:title()
+    if not title or title == "" then title = appName end
+    choices[i] = { text = title, subText = appName, image = icon, id = i }
+  end
+  return choices, windows
+end
+
+hs.hotkey.bind(hyper, "tab", function()
+  local choices, windows = buildWindowChoices()
+  if #choices == 0 then
+    hs.alert.show("No open windows found")
+    return
+  end
+  windowChooserWindows = windows
+  windowChooser:choices(choices)
+  windowChooser:query("")
+  windowChooser:show()
+end)
+
 -- other hotkeys to set up
 -- hyper+= - QuickSoulver in Soulver 3
 -- hyper+f - global search in Bloom
+-- command+shift+v - open quick menu in Pastebot
 
 -- Drafts-specific hotkeys
 bindConditionalHotkey({ "ctrl", "cmd" }, "l", isDraftsFocused, function() selectMenuItem("Drafts", "Link Mode") end)
