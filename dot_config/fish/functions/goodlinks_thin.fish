@@ -1,37 +1,21 @@
-function goodlinks_thin --description "Interactively thin out old read GoodLinks articles"
-    argparse 'h/help' -- $argv
-    or return 1
+function __goodlinks_thin_process --description "Fetch, review, and delete a random sample of GoodLinks articles"
+    set -l token $argv[1]
+    set -l base $argv[2]
+    set -l read_filter $argv[3]
+    set -l sample_size $argv[4]
+    set -l label $argv[5]
 
-    if set -q _flag_help
-        echo "Usage: goodlinks_thin"
-        echo ""
-        echo "Fetches all read GoodLinks articles, picks 50 at random, and asks"
-        echo "whether to keep or delete each one. Confirmed deletions are sent to"
-        echo "the GoodLinks API in bulk at the end."
-        echo ""
-        echo "Options:"
-        echo "  -h, --help    Show this help"
-        return 0
-    end
-
-    set -l token (op read "op://Private/GoodLinks/token" 2>/dev/null)
-    if test -z "$token"
-        echo "Error: failed to load GoodLinks API key from 1Password" >&2
-        return 1
-    end
-
-    set -l base "http://localhost:9428/api/v1"
     set -l limit 1000
     set -l offset 0
     set -l tmpfile (mktemp)
     set -l allfile (mktemp)
 
-    echo "Fetching read articles..."
+    echo "Fetching $label articles..."
 
     while true
         xh --ignore-stdin --json GET "$base/links" \
             "Authorization:Bearer $token" \
-            read==true \
+            "read==$read_filter" \
             starred==false \
             highlighted==false \
             "limit==$limit" \
@@ -54,13 +38,13 @@ function goodlinks_thin --description "Interactively thin out old read GoodLinks
     rm -f $tmpfile
 
     set -l total (wc -l < $allfile | string trim)
-    echo "Found $total read articles. Picking 50 at random..."
+    echo "Found $total $label articles. Picking $sample_size at random..."
 
     set -l selected (python3 -c "
 import sys, json, random
 lines = [l for l in sys.stdin.read().strip().split('\n') if l]
 random.shuffle(lines)
-for line in lines[:50]:
+for line in lines[:$sample_size]:
     print(line)
 " < $allfile)
     rm -f $allfile
@@ -135,21 +119,21 @@ for line in lines[:50]:
     set -l del_count (count $to_delete_ids)
     if test $del_count -eq 0
         echo ""
-        echo "No articles marked for deletion."
+        echo "No $label articles marked for deletion."
         return 0
     end
 
     echo ""
-    echo "Articles to delete ($del_count):"
+    echo "$label articles to delete ($del_count):"
     for i in (seq 1 $del_count)
         echo "  - $to_delete_titles[$i]"
         echo "    $to_delete_urls[$i]"
     end
     echo ""
 
-    read -l -P "Delete these $del_count articles? [y/N] " confirm
+    read -l -P "Delete these $del_count $label articles? [y/N] " confirm
     if test "$confirm" != y -a "$confirm" != Y
-        echo "Cancelled. No articles deleted."
+        echo "Cancelled. No $label articles deleted."
         return 0
     end
 
@@ -171,5 +155,39 @@ for line in lines[:50]:
     rm -f $deltmp
 
     echo ""
-    echo "Done. $del_count article(s) deleted."
+    echo "Done. $del_count $label article(s) deleted."
+end
+
+function goodlinks_thin --description "Interactively thin out old read and unread GoodLinks articles"
+    argparse 'h/help' -- $argv
+    or return 1
+
+    if set -q _flag_help
+        echo "Usage: goodlinks_thin"
+        echo ""
+        echo "Fetches all read GoodLinks articles, picks 50 at random, and asks"
+        echo "whether to keep or delete each one. Then does the same for unread"
+        echo "articles, picking 10 at random. Confirmed deletions are sent to"
+        echo "the GoodLinks API in bulk after each pass. Favorited and highlighted"
+        echo "links are never included."
+        echo ""
+        echo "Options:"
+        echo "  -h, --help    Show this help"
+        return 0
+    end
+
+    set -l token (op read "op://Private/GoodLinks/token" 2>/dev/null)
+    if test -z "$token"
+        echo "Error: failed to load GoodLinks API key from 1Password" >&2
+        return 1
+    end
+
+    set -l base "http://localhost:9428/api/v1"
+
+    __goodlinks_thin_process $token $base true 50 read
+    or return 1
+
+    echo ""
+    __goodlinks_thin_process $token $base false 10 unread
+    or return 1
 end
