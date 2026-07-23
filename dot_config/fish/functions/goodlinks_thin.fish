@@ -1,4 +1,4 @@
-function __goodlinks_thin_process --description "Fetch, review, and delete a random sample of GoodLinks articles"
+function __goodlinks_thin_process --description "Fetch, review via editor, and delete a random sample of GoodLinks articles"
     set -l token $argv[1]
     set -l base $argv[2]
     set -l read_filter $argv[3]
@@ -49,11 +49,25 @@ for line in lines[:$sample_size]:
 " < $allfile)
     rm -f $allfile
 
-    set -l to_delete_ids
-    set -l to_delete_titles
-    set -l to_delete_urls
     set -l count (count $selected)
-    set -l quit_early false
+    if test $count -eq 0
+        echo "No $label articles to review."
+        return 0
+    end
+
+    if test -z "$EDITOR"
+        echo "goodlinks_thin: \$EDITOR is not set" >&2
+        return 1
+    end
+
+    set -l link_ids
+    set -l link_titles
+    set -l link_urls
+
+    set -l reviewfile (mktemp /tmp/goodlinks_thin.XXXXXX)
+    echo "# goodlinks_thin — $label articles — save and close to review" > $reviewfile
+    echo "# Uncomment a \"delete <id>\" line for each article you want removed." >> $reviewfile
+    echo >> $reviewfile
 
     for i in (seq 1 $count)
         set -l link $selected[$i]
@@ -70,51 +84,50 @@ for line in lines[:$sample_size]:
             set title "(no title)"
         end
 
-        echo ""
-        echo "[$i/$count] $title"
-        echo "  URL:    $url"
+        set -a link_ids $id
+        set -a link_titles $title
+        set -a link_urls $url
+
+        echo "# [$i/$count] $title" >> $reviewfile
+        echo "#   URL:    $url" >> $reviewfile
         if test -n "$author"
-            echo "  Author: $author"
+            echo "#   Author: $author" >> $reviewfile
         end
         if test -n "$tags"
-            echo "  Tags:   $tags"
+            echo "#   Tags:   $tags" >> $reviewfile
         end
         if test -n "$summary"
-            echo "  Summary: $summary"
+            echo "#   Summary: $summary" >> $reviewfile
         end
         if test -n "$read_at"
-            echo "  Read:   $read_at"
+            echo "#   Read:   $read_at" >> $reviewfile
         end
         if test -n "$added_at"
-            echo "  Added:  $added_at"
+            echo "#   Added:  $added_at" >> $reviewfile
         end
+        echo "# delete $id" >> $reviewfile
+        echo >> $reviewfile
+    end
 
-        set -l answer ""
-        while true
-            read -l -P "  Delete (y) or keep (n)? [y/n/q to quit] " answer
-            switch $answer
-                case y Y
-                    set -a to_delete_ids $id
-                    set -a to_delete_titles $title
-                    set -a to_delete_urls $url
-                    echo "  → Marked for deletion"
-                    break
-                case n N
-                    echo "  → Keeping"
-                    break
-                case q Q
-                    set quit_early true
-                    break
-                case '*'
-                    echo "  Please enter y, n, or q"
+    eval $EDITOR (string escape $reviewfile)
+
+    set -l to_delete_ids
+    set -l to_delete_titles
+    set -l to_delete_urls
+
+    for line in (cat $reviewfile)
+        set -l trimmed (string trim $line)
+        set -l m (string match -r '^delete\s+(\S+)$' -- $trimmed)
+        if test (count $m) -eq 2
+            set -l idx (contains -i -- $m[2] $link_ids)
+            if test -n "$idx"
+                set -a to_delete_ids $link_ids[$idx]
+                set -a to_delete_titles $link_titles[$idx]
+                set -a to_delete_urls $link_urls[$idx]
             end
         end
-
-        if test "$quit_early" = true
-            echo "Quitting early."
-            break
-        end
     end
+    rm -f $reviewfile
 
     set -l del_count (count $to_delete_ids)
     if test $del_count -eq 0
@@ -165,10 +178,13 @@ function goodlinks_thin --description "Interactively thin out old read and unrea
     if set -q _flag_help
         echo "Usage: goodlinks_thin"
         echo ""
-        echo "Fetches all read GoodLinks articles, picks 50 at random, and asks"
-        echo "whether to keep or delete each one. Then does the same for unread"
-        echo "articles, picking 10 at random. Confirmed deletions are sent to"
-        echo "the GoodLinks API in bulk after each pass. Favorited and highlighted"
+        echo "Fetches all read GoodLinks articles, picks 50 at random, and opens"
+        echo "\$EDITOR with a review file listing each one's metadata and a"
+        echo "commented-out \"delete <id>\" line. Uncomment the lines for articles"
+        echo "you want removed, then save and close. Then does the same for"
+        echo "unread articles, picking 10 at random. After each pass, marked"
+        echo "articles are listed and you're asked to confirm before they're"
+        echo "deleted in bulk via the GoodLinks API. Favorited and highlighted"
         echo "links are never included."
         echo ""
         echo "Options:"
