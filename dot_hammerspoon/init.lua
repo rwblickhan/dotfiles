@@ -533,6 +533,7 @@ bindConditionalHotkey({ "ctrl", "cmd" }, "l", isDraftsFocused, function() select
 bindConditionalHotkey({ "ctrl", "cmd" }, "k", isDraftsFocused, function() selectMenuItem("Drafts", "Kebab Case") end)
 bindConditionalHotkey({ "ctrl", "cmd" }, "t", isDraftsFocused, function() selectMenuItem("Drafts", "Title Case") end)
 bindConditionalHotkey({ "ctrl" }, "t", isDraftsFocused, function() selectMenuItem("Drafts", "Task in Things") end)
+bindConditionalHotkey({ "ctrl" }, "o", isDraftsFocused, function() selectMenuItem("Drafts", "Open Link") end)
 
 -- Chrome-specific hotkeys
 bindConditionalHotkey({ "cmd" }, "d", isChromeFocused, openChromeTabInSplitView)
