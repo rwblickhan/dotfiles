@@ -13,8 +13,7 @@
 
 # --- Search bar shortcut
 
-# Disabled in favor of the Hammerspoon snippet chooser (hyper+return).
-search_shortcut: "off"
+search_shortcut: "ALT+SPACE"
 
 # --- Toggle key
 
