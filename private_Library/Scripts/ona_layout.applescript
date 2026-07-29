@@ -3,9 +3,9 @@ tell application "Ghostty"
 
 	set win to new window
     set paneTopLeft to terminal 1 of selected tab of win
-	set paneTopRight to split paneTopLeft direction right
 	set paneBottomLeft to split paneTopLeft direction down
-	set paneBottomRight to split paneTopRight direction down
+	set paneTopRight to split paneTopLeft direction right
+	set paneBottomRight to split paneBottomLeft direction right
 
 	focus paneTopLeft
 	input text "autossh -M 0 -q ona.web-dev\n " to paneTopLeft
