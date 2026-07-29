@@ -9,5 +9,5 @@ tell application "Ghostty"
 	input text "jjui\n " to paneTopRight
 
 	focus paneLeft
-	input text "claude\n " to paneLeft
+	input text "claude --permission-mode auto\n " to paneLeft
 end tell
