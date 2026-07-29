@@ -1,13 +1,15 @@
 tell application "Ghostty"
 	activate
 
-	set paneLeft to focused terminal of selected tab of front window
-	set paneTopRight to split paneLeft direction right
-	set paneBottomRight to split paneTopRight direction down
+	set paneRight to focused terminal of selected tab of front window
+	set paneTopLeft to split paneRight direction left
+	set paneBottomLeft to split paneTopLeft direction down
 
-	focus paneTopRight
-	input text "jjui\n " to paneTopRight
+	focus paneTopLeft
+	input text "jjui\n " to paneTopLeft
 
-	focus paneLeft
-	input text "claude --permission-mode auto\n " to paneLeft
+	focus paneRight
+	input text "claude --permission-mode auto\n " to paneRight
+
+	focus paneBottomLeft
 end tell
