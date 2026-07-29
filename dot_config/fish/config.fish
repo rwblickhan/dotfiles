@@ -88,7 +88,6 @@ if status is-interactive
     abbr_subcommand jj ps push
     abbr_subcommand jj n new
     abbr_subcommand jj sh show
-    abbr_subcommand jj st status
 
     abbr_subcommand git b branch
     abbr_subcommand git c switch
