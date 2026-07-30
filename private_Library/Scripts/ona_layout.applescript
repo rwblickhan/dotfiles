@@ -8,14 +8,14 @@ tell application "Ghostty"
 	set paneBottomRight to split paneBottomLeft direction right
 
 	focus paneTopLeft
-	input text "autossh -M 0 -q ona.web-dev\n " to paneTopLeft
+	input text "autossh -M 0 -q ona.jjui\n " to paneTopLeft
 
 	focus paneBottomLeft
-	input text "autossh -M 0 -q ona.claude\n " to paneBottomLeft
+	input text "autossh -M 0 -q ona.editor\n " to paneBottomLeft
 
 	focus paneTopRight
-	input text "autossh -M 0 -q ona.jjui\n " to paneTopRight
+	input text "autossh -M 0 -q ona.web-dev\n " to paneTopRight
 
 	focus paneBottomRight
-	input text "autossh -M 0 -q ona.editor\n " to paneBottomRight
+	input text "autossh -M 0 -q ona.claude\n " to paneBottomRight
 end tell
