@@ -90,6 +90,10 @@ matches:
     label: "Agent Tool Enabled Flag"
     replace: "reporting_agent_tool_enabled"
 
+  - trigger: ":aqr"
+    label: "Agent Query Reporting Domain"
+    replace: "agent-query-reporting.test"
+
   # --- Misc
    
   - trigger: ":newsletter"
