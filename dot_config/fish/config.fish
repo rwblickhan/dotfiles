@@ -73,8 +73,8 @@ if status is-interactive
     abbr -a z zmx
 
     abbr -a bbic "brew bundle install --file=~/Brewfile && brew bundle cleanup --file=~/Brewfile"
-    abbr -a jjfw --set-cursor "jj_fork % && workspace_layout"
-    abbr -a jjjc "jj_join && collapse_layout"
+    abbr -a jjf --set-cursor "jj_fork % && workspace_layout"
+    abbr -a jjj "jj_join && collapse_layout"
 
     abbr_subcommand gh pc "pr create -w"
     abbr_subcommand gh pcd "pr create --draft"
