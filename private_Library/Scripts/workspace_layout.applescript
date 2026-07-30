@@ -10,6 +10,4 @@ tell application "Ghostty"
 
 	focus paneRight
 	input text "claude --permission-mode auto\n " to paneRight
-
-	focus paneBottomLeft
 end tell
