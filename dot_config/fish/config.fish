@@ -7,7 +7,6 @@ fish_add_path /opt/homebrew/sbin
 ## Cargo paths
 fish_add_path ~/.cargo/bin
 ## pnpm paths
-fish_add_path ~/utils
 fish_add_path ~/bin
 
 set -gx MANPATH $MANPATH ~/man
