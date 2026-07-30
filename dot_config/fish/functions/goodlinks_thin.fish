@@ -96,7 +96,7 @@ for line in lines[:$sample_size]:
 
         set -l answer ""
         while true
-            read -l -P "  Delete (y), keep (n), open (o), or quit (q)? [y/n/o/q] " answer
+            read -l -P "  Delete (y), keep (n), open + delete (o), or quit (q)? [y/n/o/q] " answer
             switch $answer
                 case y Y
                     set -a to_delete_ids $id
@@ -114,6 +114,16 @@ for line in lines[:$sample_size]:
                     break
                 case o O
                     open $url
+                    set -a to_delete_ids $id
+                    set -a to_delete_titles $title
+                    set -a to_delete_urls $url
+                    set -a to_delete_authors $author
+                    set -a to_delete_tags $tags
+                    set -a to_delete_summaries $summary
+                    set -a to_delete_read_ats $read_at
+                    set -a to_delete_added_ats $added_at
+                    echo "  → Opened and marked for deletion"
+                    break
                 case q Q
                     set quit_early true
                     break
@@ -237,9 +247,10 @@ function goodlinks_thin --description "Interactively thin out old read and unrea
         echo "Usage: goodlinks_thin"
         echo ""
         echo "Fetches all read GoodLinks articles, picks 50 at random, and asks"
-        echo "whether to keep (n), delete (y), open in browser (o), or quit (q)"
-        echo "for each one. Then opens \$EDITOR with a review file listing every"
-        echo "article queued for deletion; comment out a \"delete <id>\" line to"
+        echo "whether to keep (n), delete (y), open in browser and mark for"
+        echo "deletion (o), or quit (q) for each one. Then opens \$EDITOR with a"
+        echo "review file listing every article queued for deletion (including"
+        echo "any opened via 'o') — comment out a \"delete <id>\" line there to"
         echo "undelete that article before confirming. Then does the same for"
         echo "unread articles, picking 10 at random. Confirmed deletions are sent"
         echo "to the GoodLinks API in bulk after each pass. Favorited and"
