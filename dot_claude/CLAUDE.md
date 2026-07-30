@@ -1,33 +1,14 @@
 # CLAUDE.md
 
+## Style
+
+Don't write comments, unless it's necessary to match existing code (e.g. docstrings on a function in an file where every other function has docstrings).
+Assume I and the code reviewers understand your code unless I explicitly ask you write comments or explain something.
+
 ## Version Control
 
-I use both jj (jujutsu) and git for version control. In a directory where both jj and git are active, prefer using jj.
+I use jj (jujutsu) for version control. In a directory where both jj and git are active, use jj unless I specify otherwise.
 
 ## Shell
 
-I use fish shell. Unless I specify otherwise, assume I want fish functions and fish-compatible shell scripts.
-
-## General Project Setup
-
-I use mise for general project setup. For any project built from scratch or starting from a template (like the output of `bun init` or `cargo init`), always add a `mise.toml` with basic project workflows, including short aliases where relevant.
-
-## Command-Line Tool Usage
-
-- Prefer rg (ripgrep) instead of grep.
-- Prefer sd instead of sed.
-- Prefer xh instead of curl.
-
-## When Building Command-Line Tools
-
-- If using Rust, use the [`cli-battery-pack`](https://crates.io/crates/cli-battery-pack/0.6.3) crate for good default crate choices.
-- Always include a comprehensive `--help` option.
-- Include a Mise task to build the project and install it as a single-file executable into `~/.local/bin`.
-- When possible, include Mise tasks to generate and install manfiles and fish shell completions.
-  - Manfiles should be installed into `~/man/man1` and fish completions should be installed into `~/.config/fish/completions`.
-  - For instance, in a Rust project, I would expect to see usage of the `clap`, `clap_mangen`, and `clap_complete` crates to generate these.
-
-## When Building Webapps
-
-- If building a completely static website, prefer using [Astro](https://astro.build/).
-- Otherwise, for all other webapp projects, prefer using [Vite+](https://viteplus.dev/).
+I use fish shell. Assume I want fish functions and fish-compatible shell scripts unless I specify otherwise.
