@@ -1,7 +1,7 @@
 [submodule "utils/fzf-git.sh"]
-	path = utils/fzf-git.sh
+	path = dot_local/share/fzf-git.sh
 	url = https://github.com/junegunn/fzf-git.sh.git
 [submodule "utils/fzf-jj.sh"]
-	path = utils/fzf-jj.sh
+	path = dot_local/share/fzf-jj.sh
 	url = https://github.com/rwblickhan/fzf-jj.sh.git
 	branch = main

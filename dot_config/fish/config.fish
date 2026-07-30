@@ -1,4 +1,5 @@
 fish_add_path ~/.local/bin
+fish_add_path ~/.local/share
 fish_add_path /workspaces/obsidian/node_modules/.bin
 ## Homebrew paths
 fish_add_path /opt/homebrew/bin
@@ -53,8 +54,8 @@ if status is-interactive
         fzf --fish | source
     end
 
-    source ~/utils/fzf-git.sh/fzf-git.fish
-    source ~/utils/fzf-jj.sh/fzf-jj.fish
+    source ~/.local/share/fzf-git.sh/fzf-git.fish
+    source ~/.local/share/fzf-jj.sh/fzf-jj.fish
     source ~/.config/fish/abbr.fish
 
     abbr -a ash "autossh -M 0 -q"
