@@ -250,7 +250,7 @@ end)
 -- m = messenger
 hs.hotkey.bind(hyper, "m", focusFacebookMessages)
 -- n = notes
-hs.hotkey.bind(hyper, "n", function() showOrHide("Obsidian") end)
+hs.hotkey.bind(hyper, "n", function() showOrHide("md.obsidian") end)
 -- r = reload hammerspoon
 hs.hotkey.bind(hyper, "r", hs.reload)
 -- s = slack
