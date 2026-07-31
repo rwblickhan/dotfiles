@@ -131,6 +131,22 @@ env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push
 """,
   "push",
 ]
+# Run hk's fix mode against each mutable revision's own diff (via `jj run`,
+# since hk fix mutates real files in place rather than working over
+# jj fix's stdin/stdout tool protocol)
+run-hk = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+set -e
+rev="${1:-reachable(@, mutable())}"
+jj run -r "$rev" -- sh -c 'hk fix --from-ref $(jj log -r "parents($JJ_CHANGE_ID)" --no-graph -T commit_id) --to-ref $JJ_COMMIT_ID --no-progress --quiet --no-stage'
+""",
+  "run-hk",
+]
 
 [jj-hooks]
 advance-bookmarks = true
