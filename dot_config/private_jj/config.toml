@@ -36,6 +36,7 @@ draft_commit_description = '''
 'mine()' = 'user("rwb@rwblickhan.org") | user("russell.blickhan@vanta.com")'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
+'mutable_ancestors(x)' = '::x & mutable()'
 # stack(x, n) is the set of mutable commits reachable from 'x',
 # with 'n' parents. 'n' is often useful to customize the display
 # and return set for certain operations. 'x' can be used to target
@@ -49,6 +50,8 @@ bookmark-advance-to = 'closest_pushable(@)'
 log = 'present(@) | ancestors(immutable_heads().., 2) | present(trunk()) | bookmarks()'
 
 [aliases]
+# Squash the whole branch into its oldest mutable change
+collapse = ["squash", "--from", "mutable_ancestors(@)", "--into", "roots(mutable_ancestors(@))"]
 # Generate a bookmark from change description
 branch = [
   "util",
