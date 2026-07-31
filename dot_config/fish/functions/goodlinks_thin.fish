@@ -53,10 +53,6 @@ for line in lines[:$sample_size]:
     set -l to_delete_titles
     set -l to_delete_urls
     set -l to_delete_authors
-    set -l to_delete_tags
-    set -l to_delete_summaries
-    set -l to_delete_read_ats
-    set -l to_delete_added_ats
     set -l count (count $selected)
     set -l quit_early false
 
@@ -103,10 +99,6 @@ for line in lines[:$sample_size]:
                     set -a to_delete_titles $title
                     set -a to_delete_urls $url
                     set -a to_delete_authors $author
-                    set -a to_delete_tags $tags
-                    set -a to_delete_summaries $summary
-                    set -a to_delete_read_ats $read_at
-                    set -a to_delete_added_ats $added_at
                     echo "  → Marked for deletion"
                     break
                 case n N
@@ -118,10 +110,6 @@ for line in lines[:$sample_size]:
                     set -a to_delete_titles $title
                     set -a to_delete_urls $url
                     set -a to_delete_authors $author
-                    set -a to_delete_tags $tags
-                    set -a to_delete_summaries $summary
-                    set -a to_delete_read_ats $read_at
-                    set -a to_delete_added_ats $added_at
                     echo "  → Opened and marked for deletion"
                     break
                 case q Q
@@ -156,25 +144,12 @@ for line in lines[:$sample_size]:
     echo >> $reviewfile
 
     for i in (seq 1 $del_count)
-        echo "# [$i/$del_count] $to_delete_titles[$i]" >> $reviewfile
-        echo "#   URL:    $to_delete_urls[$i]" >> $reviewfile
+        set -l title_line $to_delete_titles[$i]
         if test -n "$to_delete_authors[$i]"
-            echo "#   Author: $to_delete_authors[$i]" >> $reviewfile
+            set title_line "$title_line — $to_delete_authors[$i]"
         end
-        if test -n "$to_delete_tags[$i]"
-            echo "#   Tags:   $to_delete_tags[$i]" >> $reviewfile
-        end
-        if test -n "$to_delete_summaries[$i]"
-            echo "#   Summary: $to_delete_summaries[$i]" >> $reviewfile
-        end
-        if test -n "$to_delete_read_ats[$i]"
-            echo "#   Read:   $to_delete_read_ats[$i]" >> $reviewfile
-        end
-        if test -n "$to_delete_added_ats[$i]"
-            echo "#   Added:  $to_delete_added_ats[$i]" >> $reviewfile
-        end
+        echo "# $title_line" >> $reviewfile
         echo "delete $to_delete_ids[$i]" >> $reviewfile
-        echo >> $reviewfile
     end
 
     eval $EDITOR (string escape $reviewfile)
