@@ -6,9 +6,10 @@ function obsidian_bookmark_to_things --description "Pick a bookmarked note from 
         echo "Usage: obsidian_bookmark_to_things"
         echo ""
         echo "Lists file bookmarks from the 'control-plane' Obsidian vault via fzf."
-        echo "On selection, prompts for a Things to-do title, then creates that"
-        echo "to-do in the Errands list, scheduled for today, with a subtask for"
-        echo "every incomplete Markdown checkbox in the selected note."
+        echo "On selection, prompts (via fzf) for which Things list to use, then"
+        echo "for a to-do title, then creates that to-do in the chosen list,"
+        echo "scheduled for today, with a subtask for every incomplete Markdown"
+        echo "checkbox in the selected note."
         return 0
     end
 
@@ -44,23 +45,33 @@ function obsidian_bookmark_to_things --description "Pick a bookmarked note from 
     set -l note_path (string split -f2 \t -- $selection)
     set -l note_title (string split -f3 \t -- $selection)
 
+    # Things area names/ids, in fzf display order
+    set -l list_names "🏪 Errands" "💵 Finance" "👟Health & Athletics" "✒️ Hobbies" "🦭 Relationships, Events, & Travel" "🖥️ Work"
+    set -l list_ids 2e4RzYsukAz2prQG9ktfS3 TA3j5otm3UBKzBRS1x7zEz MjsDscyxCe17qMBaS871uA GhbTFDzk2VBdg3uVsnSD2Q MrpX2ED1oMuJ4MygFiTBgG 5JRNivfSJHMTNfThmN4mWp
+
+    set -l list_selection (printf '%s\n' $list_names | fzf --prompt "List> ")
+    if test -z "$list_selection"
+        echo "No list selected."
+        return 1
+    end
+    set -l list_index (contains -i -- $list_selection $list_names)
+    set -l list_id $list_ids[$list_index]
+
     read -l -P "Todo title: " todo_title
     if test -z "$todo_title"
         echo "Error: todo title cannot be empty" >&2
         return 1
     end
 
-    set -l checklist_items (obsidian vault=$vault tasks path="$note_path" todo format=json 2>/dev/null | jq -r '.[].text | sub("^- \\[.\\]\\s*"; "")')
+    set -l checklist_items (obsidian vault=$vault tasks path="$note_path" todo format=json 2>/dev/null | jq -r '.[].text')
     if test $pipestatus[1] -ne 0
         echo "Error: failed to read tasks from '$note_path'" >&2
         return 1
     end
-
-    # Things area id for "🏪 Errands" — more reliable than matching the emoji-prefixed name
-    set -l errands_area_id 2e4RzYsukAz2prQG9ktfS3
+    set -l checklist_items (string replace -r '^- \[.\]\s*' '' -- $checklist_items)
 
     set -l params "title="(string escape --style=url -- $todo_title)
-    set -a params "list-id=$errands_area_id"
+    set -a params "list-id=$list_id"
     set -a params when=today
     if test (count $checklist_items) -gt 0
         set -l escaped_items (string escape --style=url -- $checklist_items)
@@ -71,5 +82,5 @@ function obsidian_bookmark_to_things --description "Pick a bookmarked note from 
 
     open "things:///add?"(string join '&' -- $params)
 
-    echo "Created Things to-do \"$todo_title\" in Errands (today) with "(count $checklist_items)" subtask(s) from \"$note_title\"."
+    echo "Created Things to-do \"$todo_title\" in $list_selection (today) with "(count $checklist_items)" subtask(s) from \"$note_title\"."
 end
