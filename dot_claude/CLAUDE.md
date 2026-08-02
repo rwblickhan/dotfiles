@@ -9,6 +9,8 @@ Assume I and the code reviewers understand your code unless I explicitly ask you
 
 I use jj (jujutsu) for version control. In a directory where both jj and git are active, use jj unless I specify otherwise.
 
+I often use jj workspaces. If you're currently in a jj workspace, assume you're in the current workspace and do NOT make changes in the root workspace.
+
 ## Shell
 
 I use fish shell. Assume I want fish functions and fish-compatible shell scripts unless I specify otherwise.
