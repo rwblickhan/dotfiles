@@ -1,4 +1,40 @@
-function __goodlinks_thin_process --description "Fetch, review via queue + editor, and delete a random sample of GoodLinks articles"
+function __goodlinks_thin_print_item --description "Print details for one GoodLinks article"
+    set -l index $argv[1]
+    set -l count $argv[2]
+    set -l title $argv[3]
+    set -l url $argv[4]
+    set -l author $argv[5]
+    set -l tags $argv[6]
+    set -l summary $argv[7]
+    set -l read_at $argv[8]
+    set -l added_at $argv[9]
+    set -l tag $argv[10]
+
+    echo ""
+    if test -n "$tag"
+        echo "[$index/$count] $title  $tag"
+    else
+        echo "[$index/$count] $title"
+    end
+    echo "  URL:    $url"
+    if test -n "$author"
+        echo "  Author: $author"
+    end
+    if test -n "$tags"
+        echo "  Tags:   $tags"
+    end
+    if test -n "$summary"
+        echo "  Summary: $summary"
+    end
+    if test -n "$read_at"
+        echo "  Read:   $read_at"
+    end
+    if test -n "$added_at"
+        echo "  Added:  $added_at"
+    end
+end
+
+function __goodlinks_thin_process --description "Fetch, review in two passes, and delete a random sample of GoodLinks articles"
     set -l token $argv[1]
     set -l base $argv[2]
     set -l read_filter $argv[3]
@@ -49,10 +85,20 @@ for line in lines[:$sample_size]:
 " < $allfile)
     rm -f $allfile
 
-    set -l to_delete_ids
-    set -l to_delete_titles
-    set -l to_delete_urls
-    set -l to_delete_authors
+    # Pass 1: quick triage. y = mark for deletion, n = keep, o = open in
+    # browser and defer the decision to pass 2, q = stop early.
+    set -l marked_ids
+    set -l marked_titles
+    set -l marked_urls
+    set -l marked_authors
+    set -l marked_tags
+
+    set -l opened_ids
+    set -l opened_titles
+    set -l opened_urls
+    set -l opened_authors
+    set -l opened_tags
+
     set -l count (count $selected)
     set -l quit_early false
 
@@ -71,34 +117,18 @@ for line in lines[:$sample_size]:
             set title "(no title)"
         end
 
-        echo ""
-        echo "[$i/$count] $title"
-        echo "  URL:    $url"
-        if test -n "$author"
-            echo "  Author: $author"
-        end
-        if test -n "$tags"
-            echo "  Tags:   $tags"
-        end
-        if test -n "$summary"
-            echo "  Summary: $summary"
-        end
-        if test -n "$read_at"
-            echo "  Read:   $read_at"
-        end
-        if test -n "$added_at"
-            echo "  Added:  $added_at"
-        end
+        __goodlinks_thin_print_item $i $count $title $url $author $tags $summary $read_at $added_at ""
 
         set -l answer ""
         while true
-            read -l -P "  Delete (y), keep (n), open + delete (o), or quit (q)? [y/n/o/q] " answer
+            read -l -P "  Delete (y), keep (n), open for later review (o), or quit (q)? [y/n/o/q] " answer
             switch $answer
                 case y Y
-                    set -a to_delete_ids $id
-                    set -a to_delete_titles $title
-                    set -a to_delete_urls $url
-                    set -a to_delete_authors $author
+                    set -a marked_ids $id
+                    set -a marked_titles $title
+                    set -a marked_urls $url
+                    set -a marked_authors $author
+                    set -a marked_tags $tags
                     echo "  → Marked for deletion"
                     break
                 case n N
@@ -106,11 +136,12 @@ for line in lines[:$sample_size]:
                     break
                 case o O
                     open $url
-                    set -a to_delete_ids $id
-                    set -a to_delete_titles $title
-                    set -a to_delete_urls $url
-                    set -a to_delete_authors $author
-                    echo "  → Opened and marked for deletion"
+                    set -a opened_ids $id
+                    set -a opened_titles $title
+                    set -a opened_urls $url
+                    set -a opened_authors $author
+                    set -a opened_tags $tags
+                    echo "  → Opened; will revisit in review pass"
                     break
                 case q Q
                     set quit_early true
@@ -126,8 +157,69 @@ for line in lines[:$sample_size]:
         end
     end
 
-    set -l del_count (count $to_delete_ids)
-    if test $del_count -eq 0
+    set -l review_ids $marked_ids $opened_ids
+    set -l review_titles $marked_titles $opened_titles
+    set -l review_urls $marked_urls $opened_urls
+    set -l review_authors $marked_authors $opened_authors
+    set -l review_tags $marked_tags $opened_tags
+    set -l review_count (count $review_ids)
+
+    if test $review_count -eq 0
+        echo ""
+        echo "No $label articles marked for deletion or opened for review."
+        return 0
+    end
+
+    # Pass 2: revisit everything opened and/or marked for deletion in pass 1.
+    set -l final_ids
+    set -l final_titles
+    set -l final_urls
+    set -l final_authors
+    set -l quit_early false
+
+    for i in (seq 1 $review_count)
+        set -l id $review_ids[$i]
+        set -l title $review_titles[$i]
+        set -l url $review_urls[$i]
+        set -l author $review_authors[$i]
+        set -l tags $review_tags[$i]
+        set -l tag "(marked for deletion)"
+        if contains -- $id $opened_ids
+            set tag "(opened)"
+        end
+
+        __goodlinks_thin_print_item $i $review_count $title $url $author $tags "" "" "" $tag
+
+        set -l answer ""
+        while true
+            read -l -P "  Delete (y), keep (n), or quit review (q)? [y/n/q] " answer
+            switch $answer
+                case y Y
+                    set -a final_ids $id
+                    set -a final_titles $title
+                    set -a final_urls $url
+                    set -a final_authors $author
+                    echo "  → Marked for deletion"
+                    break
+                case n N
+                    echo "  → Keeping"
+                    break
+                case q Q
+                    set quit_early true
+                    break
+                case '*'
+                    echo "  Please enter y, n, or q"
+            end
+        end
+
+        if test "$quit_early" = true
+            echo "Quitting review early."
+            break
+        end
+    end
+
+    set -l final_count (count $final_ids)
+    if test $final_count -eq 0
         echo ""
         echo "No $label articles marked for deletion."
         return 0
@@ -143,13 +235,13 @@ for line in lines[:$sample_size]:
     echo "# Comment out (or delete) a \"delete <id>\" line to UNDELETE that article." >> $reviewfile
     echo >> $reviewfile
 
-    for i in (seq 1 $del_count)
-        set -l title_line $to_delete_titles[$i]
-        if test -n "$to_delete_authors[$i]"
-            set title_line "$title_line — $to_delete_authors[$i]"
+    for i in (seq 1 $final_count)
+        set -l title_line $final_titles[$i]
+        if test -n "$final_authors[$i]"
+            set title_line "$title_line — $final_authors[$i]"
         end
         echo "# $title_line" >> $reviewfile
-        echo "delete $to_delete_ids[$i]" >> $reviewfile
+        echo "delete $final_ids[$i]" >> $reviewfile
     end
 
     eval $EDITOR (string escape $reviewfile)
@@ -162,11 +254,11 @@ for line in lines[:$sample_size]:
         set -l trimmed (string trim $line)
         set -l m (string match -r '^delete\s+(\S+)$' -- $trimmed)
         if test (count $m) -eq 2
-            set -l idx (contains -i -- $m[2] $to_delete_ids)
+            set -l idx (contains -i -- $m[2] $final_ids)
             if test -n "$idx"
-                set -a confirmed_ids $to_delete_ids[$idx]
-                set -a confirmed_titles $to_delete_titles[$idx]
-                set -a confirmed_urls $to_delete_urls[$idx]
+                set -a confirmed_ids $final_ids[$idx]
+                set -a confirmed_titles $final_titles[$idx]
+                set -a confirmed_urls $final_urls[$idx]
             end
         end
     end
@@ -180,20 +272,12 @@ for line in lines[:$sample_size]:
     end
 
     echo ""
-    echo "$label articles to delete ($confirmed_count):"
+    echo "Deleting $confirmed_count $label article(s):"
     for i in (seq 1 $confirmed_count)
         echo "  - $confirmed_titles[$i]"
         echo "    $confirmed_urls[$i]"
     end
-    echo ""
 
-    read -l -P "Delete these $confirmed_count $label articles? [y/N] " confirm
-    if test "$confirm" != y -a "$confirm" != Y
-        echo "Cancelled. No $label articles deleted."
-        return 0
-    end
-
-    echo "Deleting..."
     set -l id_params
     for id in $confirmed_ids
         set -a id_params "id==$id"
@@ -221,15 +305,16 @@ function goodlinks_thin --description "Interactively thin out old read and unrea
     if set -q _flag_help
         echo "Usage: goodlinks_thin"
         echo ""
-        echo "Fetches all read GoodLinks articles, picks 50 at random, and asks"
-        echo "whether to keep (n), delete (y), open in browser and mark for"
-        echo "deletion (o), or quit (q) for each one. Then opens \$EDITOR with a"
-        echo "review file listing every article queued for deletion (including"
-        echo "any opened via 'o') — comment out a \"delete <id>\" line there to"
-        echo "undelete that article before confirming. Then does the same for"
-        echo "unread articles, picking 10 at random. Confirmed deletions are sent"
-        echo "to the GoodLinks API in bulk after each pass. Favorited and"
-        echo "highlighted links are never included."
+        echo "Fetches all read GoodLinks articles, picks 50 at random, and does"
+        echo "two review passes. Pass 1: for each article, mark for deletion (y),"
+        echo "keep (n), open in browser and defer the decision (o), or quit (q)."
+        echo "Pass 2: revisit every article that was opened and/or marked for"
+        echo "deletion in pass 1, and mark (y) or unmark (n) it for deletion."
+        echo "Then opens \$EDITOR with a review file listing every article still"
+        echo "marked for deletion — comment out a \"delete <id>\" line there to"
+        echo "undelete that article — and deletes whatever remains once you save"
+        echo "and close. Then does the same for unread articles, picking 10 at"
+        echo "random. Favorited and highlighted links are never included."
         echo ""
         echo "Options:"
         echo "  -h, --help    Show this help"
