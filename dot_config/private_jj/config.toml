@@ -91,6 +91,26 @@ jj git init --colocate
 jj bookmark track main --remote=origin
 """,
 ]
+# Merge the latest main into the current change
+merge = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+set -e
+jj git fetch
+jj new @ 'main@origin' -m "${1:-Merge main}"
+names=$(jj log -r 'heads(::@ & bookmarks() & ~::(main@origin))' --no-graph --no-pager -T 'local_bookmarks.join(" ") ++ " "')
+if [ -n "${names// /}" ]; then
+  jj bookmark advance $names
+else
+  echo "No branch bookmark below @; skipped bookmark advance." >&2
+fi
+""",
+  "merge",
+]
 # Open a PR from an unpushed change
 pr = [
   "util",
