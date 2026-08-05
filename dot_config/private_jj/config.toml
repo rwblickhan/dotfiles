@@ -151,6 +151,15 @@ push = [
   """
 set -e
 jj bookmark advance "$@"
+if [ -z "${JJ_PUSH_ALLOW_FOREIGN:-}" ]; then
+  foreign=$(jj log -r '(trunk()..@) ~ mine()' --no-graph --no-pager -T builtin_log_oneline)
+  if [ -n "$foreign" ]; then
+    echo "Refusing to push: commits you did not author sit between trunk() and @:" >&2
+    echo "$foreign" >&2
+    echo "Rebase onto trunk() with 'jj pull', or set JJ_PUSH_ALLOW_FOREIGN=1 to override." >&2
+    exit 1
+  fi
+fi
 env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push
 """,
   "push",
