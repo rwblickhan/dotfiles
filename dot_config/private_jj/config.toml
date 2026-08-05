@@ -32,8 +32,9 @@ draft_commit_description = '''
 [revset-aliases]
 # Set all remote bookmarks to be immutable
 'immutable_heads()' = "builtin_immutable_heads() | remote_bookmarks()"
-'user(x)' = 'author(x) | committer(x)'
-'mine()' = 'user("rwb@rwblickhan.org") | user("russell.blickhan@vanta.com")'
+'mine()' = 'author_email(exact:"rwb@rwblickhan.org") | author_email(exact:"russell.blickhan@vanta.com")'
+'branch_heads()' = 'heads(mine() & mutable()) ~ descendants(immutable() & ~::trunk())'
+'branch_roots()' = 'roots(mutable() & ::my_heads())'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 'mutable_ancestors(x)' = '::x & mutable()'
@@ -116,8 +117,7 @@ pull = [
   """
 set -e
 jj git fetch
-# Rebase any fully-mutable branches by tip
-jj rebase -b 'heads(mine() & mutable()) ~ descendants(immutable() & ~::trunk())' -o 'trunk()'
+jj rebase -s 'branch_roots()' -o 'trunk()'
 jj new main
 """,
 ]
