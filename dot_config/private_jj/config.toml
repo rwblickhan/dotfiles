@@ -101,7 +101,7 @@ merge = [
   """
 set -e
 jj git fetch
-jj new @ 'main@origin' -m "${1:-Merge main}"
+jj new 'heads(closest_pushable(@) | closest_bookmark(@))' 'main@origin' -m "${1:-Merge main}"
 names=$(jj log -r 'heads(::@ & bookmarks() & ~::(main@origin))' --no-graph --no-pager -T 'local_bookmarks.join(" ") ++ " "')
 if [ -n "${names// /}" ]; then
   jj bookmark advance $names
