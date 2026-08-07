@@ -49,7 +49,7 @@ draft_commit_description = '''
 
 [revsets]
 bookmark-advance-to = 'closest_pushable(@)'
-log = 'present(@) | ancestors(immutable_heads().., 2) | present(trunk()) | bookmarks()'
+log = 'builtin_log() | bookmarks()'
 
 [aliases]
 # Squash the whole branch into its oldest mutable change
