@@ -298,7 +298,7 @@ for line in lines[:$sample_size]:
     echo "Done. $confirmed_count $label article(s) deleted."
 end
 
-function goodlinks_thin --description "Interactively thin out old read and unread GoodLinks articles"
+function goodlinks_thin --description "Interactively thin out old read GoodLinks articles"
     argparse 'h/help' -- $argv
     or return 1
 
@@ -313,8 +313,7 @@ function goodlinks_thin --description "Interactively thin out old read and unrea
         echo "Then opens \$EDITOR with a review file listing every article still"
         echo "marked for deletion — comment out a \"delete <id>\" line there to"
         echo "undelete that article — and deletes whatever remains once you save"
-        echo "and close. Then does the same for unread articles, picking 10 at"
-        echo "random. Favorited and highlighted links are never included."
+        echo "and close. Favorited and highlighted links are never included."
         echo ""
         echo "Options:"
         echo "  -h, --help    Show this help"
@@ -330,9 +329,5 @@ function goodlinks_thin --description "Interactively thin out old read and unrea
     set -l base "http://localhost:9428/api/v1"
 
     __goodlinks_thin_process $token $base true 50 read
-    or return 1
-
-    echo ""
-    __goodlinks_thin_process $token $base false 10 unread
     or return 1
 end
