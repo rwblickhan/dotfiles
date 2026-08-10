@@ -11,7 +11,7 @@ function bump_rwb
         return 1
     end
     if jj diff --name-only | string match -qr '.'
-        jj describe -m Log; and jj run-hk; and jj bookmark advance; and jj-hp push
+        jj describe -m Log; and jj push
     else
         echo "No changes!"
     end

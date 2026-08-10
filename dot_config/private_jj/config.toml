@@ -16,6 +16,17 @@ default-command = "log"
 [merge-tools]
 delta.diff-expected-exit-codes = [0, 1]
 
+[fix.tools.last-updated-date]
+enabled = false
+command = ["bash", "-c", '''sd 'lastUpdatedDate: \d\d\d\d-\d\d-\d\d' "lastUpdatedDate: $(date +%Y-%m-%d)"''']
+patterns = ["glob:'**/*.md'"]
+
+# Always-enabled no-op so `jj fix` never errors when other tools are disabled
+[fix.tools.noop]
+enabled = true
+command = ["true"]
+patterns = ["none()"]
+
 [templates]
 draft_commit_description = '''
   concat(
@@ -150,6 +161,7 @@ push = [
   "-c",
   """
 set -e
+jj fix
 jj bookmark advance "$@"
 if [ -z "${JJ_PUSH_ALLOW_FOREIGN:-}" ]; then
   foreign=$(jj log -r '(trunk()..@) ~ mine()' --no-graph --no-pager -T builtin_log_oneline)
@@ -163,22 +175,6 @@ fi
 env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push
 """,
   "push",
-]
-# Run hk's fix mode against each mutable revision's own diff (via `jj run`,
-# since hk fix mutates real files in place rather than working over
-# jj fix's stdin/stdout tool protocol)
-run-hk = [
-  "util",
-  "exec",
-  "--",
-  "bash",
-  "-c",
-  """
-set -e
-rev="${1:-reachable(@, mutable())}"
-jj run -r "$rev" -- sh -c 'hk fix --from-ref $(jj log -r "parents($JJ_CHANGE_ID)" --no-graph -T commit_id) --to-ref $JJ_COMMIT_ID --no-progress --quiet --no-stage'
-""",
-  "run-hk",
 ]
 
 [jj-hooks]
