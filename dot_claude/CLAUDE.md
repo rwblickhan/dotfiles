@@ -14,3 +14,7 @@ I often use jj workspaces. If you're currently in a jj workspace, assume you're 
 ## Shell
 
 I use fish shell. Assume I want fish functions and fish-compatible shell scripts unless I specify otherwise.
+
+## Config
+
+I use chezmoi to manage my dotfiles. If asked to update configuration that might be stored in chezmoi, check chezmoi and make changes there first.
