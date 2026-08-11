@@ -111,7 +111,5 @@ vim.opt.tabstop = 2
 vim.opt.expandtab = true
 -- Show relative line numbers
 vim.opt.relativenumber = true
--- Use system clipboard
-vim.opt.clipboard:append('unnamedplus')
 -- Use \ as CamelCaseMotion hotkey
 vim.g.camelcasemotion_key = '\\'
