@@ -50,7 +50,7 @@ matches:
     label: "Checked Checkbox"
     replace: "- [x]"
 
-  # --- hledger accounts
+  # --- hledger
 
   - trigger: ":apr"
     label: "Amazon Prime Rewards CC (hledger)"
@@ -75,6 +75,10 @@ matches:
   - trigger: ":venmo"
     label: "Venmo (hledger)"
     replace: "assets:cash:venmo"
+
+  - trigger: ":le"
+    label: "Log Expenses"
+    replace: "Log expenses"
 
   # --- Work
 
