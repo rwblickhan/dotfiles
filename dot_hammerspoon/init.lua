@@ -191,18 +191,18 @@ local function moveFocusedWindowToUnit(unit)
   if win then win:moveToUnit(unit) end
 end
 
--- left half
-hs.hotkey.bind(hyper, "left", function() moveFocusedWindowToUnit({ x = 0, y = 0, w = 0.5, h = 1 }) end)
--- right half
-hs.hotkey.bind(hyper, "right", function() moveFocusedWindowToUnit({ x = 0.5, y = 0, w = 0.5, h = 1 }) end)
--- maximize
-hs.hotkey.bind(hyper, "up", function()
+local function leftHalf() moveFocusedWindowToUnit({ x = 0, y = 0, w = 0.5, h = 1 }) end
+
+local function rightHalf() moveFocusedWindowToUnit({ x = 0.5, y = 0, w = 0.5, h = 1 }) end
+
+local function maximize()
   local win = hs.window.focusedWindow()
   if win then win:maximize() end
-end)
+end
+
 -- reasonable size (60% of screen, capped at 1025x900px, centered)
 -- matches Raycast: https://manual.raycast.com/window-management#commands
-hs.hotkey.bind(hyper, "down", function()
+local function reasonableSize()
   local win = hs.window.focusedWindow()
   if not win then return end
   local screenFrame = win:screen():frame()
@@ -214,17 +214,31 @@ hs.hotkey.bind(hyper, "down", function()
     w = w,
     h = h,
   })
-end)
--- next display
-hs.hotkey.bind(hyper, ".", function()
+end
+
+local function nextDisplay()
   local win = hs.window.focusedWindow()
   if win then win:moveToScreen(win:screen():next()) end
-end)
--- previous display
-hs.hotkey.bind(hyper, ",", function()
+end
+
+local function previousDisplay()
   local win = hs.window.focusedWindow()
   if win then win:moveToScreen(win:screen():previous()) end
-end)
+end
+
+local windowCommands = {
+  { key = "left", name = "left-half", fn = leftHalf },
+  { key = "right", name = "right-half", fn = rightHalf },
+  { key = "up", name = "maximize", fn = maximize },
+  { key = "down", name = "reasonable-size", fn = reasonableSize },
+  { key = ".", name = "next-display", fn = nextDisplay },
+  { key = ",", name = "previous-display", fn = previousDisplay },
+}
+
+for _, cmd in ipairs(windowCommands) do
+  hs.hotkey.bind(hyper, cmd.key, cmd.fn)
+  hs.urlevent.bind(cmd.name, function() cmd.fn() end)
+end
 
 -- App show/hide hotkeys
 -- 1 = 1password
