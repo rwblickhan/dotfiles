@@ -182,12 +182,6 @@ end
 
 local hyper = { "cmd", "ctrl", "alt", "shift" }
 
--- Arrow key navigation
-hs.hotkey.bind(hyper, "j", function() hs.eventtap.keyStroke({}, "down") end)
-hs.hotkey.bind(hyper, "k", function() hs.eventtap.keyStroke({}, "up") end)
-hs.hotkey.bind(hyper, "h", function() hs.eventtap.keyStroke({}, "left") end)
-hs.hotkey.bind(hyper, "l", function() hs.eventtap.keyStroke({}, "right") end)
-
 -- Window management
 local function moveFocusedWindowToUnit(unit)
   local win = hs.window.focusedWindow()
