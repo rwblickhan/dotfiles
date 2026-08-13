@@ -283,7 +283,10 @@ end)
 -- z = zoom
 hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
 -- / = files
-hs.hotkey.bind(hyper, "/", function() showOrHide("Bloom") end)
+-- Karabiner remaps hyper+/ (right_command held + slash) straight to f19,
+-- since Hammerspoon's own hyper+/ Carbon hotkey registration silently
+-- stops firing once Karabiner is running.
+hs.hotkey.bind({}, "f19", function() showOrHide("Bloom") end)
 
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)
