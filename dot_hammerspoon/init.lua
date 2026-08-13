@@ -2,6 +2,8 @@ hs.loadSpoon("EmmyLua")
 
 hs.alert.show("Config reloaded", hs.screen.mainScreen())
 
+local hotkeyLogger = hs.logger.new("hotkeys", "debug")
+
 local function urlEncode(s)
   return s:gsub("([^%w%-%.%_%~ ])", function(c)
     return string.format("%%%02X", string.byte(c))
@@ -169,6 +171,7 @@ local function hxClipboard()
 end
 
 local function showOrHide(appName)
+  hotkeyLogger.df("showOrHide %s", appName)
   local app = hs.application.find(appName)
   if app ~= nil and app:isFrontmost() then
     app:hide()
