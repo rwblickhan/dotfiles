@@ -180,8 +180,6 @@ local function showOrHide(appName)
   end
 end
 
-local hyper = { "cmd", "ctrl", "alt", "shift" }
-
 -- Window management
 local function moveFocusedWindowToUnit(unit)
   local win = hs.window.focusedWindow()
@@ -222,6 +220,8 @@ local function previousDisplay()
   local win = hs.window.focusedWindow()
   if win then win:moveToScreen(win:screen():previous()) end
 end
+
+local hyper = { "cmd", "ctrl", "alt", "shift" }
 
 local windowCommands = {
   { key = "left", name = "left-half", fn = leftHalf },
