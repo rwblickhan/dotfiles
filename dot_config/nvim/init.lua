@@ -79,10 +79,6 @@ if vim.g.vscode then
     require('vscode').action('workbench.action.editor.previousChange')
   end)
 
-  vim.keymap.set('n', 'go', function()
-    require('vscode').action('openInGitHub.openFile')
-  end)
-
   vim.keymap.set('n', 'gy', function()
     require('vscode').action('editor.showCallHierarchy')
   end)
@@ -95,7 +91,7 @@ if vim.g.vscode then
     require('vscode').action('bookmarks.list')
   end)
 
-  vim.keymap.set('n', '"', function()
+  vim.keymap.set('n', 'g\'', function()
     require('vscode').action('bookmarks.listFromAllFiles')
   end)
 end
