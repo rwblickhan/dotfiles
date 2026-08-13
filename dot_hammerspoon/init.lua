@@ -229,12 +229,20 @@ local windowCommands = {
   { key = "right", name = "right-half", fn = rightHalf },
   { key = "up", name = "maximize", fn = maximize },
   { key = "down", name = "reasonable-size", fn = reasonableSize },
-  { key = ".", name = "next-display", fn = nextDisplay },
-  { key = ",", name = "previous-display", fn = previousDisplay },
+  -- Karabiner remaps hyper+. and hyper+, straight to f17/f18, since
+  -- Hammerspoon's own hyper+<key> Carbon hotkey registration silently stops
+  -- firing once Karabiner is running. This isn't a Carbon-specific issue --
+  -- WindowServer never delivers these particular Karabiner-synthesized
+  -- combos to *any* system-wide listener (confirmed with hs.eventtap too),
+  -- while still delivering them normally to the focused app. Bare, unmodified
+  -- spare keys sidestep it since Karabiner's grabber recognizes the full
+  -- chord itself and never has to emit a modified punctuation/delete event.
+  { key = ".", name = "next-display", fn = nextDisplay, bareKey = "f17" },
+  { key = ",", name = "previous-display", fn = previousDisplay, bareKey = "f18" },
 }
 
 for _, cmd in ipairs(windowCommands) do
-  hs.hotkey.bind(hyper, cmd.key, cmd.fn)
+  hs.hotkey.bind(cmd.bareKey and {} or hyper, cmd.bareKey or cmd.key, cmd.fn)
   hs.urlevent.bind(cmd.name, function() cmd.fn() end)
 end
 
@@ -278,15 +286,14 @@ end)
 -- z = zoom
 hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
 -- / = files
--- Karabiner remaps hyper+/ (right_command held + slash) straight to f19,
--- since Hammerspoon's own hyper+/ Carbon hotkey registration silently
--- stops firing once Karabiner is running.
+-- Karabiner remaps hyper+/ straight to f19 (see windowCommands comment above).
 hs.hotkey.bind({}, "f19", function() showOrHide("Bloom") end)
 
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)
 -- delete = edit clipboard in Helix
-hs.hotkey.bind(hyper, "delete", hxClipboard)
+-- Karabiner remaps hyper+delete straight to f16 (see windowCommands comment above).
+hs.hotkey.bind({}, "f16", hxClipboard)
 
 -- other hotkeys to set up
 -- hyper+= - QuickSoulver in Soulver 3
