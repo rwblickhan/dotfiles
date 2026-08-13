@@ -23,7 +23,6 @@ BREW_FORMULAE=(
     fish
     fzf
     git-delta
-    helix
     jj
     jjui
     sd
@@ -31,10 +30,15 @@ BREW_FORMULAE=(
     neurosnap/tap/zmx
 )
 
+BREW_HEAD_FORMULAE=(
+    helix
+)
+
 brew install "${BREW_FORMULAE[@]}"
+brew install --HEAD "${BREW_HEAD_FORMULAE[@]}"
 
 # Symlink binaries for explicitly installed formulae to ~/.local/bin to avoid overwriting builtin node/python/etc
-for formula in "${BREW_FORMULAE[@]}"; do
+for formula in "${BREW_FORMULAE[@]}" "${BREW_HEAD_FORMULAE[@]}"; do
     brew list "$formula" 2>/dev/null | grep '/bin/' | while read -r bin; do
         ln -sf "$bin" "$HOME/.local/bin/$(basename "$bin")"
     done
