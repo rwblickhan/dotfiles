@@ -180,7 +180,6 @@ local function showOrHide(appName)
   end
 end
 
--- Window management
 local function moveFocusedWindowToUnit(unit)
   local win = hs.window.focusedWindow()
   if win then win:moveToUnit(unit) end
@@ -220,6 +219,8 @@ local function previousDisplay()
   local win = hs.window.focusedWindow()
   if win then win:moveToScreen(win:screen():previous()) end
 end
+
+-- Hotkeys
 
 local hyper = { "cmd", "ctrl", "alt", "shift" }
 
@@ -291,6 +292,7 @@ hs.hotkey.bind(hyper, "delete", hxClipboard)
 -- hyper+= - QuickSoulver in Soulver 3
 -- hyper+f - global search in Bloom
 -- command+shift+v - open quick menu in Pastebot
+-- ctrl+option+v - paste with last filter in Pastebot
 
 -- Drafts-specific hotkeys
 bindConditionalHotkey({ "ctrl", "cmd" }, "l", isDraftsFocused, function() selectMenuItem("Drafts", "Link Mode") end)
