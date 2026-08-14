@@ -5,6 +5,7 @@ spoon.LeftRightHotkey:start()
 hs.alert.show("Config reloaded", hs.screen.mainScreen())
 
 local hotkeyLogger = hs.logger.new("hotkeys", "debug")
+local leftRightHotkeyLogger = hs.logger.new("leftRightHotkey", "info")
 
 local function urlEncode(s)
   return s:gsub("([^%w%-%.%_%~ ])", function(c)
@@ -114,6 +115,11 @@ local function bindConditionalHotkey(mods, key, condition, fn)
     end
   end)
   return hk
+end
+
+local function bindLeftRightHotkey(mods, key, fn)
+  leftRightHotkeyLogger.f("Enabled hotkey %s+%s", table.concat(mods, "+"), key:upper())
+  return spoon.LeftRightHotkey:bind(mods, key, fn)
 end
 
 local function focusFacebookMessages()
@@ -234,59 +240,59 @@ local windowCommands = {
 }
 
 for _, cmd in ipairs(windowCommands) do
-  spoon.LeftRightHotkey:bind({ "rCmd" }, cmd.key, cmd.fn)
+  bindLeftRightHotkey({ "rCmd" }, cmd.key, cmd.fn)
   hs.urlevent.bind(cmd.name, function() cmd.fn() end)
 end
 
 -- hjkl to arrow keys
 local arrowKeys = { h = "left", j = "down", k = "up", l = "right" }
 for key, arrow in pairs(arrowKeys) do
-  spoon.LeftRightHotkey:bind({ "rCmd" }, key, function() hs.eventtap.keyStroke({}, arrow) end)
+  bindLeftRightHotkey({ "rCmd" }, key, function() hs.eventtap.keyStroke({}, arrow) end)
 end
 
 -- App show/hide hotkeys
 -- 1 = 1password
-spoon.LeftRightHotkey:bind({ "rCmd" }, "1", function() showOrHide("1Password") end)
+bindLeftRightHotkey({ "rCmd" }, "1", function() showOrHide("1Password") end)
 -- # = Music
-spoon.LeftRightHotkey:bind({ "rCmd" }, "3", function() showOrHide("Music") end)
+bindLeftRightHotkey({ "rCmd" }, "3", function() showOrHide("Music") end)
 -- * = Things
-spoon.LeftRightHotkey:bind({ "rCmd" }, "8", function() showOrHide("com.culturedcode.ThingsMac") end)
+bindLeftRightHotkey({ "rCmd" }, "8", function() showOrHide("com.culturedcode.ThingsMac") end)
 -- a = AI
-spoon.LeftRightHotkey:bind({ "rCmd" }, "a", function() showOrHide("Claude") end)
+bindLeftRightHotkey({ "rCmd" }, "a", function() showOrHide("Claude") end)
 -- b = browser
-spoon.LeftRightHotkey:bind({ "rCmd" }, "b", function() showOrHide("Google Chrome") end)
+bindLeftRightHotkey({ "rCmd" }, "b", function() showOrHide("Google Chrome") end)
 -- c = calendar
-spoon.LeftRightHotkey:bind({ "rCmd" }, "c", function() showOrHide("Fantastical") end)
+bindLeftRightHotkey({ "rCmd" }, "c", function() showOrHide("Fantastical") end)
 -- d = draft
-spoon.LeftRightHotkey:bind({ "rCmd" }, "d", function() showOrHide("Drafts") end)
+bindLeftRightHotkey({ "rCmd" }, "d", function() showOrHide("Drafts") end)
 -- e = email
-spoon.LeftRightHotkey:bind({ "rCmd" }, "e", function() showOrHide("Mimestream") end)
+bindLeftRightHotkey({ "rCmd" }, "e", function() showOrHide("Mimestream") end)
 -- g = Google Search shortcut
-spoon.LeftRightHotkey:bind({ "rCmd" }, "g", function()
+bindLeftRightHotkey({ "rCmd" }, "g", function()
   hs.task.new("/usr/bin/shortcuts", nil, { "run", "Google Search" }):start()
 end)
 -- m = messenger
-spoon.LeftRightHotkey:bind({ "rCmd" }, "m", focusFacebookMessages)
+bindLeftRightHotkey({ "rCmd" }, "m", focusFacebookMessages)
 -- n = notes
-spoon.LeftRightHotkey:bind({ "rCmd" }, "n", function() showOrHide("md.obsidian") end)
+bindLeftRightHotkey({ "rCmd" }, "n", function() showOrHide("md.obsidian") end)
 -- r = reload hammerspoon
-spoon.LeftRightHotkey:bind({ "rCmd" }, "r", hs.reload)
+bindLeftRightHotkey({ "rCmd" }, "r", hs.reload)
 -- s = slack
-spoon.LeftRightHotkey:bind({ "rCmd" }, "s", function() showOrHide("Slack") end)
+bindLeftRightHotkey({ "rCmd" }, "s", function() showOrHide("Slack") end)
 -- t = terminal
-spoon.LeftRightHotkey:bind({ "rCmd" }, "t", function() showOrHide("Ghostty") end)
+bindLeftRightHotkey({ "rCmd" }, "t", function() showOrHide("Ghostty") end)
 -- v = vs code
-spoon.LeftRightHotkey:bind({ "rCmd" }, "v", function() showOrHide("Visual Studio Code") end)
+bindLeftRightHotkey({ "rCmd" }, "v", function() showOrHide("Visual Studio Code") end)
 -- w = Wikipedia Search shortcut
-spoon.LeftRightHotkey:bind({ "rCmd" }, "w", function()
+bindLeftRightHotkey({ "rCmd" }, "w", function()
   hs.task.new("/usr/bin/shortcuts", nil, { "run", "Wikipedia Search" }):start()
 end)
 -- z = zoom
-spoon.LeftRightHotkey:bind({ "rCmd" }, "z", function() showOrHide("zoom.us") end)
+bindLeftRightHotkey({ "rCmd" }, "z", function() showOrHide("zoom.us") end)
 -- / = files
-spoon.LeftRightHotkey:bind({ "rCmd" }, "/", function() showOrHide("Bloom") end)
+bindLeftRightHotkey({ "rCmd" }, "/", function() showOrHide("Bloom") end)
 -- delete = edit clipboard in Helix
-spoon.LeftRightHotkey:bind({ "rCmd" }, "delete", hxClipboard)
+bindLeftRightHotkey({ "rCmd" }, "delete", hxClipboard)
 
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)
