@@ -1,4 +1,6 @@
 hs.loadSpoon("EmmyLua")
+hs.loadSpoon("LeftRightHotkey")
+spoon.LeftRightHotkey:start()
 
 hs.alert.show("Config reloaded", hs.screen.mainScreen())
 
@@ -222,82 +224,76 @@ end
 
 -- Hotkeys
 
-local hyper = { "cmd", "ctrl", "alt", "shift" }
-
 local windowCommands = {
   { key = "left", name = "left-half", fn = leftHalf },
   { key = "right", name = "right-half", fn = rightHalf },
   { key = "up", name = "maximize", fn = maximize },
   { key = "down", name = "reasonable-size", fn = reasonableSize },
-  -- Karabiner remaps hyper+. and hyper+, straight to f17/f18, since
-  -- Hammerspoon's own hyper+<key> Carbon hotkey registration silently stops
-  -- firing once Karabiner is running. This isn't a Carbon-specific issue --
-  -- WindowServer never delivers these particular Karabiner-synthesized
-  -- combos to *any* system-wide listener (confirmed with hs.eventtap too),
-  -- while still delivering them normally to the focused app. Bare, unmodified
-  -- spare keys sidestep it since Karabiner's grabber recognizes the full
-  -- chord itself and never has to emit a modified punctuation/delete event.
-  { key = ".", name = "next-display", fn = nextDisplay, bareKey = "f17" },
-  { key = ",", name = "previous-display", fn = previousDisplay, bareKey = "f18" },
+  { key = ".", name = "next-display", fn = nextDisplay },
+  { key = ",", name = "previous-display", fn = previousDisplay },
 }
 
 for _, cmd in ipairs(windowCommands) do
-  hs.hotkey.bind(cmd.bareKey and {} or hyper, cmd.bareKey or cmd.key, cmd.fn)
+  spoon.LeftRightHotkey:bind({ "rCmd" }, cmd.key, cmd.fn)
   hs.urlevent.bind(cmd.name, function() cmd.fn() end)
+end
+
+-- hjkl to arrow keys
+local arrowKeys = { h = "left", j = "down", k = "up", l = "right" }
+for key, arrow in pairs(arrowKeys) do
+  spoon.LeftRightHotkey:bind({ "rCmd" }, key, function() hs.eventtap.keyStroke({}, arrow) end)
 end
 
 -- App show/hide hotkeys
 -- 1 = 1password
-hs.hotkey.bind(hyper, "1", function() showOrHide("1Password") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "1", function() showOrHide("1Password") end)
 -- # = Music
-hs.hotkey.bind(hyper, "3", function() showOrHide("Music") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "3", function() showOrHide("Music") end)
 -- * = Things
-hs.hotkey.bind(hyper, "8", function() showOrHide("com.culturedcode.ThingsMac") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "8", function() showOrHide("com.culturedcode.ThingsMac") end)
 -- a = AI
-hs.hotkey.bind(hyper, "a", function() showOrHide("Claude") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "a", function() showOrHide("Claude") end)
 -- b = browser
-hs.hotkey.bind(hyper, "b", function() showOrHide("Google Chrome") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "b", function() showOrHide("Google Chrome") end)
 -- c = calendar
-hs.hotkey.bind(hyper, "c", function() showOrHide("Fantastical") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "c", function() showOrHide("Fantastical") end)
 -- d = draft
-hs.hotkey.bind(hyper, "d", function() showOrHide("Drafts") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "d", function() showOrHide("Drafts") end)
 -- e = email
-hs.hotkey.bind(hyper, "e", function() showOrHide("Mimestream") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "e", function() showOrHide("Mimestream") end)
 -- g = Google Search shortcut
-hs.hotkey.bind(hyper, "g", function()
+spoon.LeftRightHotkey:bind({ "rCmd" }, "g", function()
   hs.task.new("/usr/bin/shortcuts", nil, { "run", "Google Search" }):start()
 end)
 -- m = messenger
-hs.hotkey.bind(hyper, "m", focusFacebookMessages)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "m", focusFacebookMessages)
 -- n = notes
-hs.hotkey.bind(hyper, "n", function() showOrHide("md.obsidian") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "n", function() showOrHide("md.obsidian") end)
 -- r = reload hammerspoon
-hs.hotkey.bind(hyper, "r", hs.reload)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "r", hs.reload)
 -- s = slack
-hs.hotkey.bind(hyper, "s", function() showOrHide("Slack") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "s", function() showOrHide("Slack") end)
 -- t = terminal
-hs.hotkey.bind(hyper, "t", function() showOrHide("Ghostty") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "t", function() showOrHide("Ghostty") end)
 -- v = vs code
-hs.hotkey.bind(hyper, "v", function() showOrHide("Visual Studio Code") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "v", function() showOrHide("Visual Studio Code") end)
 -- w = Wikipedia Search shortcut
-hs.hotkey.bind(hyper, "w", function()
+spoon.LeftRightHotkey:bind({ "rCmd" }, "w", function()
   hs.task.new("/usr/bin/shortcuts", nil, { "run", "Wikipedia Search" }):start()
 end)
 -- z = zoom
-hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "z", function() showOrHide("zoom.us") end)
 -- / = files
--- Karabiner remaps hyper+/ straight to f19 (see windowCommands comment above).
-hs.hotkey.bind({}, "f19", function() showOrHide("Bloom") end)
+spoon.LeftRightHotkey:bind({ "rCmd" }, "/", function() showOrHide("Bloom") end)
+-- delete = edit clipboard in Helix
+spoon.LeftRightHotkey:bind({ "rCmd" }, "delete", hxClipboard)
 
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)
--- delete = edit clipboard in Helix
--- Karabiner remaps hyper+delete straight to f16 (see windowCommands comment above).
-hs.hotkey.bind({}, "f16", hxClipboard)
 
 -- other hotkeys to set up
--- hyper+= - QuickSoulver in Soulver 3
--- hyper+f - global search in Bloom
+-- right-cmd+= - QuickSoulver in Soulver 3
+-- right-cmd+f - global search in Bloom
 -- command+shift+v - open quick menu in Pastebot
 -- ctrl+option+v - paste with last filter in Pastebot
 
