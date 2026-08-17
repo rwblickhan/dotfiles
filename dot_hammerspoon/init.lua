@@ -1,4 +1,6 @@
 hs.loadSpoon("EmmyLua")
+hs.loadSpoon("LeftRightHotkey")
+spoon.LeftRightHotkey:start()
 
 hs.alert.show("Config reloaded", hs.screen.mainScreen())
 
@@ -222,16 +224,19 @@ end
 
 -- Hotkeys
 
--- Some key combinations do not work well, particularly when karabiner-elements is running, because they trigger system-wide hotkeys
--- Examples include hyper-, hyper-., hyper-/, and hyper-delete
--- To get around this, karabiner-elements remaps these to empty function keys which hammerspoon can listen for
--- https://github.com/Hammerspoon/hammerspoon/issues/3642#issuecomment-2174191618
+-- Most hotkeys are bound to the right Command key alone, via the
+-- LeftRightHotkey Spoon, rather than the full hyper chord
+-- (cmd+ctrl+alt+shift). The hyper chord is reserved for right-cmd+f and
+-- right-cmd+=, which karabiner-elements still synthesizes into a real
+-- Hyper+f / Hyper+= -- those two are consumed directly by third-party apps'
+-- own global hotkey listeners (see the "other hotkeys to set up" comment
+-- below), outside Hammerspoon's control.
 
-local hyper = { "cmd", "ctrl", "alt", "shift" }
+local rightCmd = { "rCmd" }
 
 local windowCommands = {
   -- All of these live in the window management mode modal
-  -- (hyper-w, then h/l/j/k/n/p) instead of being bound directly here.
+  -- (right-cmd+w, then h/l/j/k/n/p) instead of being bound directly here.
   { key = "left", name = "left-half", fn = leftHalf, modalOnly = true },
   { key = "right", name = "right-half", fn = rightHalf, modalOnly = true },
   { key = "up", name = "maximize", fn = maximize, modalOnly = true },
@@ -242,99 +247,92 @@ local windowCommands = {
 
 for _, cmd in ipairs(windowCommands) do
   if not cmd.modalOnly then
-    hs.hotkey.bind(hyper, cmd.key, cmd.fn)
+    spoon.LeftRightHotkey:bind(rightCmd, cmd.key, cmd.fn)
   end
   hs.urlevent.bind(cmd.name, function() cmd.fn() end)
 end
 
--- Window management mode: hyper-w enters a modal where h/l move the
+-- Window management mode: right-cmd+w enters a modal where h/l move the
 -- focused window to the left/right half of the screen, j/k maximize it or
 -- resize it to a reasonable size, and n/p move it to the next/previous
--- display.
+-- display. Each key is bound both bare and with cmd held, since right
+-- command may still be held down from entering the mode.
 local windowMode = hs.hotkey.modal.new()
 
 function windowMode:entered() hs.alert.show("Window management mode") end
 
-hs.hotkey.bind(hyper, "w", function() windowMode:enter() end)
+spoon.LeftRightHotkey:bind(rightCmd, "w", function() windowMode:enter() end)
 windowMode:bind({}, "escape", function() windowMode:exit() end)
-windowMode:bind({}, "h", function()
-  leftHalf()
-  windowMode:exit()
-end)
-windowMode:bind({}, "l", function()
-  rightHalf()
-  windowMode:exit()
-end)
-windowMode:bind({}, "j", function()
-  maximize()
-  windowMode:exit()
-end)
-windowMode:bind({}, "k", function()
-  reasonableSize()
-  windowMode:exit()
-end)
-windowMode:bind({}, "n", function()
-  nextDisplay()
-  windowMode:exit()
-end)
-windowMode:bind({}, "p", function()
-  previousDisplay()
-  windowMode:exit()
-end)
+
+local windowModeCommands = {
+  { key = "h", fn = leftHalf },
+  { key = "l", fn = rightHalf },
+  { key = "j", fn = maximize },
+  { key = "k", fn = reasonableSize },
+  { key = "n", fn = nextDisplay },
+  { key = "p", fn = previousDisplay },
+}
+
+for _, cmd in ipairs(windowModeCommands) do
+  local function action()
+    cmd.fn()
+    windowMode:exit()
+  end
+  windowMode:bind({}, cmd.key, action)
+  windowMode:bind({ "cmd" }, cmd.key, action)
+end
 
 -- App show/hide hotkeys
 -- 1 = 1password
-hs.hotkey.bind(hyper, "1", function() showOrHide("1Password") end)
+spoon.LeftRightHotkey:bind(rightCmd, "1", function() showOrHide("1Password") end)
 -- # = Music
-hs.hotkey.bind(hyper, "3", function() showOrHide("Music") end)
+spoon.LeftRightHotkey:bind(rightCmd, "3", function() showOrHide("Music") end)
 -- * = Things
-hs.hotkey.bind(hyper, "8", function() showOrHide("com.culturedcode.ThingsMac") end)
+spoon.LeftRightHotkey:bind(rightCmd, "8", function() showOrHide("com.culturedcode.ThingsMac") end)
 -- a = AI
-hs.hotkey.bind(hyper, "a", function() showOrHide("Claude") end)
+spoon.LeftRightHotkey:bind(rightCmd, "a", function() showOrHide("Claude") end)
 -- b = browser
-hs.hotkey.bind(hyper, "b", function() showOrHide("Google Chrome") end)
+spoon.LeftRightHotkey:bind(rightCmd, "b", function() showOrHide("Google Chrome") end)
 -- c = calendar
-hs.hotkey.bind(hyper, "c", function() showOrHide("Fantastical") end)
+spoon.LeftRightHotkey:bind(rightCmd, "c", function() showOrHide("Fantastical") end)
 -- d = draft
-hs.hotkey.bind(hyper, "d", function() showOrHide("Drafts") end)
+spoon.LeftRightHotkey:bind(rightCmd, "d", function() showOrHide("Drafts") end)
 -- e = email
-hs.hotkey.bind(hyper, "e", function() showOrHide("Mimestream") end)
+spoon.LeftRightHotkey:bind(rightCmd, "e", function() showOrHide("Mimestream") end)
 -- g = Google Search shortcut
-hs.hotkey.bind(hyper, "g", function()
+spoon.LeftRightHotkey:bind(rightCmd, "g", function()
   hs.task.new("/usr/bin/shortcuts", nil, { "run", "Google Search" }):start()
 end)
 -- m = messenger
-hs.hotkey.bind(hyper, "m", focusFacebookMessages)
+spoon.LeftRightHotkey:bind(rightCmd, "m", focusFacebookMessages)
 -- n = notes
-hs.hotkey.bind(hyper, "n", function() showOrHide("md.obsidian") end)
+spoon.LeftRightHotkey:bind(rightCmd, "n", function() showOrHide("md.obsidian") end)
 -- r = reload hammerspoon
-hs.hotkey.bind(hyper, "r", hs.reload)
+spoon.LeftRightHotkey:bind(rightCmd, "r", hs.reload)
 -- s = slack
-hs.hotkey.bind(hyper, "s", function() showOrHide("Slack") end)
+spoon.LeftRightHotkey:bind(rightCmd, "s", function() showOrHide("Slack") end)
 -- t = terminal
-hs.hotkey.bind(hyper, "t", function() showOrHide("Ghostty") end)
+spoon.LeftRightHotkey:bind(rightCmd, "t", function() showOrHide("Ghostty") end)
 -- u = Wikipedia Search shortcut
-hs.hotkey.bind(hyper, "u", function()
+spoon.LeftRightHotkey:bind(rightCmd, "u", function()
   hs.task.new("/usr/bin/shortcuts", nil, { "run", "Wikipedia Search" }):start()
 end)
 -- v = vs code
-hs.hotkey.bind(hyper, "v", function() showOrHide("Visual Studio Code") end)
--- w = window management mode (see below)
+spoon.LeftRightHotkey:bind(rightCmd, "v", function() showOrHide("Visual Studio Code") end)
+-- w = window management mode (see above)
 -- z = zoom
-hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
+spoon.LeftRightHotkey:bind(rightCmd, "z", function() showOrHide("zoom.us") end)
 -- / = files
--- Karabiner remaps hyper+/ straight to f19 (see windowCommands comment above).
-hs.hotkey.bind({}, "f19", function() showOrHide("Bloom") end)
+spoon.LeftRightHotkey:bind(rightCmd, "/", function() showOrHide("Bloom") end)
 
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)
 -- delete = edit clipboard in Helix
--- Karabiner remaps hyper+delete straight to f16 (see windowCommands comment above).
-hs.hotkey.bind({}, "f16", hxClipboard)
+spoon.LeftRightHotkey:bind(rightCmd, "delete", hxClipboard)
 
 -- other hotkeys to set up
--- hyper+= - QuickSoulver in Soulver 3
--- hyper+f - global search in Bloom
+-- right-cmd+= (karabiner-synthesized as Hyper+=) - QuickSoulver in Soulver 3
+-- right-cmd+f (karabiner-synthesized as Hyper+f) - global search in Bloom
 -- command+shift+v - open quick menu in Pastebot
 -- ctrl+option+v - paste with last filter in Pastebot
 
