@@ -21,6 +21,9 @@ select = "underline"
 [editor.soft-wrap]
 enable = true
 
+[editor.word-completion]
+trigger-length = 4
+
 [keys.normal]
 # split navigation (vim-tmux-navigator style)
 C-h = 'jump_view_left'
