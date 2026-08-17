@@ -1,11 +1,8 @@
 hs.loadSpoon("EmmyLua")
-hs.loadSpoon("LeftRightHotkey")
-spoon.LeftRightHotkey:start()
 
 hs.alert.show("Config reloaded", hs.screen.mainScreen())
 
 local hotkeyLogger = hs.logger.new("hotkeys", "debug")
-local leftRightHotkeyLogger = hs.logger.new("leftRightHotkey", "info")
 
 local function urlEncode(s)
   return s:gsub("([^%w%-%.%_%~ ])", function(c)
@@ -117,11 +114,6 @@ local function bindConditionalHotkey(mods, key, condition, fn)
   return hk
 end
 
-local function bindLeftRightHotkey(mods, key, fn)
-  leftRightHotkeyLogger.f("Enabled hotkey %s+%s", table.concat(mods, "+"), key:upper())
-  return spoon.LeftRightHotkey:bind(mods, key, fn)
-end
-
 local function focusFacebookMessages()
   local chrome = hs.application.find("Google Chrome")
 
@@ -230,76 +222,82 @@ end
 
 -- Hotkeys
 
+local hyper = { "cmd", "ctrl", "alt", "shift" }
+
 local windowCommands = {
   { key = "left", name = "left-half", fn = leftHalf },
   { key = "right", name = "right-half", fn = rightHalf },
   { key = "up", name = "maximize", fn = maximize },
   { key = "down", name = "reasonable-size", fn = reasonableSize },
-  { key = ".", name = "next-display", fn = nextDisplay },
-  { key = ",", name = "previous-display", fn = previousDisplay },
+  -- Karabiner remaps hyper+. and hyper+, straight to f17/f18, since
+  -- Hammerspoon's own hyper+<key> Carbon hotkey registration silently stops
+  -- firing once Karabiner is running. This isn't a Carbon-specific issue --
+  -- WindowServer never delivers these particular Karabiner-synthesized
+  -- combos to *any* system-wide listener (confirmed with hs.eventtap too),
+  -- while still delivering them normally to the focused app. Bare, unmodified
+  -- spare keys sidestep it since Karabiner's grabber recognizes the full
+  -- chord itself and never has to emit a modified punctuation/delete event.
+  { key = ".", name = "next-display", fn = nextDisplay, bareKey = "f17" },
+  { key = ",", name = "previous-display", fn = previousDisplay, bareKey = "f18" },
 }
 
 for _, cmd in ipairs(windowCommands) do
-  bindLeftRightHotkey({ "rCmd" }, cmd.key, cmd.fn)
+  hs.hotkey.bind(cmd.bareKey and {} or hyper, cmd.bareKey or cmd.key, cmd.fn)
   hs.urlevent.bind(cmd.name, function() cmd.fn() end)
-end
-
--- hjkl to arrow keys
-local arrowKeys = { h = "left", j = "down", k = "up", l = "right" }
-for key, arrow in pairs(arrowKeys) do
-  bindLeftRightHotkey({ "rCmd" }, key, function() hs.eventtap.keyStroke({}, arrow) end)
 end
 
 -- App show/hide hotkeys
 -- 1 = 1password
-bindLeftRightHotkey({ "rCmd" }, "1", function() showOrHide("1Password") end)
+hs.hotkey.bind(hyper, "1", function() showOrHide("1Password") end)
 -- # = Music
-bindLeftRightHotkey({ "rCmd" }, "3", function() showOrHide("Music") end)
+hs.hotkey.bind(hyper, "3", function() showOrHide("Music") end)
 -- * = Things
-bindLeftRightHotkey({ "rCmd" }, "8", function() showOrHide("com.culturedcode.ThingsMac") end)
+hs.hotkey.bind(hyper, "8", function() showOrHide("com.culturedcode.ThingsMac") end)
 -- a = AI
-bindLeftRightHotkey({ "rCmd" }, "a", function() showOrHide("Claude") end)
+hs.hotkey.bind(hyper, "a", function() showOrHide("Claude") end)
 -- b = browser
-bindLeftRightHotkey({ "rCmd" }, "b", function() showOrHide("Google Chrome") end)
+hs.hotkey.bind(hyper, "b", function() showOrHide("Google Chrome") end)
 -- c = calendar
-bindLeftRightHotkey({ "rCmd" }, "c", function() showOrHide("Fantastical") end)
+hs.hotkey.bind(hyper, "c", function() showOrHide("Fantastical") end)
 -- d = draft
-bindLeftRightHotkey({ "rCmd" }, "d", function() showOrHide("Drafts") end)
+hs.hotkey.bind(hyper, "d", function() showOrHide("Drafts") end)
 -- e = email
-bindLeftRightHotkey({ "rCmd" }, "e", function() showOrHide("Mimestream") end)
+hs.hotkey.bind(hyper, "e", function() showOrHide("Mimestream") end)
 -- g = Google Search shortcut
-bindLeftRightHotkey({ "rCmd" }, "g", function()
+hs.hotkey.bind(hyper, "g", function()
   hs.task.new("/usr/bin/shortcuts", nil, { "run", "Google Search" }):start()
 end)
 -- m = messenger
-bindLeftRightHotkey({ "rCmd" }, "m", focusFacebookMessages)
+hs.hotkey.bind(hyper, "m", focusFacebookMessages)
 -- n = notes
-bindLeftRightHotkey({ "rCmd" }, "n", function() showOrHide("md.obsidian") end)
+hs.hotkey.bind(hyper, "n", function() showOrHide("md.obsidian") end)
 -- r = reload hammerspoon
-bindLeftRightHotkey({ "rCmd" }, "r", hs.reload)
+hs.hotkey.bind(hyper, "r", hs.reload)
 -- s = slack
-bindLeftRightHotkey({ "rCmd" }, "s", function() showOrHide("Slack") end)
+hs.hotkey.bind(hyper, "s", function() showOrHide("Slack") end)
 -- t = terminal
-bindLeftRightHotkey({ "rCmd" }, "t", function() showOrHide("Ghostty") end)
+hs.hotkey.bind(hyper, "t", function() showOrHide("Ghostty") end)
 -- v = vs code
-bindLeftRightHotkey({ "rCmd" }, "v", function() showOrHide("Visual Studio Code") end)
+hs.hotkey.bind(hyper, "v", function() showOrHide("Visual Studio Code") end)
 -- w = Wikipedia Search shortcut
-bindLeftRightHotkey({ "rCmd" }, "w", function()
+hs.hotkey.bind(hyper, "w", function()
   hs.task.new("/usr/bin/shortcuts", nil, { "run", "Wikipedia Search" }):start()
 end)
 -- z = zoom
-bindLeftRightHotkey({ "rCmd" }, "z", function() showOrHide("zoom.us") end)
+hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
 -- / = files
-bindLeftRightHotkey({ "rCmd" }, "/", function() showOrHide("Bloom") end)
--- delete = edit clipboard in Helix
-bindLeftRightHotkey({ "rCmd" }, "delete", hxClipboard)
+-- Karabiner remaps hyper+/ straight to f19 (see windowCommands comment above).
+hs.hotkey.bind({}, "f19", function() showOrHide("Bloom") end)
 
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)
+-- delete = edit clipboard in Helix
+-- Karabiner remaps hyper+delete straight to f16 (see windowCommands comment above).
+hs.hotkey.bind({}, "f16", hxClipboard)
 
 -- other hotkeys to set up
--- right-cmd+= - QuickSoulver in Soulver 3
--- right-cmd+f - global search in Bloom
+-- hyper+= - QuickSoulver in Soulver 3
+-- hyper+f - global search in Bloom
 -- command+shift+v - open quick menu in Pastebot
 -- ctrl+option+v - paste with last filter in Pastebot
 
