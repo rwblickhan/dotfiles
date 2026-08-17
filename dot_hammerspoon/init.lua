@@ -230,26 +230,57 @@ end
 local hyper = { "cmd", "ctrl", "alt", "shift" }
 
 local windowCommands = {
-  { key = "left", name = "left-half", fn = leftHalf },
-  { key = "right", name = "right-half", fn = rightHalf },
-  { key = "up", name = "maximize", fn = maximize },
-  { key = "down", name = "reasonable-size", fn = reasonableSize },
-  -- Karabiner remaps hyper+. and hyper+, straight to f17/f18, since
-  -- Hammerspoon's own hyper+<key> Carbon hotkey registration silently stops
-  -- firing once Karabiner is running. This isn't a Carbon-specific issue --
-  -- WindowServer never delivers these particular Karabiner-synthesized
-  -- combos to *any* system-wide listener (confirmed with hs.eventtap too),
-  -- while still delivering them normally to the focused app. Bare, unmodified
-  -- spare keys sidestep it since Karabiner's grabber recognizes the full
-  -- chord itself and never has to emit a modified punctuation/delete event.
-  { key = ".", name = "next-display", fn = nextDisplay, bareKey = "f17" },
-  { key = ",", name = "previous-display", fn = previousDisplay, bareKey = "f18" },
+  -- All of these live in the window management mode modal
+  -- (hyper-w, then h/l/j/k/n/p) instead of being bound directly here.
+  { key = "left", name = "left-half", fn = leftHalf, modalOnly = true },
+  { key = "right", name = "right-half", fn = rightHalf, modalOnly = true },
+  { key = "up", name = "maximize", fn = maximize, modalOnly = true },
+  { key = "down", name = "reasonable-size", fn = reasonableSize, modalOnly = true },
+  { key = ".", name = "next-display", fn = nextDisplay, modalOnly = true },
+  { key = ",", name = "previous-display", fn = previousDisplay, modalOnly = true },
 }
 
 for _, cmd in ipairs(windowCommands) do
-  hs.hotkey.bind(cmd.bareKey and {} or hyper, cmd.bareKey or cmd.key, cmd.fn)
+  if not cmd.modalOnly then
+    hs.hotkey.bind(hyper, cmd.key, cmd.fn)
+  end
   hs.urlevent.bind(cmd.name, function() cmd.fn() end)
 end
+
+-- Window management mode: hyper-w enters a modal where h/l move the
+-- focused window to the left/right half of the screen, j/k maximize it or
+-- resize it to a reasonable size, and n/p move it to the next/previous
+-- display.
+local windowMode = hs.hotkey.modal.new()
+
+function windowMode:entered() hs.alert.show("Window management mode") end
+
+hs.hotkey.bind(hyper, "w", function() windowMode:enter() end)
+windowMode:bind({}, "escape", function() windowMode:exit() end)
+windowMode:bind({}, "h", function()
+  leftHalf()
+  windowMode:exit()
+end)
+windowMode:bind({}, "l", function()
+  rightHalf()
+  windowMode:exit()
+end)
+windowMode:bind({}, "j", function()
+  maximize()
+  windowMode:exit()
+end)
+windowMode:bind({}, "k", function()
+  reasonableSize()
+  windowMode:exit()
+end)
+windowMode:bind({}, "n", function()
+  nextDisplay()
+  windowMode:exit()
+end)
+windowMode:bind({}, "p", function()
+  previousDisplay()
+  windowMode:exit()
+end)
 
 -- App show/hide hotkeys
 -- 1 = 1password
@@ -282,12 +313,13 @@ hs.hotkey.bind(hyper, "r", hs.reload)
 hs.hotkey.bind(hyper, "s", function() showOrHide("Slack") end)
 -- t = terminal
 hs.hotkey.bind(hyper, "t", function() showOrHide("Ghostty") end)
--- v = vs code
-hs.hotkey.bind(hyper, "v", function() showOrHide("Visual Studio Code") end)
--- w = Wikipedia Search shortcut
-hs.hotkey.bind(hyper, "w", function()
+-- u = Wikipedia Search shortcut
+hs.hotkey.bind(hyper, "u", function()
   hs.task.new("/usr/bin/shortcuts", nil, { "run", "Wikipedia Search" }):start()
 end)
+-- v = vs code
+hs.hotkey.bind(hyper, "v", function() showOrHide("Visual Studio Code") end)
+-- w = window management mode (see below)
 -- z = zoom
 hs.hotkey.bind(hyper, "z", function() showOrHide("zoom.us") end)
 -- / = files
