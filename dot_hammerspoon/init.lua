@@ -255,8 +255,11 @@ end
 -- Window management mode: right-cmd+w enters a modal where h/l move the
 -- focused window to the left/right half of the screen, j/k maximize it or
 -- resize it to a reasonable size, and n/p move it to the next/previous
--- display. Each key is bound both bare and with cmd held, since right
--- command may still be held down from entering the mode.
+-- display. h/j/k/l are bound bare only, since Karabiner's
+-- right-cmd+hjkl-to-arrow-keys remap (see private_karabiner.json) means
+-- cmd+h/j/k/l never reach Hammerspoon as those letters if right command is
+-- still held from entering the mode. n/p are unaffected by that remap, so
+-- they're bound both bare and with cmd held.
 local windowMode = hs.hotkey.modal.new()
 
 function windowMode:entered() hs.alert.show("Window management mode") end
@@ -265,10 +268,10 @@ spoon.LeftRightHotkey:bind(rightCmd, "w", function() windowMode:enter() end)
 windowMode:bind({}, "escape", function() windowMode:exit() end)
 
 local windowModeCommands = {
-  { key = "h", fn = leftHalf },
-  { key = "l", fn = rightHalf },
-  { key = "j", fn = maximize },
-  { key = "k", fn = reasonableSize },
+  { key = "h", fn = leftHalf, bareOnly = true },
+  { key = "l", fn = rightHalf, bareOnly = true },
+  { key = "j", fn = maximize, bareOnly = true },
+  { key = "k", fn = reasonableSize, bareOnly = true },
   { key = "n", fn = nextDisplay },
   { key = "p", fn = previousDisplay },
 }
@@ -279,7 +282,9 @@ for _, cmd in ipairs(windowModeCommands) do
     windowMode:exit()
   end
   windowMode:bind({}, cmd.key, action)
-  windowMode:bind({ "cmd" }, cmd.key, action)
+  if not cmd.bareOnly then
+    windowMode:bind({ "cmd" }, cmd.key, action)
+  end
 end
 
 -- App show/hide hotkeys
