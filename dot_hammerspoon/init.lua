@@ -222,6 +222,11 @@ end
 
 -- Hotkeys
 
+-- Some key combinations do not work well, particularly when karabiner-elements is running, because they trigger system-wide hotkeys
+-- Examples include hyper-, hyper-., hyper-/, and hyper-delete
+-- To get around this, karabiner-elements remaps these to empty function keys which hammerspoon can listen for
+-- https://github.com/Hammerspoon/hammerspoon/issues/3642#issuecomment-2174191618
+
 local hyper = { "cmd", "ctrl", "alt", "shift" }
 
 local windowCommands = {
