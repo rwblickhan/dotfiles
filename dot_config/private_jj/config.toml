@@ -85,6 +85,7 @@ if [ -z "$name" ]; then
 fi
 name="russell-$name"
 jj bookmark set "$name" -r "$rev"
+jj bookmark track "$name@origin" >/dev/null 2>&1 || true
 echo "$name"
 """,
   "branch",
