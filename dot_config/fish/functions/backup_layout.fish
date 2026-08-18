@@ -1,3 +1,10 @@
 function backup_layout --description "Open Ghostty with backup layout"
-    osascript ~/Library/Scripts/backup_layout.applescript
+    printf 'tell application "Ghostty"
+        activate
+
+        set win to new window
+        set pane to terminal 1 of selected tab of win
+
+        input text "~/.local/share/backup_layout.fish" & return & " " to pane
+    end tell' | osascript
 end
