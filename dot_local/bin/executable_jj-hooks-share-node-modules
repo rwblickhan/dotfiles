@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# jj-hooks setup hook: share the invocation workspace's node_modules with a newly
+# created hook workspace, by symlinking instead of hardlink-copying.
+#
+# pnpm's isolated node-linker puts a node_modules directory in every workspace
+# package, not just the repo root, and that is where package-local bins and deps
+# live. Sharing only the root tree leaves them missing, so `pnpm run` silently
+# falls back to whatever happens to sit in the root node_modules.
+#
+# The shared trees stay READ-ONLY: never run an install in a hook'd workspace, or
+# it will mutate the source workspace's node_modules.
+set -euo pipefail
+
+src=${JJ_HOOKS_WORKSPACE:?must be run as a jj-hooks setup hook}
+
+find "$src" \( -name .git -o -name .jj \) -prune -o -type d -name node_modules -prune -print0 |
+    while IFS= read -r -d '' tree; do
+        rel=${tree#"$src"/}
+        mkdir -p "$(dirname "$rel")"
+        ln -sfn "$tree" "$rel"
+    done
