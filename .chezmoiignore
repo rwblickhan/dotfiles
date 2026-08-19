@@ -1,0 +1,4 @@
+{{ if ne .chezmoi.username "rwblickhan" -}}
+.vite-plus
+.config/fish/conf.d/vite-plus.fish
+{{ end -}}
