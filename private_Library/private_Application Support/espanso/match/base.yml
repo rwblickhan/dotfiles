@@ -22,6 +22,15 @@ matches:
         params:
           format: "%Y-%m-%d"
 
+  - trigger: ":udate"
+    label: "Unique Date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y%m%d%H%M"
+
   # --- Contact info
 
   - trigger: "rwbg"
