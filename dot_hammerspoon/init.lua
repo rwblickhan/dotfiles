@@ -233,10 +233,11 @@ end
 -- below), outside Hammerspoon's control.
 
 local rightCmd = { "rCmd" }
+local rightOpt = { "rAlt" }
 
 local windowCommands = {
   -- All of these live in the window management mode modal
-  -- (right-cmd+w, then h/l/j/k/n/p) instead of being bound directly here.
+  -- (right-opt+w, then h/l/j/k/n/p) instead of being bound directly here.
   { key = "left", name = "left-half", fn = leftHalf, modalOnly = true },
   { key = "right", name = "right-half", fn = rightHalf, modalOnly = true },
   { key = "up", name = "maximize", fn = maximize, modalOnly = true },
@@ -252,26 +253,25 @@ for _, cmd in ipairs(windowCommands) do
   hs.urlevent.bind(cmd.name, function() cmd.fn() end)
 end
 
--- Window management mode: right-cmd+w enters a modal where h/l move the
+-- Window management mode: right-opt+w enters a modal where h/l move the
 -- focused window to the left/right half of the screen, j/k maximize it or
 -- resize it to a reasonable size, and n/p move it to the next/previous
--- display. h/j/k/l are bound bare only, since Karabiner's
--- right-cmd+hjkl-to-arrow-keys remap (see private_karabiner.json) means
--- cmd+h/j/k/l never reach Hammerspoon as those letters if right command is
--- still held from entering the mode. n/p are unaffected by that remap, so
--- they're bound both bare and with cmd held.
+-- display. Unlike right-cmd (see Karabiner's right-cmd+hjkl-to-arrow-keys
+-- remap in private_karabiner.json), right-opt has no competing remap, so
+-- every key is bound both bare and with opt held, letting you keep right
+-- option held down through the whole sequence without lifting your hand.
 local windowMode = hs.hotkey.modal.new()
 
 function windowMode:entered() hs.alert.show("Window management mode") end
 
-spoon.LeftRightHotkey:bind(rightCmd, "w", function() windowMode:enter() end)
+spoon.LeftRightHotkey:bind(rightOpt, "w", function() windowMode:enter() end)
 windowMode:bind({}, "escape", function() windowMode:exit() end)
 
 local windowModeCommands = {
-  { key = "h", fn = leftHalf, bareOnly = true },
-  { key = "l", fn = rightHalf, bareOnly = true },
-  { key = "j", fn = maximize, bareOnly = true },
-  { key = "k", fn = reasonableSize, bareOnly = true },
+  { key = "h", fn = leftHalf },
+  { key = "l", fn = rightHalf },
+  { key = "j", fn = maximize },
+  { key = "k", fn = reasonableSize },
   { key = "n", fn = nextDisplay },
   { key = "p", fn = previousDisplay },
 }
@@ -282,9 +282,7 @@ for _, cmd in ipairs(windowModeCommands) do
     windowMode:exit()
   end
   windowMode:bind({}, cmd.key, action)
-  if not cmd.bareOnly then
-    windowMode:bind({ "cmd" }, cmd.key, action)
-  end
+  windowMode:bind({ "alt" }, cmd.key, action)
 end
 
 -- App show/hide hotkeys
@@ -318,13 +316,12 @@ spoon.LeftRightHotkey:bind(rightCmd, "r", hs.reload)
 spoon.LeftRightHotkey:bind(rightCmd, "s", function() showOrHide("Slack") end)
 -- t = terminal
 spoon.LeftRightHotkey:bind(rightCmd, "t", function() showOrHide("Ghostty") end)
--- u = Wikipedia Search shortcut
-spoon.LeftRightHotkey:bind(rightCmd, "u", function()
-  hs.task.new("/usr/bin/shortcuts", nil, { "run", "Wikipedia Search" }):start()
-end)
 -- v = vs code
 spoon.LeftRightHotkey:bind(rightCmd, "v", function() showOrHide("Visual Studio Code") end)
--- w = window management mode (see above)
+-- w = Wikipedia Search shortcut
+spoon.LeftRightHotkey:bind(rightCmd, "w", function()
+  hs.task.new("/usr/bin/shortcuts", nil, { "run", "Wikipedia Search" }):start()
+end)
 -- z = zoom
 spoon.LeftRightHotkey:bind(rightCmd, "z", function() showOrHide("zoom.us") end)
 -- / = files
