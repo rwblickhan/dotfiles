@@ -235,38 +235,24 @@ end
 local rightCmd = { "rCmd" }
 local rightOpt = { "rAlt" }
 
+-- These are exposed only via the hs.urlevent scheme below (e.g. for Raycast
+-- or Shortcuts to trigger), not bound to a hotkey directly.
 local windowCommands = {
-  -- All of these live in the window management mode modal
-  -- (right-opt+w, then h/l/j/k/n/p) instead of being bound directly here.
-  { key = "left", name = "left-half", fn = leftHalf, modalOnly = true },
-  { key = "right", name = "right-half", fn = rightHalf, modalOnly = true },
-  { key = "up", name = "maximize", fn = maximize, modalOnly = true },
-  { key = "down", name = "reasonable-size", fn = reasonableSize, modalOnly = true },
-  { key = ".", name = "next-display", fn = nextDisplay, modalOnly = true },
-  { key = ",", name = "previous-display", fn = previousDisplay, modalOnly = true },
+  { name = "left-half", fn = leftHalf },
+  { name = "right-half", fn = rightHalf },
+  { name = "maximize", fn = maximize },
+  { name = "reasonable-size", fn = reasonableSize },
+  { name = "next-display", fn = nextDisplay },
+  { name = "previous-display", fn = previousDisplay },
 }
 
 for _, cmd in ipairs(windowCommands) do
-  if not cmd.modalOnly then
-    spoon.LeftRightHotkey:bind(rightCmd, cmd.key, cmd.fn)
-  end
   hs.urlevent.bind(cmd.name, function() cmd.fn() end)
 end
 
--- Window management mode: right-opt+w enters a modal where h/l move the
--- focused window to the left/right half of the screen, j/k maximize it or
--- resize it to a reasonable size, and n/p move it to the next/previous
--- display. Unlike right-cmd (see Karabiner's right-cmd+hjkl-to-arrow-keys
--- remap in private_karabiner.json), right-opt has no competing remap, so
--- every key is bound both bare and with opt held, letting you keep right
--- option held down through the whole sequence without lifting your hand.
-local windowMode = hs.hotkey.modal.new()
-
-function windowMode:entered() hs.alert.show("Window management mode") end
-
-spoon.LeftRightHotkey:bind(rightOpt, "w", function() windowMode:enter() end)
-windowMode:bind({}, "escape", function() windowMode:exit() end)
-
+-- Window management: right-opt+h/l move the focused window to the left/right
+-- half of the screen, right-opt+j/k maximize it or resize it to a reasonable
+-- size, and right-opt+n/p move it to the next/previous display.
 local windowModeCommands = {
   { key = "h", fn = leftHalf },
   { key = "l", fn = rightHalf },
@@ -277,12 +263,7 @@ local windowModeCommands = {
 }
 
 for _, cmd in ipairs(windowModeCommands) do
-  local function action()
-    cmd.fn()
-    windowMode:exit()
-  end
-  windowMode:bind({}, cmd.key, action)
-  windowMode:bind({ "alt" }, cmd.key, action)
+  spoon.LeftRightHotkey:bind(rightOpt, cmd.key, cmd.fn)
 end
 
 -- App show/hide hotkeys
