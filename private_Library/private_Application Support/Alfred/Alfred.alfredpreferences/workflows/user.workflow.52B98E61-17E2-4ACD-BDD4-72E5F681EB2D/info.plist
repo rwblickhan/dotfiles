@@ -50,7 +50,7 @@
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
-				<string>Reveal in Finder</string>
+				<string>Open in Bloom</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -241,21 +241,31 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>path</key>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
 				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>open_in_bloom.sh</string>
+				<key>type</key>
+				<integer>8</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.revealfile</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>4D13A102-37EF-421B-B501-7817F24FCE70</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string>Type "screenshot search" (or press the workflow's hotkey, set it in this workflow's configuration) to browse the screenshots in your configured folder as a grid of thumbnails.
 
-Press Return to copy the selected screenshot to the clipboard and paste it into the frontmost app. Press Cmd+Return to reveal it in Finder instead.
+Press Return to copy the selected screenshot to the clipboard and paste it into the frontmost app. Press Cmd+Return to open it in Bloom instead.
 
 The first time you use it, macOS will ask you to grant Alfred Accessibility and Automation (System Events) permissions so it can simulate the paste keystroke — grant both in System Settings &gt; Privacy &amp; Security.</string>
 	<key>uidata</key>
