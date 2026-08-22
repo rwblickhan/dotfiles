@@ -1,8 +1,0 @@
-{
-  "alfredsnippet": {
-    "snippet": "Do a basic editing pass on this newsletter. Check for major factual mistakes, run-on or incomplete sentences, confusing or contradictory sentences, and so on",
-    "uid": "A2B1C3D4-E5F6-4789-9ABC-DEF012345678",
-    "name": "Editing Prompt",
-    "keyword": ":editprompt"
-  }
-}
