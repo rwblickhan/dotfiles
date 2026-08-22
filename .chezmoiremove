@@ -2,6 +2,7 @@ Library/Scripts/ona_layout.applescript
 Library/Scripts/workspace_layout.applescript
 Library/Scripts/backup_layout.applescript
 Library/Scripts/collapse_layout.applescript
+.config/fish/functions/backup_layout.fish
 .config/fish/functions/bump_last_updated_date.fish
 .config/fish/functions/bump_rwb.fish
 .config/fish/functions/expense.fish
@@ -24,6 +25,7 @@ Library/Scripts/collapse_layout.applescript
 .local/bin/git-bump
 .local/bin/git-snag
 .local/bin/git-sync
+.local/share/backup_layout.fish
 .local/share/raycast/scripts/bump_rwb.sh
 .local/share/raycast/scripts/hxclip.sh
 .local/share/raycast/scripts/ona_layout.sh
