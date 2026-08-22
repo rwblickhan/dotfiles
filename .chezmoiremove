@@ -32,3 +32,5 @@ Library/Scripts/collapse_layout.applescript
 .local/share/raycast/scripts/run_backup.sh
 .markdownlintrc
 Library/Application Support/espanso
+Library/Application Support/Alfred/Alfred.alfredpreferences/workflows/user.workflow.52B98E61-17E2-4ACD-BDD4-72E5F681EB2D
+Library/Application Support/Alfred/Alfred.alfredpreferences/workflows/user.workflow.A65CF8E9-ABC2-4721-B232-9FBB80F2E0DD
