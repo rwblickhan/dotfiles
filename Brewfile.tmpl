@@ -14,6 +14,8 @@ tap "neurosnap/tap"
 tap "1612elphi/delphitools"
 # whatcable
 tap "darrylmorley/whatcable"
+# tinystart (private tap: SSH access required)
+tap "rwblickhan/tap-private", "git@github.com:rwblickhan/homebrew-tap-private.git"
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # ona (Gitpod CLI)
 tap "gitpod-io/tap"
@@ -166,6 +168,8 @@ cask "jellyfin"
 cask "karabiner-elements"
 # Fix mouse scrolling
 cask "mac-mouse-fix"
+# App launcher
+cask "rwblickhan/tap-private/tinystart", trusted: true
 # VS Code
 cask "visual-studio-code"
 # Install Xcode easily
