@@ -29,3 +29,4 @@ Library/Scripts/collapse_layout.applescript
 .local/share/raycast/scripts/ona_layout.sh
 .local/share/raycast/scripts/run_backup.sh
 .markdownlintrc
+Library/Application Support/espanso

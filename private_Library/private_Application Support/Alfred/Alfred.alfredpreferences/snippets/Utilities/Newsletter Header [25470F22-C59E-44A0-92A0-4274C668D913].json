@@ -1,0 +1,8 @@
+{
+  "alfredsnippet": {
+    "snippet": "---\ntitle:\nlastUpdatedDate: {date:yyyy-MM-dd}\npublicationDate: {date:yyyy-MM-dd}\nseason: 8\n---\n\n",
+    "uid": "25470F22-C59E-44A0-92A0-4274C668D913",
+    "name": "Newsletter Header",
+    "keyword": ":newsletter"
+  }
+}

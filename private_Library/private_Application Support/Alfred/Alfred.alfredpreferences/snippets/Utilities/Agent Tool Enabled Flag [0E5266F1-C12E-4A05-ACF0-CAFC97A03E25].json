@@ -1,0 +1,8 @@
+{
+  "alfredsnippet": {
+    "snippet": "reporting_agent_tool_enabled",
+    "uid": "0E5266F1-C12E-4A05-ACF0-CAFC97A03E25",
+    "name": "Agent Tool Enabled Flag",
+    "keyword": ":agentflag"
+  }
+}
