@@ -1,0 +1,183 @@
+# TinyStart Settings
+# Edit this file to customize TinyStart behavior.
+# Changes take effect after restarting TinyStart.
+
+additional_applications_directories = []
+clear_search_field = 'after20Seconds'
+custom_folders = []
+custom_links = []
+drag_to_position_enabled = true
+emoji_frecency_rows = 2
+emoji_hotkey_key_code = 49
+emoji_hotkey_modifiers = 4352
+emoji_picker_globe_key_enabled = false
+emoji_skin_tone = 'default'
+excluded_application_paths = []
+global_hotkey_key_code = 17
+global_hotkey_modifiers = 6912
+launcher_scale = 'regular'
+open_folders_in_bloom = true
+open_folders_in_forklift = false
+picker_position = 'bottom_center'
+search_engine_defaults_version = 2
+shortcuts_enabled_by_default = false
+shortcuts_hide_disabled_in_settings = false
+show_menu_bar_icon = true
+
+[[custom_search_engines]]
+name = 'Dictionary'
+shorthand = 'dict'
+show_as_fallback_search_option = false
+url_template = 'dict://%s'
+
+[[custom_search_engines]]
+name = 'DuckDuckGo'
+shorthand = 'ddg'
+show_as_fallback_search_option = false
+url_template = 'https://duckduckgo.com/?q=%s'
+
+[[custom_search_engines]]
+name = 'Giphy'
+shorthand = 'gif'
+show_as_fallback_search_option = false
+url_template = 'https://giphy.com/search/%s'
+
+[[custom_search_engines]]
+name = 'Google'
+shorthand = 'g'
+show_as_fallback_search_option = true
+url_template = 'https://www.google.com/search?q=%s'
+
+[[custom_search_engines]]
+name = 'Google Maps'
+shorthand = 'maps'
+show_as_fallback_search_option = false
+url_template = 'https://maps.google.com/?q=%s'
+
+[[custom_search_engines]]
+name = 'Wikipedia'
+shorthand = 'wiki'
+show_as_fallback_search_option = true
+url_template = 'https://en.wikipedia.org/w/index.php?search=%s'
+
+[[custom_search_engines]]
+name = 'YouTube'
+shorthand = 'yt'
+show_as_fallback_search_option = false
+url_template = 'https://www.youtube.com/results?search_query=%s'
+
+[[custom_shortcuts]]
+identifier = '02582634-46D3-4A76-B1BC-2932D74F8047'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '07FC331C-9D96-4283-A9E3-BD832A926A2B'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '1C015EB9-30F3-46FF-AF29-F0997810D426'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '20963230-EFCE-4875-AF74-0F32585BA500'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '26C022D1-9CE6-4D76-A484-A944F4893752'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '432388EE-AFD3-4D23-8D90-3D1402431692'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '51B6006E-3BD2-45B4-8BE4-308FC68E1591'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '5C3C18A9-F715-4227-B505-D6FEF372B269'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '5E4EE3B2-81D7-4B2A-AB25-DC1A84E4F490'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '708F4138-08A6-40EB-AF45-A7CD3B97FD49'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '7BCE1906-6C87-4F09-83A0-5CE09F27E73E'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '7C5F0BE1-0CE2-4AB4-AE64-4BD369F15E0F'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '7F286A2F-691F-46F1-9B0D-0EF15C696E63'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '812AB1ED-5ACB-4CC9-BE27-8143B25D02AB'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '8D171CBF-5D9C-48EF-885D-F21DA0307C3A'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '8EEF2A3E-F0C5-4A2D-A6CE-BCADA87B2388'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '8F0FD5E1-3A6B-4DA9-8F23-C924CE3B376F'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '96A60B1E-F340-41E0-9D67-4DE32DB5427C'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = '98B2CAD1-5B38-4238-9C7E-4D6AFC226069'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = 'ACB99C4D-F03D-4C7F-AA44-7F0C75B8353A'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = 'B109AFC3-AFD3-4CC3-8BB2-E9C2C3224CCF'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = 'B3AB33CF-C3DE-40B0-8DDE-FDD9E7418678'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = 'B794F85A-C796-491F-9E29-C9F3C82CD8AD'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = 'BA0872F4-7D17-4175-8CB2-29AC9112A00D'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = 'D31593E3-2E6A-4236-866A-5249D3F19B18'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = 'DF3DD2BF-0222-4FF4-A162-A25C879AE73B'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = 'EC09B398-494C-4F92-89D3-7A3753E74081'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = 'FAD25B6D-B854-4F47-810F-79B2A315892F'
+is_enabled = true
+
+[[custom_shortcuts]]
+identifier = 'FD4AF304-C855-430C-8C35-D82D7D6EC333'
+is_enabled = true
