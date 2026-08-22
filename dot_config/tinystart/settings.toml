@@ -46,7 +46,7 @@ url_template = 'https://giphy.com/search/%s'
 name = 'Google'
 shorthand = 'g'
 show_as_fallback_search_option = true
-url_template = 'https://www.google.com/search?q=%s'
+url_template = 'https://www.google.com/search?q=%s&udm=14'
 
 [[custom_search_engines]]
 name = 'Google Maps'
