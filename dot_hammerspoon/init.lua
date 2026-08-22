@@ -318,6 +318,9 @@ spoon.LeftRightHotkey:bind(rightCmd, "delete", hxClipboard)
 -- right-cmd+f (karabiner-synthesized as Hyper+f) - global search in Bloom
 -- command+shift+v - open quick menu in Pastebot
 -- ctrl+option+v - paste with last filter in Pastebot
+-- cmd+shift+2 - capture history in CleanShot X
+-- cmd+shift+4 - capture area in CleanShot X
+-- cmd+shift+5 - all-in-one in CleanShot X
 
 -- Drafts-specific hotkeys
 bindConditionalHotkey({ "ctrl", "cmd" }, "l", isDraftsFocused, function() selectMenuItem("Drafts", "Link Mode") end)
