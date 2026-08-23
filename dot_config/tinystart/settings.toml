@@ -28,6 +28,10 @@ title = '500 Albums'
 url = 'https://docs.google.com/spreadsheets/d/11sRAqmwLIMb0YGr-3SpPhFptSnohT7Qkiut6YGo2GTw/edit?usp=sharing'
 
 [[custom_links]]
+title = 'Albums (2026)'
+url = 'ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/albums-2026.md'
+
+[[custom_links]]
 title = 'Amazon Recent Orders'
 url = 'https://www.amazon.com/gp/css/order-history?ref_=nav_orders_first'
 
@@ -44,8 +48,20 @@ title = 'Book Club'
 url = 'https://docs.google.com/spreadsheets/d/1k46H5QpXPcDpLCwSmx1oZS8Kkp8rKDoRpSep7Ff1Fv4/edit?usp=sharing'
 
 [[custom_links]]
+title = 'Books (2026)'
+url = 'ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/books-2026.md'
+
+[[custom_links]]
 title = 'Breadboat'
 url = 'https://watch.breadboat.tv/web/#/home'
+
+[[custom_links]]
+title = 'Films (2026)'
+url = 'ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/films-2026.md'
+
+[[custom_links]]
+title = 'Games (2026)'
+url = 'ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/games-2026.md'
 
 [[custom_links]]
 title = 'GitHub Pull Requests'
