@@ -159,7 +159,7 @@ url_template = 'https://www.themoviedb.org/search?query=%s'
 
 [[custom_search_engines]]
 name = 'Wikipedia'
-shorthand = 'wiki'
+shorthand = 'w'
 show_as_fallback_search_option = true
 url_template = 'https://en.wikipedia.org/w/index.php?search=%s'
 
