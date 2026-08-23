@@ -223,7 +223,11 @@ local function previousDisplay()
 end
 
 local function emptyTrash()
-  hs.osascript.applescript('tell application "Finder" to empty trash')
+  hs.task.new("/bin/sh", function(exitCode, _, stdErr)
+    if exitCode ~= 0 then
+      hs.alert.show("Empty Trash failed: " .. stdErr)
+    end
+  end, { "-c", "rm -rf ~/.Trash/* ~/.Trash/.[!.]*" }):start()
 end
 
 -- Hotkeys
