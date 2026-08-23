@@ -5,7 +5,6 @@
 additional_applications_directories = []
 clear_search_field = 'after20Seconds'
 custom_folders = []
-custom_links = []
 drag_to_position_enabled = true
 emoji_frecency_rows = 2
 emoji_hotkey_key_code = 49
@@ -24,6 +23,56 @@ shortcuts_enabled_by_default = false
 shortcuts_hide_disabled_in_settings = false
 show_menu_bar_icon = true
 
+[[custom_links]]
+title = '500 Albums'
+url = 'https://docs.google.com/spreadsheets/d/11sRAqmwLIMb0YGr-3SpPhFptSnohT7Qkiut6YGo2GTw/edit?usp=sharing'
+
+[[custom_links]]
+title = 'Amazon Recent Orders'
+url = 'https://www.amazon.com/gp/css/order-history?ref_=nav_orders_first'
+
+[[custom_links]]
+title = 'astro-rwblickhan.org GitHub Actions'
+url = 'https://github.com/rwblickhan/astro-rwblickhan.org/actions'
+
+[[custom_links]]
+title = 'Bike Route Map'
+url = 'https://www.sfmta.com/maps/san-francisco-bike-network-map'
+
+[[custom_links]]
+title = 'Book Club'
+url = 'https://docs.google.com/spreadsheets/d/1k46H5QpXPcDpLCwSmx1oZS8Kkp8rKDoRpSep7Ff1Fv4/edit?usp=sharing'
+
+[[custom_links]]
+title = 'Breadboat'
+url = 'https://watch.breadboat.tv/web/#/home'
+
+[[custom_links]]
+title = 'GitHub Pull Requests'
+url = 'https://github.com/pulls/authored?q=is%3Apr+author%3A%40me+state%3Aopen+archived%3Afalse+sort%3Acreated-desc'
+
+[[custom_links]]
+title = 'GoodReads By Date Added'
+url = 'https://www.goodreads.com/review/list/26891156-russell-blickhan?order=d&ref=nav_mybooks&shelf=to-read&sort=date_added'
+
+[[custom_links]]
+title = 'Google Maps'
+url = 'https://maps.google.com'
+
+[[custom_links]]
+title = 'SFPL Printing'
+url = 'https://sfpl.eprintitsaas.com/public/upload'
+
+[[custom_links]]
+title = 'Vancouver Trip Doc'
+url = 'https://docs.google.com/document/d/1zn7G5uBKrC9Gxz7s0SheNiFffl_HYUXh3hTM9Sth4vA/edit?usp=sharing'
+
+[[custom_search_engines]]
+name = "Anna's Archive"
+shorthand = 'aa'
+show_as_fallback_search_option = false
+url_template = 'https://annas-archive.gl/search?q=%s'
+
 [[custom_search_engines]]
 name = 'Dictionary'
 shorthand = 'dict'
@@ -35,6 +84,12 @@ name = 'DuckDuckGo'
 shorthand = 'ddg'
 show_as_fallback_search_option = false
 url_template = 'https://duckduckgo.com/?q=%s'
+
+[[custom_search_engines]]
+name = 'Etymonline'
+shorthand = 'ety'
+show_as_fallback_search_option = false
+url_template = 'https://www.etymonline.com/word/%s'
 
 [[custom_search_engines]]
 name = 'Giphy'
@@ -55,6 +110,54 @@ show_as_fallback_search_option = false
 url_template = 'https://maps.google.com/?q=%s'
 
 [[custom_search_engines]]
+name = 'JustWatch'
+shorthand = 'jw'
+show_as_fallback_search_option = false
+url_template = 'https://www.justwatch.com/us/search?q=%s'
+
+[[custom_search_engines]]
+name = 'Letterboxd'
+shorthand = 'lb'
+show_as_fallback_search_option = false
+url_template = 'https://letterboxd.com/search/%s'
+
+[[custom_search_engines]]
+name = 'Marginalia'
+shorthand = 'marg'
+show_as_fallback_search_option = false
+url_template = 'https://search.marginalia.nu/search?query=%s'
+
+[[custom_search_engines]]
+name = 'MDBG'
+shorthand = 'mdbg'
+show_as_fallback_search_option = false
+url_template = 'https://www.mdbg.net/chinese/dictionary?wdqb=%s'
+
+[[custom_search_engines]]
+name = 'MDN'
+shorthand = 'mdn'
+show_as_fallback_search_option = false
+url_template = 'https://developer.mozilla.org/en-US/search?q=%s'
+
+[[custom_search_engines]]
+name = 'SFPL'
+shorthand = 'sfpl'
+show_as_fallback_search_option = false
+url_template = 'https://sfpl.org/search-page?keys=%s&type=all'
+
+[[custom_search_engines]]
+name = 'StoryGraph'
+shorthand = 'sg'
+show_as_fallback_search_option = false
+url_template = 'https://app.thestorygraph.com/browse?search_term=%s'
+
+[[custom_search_engines]]
+name = 'TMDB'
+shorthand = 'tmdb'
+show_as_fallback_search_option = false
+url_template = 'https://www.themoviedb.org/search?query=%s'
+
+[[custom_search_engines]]
 name = 'Wikipedia'
 shorthand = 'wiki'
 show_as_fallback_search_option = true
@@ -67,23 +170,7 @@ show_as_fallback_search_option = false
 url_template = 'https://www.youtube.com/results?search_query=%s'
 
 [[custom_shortcuts]]
-identifier = '02582634-46D3-4A76-B1BC-2932D74F8047'
-is_enabled = true
-
-[[custom_shortcuts]]
 identifier = '07FC331C-9D96-4283-A9E3-BD832A926A2B'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '1C015EB9-30F3-46FF-AF29-F0997810D426'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '20963230-EFCE-4875-AF74-0F32585BA500'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '26C022D1-9CE6-4D76-A484-A944F4893752'
 is_enabled = true
 
 [[custom_shortcuts]]
@@ -91,51 +178,7 @@ identifier = '432388EE-AFD3-4D23-8D90-3D1402431692'
 is_enabled = true
 
 [[custom_shortcuts]]
-identifier = '51B6006E-3BD2-45B4-8BE4-308FC68E1591'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '5C3C18A9-F715-4227-B505-D6FEF372B269'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '5E4EE3B2-81D7-4B2A-AB25-DC1A84E4F490'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '708F4138-08A6-40EB-AF45-A7CD3B97FD49'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '7BCE1906-6C87-4F09-83A0-5CE09F27E73E'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '7C5F0BE1-0CE2-4AB4-AE64-4BD369F15E0F'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '7F286A2F-691F-46F1-9B0D-0EF15C696E63'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '812AB1ED-5ACB-4CC9-BE27-8143B25D02AB'
-is_enabled = true
-
-[[custom_shortcuts]]
 identifier = '8D171CBF-5D9C-48EF-885D-F21DA0307C3A'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '8EEF2A3E-F0C5-4A2D-A6CE-BCADA87B2388'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '8F0FD5E1-3A6B-4DA9-8F23-C924CE3B376F'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '96A60B1E-F340-41E0-9D67-4DE32DB5427C'
 is_enabled = true
 
 [[custom_shortcuts]]
@@ -143,41 +186,9 @@ identifier = '98B2CAD1-5B38-4238-9C7E-4D6AFC226069'
 is_enabled = true
 
 [[custom_shortcuts]]
-identifier = 'ACB99C4D-F03D-4C7F-AA44-7F0C75B8353A'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = 'B109AFC3-AFD3-4CC3-8BB2-E9C2C3224CCF'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = 'B3AB33CF-C3DE-40B0-8DDE-FDD9E7418678'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = 'B794F85A-C796-491F-9E29-C9F3C82CD8AD'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = 'BA0872F4-7D17-4175-8CB2-29AC9112A00D'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = 'D31593E3-2E6A-4236-866A-5249D3F19B18'
-is_enabled = true
-
-[[custom_shortcuts]]
 identifier = 'DF3DD2BF-0222-4FF4-A162-A25C879AE73B'
 is_enabled = true
 
 [[custom_shortcuts]]
-identifier = 'EC09B398-494C-4F92-89D3-7A3753E74081'
-is_enabled = true
-
-[[custom_shortcuts]]
 identifier = 'FAD25B6D-B854-4F47-810F-79B2A315892F'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = 'FD4AF304-C855-430C-8C35-D82D7D6EC333'
 is_enabled = true
