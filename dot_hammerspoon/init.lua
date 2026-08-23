@@ -224,7 +224,9 @@ end
 
 local function emptyTrash()
   hs.task.new("/bin/sh", function(exitCode, _, stdErr)
-    if exitCode ~= 0 then
+    if exitCode == 0 then
+      hs.alert.show("Trash emptied")
+    else
       hs.alert.show("Empty Trash failed: " .. stdErr)
     end
   end, { "-c", "rm -rf ~/.Trash/* ~/.Trash/.[!.]*" }):start()
