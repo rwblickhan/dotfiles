@@ -222,6 +222,10 @@ local function previousDisplay()
   if win then win:moveToScreen(win:screen():previous()) end
 end
 
+local function emptyTrash()
+  hs.osascript.applescript('tell application "Finder" to empty trash')
+end
+
 -- Hotkeys
 
 -- Most hotkeys are bound to the right Command key alone, via the
@@ -265,6 +269,9 @@ local windowModeCommands = {
 for _, cmd in ipairs(windowModeCommands) do
   spoon.LeftRightHotkey:bind(rightOpt, cmd.key, cmd.fn)
 end
+
+-- right-opt+e = empty trash
+spoon.LeftRightHotkey:bind(rightOpt, "e", emptyTrash)
 
 -- App show/hide hotkeys
 -- 1 = 1password
