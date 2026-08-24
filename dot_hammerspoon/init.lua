@@ -223,13 +223,13 @@ local function previousDisplay()
 end
 
 local function emptyTrash()
-  hs.task.new("/bin/sh", function(exitCode, _, stdErr)
+  hs.task.new("/usr/bin/osascript", function(exitCode, _, stdErr)
     if exitCode == 0 then
       hs.alert.show("Trash emptied")
     else
       hs.alert.show("Empty Trash failed: " .. stdErr)
     end
-  end, { "-c", "rm -rf ~/.Trash/* ~/.Trash/.[!.]*" }):start()
+  end, { "-e", 'tell application "Finder" to empty trash' }):start()
 end
 
 -- Frecency: count decayed by a 7-day half-life, so an entry used often but
