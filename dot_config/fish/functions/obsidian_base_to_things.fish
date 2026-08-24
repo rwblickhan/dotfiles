@@ -42,7 +42,15 @@ function obsidian_base_to_things --description "Pick a base and view from the co
         return 1
     end
 
-    set -l views (obsidian vault=$vault base:views path="$base_path" 2>/dev/null)
+    # base:views operates on the active file rather than accepting file=/path=,
+    # so open the selected base first to make it active.
+    obsidian vault=$vault open path="$base_path" newtab >/dev/null 2>&1
+    if test $status -ne 0
+        echo "Error: failed to open base '$base_path'" >&2
+        return 1
+    end
+
+    set -l views (obsidian vault=$vault base:views 2>/dev/null)
     if test (count $views) -eq 0
         echo "No views found in base '$base_path'." >&2
         return 1
