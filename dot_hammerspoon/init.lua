@@ -232,6 +232,123 @@ local function emptyTrash()
   end, { "-c", "rm -rf ~/.Trash/* ~/.Trash/.[!.]*" }):start()
 end
 
+-- Frecency: count decayed by a 7-day half-life, so an entry used often but
+-- not recently still sinks below one used less often but just now.
+local frecencyHalfLifeSeconds = 7 * 24 * 3600
+
+-- Search Menu Items chooser, mimicking Raycast's "Search Menu Items" command:
+-- fuzzy-find any menu item in the frontmost app and trigger it directly.
+local function menuItemShortcut(item)
+  local char = item.AXMenuItemCmdChar
+  if not char or char == "" then return "" end
+  local glyphs = { ["\t"] = "⇥", ["\r"] = "⏎", ["\27"] = "⎋", ["\8"] = "⌫", ["\127"] = "⌦", [" "] = "Space" }
+  char = glyphs[char] or char:upper()
+  local modSet = {}
+  for _, m in ipairs(item.AXMenuItemCmdModifiers or {}) do modSet[m] = true end
+  local parts = {}
+  if modSet["ctrl"] then table.insert(parts, "⌃") end
+  if modSet["alt"] then table.insert(parts, "⌥") end
+  if modSet["shift"] then table.insert(parts, "⇧") end
+  if modSet["cmd"] then table.insert(parts, "⌘") end
+  table.insert(parts, char)
+  return table.concat(parts)
+end
+
+-- Expanding the "Services" submenu triggers a full system service registry
+-- scan and can hang for a long time, so never recurse into it.
+local function menuChildren(item)
+  if item.AXTitle == "Services" then return nil end
+  return item.AXChildren and item.AXChildren[1] or nil
+end
+
+local function flattenMenuItems(items, path, out)
+  for _, item in ipairs(items or {}) do
+    local title = item.AXTitle
+    if title and title ~= "" then
+      local children = menuChildren(item)
+      if children and #children > 0 then
+        local newPath = {}
+        for _, p in ipairs(path) do table.insert(newPath, p) end
+        table.insert(newPath, title)
+        flattenMenuItems(children, newPath, out)
+      elseif item.AXEnabled then
+        local fullPath = {}
+        for _, p in ipairs(path) do table.insert(fullPath, p) end
+        table.insert(fullPath, title)
+        table.insert(out, { title = title, path = path, fullPath = fullPath, shortcut = menuItemShortcut(item) })
+      end
+    end
+  end
+end
+
+-- Usage is keyed per-app, since the same item title (e.g. "Close") recurs
+-- across many apps' menus and shouldn't share frecency.
+local function menuItemUsageKey(app, m)
+  return (app:bundleID() or app:name()) .. "\31" .. table.concat(m.fullPath, "\31")
+end
+
+local function recordMenuItemUse(key)
+  local usage = hs.settings.get("menuItemChooserUsage") or {}
+  local entry = usage[key] or { count = 0, lastUsed = 0 }
+  entry.count = entry.count + 1
+  entry.lastUsed = os.time()
+  usage[key] = entry
+  hs.settings.set("menuItemChooserUsage", usage)
+end
+
+local function buildMenuItemChoices(app)
+  local flat = {}
+  flattenMenuItems(app:getMenuItems(), {}, flat)
+  local icon = app:bundleID() and hs.image.imageFromAppBundle(app:bundleID()) or nil
+  local usage = hs.settings.get("menuItemChooserUsage") or {}
+  local now = os.time()
+  local choices = {}
+  for i, m in ipairs(flat) do
+    local subText = table.concat(m.path, " → ")
+    if m.shortcut ~= "" then
+      subText = subText ~= "" and (subText .. "   " .. m.shortcut) or m.shortcut
+    end
+    local entry = usage[menuItemUsageKey(app, m)]
+    local score = 0
+    if entry then
+      score = entry.count * math.exp(-(now - entry.lastUsed) / frecencyHalfLifeSeconds)
+    end
+    choices[i] = { text = m.title, subText = subText, image = icon, id = i, score = score }
+  end
+  table.sort(choices, function(a, b)
+    if a.score == b.score then return a.id < b.id end
+    return a.score > b.score
+  end)
+  return choices, flat
+end
+
+local menuItemFlat = {}
+local menuItemApp = nil
+
+local menuItemChooser = hs.chooser.new(function(choice)
+  if not choice or not menuItemApp then return end
+  local m = menuItemFlat[choice.id]
+  if m then
+    recordMenuItemUse(menuItemUsageKey(menuItemApp, m))
+    menuItemApp:selectMenuItem(m.fullPath)
+  end
+end)
+
+local function showMenuItemChooser()
+  local app = hs.application.frontmostApplication()
+  if not app then return end
+  local choices, flat = buildMenuItemChoices(app)
+  if #choices == 0 then
+    hs.alert.show("No menu items found")
+    return
+  end
+  menuItemApp = app
+  menuItemFlat = flat
+  menuItemChooser:choices(choices)
+  menuItemChooser:query("")
+  menuItemChooser:show()
+end
+
 -- Hotkeys
 
 -- Most hotkeys are bound to the right Command key alone, via the
@@ -320,6 +437,9 @@ end)
 spoon.LeftRightHotkey:bind(rightCmd, "z", function() showOrHide("zoom.us") end)
 -- / = files
 spoon.LeftRightHotkey:bind(rightCmd, "/", function() showOrHide("Bloom") end)
+
+-- cmd+shift+/ = search menu items (mimics Raycast's "Search Menu Items")
+hs.hotkey.bind({ "cmd", "shift" }, "/", showMenuItemChooser)
 
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)
