@@ -184,27 +184,3 @@ name = 'YouTube'
 shorthand = 'yt'
 show_as_fallback_search_option = false
 url_template = 'https://www.youtube.com/results?search_query=%s'
-
-[[custom_shortcuts]]
-identifier = '07FC331C-9D96-4283-A9E3-BD832A926A2B'
-is_enabled = false
-
-[[custom_shortcuts]]
-identifier = '432388EE-AFD3-4D23-8D90-3D1402431692'
-is_enabled = false
-
-[[custom_shortcuts]]
-identifier = '8D171CBF-5D9C-48EF-885D-F21DA0307C3A'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = '98B2CAD1-5B38-4238-9C7E-4D6AFC226069'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = 'DF3DD2BF-0222-4FF4-A162-A25C879AE73B'
-is_enabled = true
-
-[[custom_shortcuts]]
-identifier = 'FAD25B6D-B854-4F47-810F-79B2A315892F'
-is_enabled = true
