@@ -400,12 +400,9 @@ spoon.LeftRightHotkey:bind(rightOpt, "e", emptyTrash)
 spoon.LeftRightHotkey:bind(rightOpt, "r", hs.reload)
 
 -- App show/hide hotkeys
--- 1 = 1password
-spoon.LeftRightHotkey:bind(rightCmd, "1", function() showOrHide("1Password") end)
--- # = Music
-spoon.LeftRightHotkey:bind(rightCmd, "3", function() showOrHide("Music") end)
--- * = Things
-spoon.LeftRightHotkey:bind(rightCmd, "8", function() showOrHide("com.culturedcode.ThingsMac") end)
+
+-- Reserved for Karabiner: rightCmd + hjkl
+
 -- a = AI
 spoon.LeftRightHotkey:bind(rightCmd, "a", function() showOrHide("Claude") end)
 -- b = browser
@@ -416,22 +413,28 @@ spoon.LeftRightHotkey:bind(rightCmd, "c", function() showOrHide("Fantastical") e
 spoon.LeftRightHotkey:bind(rightCmd, "d", function() showOrHide("Drafts") end)
 -- e = email
 spoon.LeftRightHotkey:bind(rightCmd, "e", function() showOrHide("Mimestream") end)
+-- g = ghostty
+spoon.LeftRightHotkey:bind(rightCmd, "g", function() showOrHide("Ghostty") end)
 -- m = messenger
 spoon.LeftRightHotkey:bind(rightCmd, "m", focusFacebookMessages)
 -- n = notes
 spoon.LeftRightHotkey:bind(rightCmd, "n", function() showOrHide("md.obsidian") end)
+-- p = password manager
+spoon.LeftRightHotkey:bind(rightCmd, "p", function() showOrHide("1Password") end)
 -- s = slack
 spoon.LeftRightHotkey:bind(rightCmd, "s", function() showOrHide("Slack") end)
--- t = terminal
-spoon.LeftRightHotkey:bind(rightCmd, "t", function() showOrHide("Ghostty") end)
+-- t = todo list
+spoon.LeftRightHotkey:bind(rightCmd, "t", function() showOrHide("com.culturedcode.ThingsMac") end)
 -- v = vs code
 spoon.LeftRightHotkey:bind(rightCmd, "v", function() showOrHide("Visual Studio Code") end)
+-- w = walkman (music)
+spoon.LeftRightHotkey:bind(rightCmd, "w", function() showOrHide("Music") end)
 -- z = zoom
 spoon.LeftRightHotkey:bind(rightCmd, "z", function() showOrHide("zoom.us") end)
 -- / = files
 spoon.LeftRightHotkey:bind(rightCmd, "/", function() showOrHide("Bloom") end)
 
--- cmd+shift+/ = search menu items (mimics Raycast's "Search Menu Items")
+-- cmd+shift+/ = search menu items
 hs.hotkey.bind({ "cmd", "shift" }, "/", showMenuItemChooser)
 
 -- ins = edit clipboard in Helix
