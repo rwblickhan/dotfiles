@@ -416,10 +416,6 @@ spoon.LeftRightHotkey:bind(rightCmd, "c", function() showOrHide("Fantastical") e
 spoon.LeftRightHotkey:bind(rightCmd, "d", function() showOrHide("Drafts") end)
 -- e = email
 spoon.LeftRightHotkey:bind(rightCmd, "e", function() showOrHide("Mimestream") end)
--- g = Google Search shortcut
-spoon.LeftRightHotkey:bind(rightCmd, "g", function()
-  hs.task.new("/usr/bin/shortcuts", nil, { "run", "Google Search" }):start()
-end)
 -- m = messenger
 spoon.LeftRightHotkey:bind(rightCmd, "m", focusFacebookMessages)
 -- n = notes
@@ -430,10 +426,6 @@ spoon.LeftRightHotkey:bind(rightCmd, "s", function() showOrHide("Slack") end)
 spoon.LeftRightHotkey:bind(rightCmd, "t", function() showOrHide("Ghostty") end)
 -- v = vs code
 spoon.LeftRightHotkey:bind(rightCmd, "v", function() showOrHide("Visual Studio Code") end)
--- w = Wikipedia Search shortcut
-spoon.LeftRightHotkey:bind(rightCmd, "w", function()
-  hs.task.new("/usr/bin/shortcuts", nil, { "run", "Wikipedia Search" }):start()
-end)
 -- z = zoom
 spoon.LeftRightHotkey:bind(rightCmd, "z", function() showOrHide("zoom.us") end)
 -- / = files
