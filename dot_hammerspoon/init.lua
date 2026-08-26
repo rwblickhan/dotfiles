@@ -396,6 +396,9 @@ end
 -- right-opt+e = empty trash
 spoon.LeftRightHotkey:bind(rightOpt, "e", emptyTrash)
 
+-- right-opt+r = reload hammerspoon
+spoon.LeftRightHotkey:bind(rightOpt, "r", hs.reload)
+
 -- App show/hide hotkeys
 -- 1 = 1password
 spoon.LeftRightHotkey:bind(rightCmd, "1", function() showOrHide("1Password") end)
@@ -421,8 +424,6 @@ end)
 spoon.LeftRightHotkey:bind(rightCmd, "m", focusFacebookMessages)
 -- n = notes
 spoon.LeftRightHotkey:bind(rightCmd, "n", function() showOrHide("md.obsidian") end)
--- r = reload hammerspoon
-spoon.LeftRightHotkey:bind(rightCmd, "r", hs.reload)
 -- s = slack
 spoon.LeftRightHotkey:bind(rightCmd, "s", function() showOrHide("Slack") end)
 -- t = terminal
