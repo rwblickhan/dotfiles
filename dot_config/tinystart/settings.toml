@@ -163,7 +163,7 @@ url_template = 'https://sfpl.org/search-page?keys=%s&type=all'
 
 [[custom_search_engines]]
 name = 'StoryGraph'
-shorthand = 'sg'
+shorthand = 'st'
 show_as_fallback_search_option = false
 url_template = 'https://app.thestorygraph.com/browse?search_term=%s'
 
