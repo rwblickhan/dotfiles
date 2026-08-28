@@ -1,0 +1,259 @@
+[[links]]
+title = "500 Albums"
+url_template = "https://docs.google.com/spreadsheets/d/11sRAqmwLIMb0YGr-3SpPhFptSnohT7Qkiut6YGo2GTw/edit?usp=sharing"
+
+[[links]]
+title = "Albums (2026)"
+url_template = "ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/albums-2026.md"
+
+[[links]]
+title = "Amazon Recent Orders"
+url_template = "https://www.amazon.com/gp/css/order-history?ref_=nav_orders_first"
+
+[[links]]
+title = "astro-rwblickhan.org GitHub Actions"
+url_template = "https://github.com/rwblickhan/astro-rwblickhan.org/actions"
+
+[[links]]
+title = "Bike Route Map"
+url_template = "https://www.sfmta.com/maps/san-francisco-bike-network-map"
+
+[[links]]
+title = "Book Club"
+url_template = "https://docs.google.com/spreadsheets/d/1k46H5QpXPcDpLCwSmx1oZS8Kkp8rKDoRpSep7Ff1Fv4/edit?usp=sharing"
+
+[[links]]
+title = "Books (2026)"
+url_template = "ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/books-2026.md"
+
+[[links]]
+title = "Breadboat"
+url_template = "https://watch.breadboat.tv/web/#/home"
+
+[[links]]
+title = "Films (2026)"
+url_template = "ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/films-2026.md"
+
+[[links]]
+title = "Games (2026)"
+url_template = "ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/games-2026.md"
+
+[[links]]
+title = "GitHub Pull Requests"
+url_template = "https://github.com/pulls/authored?q=is%3Apr+author%3A%40me+state%3Aopen+archived%3Afalse+sort%3Acreated-desc"
+
+[[links]]
+title = "GoodReads By Date Added"
+url_template = "https://www.goodreads.com/review/list/26891156-russell-blickhan?order=d&ref=nav_mybooks&shelf=to-read&sort=date_added"
+
+[[links]]
+title = "Google Maps"
+url_template = "https://maps.google.com"
+
+[[links]]
+title = "SFPL Printing"
+url_template = "https://sfpl.eprintitsaas.com/public/upload"
+
+[[links]]
+title = "Vancouver Trip Doc"
+url_template = "https://docs.google.com/document/d/1zn7G5uBKrC9Gxz7s0SheNiFffl_HYUXh3hTM9Sth4vA/edit?usp=sharing"
+
+[[search_engines]]
+title = "Anna's Archive"
+trigger = "anna"
+url_template = "https://annas-archive.gl/search?q=%s"
+
+[[search_engines]]
+title = "Dictionary"
+trigger = "dict"
+url_template = "dict://%s"
+
+[[search_engines]]
+title = "DuckDuckGo"
+trigger = "ddg"
+url_template = "https://duckduckgo.com/?q=%s"
+
+[[search_engines]]
+title = "Etymonline"
+trigger = "ety"
+url_template = "https://www.etymonline.com/word/%s"
+
+[[search_engines]]
+title = "Giphy"
+trigger = "gif"
+url_template = "https://giphy.com/search/%s"
+
+[[search_engines]]
+title = "Google"
+trigger = "g"
+url_template = "https://www.google.com/search?q=%s&udm=14"
+
+[[search_engines]]
+title = "Google Maps"
+trigger = "maps"
+url_template = "https://maps.google.com/?q=%s"
+
+[[search_engines]]
+title = "JustWatch"
+trigger = "jw"
+url_template = "https://www.justwatch.com/us/search?q=%s"
+
+[[search_engines]]
+title = "Letterboxd"
+trigger = "lb"
+url_template = "https://letterboxd.com/search/%s"
+
+[[search_engines]]
+title = "Marginalia"
+trigger = "marg"
+url_template = "https://search.marginalia.nu/search?query=%s"
+
+[[search_engines]]
+title = "MDBG"
+trigger = "mdbg"
+url_template = "https://www.mdbg.net/chinese/dictionary?wdqb=%s"
+
+[[search_engines]]
+title = "MDN"
+trigger = "mdn"
+url_template = "https://developer.mozilla.org/en-US/search?q=%s"
+
+[[search_engines]]
+title = "SFPL"
+trigger = "sfpl"
+url_template = "https://sfpl.org/search-page?keys=%s&type=all"
+
+[[search_engines]]
+title = "StoryGraph"
+trigger = "st"
+url_template = "https://app.thestorygraph.com/browse?search_term=%s"
+
+[[search_engines]]
+title = "TMDB"
+trigger = "tmdb"
+url_template = "https://www.themoviedb.org/search?query=%s"
+
+[[search_engines]]
+title = "Wikipedia"
+trigger = "w"
+url_template = "https://en.wikipedia.org/w/index.php?search=%s"
+
+[[search_engines]]
+title = "YouTube"
+trigger = "yt"
+url_template = "https://www.youtube.com/results?search_query=%s"
+
+[[snippets]]
+title = "Agent Query Reporting Domain"
+text = "agent-query-reporting.test"
+trigger = ":aqr"
+
+[[snippets]]
+title = "Agent Tool Enabled Flag"
+text = "reporting_agent_tool_enabled"
+trigger = ":agentflag"
+
+[[snippets]]
+title = "Amazon Prime Rewards CC (hledger)"
+text = "liabilities:credit:amazonprimerewards"
+trigger = ":apr"
+
+[[snippets]]
+title = "Apple CC (hledger)"
+text = "liabilities:credit:apple"
+trigger = ":applecc"
+
+[[snippets]]
+title = "Apple Savings (hledger)"
+text = "assets:banking:apple"
+trigger = ":applesav"
+
+[[snippets]]
+title = "Blue 4"
+text = "#006DCA"
+trigger = ":blue4"
+
+[[snippets]]
+title = "Chase Banking (hledger)"
+text = "assets:banking:chase"
+trigger = ":chase"
+
+[[snippets]]
+title = "Chase Sapphire Reserve (hledger)"
+text = "liabilities:credit:chasesapphirereserve"
+trigger = ":csr"
+
+[[snippets]]
+title = "Checked Checkbox"
+text = "- [x]"
+trigger = ":cb"
+
+[[snippets]]
+title = "Crosspoint Local URL"
+text = "http://crosspoint.local/"
+trigger = ":crosspoint"
+
+[[snippets]]
+title = "Date"
+text = "{{date format=\"yyyy-MM-dd\"}}"
+trigger = ":date"
+
+[[snippets]]
+title = "Editing Prompt"
+text = "Do a basic editing pass on this newsletter. Check for major factual mistakes, run-on or incomplete sentences, confusing or contradictory sentences, and so on"
+trigger = ":editprompt"
+
+[[snippets]]
+title = "Feature Flag Override User ID"
+text = "rwblickhan-5d3b4e298e932a2a4bb2ec3b"
+trigger = ":ffuser"
+
+[[snippets]]
+title = "Fingers"
+text = "👉👈"
+trigger = ":fingers"
+
+[[snippets]]
+title = "GitHub Profile"
+text = "https://github.com/rwblickhan"
+trigger = ":github"
+
+[[snippets]]
+title = "LinkedIn Profile"
+text = "https://www.linkedin.com/in/rwblickhan/"
+trigger = ":linkedin"
+
+[[snippets]]
+title = "Log Expenses"
+text = "Log expenses"
+trigger = ":le"
+
+[[snippets]]
+title = "Newsletter Header"
+text = "---\ntitle:\nlastUpdatedDate: {{date format=\"yyyy-MM-dd\"}}\npublicationDate: {{date format=\"yyyy-MM-dd\"}}\nseason: 8\n---\n\n"
+trigger = ":newsletter"
+
+[[snippets]]
+title = "Personal Email"
+text = "rwblickhan@gmail.com"
+trigger = "rwbg"
+
+[[snippets]]
+title = "Reporting Risk Migration Flag Name"
+text = "reporting_risk_snowflake_migration"
+trigger = ":riskflag"
+
+[[snippets]]
+title = "Unique Date"
+text = "{{date format=\"yyyyMMddHHmm\"}}"
+trigger = ":udate"
+
+[[snippets]]
+title = "Venmo (hledger)"
+text = "assets:cash:venmo"
+trigger = ":venmo"
+
+[[snippets]]
+title = "Work Email"
+text = "russell.blickhan@vanta.com"
+trigger = "rbv"
