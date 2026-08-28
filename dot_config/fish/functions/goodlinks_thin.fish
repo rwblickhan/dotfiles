@@ -40,6 +40,9 @@ function __goodlinks_thin_process --description "Fetch, review in two passes, an
     set -l read_filter $argv[3]
     set -l sample_size $argv[4]
     set -l label $argv[5]
+    set -l allowlist_domains $argv[6..-1]
+
+    set -l allowlist_json (jq -n --args '$ARGS.positional | map(ascii_downcase)' -- $allowlist_domains)
 
     set -l limit 1000
     set -l offset 0
@@ -63,7 +66,20 @@ function __goodlinks_thin_process --description "Fetch, review in two passes, an
             return 1
         end
 
-        jq -c '.data[] | select((.highlighted // false | not) and (.starred // false | not))' $tmpfile >> $allfile
+        jq -c --argjson allowlist "$allowlist_json" '
+            def norm: (. // "") | ascii_downcase | sub("^https?://"; "") | sub("[?#].*$"; "");
+            .data[]
+            | select((.highlighted // false | not) and (.starred // false | not))
+            | (.url | norm) as $full
+            | ($full | sub("/.*$"; "")) as $host
+            | select(
+                ($allowlist | any(. as $e |
+                    if ($e | test("/")) then ($full == $e or ($full | startswith($e + "/")))
+                    else $host == $e
+                    end
+                )) | not
+              )
+        ' $tmpfile >> $allfile
 
         set -l has_more (jq -r '.hasMore // false' $tmpfile)
         if test "$has_more" != true
@@ -328,6 +344,9 @@ function goodlinks_thin --description "Interactively thin out old read GoodLinks
 
     set -l base "http://localhost:9428/api/v1"
 
-    __goodlinks_thin_process $token $base true 50 read
+    # Domains that should never be offered for deletion, even if sampled.
+    set -l allowlist_domains dynomight.substack.com blog.ayjay.org v5.chriskrycho.com www.robinsloan.com www.futilitycloset.com buttondown.com/hillelwayne twitter.com/BretDevereaux
+
+    __goodlinks_thin_process $token $base true 50 read $allowlist_domains
     or return 1
 end
