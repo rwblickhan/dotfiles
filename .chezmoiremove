@@ -35,3 +35,4 @@ Library/Application Support/Alfred/Alfred.alfredpreferences/workflows/user.workf
 Library/Application Support/Alfred/Alfred.alfredpreferences/workflows/user.workflow.A65CF8E9-ABC2-4721-B232-9FBB80F2E0DD
 Library/Application Support/Alfred/Alfred.alfredpreferences/snippets
 Library/Application Support/Alfred/Alfred.alfredpreferences/preferences/features/snippets
+.config/fish/functions/fish_in_macos_terminal_or_ssh.fish
