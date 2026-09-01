@@ -345,7 +345,7 @@ function goodlinks_thin --description "Interactively thin out old read GoodLinks
     set -l base "http://localhost:9428/api/v1"
 
     # Domains that should never be offered for deletion, even if sampled.
-    set -l allowlist_domains dynomight.substack.com blog.ayjay.org v5.chriskrycho.com www.robinsloan.com www.futilitycloset.com buttondown.com/hillelwayne twitter.com/BretDevereaux
+    set -l allowlist_domains dynomight.substack.com blog.ayjay.org v5.chriskrycho.com www.robinsloan.com www.futilitycloset.com buttondown.com/hillelwayne twitter.com/BretDevereaux acoup.blog
 
     __goodlinks_thin_process $token $base true 50 read $allowlist_domains
     or return 1
