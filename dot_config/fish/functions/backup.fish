@@ -8,9 +8,6 @@ function backup
     echo (set_color blue)(date "+%H:%M:%S") "==> sync_mochi"(set_color normal)
     sync_mochi
 
-    echo (set_color blue)(date "+%H:%M:%S") "==> rm -rf markdown-export*"(set_color normal)
-    rm -rf ~/Downloads/markdown-export*
-
     echo (set_color blue)(date "+%H:%M:%S") "==> sync_bookmarks import"(set_color normal)
     sync_bookmarks --links ~/links.json --cache ~/cache.db import
 
