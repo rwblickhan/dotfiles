@@ -17,5 +17,17 @@ find "$src" \( -name .git -o -name .jj \) -prune -o -type d -name node_modules -
     while IFS= read -r -d '' tree; do
         rel=${tree#"$src"/}
         mkdir -p "$(dirname "$rel")"
-        ln -sfn "$tree" "$rel"
+        if [ "$rel" = node_modules ]; then
+            # pnpm keeps its task run state in the workspace root's node_modules and
+            # aborts with ERR_PNPM_UNSAFE_TASK_RUN_STATE_PATH when that path is a
+            # symlink, so share this one tree entry by entry. The directory itself is
+            # real, so pnpm's writes land here rather than in the source workspace.
+            mkdir -p "$rel"
+            for entry in "$tree"/* "$tree"/.[!.]*; do
+                [ -e "$entry" ] || continue
+                ln -sfn "$entry" "$rel/${entry##*/}"
+            done
+        else
+            ln -sfn "$tree" "$rel"
+        fi
     done
