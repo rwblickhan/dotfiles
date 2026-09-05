@@ -5,8 +5,12 @@ function backup
     echo (set_color blue)(date "+%H:%M:%S") "==> sync_highlights"(set_color normal)
     sync_highlights -t ~/Documents/Obsidian\ Vaults/notes/
 
-    echo (set_color blue)(date "+%H:%M:%S") "==> sync_mochi"(set_color normal)
-    sync_mochi
+    if test -d ~/Downloads/markdown-export
+        echo (set_color blue)(date "+%H:%M:%S") "==> sync_mochi"(set_color normal)
+        sync_mochi
+    else
+        echo (set_color yellow)(date "+%H:%M:%S") "==> sync_mochi skipped (no ~/Downloads/markdown-export)"(set_color normal)
+    end
 
     echo (set_color blue)(date "+%H:%M:%S") "==> sync_bookmarks import"(set_color normal)
     sync_bookmarks --links ~/links.json --cache ~/cache.db import
