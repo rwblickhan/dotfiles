@@ -15,7 +15,7 @@ function backup
     sync_bookmarks --links ~/links.json --cache ~/cache.db raindrop
 
     echo (set_color blue)(date "+%H:%M:%S") "==> backup"(set_color normal)
-    restic -r s3:(r2b_endpoint) backup --verbose ~/Calibre\ Library/ ~/Desktop/ ~/Developer/ ~/Documents/ ~/Downloads/ ~/Movies/Personal/ ~/Music/Personal/ ~/Pictures/Personal/ ~/Documents/Obsidian\ Vaults
+    restic -r s3:(r2b_endpoint) backup --verbose ~/Calibre\ Library/ ~/Desktop/ ~/Developer/ ~/Documents/ ~/Downloads/ ~/Movies/Personal/ ~/Music/Personal/ ~/Pictures/Personal/ ~/Documents/Obsidian\ Vaults ~/Library/Group\ Containers/X5AZV975AG.com.soulmen.shared/Ulysses/
 
     echo (set_color green)(date "+%H:%M:%S") "==> done"(set_color normal)
 
