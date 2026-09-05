@@ -36,3 +36,4 @@ Library/Application Support/Alfred/Alfred.alfredpreferences/workflows/user.workf
 Library/Application Support/Alfred/Alfred.alfredpreferences/snippets
 Library/Application Support/Alfred/Alfred.alfredpreferences/preferences/features/snippets
 .config/fish/functions/fish_in_macos_terminal_or_ssh.fish
+.config/fish/completions/sync_highlights.fish
