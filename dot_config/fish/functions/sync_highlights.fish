@@ -1,3 +1,24 @@
+# Export format:
+# 
+# ---
+# tags: []
+# source_url: {{url}}
+# ---
+# {{#highlights}}
+# {{content_md | blockquote}}
+# {{#note}}
+# 
+# {{note}}
+# {{/note}}
+# {{^is_last}}
+# 
+# ---
+# 
+# {{/is_last}}
+# {{/highlights}}
+# ## References
+# - [{{title}}]({{url}})
+
 function __sync_highlights_source_url --description "Extract the source_url front matter value from a markdown file, if present"
     set -l path $argv[1]
     awk '
@@ -8,7 +29,7 @@ function __sync_highlights_source_url --description "Extract the source_url fron
 end
 
 function sync_highlights --description "Sync highlighted GoodLinks articles into an Obsidian vault"
-    argparse 'h/help' 't/target=' 'd/dry-run' 'v/verbose' -- $argv
+    argparse h/help 't/target=' d/dry-run v/verbose -- $argv
     or return 1
 
     if set -q _flag_help
@@ -51,7 +72,7 @@ function sync_highlights --description "Sync highlighted GoodLinks articles into
     while true
         xh --ignore-stdin --json GET "$base_url/api/v1/lists/highlighted" \
             "Authorization:Bearer $token" \
-            "limit==$limit" "offset==$offset" includeRead==true > $tmpfile 2>/dev/null
+            "limit==$limit" "offset==$offset" includeRead==true >$tmpfile 2>/dev/null
         if test $status -ne 0
             echo "Error: failed to fetch highlighted links from GoodLinks" >&2
             rm -f $tmpfile
@@ -92,7 +113,7 @@ function sync_highlights --description "Sync highlighted GoodLinks articles into
         set -l xh_status $status
 
         if test $xh_status -ne 0
-            if grep -q '404' $err_file
+            if grep -q 404 $err_file
                 rm -f $export_file $err_file
                 continue
             else
