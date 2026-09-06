@@ -1,3 +1,6 @@
+# Index Settings
+# Exported 2026-09-06T03:44:51Z
+
 [[links]]
 title = "500 Albums"
 url_template = "https://docs.google.com/spreadsheets/d/11sRAqmwLIMb0YGr-3SpPhFptSnohT7Qkiut6YGo2GTw/edit?usp=sharing"
@@ -138,34 +141,9 @@ text = "reporting_agent_tool_enabled"
 trigger = ":agentflag"
 
 [[snippets]]
-title = "Amazon Prime Rewards CC (hledger)"
-text = "liabilities:credit:amazonprimerewards"
-trigger = ":apr"
-
-[[snippets]]
-title = "Apple CC (hledger)"
-text = "liabilities:credit:apple"
-trigger = ":applecc"
-
-[[snippets]]
-title = "Apple Savings (hledger)"
-text = "assets:banking:apple"
-trigger = ":applesav"
-
-[[snippets]]
 title = "Blue 4"
 text = "#006DCA"
 trigger = ":blue4"
-
-[[snippets]]
-title = "Chase Banking (hledger)"
-text = "assets:banking:chase"
-trigger = ":chase"
-
-[[snippets]]
-title = "Chase Sapphire Reserve (hledger)"
-text = "liabilities:credit:chasesapphirereserve"
-trigger = ":csr"
 
 [[snippets]]
 title = "Checked Checkbox"
@@ -223,19 +201,9 @@ text = "rwblickhan@gmail.com"
 trigger = "rwbg"
 
 [[snippets]]
-title = "Reporting Risk Migration Flag Name"
-text = "reporting_risk_snowflake_migration"
-trigger = ":riskflag"
-
-[[snippets]]
 title = "Unique Date"
 text = "{{date format=\"yyyyMMddHHmm\"}}"
 trigger = ":udate"
-
-[[snippets]]
-title = "Venmo (hledger)"
-text = "assets:cash:venmo"
-trigger = ":venmo"
 
 [[snippets]]
 title = "Work Email"
