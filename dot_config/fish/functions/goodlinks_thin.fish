@@ -173,36 +173,29 @@ for line in lines[:$sample_size]:
         end
     end
 
-    set -l review_ids $marked_ids $opened_ids
-    set -l review_titles $marked_titles $opened_titles
-    set -l review_urls $marked_urls $opened_urls
-    set -l review_authors $marked_authors $opened_authors
-    set -l review_tags $marked_tags $opened_tags
-    set -l review_count (count $review_ids)
+    set -l review_count (count $opened_ids)
 
-    if test $review_count -eq 0
+    if test $review_count -eq 0; and test (count $marked_ids) -eq 0
         echo ""
         echo "No $label articles marked for deletion or opened for review."
         return 0
     end
 
-    # Pass 2: revisit everything opened and/or marked for deletion in pass 1.
-    set -l final_ids
-    set -l final_titles
-    set -l final_urls
-    set -l final_authors
+    # Pass 2: revisit only the articles opened (decision deferred) in pass 1.
+    # Articles already marked for deletion skip straight to the final step.
+    set -l final_ids $marked_ids
+    set -l final_titles $marked_titles
+    set -l final_urls $marked_urls
+    set -l final_authors $marked_authors
     set -l quit_early false
 
     for i in (seq 1 $review_count)
-        set -l id $review_ids[$i]
-        set -l title $review_titles[$i]
-        set -l url $review_urls[$i]
-        set -l author $review_authors[$i]
-        set -l tags $review_tags[$i]
-        set -l tag "(marked for deletion)"
-        if contains -- $id $opened_ids
-            set tag "(opened)"
-        end
+        set -l id $opened_ids[$i]
+        set -l title $opened_titles[$i]
+        set -l url $opened_urls[$i]
+        set -l author $opened_authors[$i]
+        set -l tags $opened_tags[$i]
+        set -l tag "(opened)"
 
         __goodlinks_thin_print_item $i $review_count $title $url $author $tags "" "" "" $tag
 
@@ -324,9 +317,9 @@ function goodlinks_thin --description "Interactively thin out old read GoodLinks
         echo "Fetches all read GoodLinks articles, picks 50 at random, and does"
         echo "two review passes. Pass 1: for each article, mark for deletion (y),"
         echo "keep (n), open in browser and defer the decision (o), or quit (q)."
-        echo "Pass 2: revisit every article that was opened and/or marked for"
-        echo "deletion in pass 1, and mark (y) or unmark (n) it for deletion."
-        echo "Then opens \$EDITOR with a review file listing every article still"
+        echo "Pass 2: revisit only the articles that were opened (not those"
+        echo "already marked for deletion) and mark (y) or skip (n) them."
+        echo "Then opens \$EDITOR with a review file listing every article"
         echo "marked for deletion — comment out a \"delete <id>\" line there to"
         echo "undelete that article — and deletes whatever remains once you save"
         echo "and close. Favorited and highlighted links are never included."
