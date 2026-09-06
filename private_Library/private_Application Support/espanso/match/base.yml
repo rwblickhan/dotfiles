@@ -95,10 +95,6 @@ matches:
     label: "Feature Flag Override User ID"
     replace: "rwblickhan-5d3b4e298e932a2a4bb2ec3b"
 
-  - trigger: ":riskflag"
-    label: "Reporting Risk Migration Flag Name"
-    replace: "reporting_risk_snowflake_migration"
-
   - trigger: ":agentflag"
     label: "Agent Tool Enabled Flag"
     replace: "reporting_agent_tool_enabled"
