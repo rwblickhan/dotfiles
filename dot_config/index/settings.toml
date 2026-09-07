@@ -121,6 +121,11 @@ trigger = "tmdb"
 url_template = "https://www.themoviedb.org/search?query=%s"
 
 [[search_engines]]
+title = "Wayback Machine"
+trigger = "wb"
+url_template = "https://web.archive.org/web/2/%s"
+
+[[search_engines]]
 title = "Wikipedia"
 trigger = "w"
 url_template = "https://en.wikipedia.org/w/index.php?search=%s"
