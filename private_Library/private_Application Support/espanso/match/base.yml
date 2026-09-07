@@ -85,10 +85,6 @@ matches:
     label: "Venmo (hledger)"
     replace: "assets:cash:venmo"
 
-  - trigger: ":le"
-    label: "Log Expenses"
-    replace: "Log expenses"
-
   # --- Work
 
   - trigger: ":ffuser"
