@@ -40,9 +40,14 @@ function __goodlinks_thin_process --description "Fetch, review in two passes, an
     set -l read_filter $argv[3]
     set -l sample_size $argv[4]
     set -l label $argv[5]
-    set -l allowlist_domains $argv[6..-1]
+    set -l num_domains $argv[6]
+    set -l domains_end (math 6 + $num_domains)
+    set -l authors_start (math $domains_end + 1)
+    set -l allowlist_domains $argv[7..$domains_end]
+    set -l allowlist_authors $argv[$authors_start..-1]
 
     set -l allowlist_json (jq -n --args '$ARGS.positional | map(ascii_downcase)' -- $allowlist_domains)
+    set -l author_allowlist_json (jq -n --args '$ARGS.positional | map(ascii_downcase)' -- $allowlist_authors)
 
     set -l limit 1000
     set -l offset 0
@@ -66,18 +71,23 @@ function __goodlinks_thin_process --description "Fetch, review in two passes, an
             return 1
         end
 
-        jq -c --argjson allowlist "$allowlist_json" '
+        jq -c --argjson allowlist "$allowlist_json" --argjson author_allowlist "$author_allowlist_json" '
             def norm: (. // "") | ascii_downcase | sub("^https?://"; "") | sub("[?#].*$"; "");
             .data[]
             | select((.highlighted // false | not) and (.starred // false | not))
             | (.url | norm) as $full
             | ($full | sub("/.*$"; "")) as $host
+            | ((.author // "") | ascii_downcase) as $author
             | select(
-                ($allowlist | any(. as $e |
-                    if ($e | test("/")) then ($full == $e or ($full | startswith($e + "/")))
-                    else $host == $e
-                    end
-                )) | not
+                (
+                  ($allowlist | any(. as $e |
+                      if ($e | test("/")) then ($full == $e or ($full | startswith($e + "/")))
+                      else $host == $e
+                      end
+                  ))
+                  or
+                  ($author_allowlist | any(. == $author))
+                ) | not
               )
         ' $tmpfile >> $allfile
 
@@ -338,8 +348,11 @@ function goodlinks_thin --description "Interactively thin out old read GoodLinks
     set -l base "http://localhost:9428/api/v1"
 
     # Domains that should never be offered for deletion, even if sampled.
-    set -l allowlist_domains dynomight.substack.com blog.ayjay.org v5.chriskrycho.com www.robinsloan.com www.futilitycloset.com buttondown.email/hillelwayne buttondown.com/hillelwayne buttondown.com/schemetrical twitter.com/BretDevereaux acoup.blog www.atvbt.com maya.land bsky.app/profile/bretdevereaux.bsky.social www.blackbirdspyplane.com www.hillelwayne.com www.scattered-thoughts.net www.reddit.com/r/AskHistorians borretti.me resobscura.substack.com www.woman-of-letters.com countercraft.substack.com thewhippet.org asianfamilymeeting.substack.com mattlakeman.org
+    set -l allowlist_domains dynomight.substack.com blog.ayjay.org v5.chriskrycho.com www.robinsloan.com www.futilitycloset.com buttondown.email/hillelwayne buttondown.com/hillelwayne buttondown.com/schemetrical twitter.com/BretDevereaux acoup.blog www.atvbt.com maya.land bsky.app/profile/bretdevereaux.bsky.social www.blackbirdspyplane.com www.hillelwayne.com www.scattered-thoughts.net www.reddit.com/r/AskHistorians borretti.me resobscura.substack.com www.woman-of-letters.com countercraft.substack.com thewhippet.org asianfamilymeeting.substack.com mattlakeman.org anhvn.com
 
-    __goodlinks_thin_process $token $base true 50 read $allowlist_domains
+    # Authors whose articles should never be offered for deletion, even if sampled.
+    set -l allowlist_authors "Jacob Geller"
+
+    __goodlinks_thin_process $token $base true 50 read (count $allowlist_domains) $allowlist_domains $allowlist_authors
     or return 1
 end
