@@ -348,7 +348,7 @@ function goodlinks_thin --description "Interactively thin out old read GoodLinks
     set -l base "http://localhost:9428/api/v1"
 
     # Domains that should never be offered for deletion, even if sampled.
-    set -l allowlist_domains dynomight.substack.com blog.ayjay.org v5.chriskrycho.com www.robinsloan.com www.futilitycloset.com buttondown.email/hillelwayne buttondown.com/hillelwayne buttondown.com/schemetrical twitter.com/BretDevereaux acoup.blog www.atvbt.com maya.land bsky.app/profile/bretdevereaux.bsky.social www.blackbirdspyplane.com www.hillelwayne.com www.scattered-thoughts.net www.reddit.com/r/AskHistorians borretti.me resobscura.substack.com www.woman-of-letters.com countercraft.substack.com thewhippet.org asianfamilymeeting.substack.com mattlakeman.org anhvn.com
+    set -l allowlist_domains dynomight.substack.com blog.ayjay.org v5.chriskrycho.com www.robinsloan.com www.futilitycloset.com buttondown.email/hillelwayne buttondown.com/hillelwayne buttondown.com/schemetrical twitter.com/BretDevereaux acoup.blog www.atvbt.com maya.land bsky.app/profile/bretdevereaux.bsky.social www.blackbirdspyplane.com www.hillelwayne.com www.scattered-thoughts.net www.reddit.com/r/AskHistorians borretti.me resobscura.substack.com www.woman-of-letters.com countercraft.substack.com thewhippet.org asianfamilymeeting.substack.com mattlakeman.org anhvn.com michaelnotebook.com gwern.net
 
     # Authors whose articles should never be offered for deletion, even if sampled.
     set -l allowlist_authors "Jacob Geller"
