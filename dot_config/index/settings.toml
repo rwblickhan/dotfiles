@@ -136,29 +136,9 @@ trigger = "yt"
 url_template = "https://www.youtube.com/results?search_query=%s"
 
 [[snippets]]
-title = "Agent Query Reporting Domain"
-text = "agent-query-reporting.test"
-trigger = ":aqr"
-
-[[snippets]]
-title = "Agent Tool Enabled Flag"
-text = "reporting_agent_tool_enabled"
-trigger = ":agentflag"
-
-[[snippets]]
 title = "Blue 4"
 text = "#006DCA"
 trigger = ":blue4"
-
-[[snippets]]
-title = "Checked Checkbox"
-text = "- [x]"
-trigger = ":cb"
-
-[[snippets]]
-title = "Crosspoint Local URL"
-text = "http://crosspoint.local/"
-trigger = ":crosspoint"
 
 [[snippets]]
 title = "Date"
@@ -166,49 +146,14 @@ text = "{{date format=\"yyyy-MM-dd\"}}"
 trigger = ":date"
 
 [[snippets]]
-title = "Editing Prompt"
-text = "Do a basic editing pass on this newsletter. Check for major factual mistakes, run-on or incomplete sentences, confusing or contradictory sentences, and so on"
-trigger = ":editprompt"
-
-[[snippets]]
-title = "Feature Flag Override User ID"
-text = "rwblickhan-5d3b4e298e932a2a4bb2ec3b"
-trigger = ":ffuser"
-
-[[snippets]]
 title = "Fingers"
 text = "👉👈"
 trigger = ":fingers"
 
 [[snippets]]
-title = "GitHub Profile"
-text = "https://github.com/rwblickhan"
-trigger = ":github"
-
-[[snippets]]
-title = "LinkedIn Profile"
-text = "https://www.linkedin.com/in/rwblickhan/"
-trigger = ":linkedin"
-
-[[snippets]]
-title = "Log Expenses"
-text = "Log expenses"
-trigger = ":le"
-
-[[snippets]]
-title = "Newsletter Header"
-text = "---\ntitle:\nlastUpdatedDate: {{date format=\"yyyy-MM-dd\"}}\npublicationDate: {{date format=\"yyyy-MM-dd\"}}\nseason: 8\n---\n\n"
-trigger = ":newsletter"
-
-[[snippets]]
 title = "Personal Email"
 text = "rwblickhan@gmail.com"
 trigger = "rwbg"
-
-[[snippets]]
-title = "Unique Date"
-text = "{{date format=\"yyyyMMddHHmm\"}}"
-trigger = ":udate"
 
 [[snippets]]
 title = "Work Email"
