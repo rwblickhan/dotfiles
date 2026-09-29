@@ -16,8 +16,6 @@ tap "1612elphi/delphitools"
 tap "darrylmorley/whatcable"
 # tinycast
 tap "abue-ammar/tinycast"
-# tinystart (private tap: SSH access required)
-tap "rwblickhan/tap-private", "git@github.com:rwblickhan/homebrew-tap-private.git"
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # ona (Gitpod CLI)
 tap "gitpod-io/tap"
@@ -153,8 +151,6 @@ cask "font-atkinson-hyperlegible"
 cask "betterdisplay"
 # Calibre ebook manager
 cask "calibre"
-# Text expander
-cask "espanso"
 # Better terminal
 cask "ghostty"
 # Cable management utility
@@ -169,8 +165,6 @@ cask "karabiner-elements"
 cask "mac-mouse-fix"
 # Raycast alternative
 cask "abue-ammar/tinycast/tinycast", trusted: true
-# App launcher
-cask "rwblickhan/tap-private/tinystart", trusted: true
 # VS Code
 cask "visual-studio-code"
 # Install Xcode easily
