@@ -56,11 +56,6 @@ trigger = "dict"
 url_template = "dict://%s"
 
 [[search_engines]]
-title = "DuckDuckGo"
-trigger = "ddg"
-url_template = "https://duckduckgo.com/?q=%s"
-
-[[search_engines]]
 title = "Etymonline"
 trigger = "ety"
 url_template = "https://www.etymonline.com/word/%s"

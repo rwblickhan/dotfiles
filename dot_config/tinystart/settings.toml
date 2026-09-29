@@ -96,12 +96,6 @@ show_as_fallback_search_option = false
 url_template = 'dict://%s'
 
 [[custom_search_engines]]
-name = 'DuckDuckGo'
-shorthand = 'ddg'
-show_as_fallback_search_option = false
-url_template = 'https://duckduckgo.com/?q=%s'
-
-[[custom_search_engines]]
 name = 'Etymonline'
 shorthand = 'ety'
 show_as_fallback_search_option = false

@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "quicklinks": [
+    {
+      "name": "500 Albums",
+      "link": "https://docs.google.com/spreadsheets/d/11sRAqmwLIMb0YGr-3SpPhFptSnohT7Qkiut6YGo2GTw/edit?usp=sharing"
+    },
+    {
+      "name": "Albums (2026)",
+      "link": "ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/albums-2026.md"
+    },
+    {
+      "name": "Amazon Recent Orders",
+      "link": "https://www.amazon.com/gp/css/order-history?ref_=nav_orders_first"
+    },
+    {
+      "name": "astro-rwblickhan.org GitHub Actions",
+      "link": "https://github.com/rwblickhan/astro-rwblickhan.org/actions"
+    },
+    {
+      "name": "Bike Route Map",
+      "link": "https://www.sfmta.com/maps/san-francisco-bike-network-map"
+    },
+    {
+      "name": "Book Club",
+      "link": "https://docs.google.com/spreadsheets/d/1k46H5QpXPcDpLCwSmx1oZS8Kkp8rKDoRpSep7Ff1Fv4/edit?usp=sharing"
+    },
+    {
+      "name": "Books (2026)",
+      "link": "ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/books-2026.md"
+    },
+    {
+      "name": "Breadboat",
+      "link": "https://watch.breadboat.tv/web/#/home"
+    },
+    {
+      "name": "Films (2026)",
+      "link": "ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/films-2026.md"
+    },
+    {
+      "name": "Games (2026)",
+      "link": "ia-writer://open?path=astro-rwblickhan.org%3A%20/src/content/logs/games-2026.md"
+    },
+    {
+      "name": "GitHub Pull Requests",
+      "link": "https://github.com/pulls/authored?q=is%3Apr+author%3A%40me+state%3Aopen+archived%3Afalse+sort%3Acreated-desc"
+    },
+    {
+      "name": "GoodReads By Date Added",
+      "link": "https://www.goodreads.com/review/list/26891156-russell-blickhan?order=d&ref=nav_mybooks&shelf=to-read&sort=date_added"
+    },
+    {
+      "name": "Google Maps",
+      "link": "https://maps.google.com"
+    },
+    {
+      "name": "SFPL Printing",
+      "link": "https://sfpl.eprintitsaas.com/public/upload"
+    },
+    {
+      "name": "Vancouver Trip Doc",
+      "link": "https://docs.google.com/document/d/1zn7G5uBKrC9Gxz7s0SheNiFffl_HYUXh3hTM9Sth4vA/edit?usp=sharing"
+    },
+    {
+      "name": "Anna's Archive",
+      "link": "https://annas-archive.gl/search?q={argument name=\"Query\"}"
+    },
+    {
+      "name": "Dictionary",
+      "link": "dict://{argument name=\"Query\"}"
+    },
+    {
+      "name": "Etymonline",
+      "link": "https://www.etymonline.com/word/{argument name=\"Query\"}"
+    },
+    {
+      "name": "Giphy",
+      "link": "https://giphy.com/search/{argument name=\"Query\"}"
+    },
+    {
+      "name": "Google",
+      "link": "https://www.google.com/search?q={argument name=\"Query\"}&udm=14"
+    },
+    {
+      "name": "Google Maps Search",
+      "link": "https://maps.google.com/?q={argument name=\"Query\"}"
+    },
+    {
+      "name": "JustWatch",
+      "link": "https://www.justwatch.com/us/search?q={argument name=\"Query\"}"
+    },
+    {
+      "name": "Letterboxd",
+      "link": "https://letterboxd.com/search/{argument name=\"Query\"}"
+    },
+    {
+      "name": "Marginalia",
+      "link": "https://search.marginalia.nu/search?query={argument name=\"Query\"}"
+    },
+    {
+      "name": "MDBG",
+      "link": "https://www.mdbg.net/chinese/dictionary?wdqb={argument name=\"Query\"}"
+    },
+    {
+      "name": "MDN",
+      "link": "https://developer.mozilla.org/en-US/search?q={argument name=\"Query\"}"
+    },
+    {
+      "name": "SFPL",
+      "link": "https://sfpl.org/search-page?keys={argument name=\"Query\"}&type=all"
+    },
+    {
+      "name": "StoryGraph",
+      "link": "https://app.thestorygraph.com/browse?search_term={argument name=\"Query\"}"
+    },
+    {
+      "name": "TMDB",
+      "link": "https://www.themoviedb.org/search?query={argument name=\"Query\"}"
+    },
+    {
+      "name": "Wayback Machine",
+      "link": "https://web.archive.org/web/2/{argument name=\"Query\" | raw}"
+    },
+    {
+      "name": "Wikipedia",
+      "link": "https://en.wikipedia.org/w/index.php?search={argument name=\"Query\"}"
+    },
+    {
+      "name": "YouTube",
+      "link": "https://www.youtube.com/results?search_query={argument name=\"Query\"}"
+    }
+  ]
+}
