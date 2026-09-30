@@ -383,8 +383,8 @@ end
 local windowModeCommands = {
   { key = "h", fn = leftHalf },
   { key = "l", fn = rightHalf },
-  { key = "j", fn = maximize },
-  { key = "k", fn = reasonableSize },
+  { key = "j", fn = reasonableSize },
+  { key = "k", fn = maximize },
   { key = "n", fn = nextDisplay },
   { key = "p", fn = previousDisplay },
 }
