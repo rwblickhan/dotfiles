@@ -1,5 +1,5 @@
--- Emoji picker, mimicking Tinycast's: a searchable list of every emoji, with
--- the most frecently used ones first. Return pastes the emoji into the
+-- Emoji picker, mimicking Tinycast's: a searchable grid of every emoji, grouped
+-- by category under the most frecently used ones. Return pastes the emoji into the
 -- previously focused app; cmd+Return copies it instead.
 --
 -- emoji.json is generated from Unicode's emoji-test.txt (order and
@@ -12,6 +12,8 @@ local webchooser = require("webchooser")
 local M = {}
 
 local usageSettingsKey = "emojiPickerUsage"
+local columns = 10
+local frequentRows = 2
 
 local emoji = hs.json.read(hs.configdir .. "/emoji.json")
 local byEmoji = {}
@@ -30,9 +32,14 @@ for i, e in ipairs(emoji) do
   for _, k in ipairs(e.k) do
     for _, w in ipairs(words(k, "[^%s_:%-]+")) do table.insert(e.keywordWords, w) end
   end
-  e.choice = {
-    text = e.e .. "  " .. e.n:sub(1, 1):upper() .. e.n:sub(2),
-    subText = #e.k > 0 and (e.c .. " · " .. table.concat(e.k, ", ")) or e.c,
+  local name = e.n:sub(1, 1):upper() .. e.n:sub(2)
+  local keywords = table.concat(e.k, ", ")
+  e.choice = { text = e.e, subText = name, detail = keywords, section = e.c, emoji = e.e }
+  e.frequentChoice = { text = e.e, subText = name, detail = keywords, section = "Frequently Used", emoji = e.e }
+  e.searchChoice = {
+    text = e.e,
+    subText = name,
+    detail = #e.k > 0 and (e.c .. " · " .. keywords) or e.c,
     emoji = e.e,
   }
   byEmoji[e.e] = e
@@ -102,20 +109,22 @@ end
 
 local frecency = {}
 
-local function search(rawQuery)
-  local query = rawQuery:lower():match("^%s*(.-)%s*$"):gsub("^:", ""):gsub(":$", "")
-  local results = {}
-  if query == "" then
-    for e in pairs(frecency) do
-      if byEmoji[e] then table.insert(results, byEmoji[e]) end
-    end
-    table.sort(results, function(a, b) return frecency[a.e] > frecency[b.e] end)
-    for _, e in ipairs(emoji) do
-      if not frecency[e.e] then table.insert(results, e) end
-    end
-    return results
+local function browseChoices()
+  local frequent = {}
+  for e in pairs(frecency) do
+    if byEmoji[e] then table.insert(frequent, byEmoji[e]) end
   end
+  table.sort(frequent, function(a, b) return frecency[a.e] > frecency[b.e] end)
+  local choices = {}
+  for i = 1, math.min(#frequent, columns * frequentRows) do
+    table.insert(choices, frequent[i].frequentChoice)
+  end
+  for _, e in ipairs(emoji) do table.insert(choices, e.choice) end
+  return choices
+end
 
+local function search(query)
+  local results = {}
   local terms = words(query, "%S+")
   local ranks = {}
   for _, e in ipairs(emoji) do
@@ -151,11 +160,16 @@ end
 local chooser = webchooser.new(function(choice)
   if not choice then return end
   insert(choice.emoji, hs.eventtap.checkKeyboardModifiers().cmd)
-end)
+end, { grid = true, columns = columns })
 chooser:placeholderText("Search emoji…")
-chooser:queryChangedCallback(function(query)
+chooser:queryChangedCallback(function(rawQuery)
+  local query = rawQuery:lower():match("^%s*(.-)%s*$"):gsub("^:", ""):gsub(":$", "")
+  if query == "" then
+    chooser:choices(browseChoices())
+    return
+  end
   local choices = {}
-  for i, e in ipairs(search(query)) do choices[i] = e.choice end
+  for i, e in ipairs(search(query)) do choices[i] = e.searchChoice end
   chooser:choices(choices)
 end)
 

@@ -1,10 +1,14 @@
 -- A drop-in subset of hs.chooser rendered in an hs.webview, so it can have
 -- rounded corners and a native-looking translucent panel.
 --
--- Supported: new(callback), choices(table), query(string), placeholderText(string),
+-- Supported: new(callback, options), choices(table), query(string), placeholderText(string),
 -- queryChangedCallback(fn), show(), hide(), cancel(), isVisible().
 -- Choices use hs.chooser's shape: { text, subText, image, ... }. Without a
 -- queryChangedCallback, choices are filtered by the words in the query.
+--
+-- options.grid = true lays choices out as a grid of `text` cells (e.g. emoji),
+-- grouped under headers by each choice's `section`, with the selected choice's
+-- subText and `detail` shown in a footer. options.columns sets the column count.
 
 local M = {}
 M.__index = M
@@ -16,6 +20,9 @@ local visibleRows = 9
 local margin = 24
 local cornerRadius = 14
 local iconSize = 64
+local defaultColumns = 10
+local cellHeight = 60
+local footerHeight = 44
 
 local html = [[
 <!doctype html>
@@ -89,34 +96,140 @@ local html = [[
   .text { min-width: 0; }
   .title, .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sub { font-size: 12px; color: var(--sub); margin-top: 1px; }
+  #list.grid {
+    display: grid;
+    grid-template-columns: repeat(COLUMNS, 1fr);
+    grid-auto-rows: CELLpx;
+    align-content: start;
+  }
+  .section {
+    grid-column: 1 / -1;
+    align-self: end;
+    padding: 0 8px 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--sub);
+  }
+  .cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 34px;
+    line-height: 1;
+  }
+  .cell.selected { background: var(--sel); }
+  #footer {
+    flex: none;
+    height: FOOTERpx;
+    padding: 0 18px;
+    border-top: 1px solid var(--sep);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    box-sizing: border-box;
+    line-height: FOOTERpx;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  #footer .title { flex: none; max-width: 60%; font-weight: 500; }
+  #footer .sub { flex: 1; min-width: 0; margin: 0; }
 </style>
 </head>
 <body>
 <div id="panel">
   <input id="query" autocomplete="off" spellcheck="false">
   <div id="list"></div>
+  <div id="footer"><span class="title"></span><span class="sub"></span></div>
 </div>
 <script>
   const input = document.getElementById("query");
   const list = document.getElementById("list");
+  const footer = document.getElementById("footer");
+  const grid = GRID;
   const icons = {};
   let count = 0;
   let selected = 0;
+  let items = [];
+  let shown = [];
+  let positions = [];
+  let rows = [];
+  let rowHeaders = [];
+
+  if (grid) list.classList.add("grid");
+  else footer.remove();
 
   function post(message) { webkit.messageHandlers.NAME.postMessage(message); }
 
   function select(index) {
     if (count === 0) return;
     selected = Math.max(0, Math.min(count - 1, index));
-    list.querySelectorAll(".row.selected").forEach(r => r.classList.remove("selected"));
-    const row = list.children[selected];
-    row.classList.add("selected");
-    row.scrollIntoView({ block: "nearest" });
+    list.querySelectorAll(".selected").forEach(r => r.classList.remove("selected"));
+    const item = items[selected];
+    item.classList.add("selected");
+    if (grid) {
+      const header = rowHeaders[positions[selected].row];
+      if (header) header.scrollIntoView({ block: "nearest" });
+      footer.children[0].textContent = shown[selected].subText || "";
+      footer.children[1].textContent = shown[selected].detail || "";
+    }
+    item.scrollIntoView({ block: "nearest" });
   }
 
-  window.setChoices = function (choices, newIcons) {
-    Object.assign(icons, newIcons);
-    list.replaceChildren(...choices.map((choice, i) => {
+  function moveRow(delta) {
+    if (count === 0) return;
+    const { row, col } = positions[selected];
+    const target = rows[Math.max(0, Math.min(rows.length - 1, row + delta))];
+    select(target[Math.min(col, target.length - 1)]);
+  }
+
+  function addPointerHandlers(item, i) {
+    item.addEventListener("mousemove", () => { if (selected !== i) select(i); });
+    item.addEventListener("click", () => post({ type: "select", index: i + 1 }));
+  }
+
+  function renderGrid(choices) {
+    const nodes = [];
+    items = [];
+    positions = [];
+    rows = [];
+    rowHeaders = [];
+    let section;
+    let header = null;
+    let col = COLUMNS;
+    choices.forEach((choice, i) => {
+      if (choice.section !== section) {
+        section = choice.section;
+        col = COLUMNS;
+        header = null;
+        if (section) {
+          header = document.createElement("div");
+          header.className = "section";
+          header.textContent = section;
+          nodes.push(header);
+        }
+      }
+      if (col === COLUMNS) {
+        rows.push([]);
+        rowHeaders.push(header);
+        header = null;
+        col = 0;
+      }
+      positions.push({ row: rows.length - 1, col });
+      rows[rows.length - 1].push(i);
+      col++;
+      const cell = document.createElement("div");
+      cell.className = "cell";
+      cell.textContent = choice.text;
+      addPointerHandlers(cell, i);
+      nodes.push(cell);
+      items.push(cell);
+    });
+    list.replaceChildren(...nodes);
+  }
+
+  function renderList(choices) {
+    items = choices.map((choice, i) => {
       const row = document.createElement("div");
       row.className = "row";
       if (choice.icon) {
@@ -137,12 +250,23 @@ local html = [[
         text.append(sub);
       }
       row.append(text);
-      row.addEventListener("mousemove", () => { if (selected !== i) select(i); });
-      row.addEventListener("click", () => post({ type: "select", index: i + 1 }));
+      addPointerHandlers(row, i);
       return row;
-    }));
+    });
+    list.replaceChildren(...items);
+  }
+
+  window.setChoices = function (choices, newIcons) {
+    Object.assign(icons, newIcons);
+    shown = choices;
+    if (grid) renderGrid(choices);
+    else renderList(choices);
     count = choices.length;
     list.scrollTop = 0;
+    if (count === 0 && grid) {
+      footer.children[0].textContent = "";
+      footer.children[1].textContent = "";
+    }
     select(0);
   };
 
@@ -155,10 +279,13 @@ local html = [[
   input.addEventListener("input", () => post({ type: "query", query: input.value }));
   document.addEventListener("keydown", e => {
     const ctrl = e.ctrlKey && !e.metaKey && !e.altKey;
-    if (e.key === "ArrowDown" || (ctrl && e.key === "n")) select(selected + 1);
-    else if (e.key === "ArrowUp" || (ctrl && e.key === "p")) select(selected - 1);
-    else if (e.key === "PageDown") select(selected + VISIBLE);
-    else if (e.key === "PageUp") select(selected - VISIBLE);
+    const page = grid ? Math.max(1, Math.floor(list.clientHeight / CELL) - 1) : VISIBLE;
+    if (e.key === "ArrowDown" || (ctrl && e.key === "n")) grid ? moveRow(1) : select(selected + 1);
+    else if (e.key === "ArrowUp" || (ctrl && e.key === "p")) grid ? moveRow(-1) : select(selected - 1);
+    else if (grid && (e.key === "ArrowRight" || (ctrl && e.key === "f"))) select(selected + 1);
+    else if (grid && (e.key === "ArrowLeft" || (ctrl && e.key === "b"))) select(selected - 1);
+    else if (e.key === "PageDown") grid ? moveRow(page) : select(selected + VISIBLE);
+    else if (e.key === "PageUp") grid ? moveRow(-page) : select(selected - VISIBLE);
     else if (e.key === "Enter") { if (count > 0) post({ type: "select", index: selected + 1 }); }
     else if (e.key === "Escape") post({ type: "cancel" });
     else return;
@@ -192,10 +319,12 @@ end
 
 local nextID = 0
 
-function M.new(callback)
+function M.new(callback, options)
+  options = options or {}
   nextID = nextID + 1
   local self = setmetatable({
     callback = callback,
+    grid = options.grid or false,
     allChoices = {},
     currentChoices = {},
     currentQuery = "",
@@ -211,6 +340,10 @@ function M.new(callback)
     :gsub("INPUT", tostring(inputHeight))
     :gsub("ROW", tostring(rowHeight))
     :gsub("VISIBLE", tostring(visibleRows))
+    :gsub("GRID", tostring(options.grid or false))
+    :gsub("COLUMNS", tostring(options.columns or defaultColumns))
+    :gsub("CELL", tostring(cellHeight))
+    :gsub("FOOTER", tostring(footerHeight))
     :gsub("NAME", name)
 
   local content = hs.webview.usercontent.new(name)
@@ -292,7 +425,13 @@ function M:render(choices)
       self.sentIcons[icon.id] = true
       newIcons[icon.id] = icon.url
     end
-    rendered[i] = { text = choice.text, subText = choice.subText, icon = icon and icon.id }
+    rendered[i] = {
+      text = choice.text,
+      subText = choice.subText,
+      detail = choice.detail,
+      section = choice.section,
+      icon = icon and icon.id,
+    }
   end
   self:eval("setChoices", rendered, newIcons)
 end
@@ -324,6 +463,7 @@ function M:show()
   local frame = (previousWindow and previousWindow:screen() or hs.screen.mainScreen()):frame()
   local w = width + 2 * margin
   local h = inputHeight + 12 + rowHeight * visibleRows + 2 * margin
+  if self.grid then h = h + footerHeight end
   self.webview:frame({
     x = frame.x + (frame.w - w) / 2,
     y = frame.y + frame.h * 0.18 - margin,
