@@ -2,6 +2,10 @@ hs.loadSpoon("EmmyLua")
 hs.loadSpoon("LeftRightHotkey")
 spoon.LeftRightHotkey:start()
 
+local webchooser = require("webchooser")
+local quickSwitcher = require("quick_switcher")
+local emojiPicker = require("emoji_picker")
+
 hs.alert.show("Config reloaded", hs.screen.mainScreen())
 
 local hotkeyLogger = hs.logger.new("hotkeys", "debug")
@@ -325,7 +329,7 @@ end
 local menuItemFlat = {}
 local menuItemApp = nil
 
-local menuItemChooser = hs.chooser.new(function(choice)
+local menuItemChooser = webchooser.new(function(choice)
   if not choice or not menuItemApp then return end
   local m = menuItemFlat[choice.id]
   if m then
@@ -436,6 +440,12 @@ spoon.LeftRightHotkey:bind(rightCmd, "/", function() showOrHide("Bloom") end)
 
 -- cmd+shift+/ = search menu items
 hs.hotkey.bind({ "cmd", "shift" }, "/", showMenuItemChooser)
+
+-- cmd+space = quick switcher (requires disabling Spotlight's shortcut)
+hs.hotkey.bind({ "cmd" }, "space", quickSwitcher.show)
+
+-- ctrl+cmd+space = emoji picker (requires disabling the system emoji shortcut)
+hs.hotkey.bind({ "ctrl", "cmd" }, "space", emojiPicker.show)
 
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)

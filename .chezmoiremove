@@ -39,3 +39,4 @@ Library/Application Support/Alfred/Alfred.alfredpreferences/preferences/features
 .config/fish/completions/sync_highlights.fish
 .config/tinystart
 Library/Application Support/espanso
+.hammerspoon/emoji_picker.html
