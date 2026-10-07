@@ -38,5 +38,8 @@ Library/Application Support/Alfred/Alfred.alfredpreferences/preferences/features
 .config/fish/functions/fish_in_macos_terminal_or_ssh.fish
 .config/fish/completions/sync_highlights.fish
 .config/tinystart
-Library/Application Support/espanso
 .hammerspoon/emoji_picker.html
+.config/tinycast
+Library/Application Support/com.tinycast.app
+Library/Preferences/com.tinycast.app.plist
+Library/Caches/com.tinycast.app
