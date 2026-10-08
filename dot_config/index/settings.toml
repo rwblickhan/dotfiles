@@ -54,6 +54,10 @@ title = "Google Maps"
 url_template = "https://maps.google.com"
 
 [[links]]
+title = "House Hunting Notes"
+url_template = "https://docs.google.com/document/d/1TmKgDiAWcVUfeoIc3YsxMB7oYSaqBmaSs_-exNHpzz8/edit?usp=sharing"
+
+[[links]]
 title = "SFPL Printing"
 url_template = "https://sfpl.eprintitsaas.com/public/upload"
 
