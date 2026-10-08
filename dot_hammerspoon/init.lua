@@ -5,6 +5,7 @@ spoon.LeftRightHotkey:start()
 local webchooser = require("webchooser")
 local quickSwitcher = require("quick_switcher")
 local emojiPicker = require("emoji_picker")
+local snippetPicker = require("snippet_picker")
 
 hs.alert.show("Config reloaded", hs.screen.mainScreen())
 
@@ -446,6 +447,9 @@ hs.hotkey.bind({ "cmd" }, "space", quickSwitcher.show)
 
 -- ctrl+cmd+space = emoji picker (requires disabling the system emoji shortcut)
 hs.hotkey.bind({ "ctrl", "cmd" }, "space", emojiPicker.show)
+
+-- opt+space = snippet picker
+hs.hotkey.bind({ "alt" }, "space", snippetPicker.show)
 
 -- ins = edit clipboard in Helix
 hs.hotkey.bind({}, "help", hxClipboard)

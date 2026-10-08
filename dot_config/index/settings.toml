@@ -147,9 +147,34 @@ trigger = "yt"
 url_template = "https://www.youtube.com/results?search_query=%s"
 
 [[snippets]]
+title = "Amazon Prime Rewards CC (hledger)"
+text = "liabilities:credit:amazonprimerewards"
+trigger = ":apr"
+
+[[snippets]]
+title = "Apple CC (hledger)"
+text = "liabilities:credit:apple"
+trigger = ":applecc"
+
+[[snippets]]
+title = "Apple Savings (hledger)"
+text = "assets:banking:apple"
+trigger = ":applesav"
+
+[[snippets]]
 title = "Blue 4"
 text = "#006DCA"
 trigger = ":blue4"
+
+[[snippets]]
+title = "Chase Banking (hledger)"
+text = "assets:banking:chase"
+trigger = ":chase"
+
+[[snippets]]
+title = "Chase Sapphire Reserve (hledger)"
+text = "liabilities:credit:chasesapphirereserve"
+trigger = ":csr"
 
 [[snippets]]
 title = "Date"
@@ -162,9 +187,19 @@ text = "👉👈"
 trigger = ":fingers"
 
 [[snippets]]
+title = "Newsletter Header"
+text = "---\ntitle:\nlastUpdatedDate: {{date format=\"yyyy-MM-dd\"}}\npublicationDate: {{date format=\"yyyy-MM-dd\"}}\nseason: 8\n---\n\n"
+trigger = ":newsletter"
+
+[[snippets]]
 title = "Personal Email"
 text = "rwblickhan@gmail.com"
 trigger = "rwbg"
+
+[[snippets]]
+title = "Venmo (hledger)"
+text = "assets:cash:venmo"
+trigger = ":venmo"
 
 [[snippets]]
 title = "Work Email"
