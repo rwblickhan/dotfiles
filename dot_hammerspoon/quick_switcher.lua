@@ -162,6 +162,46 @@ local function urlHandlerIcon(template)
   end)
 end
 
+local faviconDirectory = home .. "/Library/Caches/org.hammerspoon.Hammerspoon/favicons"
+local faviconRequested = {}
+local faviconLoaded
+
+local function faviconHost(template)
+  local host = template:match("^https?://([^/?#]+)")
+  if host and host:match("^[%w.-]+$") then return host:lower() end
+end
+
+local function favicon(host)
+  local path = faviconDirectory .. "/" .. host .. ".png"
+  local icon = cachedIcon("favicon:" .. host, function()
+    return hs.fs.attributes(path, "mode") and hs.image.imageFromPath(path)
+  end)
+  if not icon and not faviconRequested[host] then
+    faviconRequested[host] = true
+    hs.http.asyncGet("https://www.google.com/s2/favicons?sz=64&domain=" .. host, nil, function(status, body)
+      if status ~= 200 then return end
+      hs.fs.mkdir(faviconDirectory)
+      local file = io.open(path, "wb")
+      if not file then return end
+      file:write(body)
+      file:close()
+      local image = hs.image.imageFromPath(path)
+      if not image then
+        os.remove(path)
+        return
+      end
+      iconCache["favicon:" .. host] = image
+      faviconLoaded(host, image)
+    end)
+  end
+  return icon
+end
+
+local function urlIcon(template)
+  local host = faviconHost(template)
+  return host and favicon(host) or urlHandlerIcon(template)
+end
+
 local function indexItems()
   local links, engines = index.loadSettings()
   local items, engineItems = {}, {}
@@ -170,7 +210,8 @@ local function indexItems()
       key = "link:" .. link.title,
       title = link.title,
       subText = "Quicklink · " .. link.urlTemplate,
-      image = urlHandlerIcon(link.urlTemplate),
+      image = urlIcon(link.urlTemplate),
+      faviconHost = faviconHost(link.urlTemplate),
       kind = "link",
       link = link,
     })
@@ -180,7 +221,8 @@ local function indexItems()
       key = "engine:" .. engine.trigger,
       title = engine.title,
       subText = "Search Engine · " .. engine.trigger,
-      image = urlHandlerIcon(engine.urlTemplate),
+      image = urlIcon(engine.urlTemplate),
+      faviconHost = faviconHost(engine.urlTemplate),
       kind = "engine",
       engine = engine,
     }
@@ -272,6 +314,13 @@ local function refresh(query)
   chooser:choices(choices)
 end
 
+faviconLoaded = function(host, image)
+  for _, item in ipairs(allItems) do
+    if item.faviconHost == host then item.image = image end
+  end
+  if chooser:isVisible() then refresh(chooser:query()) end
+end
+
 local function showWithQuery(query)
   allItems = buildItems()
   chooser:query(query)
@@ -311,7 +360,10 @@ function M.show()
   showWithQuery("")
 end
 
--- Warm the application icon cache so the first show isn't slow.
-hs.timer.doAfter(1, function() applicationItems() end)
+-- Warm the application icon and favicon caches so the first show isn't slow.
+hs.timer.doAfter(1, function()
+  applicationItems()
+  indexItems()
+end)
 
 return M
