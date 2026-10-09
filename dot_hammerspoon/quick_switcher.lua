@@ -280,14 +280,12 @@ local function search(query)
 
   local scored = {}
   for _, item in ipairs(allItems) do
-    local score = index.fuzzyScore(query, item.title)
+    local rank = index.rank(query, item.title, item.engine and item.engine.trigger, item.frecency)
     for _, keyword in ipairs(item.keywords or {}) do
-      local keywordScore = index.fuzzyScore(query, keyword)
-      if keywordScore and (not score or keywordScore > score) then score = keywordScore end
+      local keywordRank = index.rank(query, keyword, nil, item.frecency)
+      if keywordRank and (not rank or keywordRank > rank) then rank = keywordRank end
     end
-    if score then
-      table.insert(scored, { item = item, rank = query == "" and item.frecency or score * (1 + item.frecency) })
-    end
+    if rank then table.insert(scored, { item = item, rank = rank }) end
   end
   table.sort(scored, function(a, b)
     if a.rank == b.rank then return a.item.title:lower() < b.item.title:lower() end

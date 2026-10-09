@@ -16,13 +16,8 @@ local function search(query)
   local usage = hs.settings.get(usageSettingsKey) or {}
   local scored = {}
   for _, snippet in ipairs(snippets) do
-    local score = index.fuzzyScore(query, snippet.title)
-    local triggerScore = snippet.trigger and index.fuzzyScore(query, snippet.trigger)
-    if triggerScore and (not score or triggerScore > score) then score = triggerScore end
-    if score then
-      local frecency = index.frecencyScore(usage[snippet.title])
-      table.insert(scored, { snippet = snippet, rank = query == "" and frecency or score * (1 + frecency) })
-    end
+    local rank = index.rank(query, snippet.title, snippet.trigger, index.frecencyScore(usage[snippet.title]))
+    if rank then table.insert(scored, { snippet = snippet, rank = rank }) end
   end
   table.sort(scored, function(a, b)
     if a.rank == b.rank then return a.snippet.title:lower() < b.snippet.title:lower() end

@@ -277,7 +277,7 @@ local function expandPlaceholders(text)
 end
 
 -- Index's ranking: a greedy subsequence match rewarding consecutive runs,
--- multiplied by (1 + frecency).
+-- multiplied by (1 + frecency). An exact trigger match always ranks first.
 
 local function fuzzyScore(query, target)
   if query == "" then return 1 end
@@ -302,6 +302,13 @@ local function frecencyScore(entry)
   local hoursSinceUse = (os.time() - entry.lastUsed) / 3600
   local recency = 1 / (1 + hoursSinceUse / 24)
   return entry.count * 0.6 + recency * 0.4
+end
+
+local function rank(query, title, trigger, frecency)
+  if query == "" then return frecency end
+  if trigger and trigger:lower() == query:lower() then return math.huge end
+  local score = fuzzyScore(query, title)
+  return score and score * (1 + frecency)
 end
 
 function M.recordUse(settingsKey, key)
@@ -335,7 +342,7 @@ end
 M.trim = trim
 M.percentEncode = percentEncode
 M.expandPlaceholders = expandPlaceholders
-M.fuzzyScore = fuzzyScore
+M.rank = rank
 M.frecencyScore = frecencyScore
 
 return M
