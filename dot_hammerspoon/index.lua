@@ -276,25 +276,61 @@ local function expandPlaceholders(text)
   return table.concat(out)
 end
 
--- Index's ranking: a greedy subsequence match rewarding consecutive runs,
--- multiplied by (1 + frecency). An exact trigger match always ranks first.
+-- Ranking: the best-scoring subsequence alignment, rewarding matches at the
+-- start of the title or of a word and runs that continue from one, with only
+-- a mild penalty for title length, multiplied by (1 + frecency). An exact
+-- trigger match always ranks first. This diverges from Index's own ranking;
+-- see FUZZY_RANKING.md.
+
+local titleStartBonus = 8
+local wordStartBonus = 6
+local consecutiveBonus = 1
+local gapPenalty = 1
+local lengthPenalty = 0.005
+
+local function boundaryBonus(target, ti)
+  if ti == 1 then return titleStartBonus end
+  local prev, cur = target:sub(ti - 1, ti - 1), target:sub(ti, ti)
+  if not prev:match("[%w\128-\255]") then return wordStartBonus end
+  if prev:match("%l") and cur:match("%u") then return wordStartBonus end
+  return 0
+end
 
 local function fuzzyScore(query, target)
   if query == "" then return 1 end
-  query, target = query:lower(), target:lower()
-  local qi, consecutive, score = 1, 0, 0
-  for ti = 1, #target do
-    if qi > #query then break end
-    if target:byte(ti) == query:byte(qi) then
-      qi = qi + 1
-      consecutive = consecutive + 1
-      score = score + consecutive
-    else
-      consecutive = 0
+  local lowerQuery, lowerTarget = query:lower(), target:lower()
+  local scores, runs = {}, {}
+  for qi = 1, #lowerQuery do
+    local nextScores, nextRuns = {}, {}
+    local bestBeforeGap
+    for ti = qi, #lowerTarget do
+      local beforeGap = scores[ti - 2]
+      if beforeGap and (not bestBeforeGap or beforeGap > bestBeforeGap) then bestBeforeGap = beforeGap end
+      if lowerTarget:byte(ti) == lowerQuery:byte(qi) then
+        local bonus = boundaryBonus(target, ti)
+        local best, run
+        if qi == 1 then
+          best, run = 1 + bonus, bonus
+        else
+          if bestBeforeGap then best, run = bestBeforeGap - gapPenalty + 1 + bonus, bonus end
+          local adjacent = scores[ti - 1]
+          if adjacent then
+            local carried = math.max(bonus, runs[ti - 1])
+            local score = adjacent + 1 + math.max(carried, consecutiveBonus)
+            if not best or score > best then best, run = score, carried end
+          end
+        end
+        nextScores[ti], nextRuns[ti] = best, run
+      end
     end
+    scores, runs = nextScores, nextRuns
   end
-  if qi <= #query then return nil end
-  return score / #target
+  local best
+  for _, score in pairs(scores) do
+    if not best or score > best then best = score end
+  end
+  if not best then return nil end
+  return best / (1 + lengthPenalty * (#target - #query))
 end
 
 local function frecencyScore(entry)
