@@ -102,7 +102,10 @@ end
 
 local function collapseChromeTabs()
   clickAppButton("Google Chrome",
-    function(desc) return desc == "Collapse Tabs" or desc == "Expand Tabs" end,
+    function(desc)
+      return desc:sub(1, #"Collapse Tabs") == "Collapse Tabs"
+        or desc:sub(1, #"Expand Tabs") == "Expand Tabs"
+    end,
     "Expand / collapse tabs button not found"
   )
 end
