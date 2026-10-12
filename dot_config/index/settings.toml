@@ -92,7 +92,7 @@ url_template = "https://www.google.com/search?q=%s&udm=14"
 
 [[search_engines]]
 title = "Google Maps"
-trigger = "maps"
+trigger = "gm"
 url_template = "https://maps.google.com/?q=%s"
 
 [[search_engines]]
