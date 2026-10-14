@@ -277,15 +277,17 @@ local function expandPlaceholders(text)
 end
 
 -- Ranking: the best-scoring subsequence alignment, rewarding matches at the
--- start of the title or of a word and runs that continue from one, with only
--- a mild penalty for title length, multiplied by (1 + frecency). An exact
--- trigger match always ranks first. This diverges from Index's own ranking;
+-- start of the title or of a word and runs that continue from one, penalizing
+-- gaps by their length and mildly penalizing title length, multiplied by
+-- (1 + log(1 + frecency)). An exact trigger match always ranks first. This diverges from Index's own ranking;
 -- see FUZZY_RANKING.md.
 
 local titleStartBonus = 8
 local wordStartBonus = 6
 local consecutiveBonus = 1
 local gapPenalty = 1
+local gapLengthPenalty = 0.25
+local maxGapPenalty = 4
 local lengthPenalty = 0.005
 
 local function boundaryBonus(target, ti)
@@ -302,17 +304,24 @@ local function fuzzyScore(query, target)
   local scores, runs = {}, {}
   for qi = 1, #lowerQuery do
     local nextScores, nextRuns = {}, {}
-    local bestBeforeGap
+    local decayedBeforeGap, bestBeforeGap
     for ti = qi, #lowerTarget do
+      if decayedBeforeGap then decayedBeforeGap = decayedBeforeGap - gapLengthPenalty end
       local beforeGap = scores[ti - 2]
-      if beforeGap and (not bestBeforeGap or beforeGap > bestBeforeGap) then bestBeforeGap = beforeGap end
+      if beforeGap then
+        if not decayedBeforeGap or beforeGap > decayedBeforeGap then decayedBeforeGap = beforeGap end
+        if not bestBeforeGap or beforeGap > bestBeforeGap then bestBeforeGap = beforeGap end
+      end
       if lowerTarget:byte(ti) == lowerQuery:byte(qi) then
         local bonus = boundaryBonus(target, ti)
         local best, run
         if qi == 1 then
           best, run = 1 + bonus, bonus
         else
-          if bestBeforeGap then best, run = bestBeforeGap - gapPenalty + 1 + bonus, bonus end
+          if bestBeforeGap then
+            local gapped = math.max(decayedBeforeGap, bestBeforeGap - maxGapPenalty + gapLengthPenalty)
+            best, run = gapped - gapPenalty + 1 + bonus, bonus
+          end
           local adjacent = scores[ti - 1]
           if adjacent then
             local carried = math.max(bonus, runs[ti - 1])
@@ -344,7 +353,7 @@ local function rank(query, title, trigger, frecency)
   if query == "" then return frecency end
   if trigger and trigger:lower() == query:lower() then return math.huge end
   local score = fuzzyScore(query, title)
-  return score and score * (1 + frecency)
+  return score and score * (1 + math.log(1 + frecency))
 end
 
 function M.recordUse(settingsKey, key)
