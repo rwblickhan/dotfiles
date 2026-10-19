@@ -64,6 +64,7 @@ if status is-interactive
     abbr -a g git
     abbr -a h hx
     abbr -a j jj
+    abbr -a lc "jj ci -m 'Periodic checkpoint' && jj push"
     abbr -a lm "jj ci -m 'Log media' && jj push"
     abbr -a le "jj ci -m 'Log expenses' && jj push"
     abbr -a m mise
