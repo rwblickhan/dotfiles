@@ -6,8 +6,8 @@ tap "rwblickhan/tap"
 tap "oven-sh/bun"
 # litecli
 tap "dbcli/tap"
-# jj-hooks (custom-remote tap: trust must live on the tap, not the formula)
-tap "mattwilkinsonn/zireael", "https://github.com/mattwilkinsonn/zireael", trusted: true
+# jj-hooks
+tap "mattwilkinsonn/tap"
 # zmx
 tap "neurosnap/tap"
 # delphitools
@@ -73,7 +73,7 @@ brew "jj"
 # jj TUI
 brew "jjui"
 # jj hooks manager
-brew "mattwilkinsonn/zireael/jj-hooks"
+brew "mattwilkinsonn/tap/jj-hooks", trusted: true
 # Pretty-print json
 brew "jq"
 # Better make
