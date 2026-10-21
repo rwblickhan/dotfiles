@@ -1,4 +1,4 @@
-function jj_join --description "Rebase this jj workspace onto trunk, remove it, and cd back to the default workspace"
+function jj_join --description "Remove this jj workspace and cd back to the default workspace"
     set -l name $argv[1]
 
     set -l current_root (jj workspace root)
@@ -22,14 +22,10 @@ function jj_join --description "Rebase this jj workspace onto trunk, remove it, 
         return 1
     end
 
-    set -l path (jj workspace root --name $name 2>/dev/null)
-    if test -z "$path"
+    if not jj workspace root --name $name >/dev/null 2>&1
         echo "No such workspace: $name" >&2
         return 1
     end
-
-    cd $path
-    jj rebase -b "$name@" -o 'trunk()' --skip-emptied; or return 1
 
     cd $default_root
     jj workspace remove $name; or return 1
