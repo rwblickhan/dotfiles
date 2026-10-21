@@ -18,7 +18,7 @@ with open(sys.argv[1], 'w') as f:
         echo "Host ona.*"
         echo "    HostName $argv[1]"
         echo "    User gitpod_devcontainer"
-        echo "    ProxyCommand \"/usr/local/bin/gitpod\" environment ssh %h --proxy-connect --user %r --ona-config-dir \"/Users/russellblickhan/.ssh/ona\""
+        echo "    ProxyCommand \"/opt/homebrew/bin/ona\" environment ssh %h --proxy-connect --user %r --ona-config-dir \"/Users/russellblickhan/.ssh/ona\""
         echo "    StrictHostKeyChecking no"
         echo "    IdentityFile \"/Users/russellblickhan/.ssh/ona/id_ed25519\""
         echo "    IdentitiesOnly yes"
