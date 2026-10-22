@@ -134,7 +134,8 @@ pr = [
 set -e
 rev="${1:-@}"
 name=$(jj branch "$rev")
-env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push -b "$name"
+jj hooks "$name"
+jj git push -b "$name"
 gh pr create --head "$name"
 """,
   "pr",
@@ -173,10 +174,46 @@ if [ -z "${JJ_PUSH_ALLOW_FOREIGN:-}" ]; then
     exit 1
   fi
 fi
-env PRE_COMMIT_REMOTE_URL="$(git remote get-url origin)" jj-hp push
+jj hooks
+jj git push
 """,
   "push",
 ]
-
-[jj-hooks]
-advance-bookmarks = true
+# Run pre-push hooks (prek or hk) against the branch ending at a revision, as `git push` would
+hooks = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+set -e
+to=$(jj log -r "exactly(${1:-closest_bookmark(@)}, 1)" --no-graph --no-pager -T commit_id)
+from=$(jj log -r "exactly(fork_point(trunk() | $to), 1)" --no-graph --no-pager -T commit_id)
+if [ "$from" = "$to" ]; then
+  exit 0
+fi
+# Hooks read the working tree, so it must hold exactly the tree being pushed.
+if [ -n "$(jj diff --from "$to" --to @ --name-only)" ]; then
+  echo "Refusing to run hooks: the working copy has changes not in ${to:0:12}." >&2
+  echo "Squash them into the change being pushed or move them aside with 'jj new $to'." >&2
+  exit 1
+fi
+# Git treats @'s changes as unstaged, and hook runners stash those away before running.
+if [ "$(jj log -r @ --no-graph --no-pager -T commit_id)" = "$to" ]; then
+  jj new
+fi
+root=$(jj workspace root)
+url=$(git remote get-url origin)
+if [ -e "$root/hk.pkl" ] || [ -e "$root/.config/hk.pkl" ] || [ -e "$root/config/hk.pkl" ]; then
+  hk run pre-push origin "$url" --from-ref "$from" --to-ref "$to" </dev/null
+elif [ -e "$root/prek.toml" ] || [ -e "$root/.pre-commit-config.yaml" ] || [ -e "$root/.pre-commit-config.yml" ]; then
+  prek run --hook-stage pre-push --from-ref "$from" --to-ref "$to" --remote-name origin --remote-url "$url"
+fi
+if [ -n "$(jj diff --from "$to" --to @ --name-only)" ]; then
+  echo "Hooks modified files; review them, 'jj squash' into the pushed change, and push again." >&2
+  exit 1
+fi
+""",
+  "hooks",
+]

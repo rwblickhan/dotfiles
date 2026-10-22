@@ -43,3 +43,8 @@ Library/Application Support/Alfred/Alfred.alfredpreferences/preferences/features
 Library/Application Support/com.tinycast.app
 Library/Preferences/com.tinycast.app.plist
 Library/Caches/com.tinycast.app
+.config/fish/completions/jj-hp.fish
+.config/fish/functions/setup_jj_hooks.fish
+.local/bin/jj-hooks
+.local/bin/jj-hp
+.local/bin/jj-hooks-share-node-modules
