@@ -5,7 +5,8 @@
 -- emoji.json is generated from Unicode's emoji-test.txt (order and
 -- categories), CLDR annotations and GitHub's gemoji (search keywords), and
 -- macOS's CoreEmoji AppleName.strings (names, and filtering out emoji this
--- macOS version can't render).
+-- macOS version can't render). symbols.json is hand-curated non-emoji symbols
+-- (degrees, math, arrows, etc.) appended after the emoji.
 
 local webchooser = require("webchooser")
 
@@ -16,6 +17,7 @@ local columns = 10
 local frequentRows = 2
 
 local emoji = hs.json.read(hs.configdir .. "/emoji.json")
+for _, s in ipairs(hs.json.read(hs.configdir .. "/symbols.json")) do table.insert(emoji, s) end
 local byEmoji = {}
 
 local function words(s, pattern)
