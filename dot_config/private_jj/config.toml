@@ -188,9 +188,11 @@ hooks = [
   "-c",
   """
 set -e
-to=$(jj log -r "exactly(${1:-closest_bookmark(@)}, 1)" --no-graph --no-pager -T commit_id)
+to=$(jj log -r "exactly(${1:-heads(closest_pushable(@) | closest_bookmark(@))}, 1)" --no-graph --no-pager -T commit_id)
 from=$(jj log -r "exactly(fork_point(trunk() | $to), 1)" --no-graph --no-pager -T commit_id)
+label=$(jj log -r "$to" --no-graph --no-pager -T 'commit_id.short(8) ++ " " ++ if(description, truncate_end(50, description.first_line(), "…"), "(no description)")')
 if [ "$from" = "$to" ]; then
+  echo "No changes between trunk() and $label; skipping hooks." >&2
   exit 0
 fi
 # Hooks read the working tree, so it must hold exactly the tree being pushed.
@@ -206,9 +208,13 @@ fi
 root=$(jj workspace root)
 url=$(git remote get-url origin)
 if [ -e "$root/hk.pkl" ] || [ -e "$root/.config/hk.pkl" ] || [ -e "$root/config/hk.pkl" ]; then
+  echo "Running hk pre-push hooks on ${from:0:8}..$label" >&2
   hk run pre-push origin "$url" --from-ref "$from" --to-ref "$to" </dev/null
 elif [ -e "$root/prek.toml" ] || [ -e "$root/.pre-commit-config.yaml" ] || [ -e "$root/.pre-commit-config.yml" ]; then
+  echo "Running prek pre-push hooks on ${from:0:8}..$label" >&2
   prek run --hook-stage pre-push --from-ref "$from" --to-ref "$to" --remote-name origin --remote-url "$url"
+else
+  echo "No hk or prek config found; skipping hooks." >&2
 fi
 if [ -n "$(jj diff --from "$to" --to @ --name-only)" ]; then
   echo "Hooks modified files; review them, 'jj squash' into the pushed change, and push again." >&2
