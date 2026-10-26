@@ -50,10 +50,6 @@ title = "GoodReads By Date Added"
 url_template = "https://www.goodreads.com/review/list/26891156-russell-blickhan?order=d&ref=nav_mybooks&shelf=to-read&sort=date_added"
 
 [[links]]
-title = "Google Maps"
-url_template = "https://maps.google.com"
-
-[[links]]
 title = "House Hunting Notes"
 url_template = "https://docs.google.com/document/d/1TmKgDiAWcVUfeoIc3YsxMB7oYSaqBmaSs_-exNHpzz8/edit?usp=sharing"
 
