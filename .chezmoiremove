@@ -48,3 +48,4 @@ Library/Caches/com.tinycast.app
 .local/bin/jj-hooks
 .local/bin/jj-hp
 .local/bin/jj-hooks-share-node-modules
+.config/helix/themes/ayu_dark.toml
