@@ -1,5 +1,5 @@
 [bootstrap.mise_shell_activate]
-bash = true
+bashrc = true
 
 [tools]
 bat = "latest"
