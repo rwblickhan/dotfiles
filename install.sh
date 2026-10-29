@@ -5,39 +5,9 @@ set -euo pipefail
 sh -c "$(curl -fsLS https://get.chezmoi.io)" -- -b "$HOME/.local/bin"
 "$HOME/.local/bin/chezmoi" init --apply https://github.com/rwblickhan/chezmoi.git
 
-# Install Homebrew
-NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install mise and bootstrap tools from ~/.config/mise
+curl -fsSL https://mise.run | MISE_INSTALL_PATH="$HOME/.local/bin/mise" sh
+"$HOME/.local/bin/mise" bootstrap --yes
 
-# Add brew to PATH for this session only
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 printf '\nexec fish\n' >> "$HOME/.bashrc"
 printf '\n# Fix Zed remote extension permissions (root-owned .tmp dirs block extension install)\nfind ~/.local/share/zed/remote_extensions -user root -exec sudo chown -R vscode:vscode {} + 2>/dev/null\n' >> "$HOME/.bashrc"
-
-brew tap neurosnap/tap
-brew trust neurosnap/tap
-
-BREW_FORMULAE=(
-    bat
-    fd
-    fish
-    fzf
-    git-delta
-    jj
-    jjui
-    sd
-    neurosnap/tap/zmx
-)
-
-BREW_HEAD_FORMULAE=(
-    helix
-)
-
-brew install "${BREW_FORMULAE[@]}"
-brew install --HEAD "${BREW_HEAD_FORMULAE[@]}"
-
-# Symlink binaries for explicitly installed formulae to ~/.local/bin to avoid overwriting builtin node/python/etc
-for formula in "${BREW_FORMULAE[@]}" "${BREW_HEAD_FORMULAE[@]}"; do
-    brew list "$formula" 2>/dev/null | grep -E '/Cellar/[^/]+/[^/]+/bin/' | while read -r bin; do
-        ln -sf "$bin" "$HOME/.local/bin/$(basename "$bin")"
-    done
-done

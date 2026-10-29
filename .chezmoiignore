@@ -3,3 +3,6 @@
 .config/fish/conf.d/vite-plus.fish
 .chezmoiscripts/configure-hotkey-app-defaults.fish
 {{ end -}}
+{{ if ne .chezmoi.os "linux" -}}
+.config/mise/conf.d/linux.toml
+{{ end -}}

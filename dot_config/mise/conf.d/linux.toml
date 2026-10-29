@@ -1,0 +1,14 @@
+[bootstrap.mise_shell_activate]
+bash = true
+
+[tools]
+bat = "latest"
+delta = "latest"
+fd = "latest"
+"github:fish-shell/fish-shell" = "latest"
+fzf = "latest"
+helix = "latest"
+jj = "latest"
+jjui = "latest"
+sd = "latest"
+zmx = "latest"
