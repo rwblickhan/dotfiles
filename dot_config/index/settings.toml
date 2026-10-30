@@ -58,30 +58,6 @@ title = "SFPL Printing"
 url_template = "https://sfpl.eprintitsaas.com/public/upload"
 
 [[links]]
-title = "Things Today: Errands"
-url_template = "things:///add?list-id=2e4RzYsukAz2prQG9ktfS3&when=today&show-quick-entry=true"
-
-[[links]]
-title = "Things Today: Finance"
-url_template = "things:///add?list-id=TA3j5otm3UBKzBRS1x7zEz&when=today&show-quick-entry=true"
-
-[[links]]
-title = "Things Today: Health & Athletics"
-url_template = "things:///add?list-id=MjsDscyxCe17qMBaS871uA&when=today&show-quick-entry=true"
-
-[[links]]
-title = "Things Today: Hobbies"
-url_template = "things:///add?list-id=GhbTFDzk2VBdg3uVsnSD2Q&when=today&show-quick-entry=true"
-
-[[links]]
-title = "Things Today: Relationships, Events, & Travel"
-url_template = "things:///add?list-id=MrpX2ED1oMuJ4MygFiTBgG&when=today&show-quick-entry=true"
-
-[[links]]
-title = "Things Today: Work"
-url_template = "things:///add?list-id=5JRNivfSJHMTNfThmN4mWp&when=today&show-quick-entry=true"
-
-[[links]]
 title = "Vancouver Trip Doc"
 url_template = "https://docs.google.com/document/d/1zn7G5uBKrC9Gxz7s0SheNiFffl_HYUXh3hTM9Sth4vA/edit?usp=sharing"
 
@@ -149,6 +125,36 @@ url_template = "https://sfpl.org/search-page?keys=%s&type=all"
 title = "StoryGraph"
 trigger = "st"
 url_template = "https://app.thestorygraph.com/browse?search_term=%s"
+
+[[search_engines]]
+title = "Things Today: Errands"
+trigger = "the"
+url_template = "things:///add?title=%s&list-id=2e4RzYsukAz2prQG9ktfS3&when=today"
+
+[[search_engines]]
+title = "Things Today: Finance"
+trigger = "thf"
+url_template = "things:///add?title=%s&list-id=TA3j5otm3UBKzBRS1x7zEz&when=today"
+
+[[search_engines]]
+title = "Things Today: Health & Athletics"
+trigger = "tha"
+url_template = "things:///add?title=%s&list-id=MjsDscyxCe17qMBaS871uA&when=today"
+
+[[search_engines]]
+title = "Things Today: Hobbies"
+trigger = "thh"
+url_template = "things:///add?title=%s&list-id=GhbTFDzk2VBdg3uVsnSD2Q&when=today"
+
+[[search_engines]]
+title = "Things Today: Relationships, Events, & Travel"
+trigger = "thr"
+url_template = "things:///add?title=%s&list-id=MrpX2ED1oMuJ4MygFiTBgG&when=today"
+
+[[search_engines]]
+title = "Things Today: Work"
+trigger = "thw"
+url_template = "things:///add?title=%s&list-id=5JRNivfSJHMTNfThmN4mWp&when=today"
 
 [[search_engines]]
 title = "TMDB"
