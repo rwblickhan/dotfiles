@@ -324,7 +324,7 @@ function goodlinks_thin --description "Interactively thin out old read GoodLinks
     if set -q _flag_help
         echo "Usage: goodlinks_thin"
         echo ""
-        echo "Fetches all read GoodLinks articles, picks 50 at random, and does"
+        echo "Fetches all read GoodLinks articles, picks 25 at random, and does"
         echo "two review passes. Pass 1: for each article, mark for deletion (y),"
         echo "keep (n), open in browser and defer the decision (o), or quit (q)."
         echo "Pass 2: revisit only the articles that were opened (not those"
@@ -353,6 +353,6 @@ function goodlinks_thin --description "Interactively thin out old read GoodLinks
     # Authors whose articles should never be offered for deletion, even if sampled.
     set -l allowlist_authors "Jacob Geller"
 
-    __goodlinks_thin_process $token $base true 50 read (count $allowlist_domains) $allowlist_domains $allowlist_authors
+    __goodlinks_thin_process $token $base true 25 read (count $allowlist_domains) $allowlist_domains $allowlist_authors
     or return 1
 end
