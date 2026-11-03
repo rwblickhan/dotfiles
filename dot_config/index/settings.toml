@@ -127,36 +127,6 @@ trigger = "st"
 url_template = "https://app.thestorygraph.com/browse?search_term=%s"
 
 [[search_engines]]
-title = "Things Today: Errands"
-trigger = "the"
-url_template = "things:///add?title=%s&list-id=2e4RzYsukAz2prQG9ktfS3&when=today"
-
-[[search_engines]]
-title = "Things Today: Finance"
-trigger = "thf"
-url_template = "things:///add?title=%s&list-id=TA3j5otm3UBKzBRS1x7zEz&when=today"
-
-[[search_engines]]
-title = "Things Today: Health & Athletics"
-trigger = "tha"
-url_template = "things:///add?title=%s&list-id=MjsDscyxCe17qMBaS871uA&when=today"
-
-[[search_engines]]
-title = "Things Today: Hobbies"
-trigger = "thh"
-url_template = "things:///add?title=%s&list-id=GhbTFDzk2VBdg3uVsnSD2Q&when=today"
-
-[[search_engines]]
-title = "Things Today: Relationships, Events, & Travel"
-trigger = "thr"
-url_template = "things:///add?title=%s&list-id=MrpX2ED1oMuJ4MygFiTBgG&when=today"
-
-[[search_engines]]
-title = "Things Today: Work"
-trigger = "thw"
-url_template = "things:///add?title=%s&list-id=5JRNivfSJHMTNfThmN4mWp&when=today"
-
-[[search_engines]]
 title = "TMDB"
 trigger = "tmdb"
 url_template = "https://www.themoviedb.org/search?query=%s"
