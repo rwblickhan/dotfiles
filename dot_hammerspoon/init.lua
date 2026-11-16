@@ -429,6 +429,8 @@ spoon.LeftRightHotkey:bind(rightCmd, "m", focusFacebookMessages)
 spoon.LeftRightHotkey:bind(rightCmd, "n", function() showOrHide("md.obsidian") end)
 -- p = password manager
 spoon.LeftRightHotkey:bind(rightCmd, "p", function() showOrHide("1Password") end)
+-- r = rex
+spoon.LeftRightHotkey:bind(rightCmd, "r", function() showOrHide("com.superlogical.rex") end)
 -- s = slack
 spoon.LeftRightHotkey:bind(rightCmd, "s", function() showOrHide("Slack") end)
 -- t = todo list
