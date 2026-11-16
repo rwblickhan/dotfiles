@@ -1,15 +1,11 @@
-function workspace_layout --description "Open Ghostty with claude code workspace layout"
-    printf 'tell application "Ghostty"
-        activate
-
-        set paneRight to focused terminal of selected tab of front window
-        set paneTopLeft to split paneRight direction left
-        set paneBottomLeft to split paneTopLeft direction down
-
-        focus paneTopLeft
-        input text "jjui\n " to paneTopLeft
-
-        focus paneRight
-        input text "claude --permission-mode auto\n " to paneRight
-    end tell' | osascript
+function workspace_layout --description "Split the current pane into the claude code workspace layout"
+    switch "$TERM_PROGRAM"
+        case ghostty
+            ghostty_workspace_layout
+        case rex
+            rex_workspace_layout
+        case '*'
+            echo "workspace_layout: unsupported terminal '$TERM_PROGRAM'" >&2
+            return 1
+    end
 end
