@@ -72,7 +72,6 @@ if status is-interactive
     abbr -a o open
     abbr -a p pnpm
     abbr -a r 'mise run'
-    abbr -a rss rex-setup.sh
     abbr -a z zmx
 
     abbr -a bbic "brew bundle install --file=~/Brewfile && brew bundle cleanup --file=~/Brewfile"
