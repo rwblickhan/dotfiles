@@ -140,6 +140,31 @@ gh pr create --head "$name"
 """,
   "pr",
 ]
+# Bookmark a change and submit it as a gh stack PR on top of the closest bookmark below it
+stack = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+set -e
+rev="${1:-@}"
+orig=$(jj log -r @ --no-graph --no-pager -T change_id)
+name=$(jj branch "$rev")
+parent=$(jj log -r "heads((trunk()..\\"$name\\"-) & bookmarks())" --limit 1 --no-graph --no-pager -T 'local_bookmarks.map(|b| b.name()).join("\\n") ++ "\\n"' | head -n 1)
+git checkout -f main
+if [ -z "$parent" ]; then
+  gh stack init "$name"
+else
+  gh stack checkout "$parent"
+  gh stack add "$name"
+fi
+gh stack submit --auto
+jj edit "$orig" >/dev/null 2>&1 || true
+""",
+  "stack",
+]
 # Fetch remote changes and rebase fully-mutable branches
 pull = [
   "util",
