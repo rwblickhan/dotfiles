@@ -62,3 +62,6 @@ if test -e $pastebotPlist
         -c "Add :GlobalPasteCurrentClipboardItemWithLastUsedFilterHotKey:modifierFlags integer 1573160" \
         $pastebotPlist
 end
+
+# Rex (com.superlogical.rex)
+defaults write com.superlogical.rex Workspace.terminalFontName -string "Atkinson Hyperlegible Mono"
