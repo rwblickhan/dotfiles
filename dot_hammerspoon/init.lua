@@ -46,6 +46,26 @@ local function sendTabToDrafts()
   end
 end
 
+local function saveTabToGoodLinks()
+  local script = [[
+        tell application "Google Chrome"
+            set tabTitle to title of active tab of front window
+            set tabURL to URL of active tab of front window
+            close active tab of front window
+        end tell
+        return tabTitle & "|||" & tabURL
+    ]]
+  local ok, result = hs.osascript.applescript(script)
+  if ok then
+    local sep = result:find("|||", 1, true)
+    local title = result:sub(1, sep - 1)
+    local url = result:sub(sep + 3)
+    hs.urlevent.openURL("goodlinks://x-callback-url/save?quick=1&url=" .. urlEncode(url) .. "&title=" .. urlEncode(title))
+    hs.alert.show("Saved to GoodLinks: " .. title)
+    hs.application.launchOrFocus("Google Chrome")
+  end
+end
+
 local function copyTabAsMarkdown()
   local script = [[
         tell application "Google Chrome"
@@ -481,5 +501,6 @@ bindConditionalHotkey({ "ctrl" }, "t", isDraftsFocused, function() selectMenuIte
 -- Chrome-specific hotkeys
 bindConditionalHotkey({ "cmd" }, "d", isChromeFocused, openChromeTabInSplitView)
 bindConditionalHotkey({ "cmd", "shift" }, "d", isChromeFocused, sendTabToDrafts)
+bindConditionalHotkey({ "cmd", "shift" }, "s", isChromeFocused, saveTabToGoodLinks)
 bindConditionalHotkey({ "cmd", "shift" }, "l", isChromeFocused, copyTabAsMarkdown)
 bindConditionalHotkey({ "cmd", "shift" }, "h", isChromeFocused, collapseChromeTabs)
