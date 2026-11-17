@@ -13,7 +13,9 @@ function notify_done --description "Notify that the preceding command finished"
         set -l state done
         test $last_status -ne 0; and set state error
         rex_status -t "$title" $state $message
-    else if test -n "$title"
+    end
+
+    if test -n "$title"
         notify -t "$title" $message
     else
         notify $message

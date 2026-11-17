@@ -14,9 +14,12 @@ function __rex_status_postexec --on-event fish_postexec
     contains -- $cmd $rex_status_ignore; and return
 
     set -l secs (math --scale=0 $CMD_DURATION / 1000)
-    if test $last_status -eq 0
-        rex_status -t $cmdline done "Finished in "$secs"s"
-    else
-        rex_status -t $cmdline error "Exited $last_status after "$secs"s"
+    set -l state done
+    set -l msg "Finished in "$secs"s"
+    if test $last_status -ne 0
+        set state error
+        set msg "Exited $last_status after "$secs"s"
     end
+    rex_status -t $cmdline $state $msg
+    notify -t $cmdline $msg
 end
