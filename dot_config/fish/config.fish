@@ -27,6 +27,10 @@ set -gx FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always --line-ra
 set -gx EDITOR hx
 set -gx LEDGER_FILE ~/Developer/finance/2026.journal
 
+if test (uname) = Darwin
+    set -gx OP_BIOMETRIC_UNLOCK_ENABLED true
+end
+
 if command -sq bat
     alias cat bat
 end
