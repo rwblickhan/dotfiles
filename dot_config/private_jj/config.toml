@@ -136,7 +136,12 @@ rev="${1:-@}"
 name=$(jj branch "$rev")
 jj hooks "$name"
 jj git push -b "$name"
-gh pr create --head "$name"
+parent=$(jj log -r "heads((trunk()..\\"$name\\"-) & bookmarks())" --limit 1 --no-graph --no-pager -T 'local_bookmarks.map(|b| b.name()).join("\\n") ++ "\\n"' | head -n 1)
+if [ -n "$parent" ]; then
+  gh pr create --head "$name" --base "$parent"
+else
+  gh pr create --head "$name"
+fi
 """,
   "pr",
 ]
