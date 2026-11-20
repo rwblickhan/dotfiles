@@ -3,7 +3,7 @@ function github_prs --description "Show my PRs in the current repo with draft, r
     or return
 
     set -l repo_args
-    set -q _flag_repo; and set repo_args -R $_flag_repo
+    set -q _flag_repo; and set repo_args $_flag_repo
     set -l repo (gh repo view $repo_args --json nameWithOwner --jq .nameWithOwner)
     or return
 
@@ -49,6 +49,15 @@ function __github_prs_render --argument-names repo color
         .title
     ] | @tsv')
     or return
+
+    if test (count $tsv) -eq 0
+        if test "$color" = color
+            printf '%sNo open PRs in %s%s\n' (set_color brblack) $repo (set_color normal)
+        else
+            echo "No open PRs in $repo"
+        end
+        return
+    end
 
     set -l tab (printf '\t')
     set -l rows (for line in $tsv
