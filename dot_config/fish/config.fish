@@ -64,7 +64,6 @@ if status is-interactive
     abbr -a ash "autossh -M 0 -q"
     abbr -a c code
     abbr -a ch chezmoi
-    abbr -a f rfv
     abbr -a g git
     abbr -a h hx
     abbr -a j jj
@@ -72,7 +71,6 @@ if status is-interactive
     abbr -a lm "jj ci -m 'Log media' && jj push"
     abbr -a le "jj ci -m 'Log expenses' && jj push"
     abbr -a m mise
-    abbr -a n nvim
     abbr -a o open
     abbr -a p pnpm
     abbr -a r 'mise run'

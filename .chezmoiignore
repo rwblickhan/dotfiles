@@ -1,8 +1,27 @@
 {{ if ne .chezmoi.username "rwblickhan" -}}
 .vite-plus
 .config/fish/conf.d/vite-plus.fish
+.config/fish/completions/vp.fish
+.config/fish/completions/vpr.fish
+.config/fish/completions/sync_bookmarks.fish
+.config/fish/completions/sync_kobo.fish
+.config/fish/completions/restic.fish
+.config/fish/functions/backup.fish
+.config/fish/functions/download-yt-audio.fish
+.config/fish/functions/transcribe.fish
+.config/fish/functions/goodlinks_sync_ereader.fish
+.config/fish/functions/goodlinks_read_week.fish
+.config/fish/functions/goodlinks_thin.fish
+.config/fish/functions/sync_highlights.fish
+.config/fish/functions/sync_mochi.fish
+.config/fish/functions/buttondown_newsletter_draft.fish
+.config/fish/functions/obsidian_base_to_things.fish
+.config/fish/functions/obsidian_random_notes.fish
+.config/fish/functions/r2b_endpoint.fish
 .chezmoiscripts/configure-hotkey-app-defaults.fish
 {{ end -}}
 {{ if ne .chezmoi.os "linux" -}}
 .config/mise/conf.d/linux.toml
 {{ end -}}
+install.sh
+post-start-install.sh

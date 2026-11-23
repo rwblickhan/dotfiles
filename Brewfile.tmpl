@@ -34,8 +34,6 @@ brew "cargo-binstall"
 brew "chezmoi"
 # delphitools CLI
 brew "1612elphi/delphitools/delphitools-cli", trusted: true
-# Deno (primarily for yt-dlp support)
-brew "deno"
 # Structured diffs
 brew "difftastic"
 # Code formatter
@@ -48,8 +46,6 @@ brew "eza"
 brew "efm-langserver"
 # Better find
 brew "fd"
-# ffmpeg support for yt-dlp
-brew "ffmpeg"
 # Better shell
 brew "fish"
 # Fish LSP
@@ -94,8 +90,6 @@ brew "mole"
 brew "mise"
 # Up-to-date node
 brew "node"
-# Neovim
-brew "nvim"
 # JavaScript/TypeScript formatter
 brew "oxfmt"
 # JavaScript/TypeScript linter
@@ -104,14 +98,10 @@ brew "oxlint"
 # Gitpod CLI
 brew "gitpod-io/tap/ona", trusted: true
 {{ end -}}
-# Pandoc document converter
-brew "pandoc"
 # Install Python executables easily
 brew "pipx"
 # Git hook manager (pre-commit compatible)
 brew "prek"
-# Backups
-brew "restic"
 # Better grep
 brew "ripgrep"
 # Better sed
@@ -128,16 +118,26 @@ brew "typst"
 brew "usage"
 # Directory watcher
 brew "watchexec"
-# Faster Whisper-based transcription
-brew "whisper.cpp"
 # Better HTTP client
 brew "xh"
-# YouTube downloader
-brew "yt-dlp"
 # Better cd
 brew "zoxide"
 # session persistence
 brew "neurosnap/tap/zmx", trusted: true
+{{ if eq .chezmoi.username "rwblickhan" -}}
+# Deno (primarily for yt-dlp support)
+brew "deno"
+# ffmpeg support for yt-dlp
+brew "ffmpeg"
+# Pandoc document converter
+brew "pandoc"
+# Backups
+brew "restic"
+# Faster Whisper-based transcription
+brew "whisper.cpp"
+# YouTube downloader
+brew "yt-dlp"
+{{ end -}}
 
 # 1password password manager
 cask "1password-cli"
@@ -147,8 +147,6 @@ cask "bloom"
 cask "font-atkinson-hyperlegible"
 # Non-Apple display management
 cask "betterdisplay"
-# Calibre ebook manager
-cask "calibre"
 # Text expander
 cask "espanso"
 # Better terminal
@@ -157,8 +155,6 @@ cask "ghostty"
 cask "darrylmorley/whatcable/whatcable", trusted: true
 # Personal automations
 cask "hammerspoon"
-# Jellyfin media server
-cask "jellyfin"
 # Keyboard remapping
 cask "karabiner-elements"
 # Fix mouse scrolling
@@ -167,6 +163,12 @@ cask "mac-mouse-fix"
 cask "visual-studio-code"
 # Install Xcode easily
 cask "xcodes-app"
+{{ if eq .chezmoi.username "rwblickhan" -}}
+# Calibre ebook manager
+cask "calibre"
+# Jellyfin media server
+cask "jellyfin"
+{{ end -}}
 
 # Bookmarks
 vscode "alefragnani.Bookmarks"
@@ -186,8 +188,6 @@ vscode "usernamehw.errorlens"
 vscode "vunguyentuan.vscode-css-variables"
 # Better TypeScript error highlighting
 vscode "YoavBls.pretty-ts-errors"
-# VSCodeNeovim
-vscode "asvetliakov.vscode-neovim"
 {{ if eq .chezmoi.username "russellblickhan" -}}
 # Dev Containers support
 vscode "ms-vscode-remote.remote-containers"

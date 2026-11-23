@@ -49,3 +49,17 @@ Library/Caches/com.tinycast.app
 .local/bin/jj-hp
 .local/bin/jj-hooks-share-node-modules
 .config/helix/themes/ayu_dark.toml
+.config/zed
+.config/yamllint
+Library/Application Support/Alfred/Alfred.alfredpreferences/preferences/prefs.plist
+Library/Application Support/Alfred/Alfred.alfredpreferences/preferences/workflows/tasks/prefs.plist
+.config/fish/completions/linty.fish
+.config/fish/completions/tspin.fish
+.config/nvim
+.config/fish/functions/fzf_key_bindings.fish
+.config/fish/functions/fish_user_key_bindings.fish
+.config/fish/functions/rfv.fish
+.config/fish/functions/push_rwb.fish
+.config/fish/functions/sdf.fish
+.config/fish/functions/https_json_no_verify.fish
+.config/fish/functions/ona_layout.fish

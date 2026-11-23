@@ -1,0 +1,13 @@
+[".local/share/fzf-jj.sh"]
+type = "archive"
+url = "https://github.com/rwblickhan/fzf-jj.sh/archive/refs/heads/main.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "24h"
+
+[".local/share/fzf-git.sh"]
+type = "archive"
+url = "https://github.com/junegunn/fzf-git.sh/archive/refs/heads/main.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "24h"

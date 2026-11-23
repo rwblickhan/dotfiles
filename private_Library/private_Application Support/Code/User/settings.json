@@ -50,9 +50,6 @@
     "*.gitpod.remote": "linux",
   },
   "task.allowAutomaticTasks": "on",
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1,
-  },
   "yaml.disableSchemaDetection": [
     "**/.github/workflows/*.yml",
     "**/.github/workflows/*.yaml",
