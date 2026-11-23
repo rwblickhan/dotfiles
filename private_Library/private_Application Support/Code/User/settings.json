@@ -1,9 +1,7 @@
 {
   "files.autoSave": "onFocusChange",
   "editor.formatOnSave": true,
-  "editor.stickyScroll.enabled": true,
   "editor.fontFamily": "'Atkinson Hyperlegible Mono', Menlo, Monaco, 'Courier New', monospace",
-  "editor.lineNumbers": "relative",
   "editor.guides.bracketPairs": "active",
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": "always",
@@ -11,7 +9,6 @@
   "diffEditor.experimental.showMoves": true,
   "workbench.colorTheme": "Ayu Dark Bordered",
   "workbench.quickOpen.preserveInput": true,
-  "workbench.tree.enableStickyScroll": true,
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode",
   },
@@ -28,9 +25,7 @@
   "editor.fontLigatures": false,
   "js/ts.updateImportsOnFileMove.enabled": "always",
   "files.exclude": {
-    ".zig-cache": true,
     "node_modules": true,
-    "zig-out": true,
   },
   // Force Emmet suggestions to show up at the bottom
   "emmet.showSuggestionsAsSnippets": true,
@@ -50,12 +45,4 @@
     "*.gitpod.remote": "linux",
   },
   "task.allowAutomaticTasks": "on",
-  "yaml.disableSchemaDetection": [
-    "**/.github/workflows/*.yml",
-    "**/.github/workflows/*.yaml",
-    "**/.gitea/workflows/*.yml",
-    "**/.gitea/workflows/*.yaml",
-    "**/.forgejo/workflows/*.yml",
-    "**/.forgejo/workflows/*.yaml",
-  ],
 }
