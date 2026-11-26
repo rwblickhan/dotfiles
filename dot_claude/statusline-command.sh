@@ -2,6 +2,7 @@
 input=$(cat)
 
 DIR=$(echo "$input" | jq -r '.workspace.current_dir')
+MODEL=$(echo "$input" | jq -r '.model.display_name // empty')
 COST=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
 PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 # "// empty" produces no output when rate_limits is absent
@@ -67,4 +68,7 @@ if [ -n "$WEEK" ]; then
   LIMITS="${LIMITS:+$LIMITS | }7d: ${WEEK_BAR} ${WEEK_INT}%"
 fi
 
-[ -n "$LIMITS" ] && echo -e "ctx: ${CTX_BAR} ${PCT}% | $LIMITS | ${YELLOW}${COST_FMT}${RESET}" || echo -e "ctx: ${CTX_BAR} ${PCT}% | ${YELLOW}${COST_FMT}${RESET}"
+MODEL_PART=""
+[ -n "$MODEL" ] && MODEL_PART="${CYAN}${MODEL}${RESET} | "
+
+[ -n "$LIMITS" ] && echo -e "${MODEL_PART}ctx: ${CTX_BAR} ${PCT}% | $LIMITS | ${YELLOW}${COST_FMT}${RESET}" || echo -e "${MODEL_PART}ctx: ${CTX_BAR} ${PCT}% | ${YELLOW}${COST_FMT}${RESET}"
