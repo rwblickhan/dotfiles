@@ -1,7 +1,8 @@
 function rex_collapse_layout --description "Collapse Rex panes in this tab down to the current pane"
-    set -l others (rex block ls -s $REX_SESSION --json | jq -er --arg b $REX_BLOCK '(.blocks[] | select(.block_id == $b) | .window_id) as $w | .blocks[] | select(.window_id == $w and .block_id != $b) | .block_id'); or return 0
+    set -l window (rex block inspect $REX_BLOCK --json | jq -er '.block.window_id'); or return
+    set -l others (rex block ls -w $window -q --short=false | string match -v -- $REX_BLOCK)
     for block in $others
-        rex block close -s $REX_SESSION $block &
+        rex block close $block &
     end
     wait
 end
